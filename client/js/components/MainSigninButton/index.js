@@ -1,3 +1,3 @@
-import MainAddCalendarButton from './MainAddCalendarButton';
+import MainSigninButton from './MainSigninButton';
 
-export default MainAddCalendarButton;
+export default MainSigninButton;
