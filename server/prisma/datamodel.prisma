@@ -3,9 +3,31 @@ type User {
   email: String! @unique
   password: String!
   name: String!
+  campaigns: [Campaign!]!
 }
 
-type Post {
+type Event{
+   id: ID! @id
+   title: String! @unique
+   createdAt: DateTime! @createdAt
+   location: String!
+   image: String!
+   description: String!
+   comments: [Comment!]!
+}
+
+type Campaign {
   id: ID! @id
-  title: String!
+  title: String! @unique
+  category: String!
+  description: String!
+  events: [Event!]!
+  image: String!
+  subscribers: [User!]!
+}
+
+type Comment{
+   id: ID! @id
+    createdAt: DateTime! @createdAt
+    comment: String!
 }
