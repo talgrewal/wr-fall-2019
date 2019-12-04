@@ -4,8 +4,7 @@ import {createStackNavigator} from 'react-navigation-stack';
 import HomeScreen from '../screens/Home';
 import CampaignsScreen from '../screens/Campaigns';
 import NotificationsScreen from '../screens/Notifications';
-// import {sharedNavigationOptions} from './config';
-
+import {typography} from '../config/styles';
 import {Image} from 'react-native';
 
 const HomeStack = createStackNavigator(
@@ -14,7 +13,6 @@ const HomeStack = createStackNavigator(
   },
   {
     defaultNavigationOptions: ({navigation}) => ({
-      //   ...sharedNavigationOptions(navigation),
       initialRouteName: 'Home',
     }),
   },
@@ -26,7 +24,6 @@ const CampaignsStack = createStackNavigator(
   },
   {
     defaultNavigationOptions: ({navigation}) => ({
-      //   ...sharedNavigationOptions(navigation),
       initialRouteName: 'Campaigns',
     }),
   },
@@ -38,7 +35,6 @@ const NotificationsStack = createStackNavigator(
   },
   {
     defaultNavigationOptions: ({navigation}) => ({
-      //   ...sharedNavigationOptions(navigation),
       initialRouteName: 'Notifications',
     }),
   },
@@ -56,23 +52,38 @@ export default createBottomTabNavigator(
         const {routeName} = navigation.state;
 
         if (routeName === 'Home') {
-          Icon = (
+          Icon = focused ? (
             <Image
-              style={{width: 25, height: 25}}
+              style={{width: 30, height: 30}}
+              source={require('../assets/buttonnav/earthlogored.png')}
+            />
+          ) : (
+            <Image
+              style={{width: 30, height: 30}}
               source={require('../assets/buttonnav/earthlogo.png')}
             />
           );
         } else if (routeName === 'Campaigns') {
-          Icon = (
+          Icon = focused ? (
             <Image
-              style={{width: 25, height: 25}}
+              style={{width: 30, height: 30}}
+              source={require('../assets/buttonnav/bombred.png')}
+            />
+          ) : (
+            <Image
+              style={{width: 30, height: 30}}
               source={require('../assets/buttonnav/bomb.png')}
             />
           );
         } else if (routeName === 'Notifications') {
-          Icon = (
+          Icon = focused ? (
             <Image
-              style={{width: 25, height: 25}}
+              style={{width: 30, height: 30}}
+              source={require('../assets/buttonnav/bellred.png')}
+            />
+          ) : (
+            <Image
+              style={{width: 30, height: 30}}
               source={require('../assets/buttonnav/BellIcon.png')}
             />
           );
@@ -81,13 +92,14 @@ export default createBottomTabNavigator(
       },
     }),
     tabBarOptions: {
-      activeTintColor: 'red',
+      activeTintColor: 'black',
       inactiveTintColor: 'black',
       tabStyle: {
         backgroundColor: 'white',
       },
       labelStyle: {
         fontSize: 10,
+        fontFamily: typography.fontMainLight,
       },
     },
   },
