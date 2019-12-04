@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {typography} from '../../config/styles';
 
 const styles = StyleSheet.create({
   logo: {},
@@ -10,7 +11,8 @@ const styles = StyleSheet.create({
   },
 
   loginInfo: {
-    height: 50,
+    // flex: 1,
+    height: 80,
     width: '75%',
   },
   accountSignup: {
@@ -24,12 +26,15 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold',
     fontSize: 14,
+    paddingBottom: 5,
   },
   redFont: {
     textAlign: 'center',
     color: 'red',
     fontWeight: 'bold',
     fontSize: 14,
+    paddingBottom: 5,
+    // fontFamily: typography.fontMain,
   },
 });
 
