@@ -4,11 +4,9 @@ import {createStackNavigator} from 'react-navigation-stack';
 import HomeScreen from '../screens/Home';
 import CampaignsScreen from '../screens/Campaigns';
 import NotificationsScreen from '../screens/Notifications';
-import {sharedNavigationOptions} from './config';
-import BellIcon from '../assets/buttonnav/BellIcon.png';
-// import bomb from '../assets/buttonnav/bomb@3x.png';
-// import earth from '../assets/buttonnav/earthlogo2.2@3x.png';
-import Image from 'react-native';
+// import {sharedNavigationOptions} from './config';
+
+import {Image} from 'react-native';
 
 const HomeStack = createStackNavigator(
   {
@@ -16,9 +14,8 @@ const HomeStack = createStackNavigator(
   },
   {
     defaultNavigationOptions: ({navigation}) => ({
-      ...sharedNavigationOptions(navigation),
+      //   ...sharedNavigationOptions(navigation),
       initialRouteName: 'Home',
-      title: 'Home',
     }),
   },
 );
@@ -29,9 +26,8 @@ const CampaignsStack = createStackNavigator(
   },
   {
     defaultNavigationOptions: ({navigation}) => ({
-      ...sharedNavigationOptions(navigation),
+      //   ...sharedNavigationOptions(navigation),
       initialRouteName: 'Campaigns',
-      title: 'Campaigns',
     }),
   },
 );
@@ -42,9 +38,8 @@ const NotificationsStack = createStackNavigator(
   },
   {
     defaultNavigationOptions: ({navigation}) => ({
-      ...sharedNavigationOptions(navigation),
+      //   ...sharedNavigationOptions(navigation),
       initialRouteName: 'Notifications',
-      title: 'Notifications',
     }),
   },
 );
@@ -60,16 +55,29 @@ export default createBottomTabNavigator(
       tabBarIcon: ({focused, tintColor}) => {
         const {routeName} = navigation.state;
 
-        // if (routeName === 'Home') {
-        //   <Image style={{width: 25, height: 25}} source={require({earth})} />;
-        // } else if (routeName === 'Campaigns') {
-        //   <Image style={{width: 25, height: 25}} source={require({bomb})} />;
-        // } else if (routeName === 'Notifications') {
-        //   <Image
-        //     style={{width: 25, height: 25}}
-        //     source={require({BellIcon})}
-        //   />;
-        // }
+        if (routeName === 'Home') {
+          Icon = (
+            <Image
+              style={{width: 25, height: 25}}
+              source={require('../assets/buttonnav/earthlogo.png')}
+            />
+          );
+        } else if (routeName === 'Campaigns') {
+          Icon = (
+            <Image
+              style={{width: 25, height: 25}}
+              source={require('../assets/buttonnav/bomb.png')}
+            />
+          );
+        } else if (routeName === 'Notifications') {
+          Icon = (
+            <Image
+              style={{width: 25, height: 25}}
+              source={require('../assets/buttonnav/BellIcon.png')}
+            />
+          );
+        }
+        return Icon;
       },
     }),
     tabBarOptions: {
