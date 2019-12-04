@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 
-import Campaign from './Campaign';
+import Campaigns from './Campaigns';
 
 export default class CampaignsContainer extends Component {
   render() {
-    return <Campaign />;
+    return <Campaigns />;
   }
 }
