@@ -5,28 +5,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     height: 20,
+    width: 400,
     alignSelf: 'flex-start',
-    // display: 'flex',
-    // justifyContent: 'space-around',
-    // flexDirection: 'row',
-    // borderBottomWidth: 1,
-    // borderBottomColor: 'black',
-    // width: '70%',
-  },
-  passwordField: {
-    // display: 'flex',
-    // justifyContent: 'space-around',
-    // flexDirection: 'row',
-    // borderBottomWidth: 1,
-    // borderBottomColor: 'black',
-    // width: '70%',
   },
   AccountLoginContainer: {
     flex: 1,
     justifyContent: 'center',
     alignContent: 'center',
-    marginHorizontal: 100,
-    // width: 300,
+    paddingBottom: 40,
+  },
+  subField: {
+    width: 200,
   },
 });
 

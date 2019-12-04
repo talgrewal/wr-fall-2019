@@ -10,7 +10,13 @@ const styles = StyleSheet.create({
   pageContainer: {
     flex: 1,
     justifyContent: 'space-between',
+    alignItems: 'center',
+
     // alignContent: 'center',
+  },
+
+  loginInfo: {
+    height: 200,
   },
 });
 
