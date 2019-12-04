@@ -18,10 +18,13 @@ class AccountLoginForm extends Component {
               <View style={styles.subField}>
                 <Field
                   name="email"
+                  style={styles.typefield}
                   render={({input, meta}) => (
                     <TextInput
+                      style={{fontSize: 16, fontWeight: 'bold'}}
                       id="email"
-                      placeholder="Email"
+                      placeholder="User Email"
+                      placeholderTextColor="black"
                       type="text"
                       inputProps={{
                         autoComplete: 'off',
@@ -31,8 +34,13 @@ class AccountLoginForm extends Component {
                   )}
                 />
               </View>
-              <Image style={{width: 25, height: 25}} source={EmailIcon} />
+              <Image
+                style={{width: 20, height: 20, resizeMode: 'contain'}}
+                source={EmailIcon}
+              />
             </View>
+
+            <View style={styles.hairline} />
 
             <View style={styles.textField}>
               <View style={styles.subField}>
@@ -41,7 +49,10 @@ class AccountLoginForm extends Component {
                   render={({input, meta}) => (
                     <TextInput
                       id="password"
+                      style={{fontSize: 16, fontWeight: 'bold'}}
+                      selectionColor="black"
                       placeholder="Password"
+                      placeholderTextColor="black"
                       inputProps={{
                         autoComplete: 'off',
                       }}
@@ -52,10 +63,12 @@ class AccountLoginForm extends Component {
                 />
               </View>
               <Image
-                style={{width: 25, height: 25, resizeMode: 'contain'}}
+                style={{width: 20, height: 20, resizeMode: 'contain'}}
                 source={PasswordIcon}
               />
             </View>
+
+            <View style={styles.hairline} />
           </View>
         )}
       />

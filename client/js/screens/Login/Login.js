@@ -10,23 +10,28 @@ const Login = () => {
   return (
     <SafeAreaView>
       <View style={styles.pageContainer}>
-        {/* <View style={styles.logo}> */}
         <Image
-          style={{resizeMode: 'contain', height: 180, width: 180}}
+          style={{
+            resizeMode: 'contain',
+            height: 180,
+            width: 180,
+            marginBottom: 80,
+            marginTop: 50,
+          }}
           source={LogoImage}
         />
 
         <AccountLoginForm style={styles.pageForm} />
 
         <View style={styles.loginInfo}>
-          <View>
-            <Text>Don't have an Account?</Text>
-            <Text>Sign up Here</Text>
+          <View style={styles.accountSignup}>
+            <Text style={styles.blackFont}>Don't have an Account?</Text>
+            <Text style={styles.redFont}>Sign up Here</Text>
           </View>
 
           <View>
-            <Text>Not Ready yet? No Worries</Text>
-            <Text>Continue as a Guest</Text>
+            <Text style={styles.blackFont}>Not Ready yet? No Worries</Text>
+            <Text style={styles.redFont}>Continue as a Guest</Text>
           </View>
         </View>
       </View>

@@ -12,10 +12,23 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignContent: 'center',
-    paddingBottom: 40,
+    alignItems: 'center',
+    paddingBottom: 60,
   },
   subField: {
-    width: 200,
+    width: 250,
+  },
+  typefield: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: 'yellow',
+  },
+  hairline: {
+    borderBottomWidth: 1,
+    borderBottomColor: 'black',
+    width: 270,
+    paddingTop: 3,
+    marginBottom: 40,
   },
 });
 
