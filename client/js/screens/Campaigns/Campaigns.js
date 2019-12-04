@@ -1,8 +1,8 @@
 import React from 'react';
 import {Text} from 'react-native';
 
-const Campaign = () => {
+const Campaigns = () => {
   return <Text>Campaign Screen</Text>;
 };
 
-export default Campaign;
+export default Campaigns;

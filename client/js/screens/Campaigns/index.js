@@ -1,3 +1,3 @@
-import CampaignContainer from './CampaignContainer';
+import CampaignsContainer from './CampaignsContainer';
 
-export default CampaignContainer;
+export default CampaignsContainer;

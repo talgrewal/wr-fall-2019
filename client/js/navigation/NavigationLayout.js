@@ -5,9 +5,9 @@ import HomeScreen from '../screens/Home';
 import CampaignsScreen from '../screens/Campaigns';
 import NotificationsScreen from '../screens/Notifications';
 import {sharedNavigationOptions} from './config';
-import BellIcon from '../assets/buttonnav/BellIcon@3x.png';
-import bomb from '../assets/buttonnav/bomb@3x.png';
-import earth from '../assets/buttonnav/earthlogo2.2@3x.png';
+import BellIcon from '../assets/buttonnav/BellIcon.png';
+// import bomb from '../assets/buttonnav/bomb@3x.png';
+// import earth from '../assets/buttonnav/earthlogo2.2@3x.png';
 import Image from 'react-native';
 
 const HomeStack = createStackNavigator(

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import Campaign from './Campaign';
 
-export default class CampaignContainer extends Component {
+export default class CampaignsContainer extends Component {
   render() {
     return <Campaign />;
   }
