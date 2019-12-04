@@ -1,9 +1,14 @@
 import React from 'react';
-import AccountFrom from '../../components/AccountForm';
-import styles from './styles';
+import AccountForm from '../../components/AccountForm';
+
+import {ScrollView} from 'react-native-gesture-handler';
 
 const Login = () => {
-  return <AccountFrom />;
+  return (
+    <ScrollView>
+      <AccountForm />
+    </ScrollView>
+  );
 };
 
 export default Login;
