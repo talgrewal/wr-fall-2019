@@ -54,36 +54,36 @@ export default createBottomTabNavigator(
         if (routeName === 'Home') {
           Icon = focused ? (
             <Image
-              style={{width: 30, height: 30}}
+              style={{width: 30, height: 30, marginTop: 5}}
               source={require('../assets/buttonnav/earthlogored.png')}
             />
           ) : (
             <Image
-              style={{width: 30, height: 30}}
+              style={{width: 30, height: 30, marginTop: 5}}
               source={require('../assets/buttonnav/earthlogo.png')}
             />
           );
         } else if (routeName === 'Campaigns') {
           Icon = focused ? (
             <Image
-              style={{width: 30, height: 30}}
+              style={{width: 30, height: 30, marginTop: 5}}
               source={require('../assets/buttonnav/bombred.png')}
             />
           ) : (
             <Image
-              style={{width: 30, height: 30}}
+              style={{width: 30, height: 30, marginTop: 5}}
               source={require('../assets/buttonnav/bomb.png')}
             />
           );
         } else if (routeName === 'Notifications') {
           Icon = focused ? (
             <Image
-              style={{width: 30, height: 30}}
+              style={{width: 30, height: 30, marginTop: 5}}
               source={require('../assets/buttonnav/bellred.png')}
             />
           ) : (
             <Image
-              style={{width: 30, height: 30}}
+              style={{width: 30, height: 30, marginTop: 5}}
               source={require('../assets/buttonnav/BellIcon.png')}
             />
           );
@@ -98,7 +98,7 @@ export default createBottomTabNavigator(
         backgroundColor: 'white',
       },
       labelStyle: {
-        fontSize: 10,
+        fontSize: 12,
         fontFamily: typography.fontMainLight,
       },
     },
