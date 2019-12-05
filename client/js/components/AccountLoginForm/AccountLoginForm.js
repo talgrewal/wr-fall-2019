@@ -5,6 +5,13 @@ import EmailIcon from '../../assets/signinicons/EmailIcon.png';
 import PasswordIcon from '../../assets/signinicons/PasswordIcon.png';
 import styles from './styles';
 import MainSigninButton from '../MainSignupButton/MainSignupButton';
+// import validate from './helpers/validation';
+// import {
+//   LOGIN_MUTATION,
+//   SIGNUP_MUTATION,
+//   VIEWER_QUERY
+// } from "../../config/api";
+// import { graphql, compose } from "react-apollo";
 
 class AccountLoginForm extends Component {
   render() {

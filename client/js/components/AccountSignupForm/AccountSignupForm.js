@@ -13,6 +13,14 @@ import UserIcon from '../../assets/headingelement/loginIcon.png';
 import PasswordIcon from '../../assets/signinicons/PasswordIcon.png';
 import styles from './styles';
 import MainSignupButton from '../MainSignupButton/MainSignupButton';
+// import CheckBox from 'react-native-check-box';
+// import validate from './helpers/validation';
+// import {
+//     LOGIN_MUTATION,
+//     SIGNUP_MUTATION,
+//     VIEWER_QUERY
+//   } from "../../config/api";
+//   import { graphql, compose } from "react-apollo";
 
 class AccountSignupForm extends Component {
   render() {
@@ -111,7 +119,7 @@ class AccountSignupForm extends Component {
                       id="password"
                       style={{fontSize: 16, width: '60%'}}
                       selectionColor="black"
-                      placeholder="Password"
+                      placeholder="Confirm Password"
                       placeholderTextColor="black"
                       inputProps={{
                         autoComplete: 'off',
