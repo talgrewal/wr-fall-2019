@@ -1,19 +1,12 @@
 import React, {Component} from 'react';
 import {Form, Field} from 'react-final-form';
-import {
-  Image,
-  TouchableOpacity,
-  View,
-  Text,
-  TextInput,
-  CheckBox,
-} from 'react-native';
+import {Image, TouchableOpacity, View, Text, TextInput} from 'react-native';
 import EmailIcon from '../../assets/signinicons/EmailIcon.png';
 import UserIcon from '../../assets/headingelement/loginIcon.png';
 import PasswordIcon from '../../assets/signinicons/PasswordIcon.png';
 import styles from './styles';
 import MainSignupButton from '../MainSignupButton/MainSignupButton';
-// import CheckBox from 'react-native-check-box';
+import CheckBox from 'react-native-check-box';
 // import validate from './helpers/validation';
 // import {
 //     LOGIN_MUTATION,
@@ -23,6 +16,13 @@ import MainSignupButton from '../MainSignupButton/MainSignupButton';
 //   import { graphql, compose } from "react-apollo";
 
 class AccountSignupForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isChecked: false,
+    };
+  }
+
   render() {
     return (
       <View style={styles.AccountLoginContainer}>
@@ -138,7 +138,16 @@ class AccountSignupForm extends Component {
 
               {/* Start Terms and conditions */}
               <View style={styles.checkboxTerms}>
-                <CheckBox height="200" width="200" color="green" />
+                <CheckBox
+                  style={{borderRadius: 0, padding: 10}}
+                  onClick={() => {
+                    this.setState({
+                      isChecked: !this.state.isChecked,
+                    });
+                  }}
+                  isChecked={this.state.isChecked}
+                  leftText={'CheckBox'}
+                />
                 <View style={styles.termsContainer}>
                   <Text>I agree to </Text>
                   <Text>terms & conditions</Text>

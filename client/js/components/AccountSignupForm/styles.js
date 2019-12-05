@@ -25,6 +25,9 @@ const styles = StyleSheet.create({
   checkboxTerms: {
     alignItems: 'center',
     paddingTop: 30,
+    justifyContent: 'center',
+    flexDirection: 'row',
+    paddingRight: 30,
   },
 });
 
