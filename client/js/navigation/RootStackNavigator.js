@@ -1,11 +1,14 @@
 import {createAppContainer} from 'react-navigation';
-import NavigationLayout from './NavigationLayout';
+import DrawerNavigation from './DrawerNavigation';
 import {createStackNavigator} from 'react-navigation-stack';
+
+import About from '../screens/About';
+import Contact from '../screens/Contact/';
 
 export default createAppContainer(
   createStackNavigator(
     {
-      Layout: NavigationLayout,
+      Layout: DrawerNavigation,
     },
     {
       headerMode: 'none',

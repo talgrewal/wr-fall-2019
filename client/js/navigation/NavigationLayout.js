@@ -1,7 +1,7 @@
 import React from 'react';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 import {createStackNavigator} from 'react-navigation-stack';
-import {createDrawerNavigator} from 'react-navigation';
+// import {createDrawerNavigator} from 'react-navigation-drawer';
 import HomeScreen from '../screens/Home';
 import CampaignsScreen from '../screens/Campaigns';
 import NotificationsScreen from '../screens/Notifications';
@@ -16,11 +16,18 @@ import {Image} from 'react-native';
 const HomeStack = createStackNavigator(
   {
     Home: HomeScreen,
+    About: AboutScreen,
+    Contact: ContactScreen,
+    Terms: TermsScreen,
+    Privacy: PrivacyScreen,
   },
   {
-    defaultNavigationOptions: ({navigation}) => ({
-      initialRouteName: 'Home',
-    }),
+    defaultNavigationOptions: ({navigation}) => {
+      return {
+        ...sharedNavigationOptions(navigation),
+        initialRouteName: 'Home',
+      };
+    },
   },
 );
 
@@ -30,6 +37,7 @@ const CampaignsStack = createStackNavigator(
   },
   {
     defaultNavigationOptions: ({navigation}) => ({
+      ...sharedNavigationOptions(navigation),
       initialRouteName: 'Campaigns',
     }),
   },
@@ -41,16 +49,23 @@ const NotificationsStack = createStackNavigator(
   },
   {
     defaultNavigationOptions: ({navigation}) => ({
+      ...sharedNavigationOptions(navigation),
       initialRouteName: 'Notifications',
     }),
   },
 );
 
-export default createBottomTabNavigator(
+const Tabs = createBottomTabNavigator(
   {
-    Home: HomeStack,
-    Campaigns: CampaignsStack,
-    Notifications: NotificationsStack,
+    Home: {
+      screen: HomeStack,
+    },
+    Campaigns: {
+      screen: CampaignsStack,
+    },
+    Notifications: {
+      screen: NotificationsStack,
+    },
   },
   {
     defaultNavigationOptions: ({navigation}) => ({
@@ -97,6 +112,7 @@ export default createBottomTabNavigator(
         return Icon;
       },
     }),
+
     tabBarOptions: {
       activeTintColor: 'black',
       inactiveTintColor: 'black',
@@ -111,29 +127,4 @@ export default createBottomTabNavigator(
   },
 );
 
-export default createDrawerNavigator({
-  About: {
-    screen: AboutScreen,
-    navigationOptions: {
-      drawerLabel: 'About Us',
-    },
-  },
-  Contact: {
-    screen: ContactScreen,
-    navigationOptions: {
-      drawerLabel: 'Contact Us',
-    },
-  },
-  Terms: {
-    screen: TermsScreen,
-    navigationOptions: {
-      drawerLabel: 'Terms & Conditions',
-    },
-  },
-  Privacy: {
-    screen: PrivacyScreen,
-    navigationOptions: {
-      drawerLabel: 'Privacy Policy',
-    },
-  },
-});
+export default createStackNavigator({Tabs}, {headerMode: 'none'});
