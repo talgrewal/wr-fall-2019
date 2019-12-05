@@ -1,26 +1,18 @@
 import React, {Component} from 'react';
 import styles from './styles';
-import {TouchableOpacity, View, Image, Text} from 'react-native';
+import {TouchableOpacity, View, ImageBackground, Text} from 'react-native';
 
 const MainSigninButton = () => {
   return (
-    <>
-      <TouchableOpacity
-        onPress={() => {
-          console.log('This button works!');
-        }}>
-        <Text style={styles.speakerText}>This is a..</Text>
-        <View style={styles.speakerContainer}>
-          <Image
-            style={styles.speakerImage}
-            source={{
-              uri: 'https://facebook.github.io/react-native/img/tiny_logo.png',
-            }}
-          />
-          <Text style={styles.speakerName}>Testing</Text>
-        </View>
+    <View style={styles.buttonHolder}>
+      <TouchableOpacity style={styles.button}>
+        <ImageBackground
+          source={require('../../assets/buttons/Inactivespacebutton.png')}
+          style={styles.buttonImage}>
+          <Text style={styles.text}>Sign in</Text>
+        </ImageBackground>
       </TouchableOpacity>
-    </>
+    </View>
   );
 };
 

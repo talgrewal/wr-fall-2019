@@ -9,9 +9,8 @@ const MainSignupButton = () => {
         <ImageBackground
           source={require('../../assets/buttons/Inactivespacebutton.png')}
           style={styles.buttonImage}>
-          <Text style={styles.text}>Sign in</Text>
+          <Text style={styles.text}>Sign Up</Text>
         </ImageBackground>
-        {/* <Text>asd</Text> */}
       </TouchableOpacity>
     </View>
   );

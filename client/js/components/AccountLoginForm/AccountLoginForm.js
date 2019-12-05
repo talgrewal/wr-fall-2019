@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {Form, Field} from 'react-final-form';
 import {Image, TouchableOpacity, View, Text, TextInput} from 'react-native';
-import EmailIcon from '../../assets/headingelement/loginIcon.png';
+import EmailIcon from '../../assets/signinicons/EmailIcon.png';
 import PasswordIcon from '../../assets/signinicons/PasswordIcon.png';
 import styles from './styles';
-import MainSignupButton from '../MainSignupButton/MainSignupButton';
+import MainSigninButton from '../MainSignupButton/MainSignupButton';
 
 class AccountLoginForm extends Component {
   render() {
@@ -68,7 +68,7 @@ class AccountLoginForm extends Component {
               </View>
               {/* end of password field */}
 
-              <MainSignupButton />
+              <MainSigninButton />
             </View>
           )}
         />
