@@ -1,9 +1,15 @@
 import React from 'react';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 import {createStackNavigator} from 'react-navigation-stack';
+import {createDrawerNavigator} from 'react-navigation';
 import HomeScreen from '../screens/Home';
 import CampaignsScreen from '../screens/Campaigns';
 import NotificationsScreen from '../screens/Notifications';
+import AboutScreen from '../screens/About';
+import ContactScreen from '../screens/Contact';
+import PrivacyScreen from '../screens/Privacy';
+import TermsScreen from '../screens/Terms';
+import {sharedNavigationOptions} from './config';
 import {typography} from '../config/styles';
 import {Image} from 'react-native';
 
@@ -104,3 +110,30 @@ export default createBottomTabNavigator(
     },
   },
 );
+
+export default createDrawerNavigator({
+  About: {
+    screen: AboutScreen,
+    navigationOptions: {
+      drawerLabel: 'About Us',
+    },
+  },
+  Contact: {
+    screen: ContactScreen,
+    navigationOptions: {
+      drawerLabel: 'Contact Us',
+    },
+  },
+  Terms: {
+    screen: TermsScreen,
+    navigationOptions: {
+      drawerLabel: 'Terms & Conditions',
+    },
+  },
+  Privacy: {
+    screen: PrivacyScreen,
+    navigationOptions: {
+      drawerLabel: 'Privacy Policy',
+    },
+  },
+});
