@@ -2,22 +2,23 @@ import {StyleSheet} from 'react-native';
 import {typography} from '../../config/styles';
 
 const styles = StyleSheet.create({
-  logo: {},
-  formContainer: {},
   pageContainer: {
-    flex: 1,
-    justifyContent: 'space-between',
+    flexDirection: 'column',
     alignItems: 'center',
+    justifyContent: 'flex-start',
+    // height: '550%',
   },
-
+  signinHeroImage: {
+    resizeMode: 'contain',
+    height: 150,
+    marginTop: 50,
+    marginBottom: 50,
+  },
   loginInfo: {
-    // flex: 1,
-    height: 80,
     width: '75%',
   },
   accountSignup: {
     justifyContent: 'space-evenly',
-    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -34,7 +35,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 14,
     paddingBottom: 5,
-    // fontFamily: typography.fontMain,
   },
 });
 

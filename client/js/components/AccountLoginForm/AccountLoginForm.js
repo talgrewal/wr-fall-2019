@@ -4,24 +4,26 @@ import {Image, TouchableOpacity, View, Text, TextInput} from 'react-native';
 import EmailIcon from '../../assets/headingelement/loginIcon.png';
 import PasswordIcon from '../../assets/signinicons/PasswordIcon.png';
 import styles from './styles';
+import MainSignupButton from '../MainSignupButton/MainSignupButton';
 
 class AccountLoginForm extends Component {
   render() {
     return (
-      <Form
-        onSubmit={values => {
-          console.log(e);
-        }}
-        render={({}) => (
-          <View style={styles.AccountLoginContainer}>
-            <View style={styles.textField}>
-              <View style={styles.subField}>
+      <View style={styles.AccountLoginContainer}>
+        <Form
+          onSubmit={values => {
+            console.log(e);
+          }}
+          render={({}) => (
+            <View style={styles.formHolder}>
+              {/* start of email field */}
+              <View style={styles.textField}>
                 <Field
                   name="email"
-                  style={styles.typefield}
+                  style={styles.textField}
                   render={({input, meta}) => (
                     <TextInput
-                      style={{fontSize: 16, fontWeight: 'bold'}}
+                      style={{fontSize: 16, width: '60%'}}
                       id="email"
                       placeholder="User Email"
                       placeholderTextColor="black"
@@ -33,23 +35,21 @@ class AccountLoginForm extends Component {
                     />
                   )}
                 />
+                <Image
+                  style={{width: 20, height: 20, resizeMode: 'contain'}}
+                  source={EmailIcon}
+                />
               </View>
-              <Image
-                style={{width: 20, height: 20, resizeMode: 'contain'}}
-                source={EmailIcon}
-              />
-            </View>
+              {/* End of email field */}
 
-            <View style={styles.hairline} />
-
-            <View style={styles.textField}>
-              <View style={styles.subField}>
+              {/* Start of password field */}
+              <View style={styles.textField}>
                 <Field
                   name="password"
                   render={({input, meta}) => (
                     <TextInput
                       id="password"
-                      style={{fontSize: 16, fontWeight: 'bold'}}
+                      style={{fontSize: 16, width: '60%'}}
                       selectionColor="black"
                       placeholder="Password"
                       placeholderTextColor="black"
@@ -61,17 +61,18 @@ class AccountLoginForm extends Component {
                     />
                   )}
                 />
+                <Image
+                  style={{width: 20, height: 20, resizeMode: 'contain'}}
+                  source={PasswordIcon}
+                />
               </View>
-              <Image
-                style={{width: 20, height: 20, resizeMode: 'contain'}}
-                source={PasswordIcon}
-              />
-            </View>
+              {/* end of password field */}
 
-            <View style={styles.hairline} />
-          </View>
-        )}
-      />
+              <MainSignupButton />
+            </View>
+          )}
+        />
+      </View>
     );
   }
 }
