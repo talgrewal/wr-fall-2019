@@ -8,12 +8,8 @@ import styles from './styles';
 import MainSignupButton from '../MainSignupButton/MainSignupButton';
 import CheckBox from 'react-native-check-box';
 // import validate from './helpers/validation';
-// import {
-//     LOGIN_MUTATION,
-//     SIGNUP_MUTATION,
-//     VIEWER_QUERY
-//   } from "../../config/api";
-//   import { graphql, compose } from "react-apollo";
+import {LOGIN_MUTATION, SIGNUP_MUTATION} from '../../config/api';
+// import {graphql, compose} from 'react-apollo';
 
 class AccountSignupForm extends Component {
   constructor(props) {
@@ -24,6 +20,10 @@ class AccountSignupForm extends Component {
   }
 
   render() {
+    const {LOGIN_MUTATION, SIGNUP_MUTATION} = this.props;
+    console.log(LOGIN_MUTATION);
+    console.log(SIGNUP_MUTATION);
+
     return (
       <View style={styles.AccountLoginContainer}>
         <Form
