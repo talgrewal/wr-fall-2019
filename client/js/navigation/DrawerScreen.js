@@ -17,7 +17,7 @@ class DrawerScreen extends Component {
     return (
       <SafeAreaView
         style={{
-          backgroundColor: 'black',
+          backgroundColor: '#242424',
           height: '100%',
           width: '100%',
           marginLeft: 0,
