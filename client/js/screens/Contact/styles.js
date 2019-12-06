@@ -10,32 +10,24 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     paddingBottom: 10,
   },
-  imageOne: {
-    height: 60,
-    width: 80,
+  image: {
+    resizeMode: 'contain',
+    height: '60%',
+    width: '40%',
   },
-  imageTwo: {
-    height: 95,
-    width: 80,
-  },
-  imageThree: {
-    height: 60,
-    width: 80,
-  },
+
   headerView: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
-    padding: 20,
+    paddingVertical: 10,
   },
   bodyText: {
     paddingVertical: 25,
     fontFamily: typography.fontMainLight,
-    paddingLeft: 40,
   },
   bodyTextTwo: {
     paddingVertical: 40,
     fontFamily: typography.fontMainLight,
-    paddingLeft: 40,
   },
 });
 export default styles;

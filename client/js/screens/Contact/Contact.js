@@ -8,21 +8,21 @@ const Contact = props => {
       <Text style={styles.heading}>Contact Us</Text>
       <View style={styles.headerView}>
         <Image
-          style={styles.imageOne}
+          style={styles.image}
           source={require('../../assets/signinicons/EmailIcon.png')}
         />
         <Text style={styles.bodyText}>info@adbusters.org</Text>
       </View>
       <View style={styles.headerView}>
         <Image
-          style={styles.imageTwo}
+          style={styles.image}
           source={require('../../assets/miscicons/phoneicon.png')}
         />
         <Text style={styles.bodyTextTwo}>+1 800-663-1243</Text>
       </View>
       <View style={styles.headerView}>
         <Image
-          style={styles.imageThree}
+          style={styles.image}
           source={require('../../assets/miscicons/homeaddress.png')}
         />
         <Text style={styles.bodyText}>00 West 7th Av. Vancouver, BC</Text>
