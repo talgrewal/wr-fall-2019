@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import styles from './styles';
 import {TouchableOpacity, View, ImageBackground, Text} from 'react-native';
 
-const MainSignupButton = () => {
+const MainSignupButton = onPress => {
   return (
     <View style={styles.buttonHolder}>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity onPress={this._onPressButton} style={styles.button}>
         <ImageBackground
           source={require('../../assets/buttons/Inactivespacebutton.png')}
           style={styles.buttonImage}>

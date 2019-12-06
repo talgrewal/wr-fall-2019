@@ -20,27 +20,37 @@ class AccountSignupForm extends Component {
   }
 
   render() {
-    const {LOGIN_MUTATION, SIGNUP_MUTATION} = this.props;
-    console.log(LOGIN_MUTATION);
-    console.log(SIGNUP_MUTATION);
+    console.log('login ' + LOGIN_MUTATION);
+    console.log('singup ' + SIGNUP_MUTATION);
 
     return (
       <View style={styles.AccountLoginContainer}>
         <Form
-          onSubmit={values => {
-            console.log(e);
+          onSubmit={async values => {
+            try {
+              SIGNUP_MUTATION({
+                variables: {email: values, password: values, name: values},
+              });
+              console.log(values);
+              console.log(email);
+              console.log(password);
+              console.log(name);
+              console.log(user);
+            } catch (e) {
+              console.log(e);
+            }
           }}
-          render={({}) => (
+          render={({handleSubmit}) => (
             <View style={styles.formHolder}>
               {/* start of username field */}
               <View style={styles.textField}>
                 <Field
-                  name="username"
+                  name="name"
                   style={styles.textField}
                   render={({input, meta}) => (
                     <TextInput
                       style={{fontSize: 16, width: '60%'}}
-                      id="username"
+                      id="name"
                       placeholder="User Name"
                       placeholderTextColor="black"
                       type="text"
@@ -94,6 +104,7 @@ class AccountSignupForm extends Component {
                       style={{fontSize: 16, width: '60%'}}
                       selectionColor="black"
                       placeholder="Password"
+                      secureTextEntry={true}
                       placeholderTextColor="black"
                       inputProps={{
                         autoComplete: 'off',
@@ -113,13 +124,14 @@ class AccountSignupForm extends Component {
               {/* Start of password field */}
               <View style={styles.textField}>
                 <Field
-                  name="password"
+                  name="confirmpassword"
                   render={({input, meta}) => (
                     <TextInput
-                      id="password"
+                      id="confirmpassword"
                       style={{fontSize: 16, width: '60%'}}
                       selectionColor="black"
                       placeholder="Confirm Password"
+                      secureTextEntry={true}
                       placeholderTextColor="black"
                       inputProps={{
                         autoComplete: 'off',
@@ -155,7 +167,10 @@ class AccountSignupForm extends Component {
               </View>
               {/* End of Terms and conditions */}
 
-              <MainSignupButton />
+              <MainSignupButton onPress={this._onPressButton} />
+              <TouchableOpacity onPress={handleSubmit}>
+                <Text>Sign Up</Text>
+              </TouchableOpacity>
             </View>
           )}
         />
