@@ -7,6 +7,7 @@ import {
   Text,
 } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
+import Loader from '../../components/Loader';
 
 export default class AuthLoadingScreenContainer extends React.Component {
   constructor() {
@@ -27,18 +28,7 @@ export default class AuthLoadingScreenContainer extends React.Component {
   render() {
     return (
       <View>
-        <Text>loading...</Text>
-        <Text>loading...</Text>
-        <Text>loading...</Text>
-        <Text>loading...</Text>
-        <Text>loading...</Text>
-        <Text>loading...</Text>
-        <Text>loading...</Text>
-        <Text>loading...</Text>
-        <Text>loading...</Text>
-        <Text>loading...</Text>
-        <Text>loading...</Text>
-        <Text>loading...</Text>
+        <Loader />
       </View>
     );
   }
