@@ -8,9 +8,13 @@ const AppHeader = props => (
     style={{
       backgroundColor: 'white',
       overflow: 'hidden',
-      height: 100,
+      height: 150,
       width: '100%',
     }}>
+    <Image
+      style={{height: '30%', width: '60%', resizeMode: 'contain'}}
+      source={require('../assets/headingelement/Headerlogo.png')}
+    />
     <Header {...props} />
   </View>
 );
@@ -26,10 +30,23 @@ const MenuButton = ({navigation}) => {
   );
 };
 
+const ProfileButton = ({navigation}) => {
+  return (
+    <TouchableOpacity onPress={navigation.openDrawer}>
+      <Image
+        style={{marginRight: 25, height: 25, width: 25}}
+        source={require('../assets/headingelement/Signedin.png')}
+      />
+    </TouchableOpacity>
+  );
+};
+
 export const sharedNavigationOptions = navigation => ({
   headerBackTitle: null,
   header: props => <AppHeader {...props} />,
   headerLeft: props => <MenuButton {...props} navigation={navigation} />,
+  headerRight: props => <ProfileButton {...props} navigation={navigation} />,
+
   headerStyle: {
     backgroundColor: 'transparent',
   },
