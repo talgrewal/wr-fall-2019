@@ -15,18 +15,20 @@ class DrawerScreen extends Component {
 
   render() {
     return (
-      <SafeAreaView>
-        <TouchableOpacity onPress={() => this.navigateToScreen('About')}>
-          <Text>About Us</Text>
+      <SafeAreaView style={{marginStart: 20}}>
+        <TouchableOpacity
+          onPress={() => this.navigateToScreen('About')}
+          style={{marginTop: 80}}>
+          <Text style={{fontSize: 20, padding: 25}}>About Us</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => this.navigateToScreen('Contact')}>
-          <Text>Contact Us</Text>
+          <Text style={{fontSize: 20, padding: 25}}>Contact Us</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => this.navigateToScreen('Terms')}>
-          <Text>Terms & Conditions</Text>
+          <Text style={{fontSize: 20, padding: 25}}>Terms & Conditions</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => this.navigateToScreen('Privacy')}>
-          <Text>Privacy Policy</Text>
+          <Text style={{fontSize: 20, padding: 25}}>Privacy Policy</Text>
         </TouchableOpacity>
       </SafeAreaView>
     );
