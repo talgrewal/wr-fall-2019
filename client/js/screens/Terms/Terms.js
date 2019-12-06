@@ -7,7 +7,7 @@ const Terms = props => {
     <ScrollView style={styles.container}>
       <Text style={styles.heading}>Terms & Conditions</Text>
       <Text style={styles.description}>
-        limitation on liability in no event shall lex machina its officers,
+        Limitation on liability in no event shall lex machina its officers,
         directors, employees, or agents, be liable to you for any indirect,
         incidental, special, punitive, exemplary, or consequential damages,
         including without limitation damages for loss of profits, goodwill, work
