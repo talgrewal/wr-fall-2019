@@ -24,13 +24,18 @@ const styles = StyleSheet.create({
   },
   headerView: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'flex-start',
     padding: 20,
   },
-  bodyText: {paddingVertical: 25, fontFamily: typography.fontMainLight},
+  bodyText: {
+    paddingVertical: 25,
+    fontFamily: typography.fontMainLight,
+    paddingLeft: 40,
+  },
   bodyTextTwo: {
     paddingVertical: 40,
     fontFamily: typography.fontMainLight,
+    paddingLeft: 40,
   },
 });
 export default styles;
