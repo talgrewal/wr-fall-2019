@@ -1,7 +1,7 @@
 import React from 'react';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 import {createStackNavigator} from 'react-navigation-stack';
-// import {createDrawerNavigator} from 'react-navigation-drawer';
+
 import HomeScreen from '../screens/Home';
 import CampaignsScreen from '../screens/Campaigns';
 import NotificationsScreen from '../screens/Notifications';
