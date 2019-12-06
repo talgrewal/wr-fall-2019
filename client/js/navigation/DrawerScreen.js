@@ -24,22 +24,33 @@ class DrawerScreen extends Component {
         }}>
         <TouchableOpacity
           onPress={() => this.navigateToScreen('About')}
-          style={{marginTop: 80}}>
-          <Text style={{fontSize: 20, padding: 25, color: 'white'}}>
+          style={{marginTop: 80, borderBottomWidth: 1, borderColor: 'white'}}>
+          <Text
+            style={{
+              fontSize: 20,
+              padding: 25,
+              color: 'white',
+            }}>
             About Us
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => this.navigateToScreen('Contact')}>
+        <TouchableOpacity
+          onPress={() => this.navigateToScreen('Contact')}
+          style={{borderBottomWidth: 1, borderColor: 'white'}}>
           <Text style={{fontSize: 20, padding: 25, color: 'white'}}>
             Contact Us
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => this.navigateToScreen('Terms')}>
+        <TouchableOpacity
+          onPress={() => this.navigateToScreen('Terms')}
+          style={{borderBottomWidth: 1, borderColor: 'white'}}>
           <Text style={{fontSize: 20, padding: 25, color: 'white'}}>
             Terms & Conditions
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => this.navigateToScreen('Privacy')}>
+        <TouchableOpacity
+          onPress={() => this.navigateToScreen('Privacy')}
+          style={{borderBottomWidth: 1, borderColor: 'white'}}>
           <Text style={{fontSize: 20, padding: 25, color: 'white'}}>
             Privacy Policy
           </Text>
