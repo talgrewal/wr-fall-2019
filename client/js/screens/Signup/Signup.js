@@ -5,8 +5,9 @@ import {ScrollView} from 'react-native-gesture-handler';
 import LogoImage from '../../assets/headingelement/worldrevolutionblack.png';
 import styles from './styles';
 import {SafeAreaView} from 'react-navigation';
+import {withNavigation} from 'react-navigation';
 
-const Login = props => {
+const Signup = props => {
   return (
     <View height="40%" style={styles.pageContainer}>
       <Image style={styles.signinHeroImage} source={LogoImage} />
@@ -40,4 +41,4 @@ const Login = props => {
   );
 };
 
-export default Login;
+export default Signup;

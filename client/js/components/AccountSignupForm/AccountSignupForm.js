@@ -58,7 +58,9 @@ class AccountSignupForm extends Component {
                       name: values.name,
                     },
 
-                    if(data) {},
+                    if(data) {
+                      navigation.navigate('AuthLoadingScreen');
+                    },
 
                     // todo add navigate to home page.
                   });
