@@ -5,8 +5,9 @@ import {ScrollView} from 'react-native-gesture-handler';
 import LogoImage from '../../assets/headingelement/worldrevolutionblack.png';
 import styles from './styles';
 import {SafeAreaView} from 'react-navigation';
+import {withNavigation} from 'react-navigation';
 
-const Login = props => {
+const Login = ({navigation}) => {
   return (
     <View height="40%" style={styles.pageContainer}>
       <Image style={styles.signinHeroImage} source={LogoImage} />
@@ -19,7 +20,7 @@ const Login = props => {
 
           <TouchableOpacity
             onPress={() => {
-              console.log('Add Navigation for signup screen here');
+              navigation.navigate('Signup');
             }}>
             <Text style={styles.redFont}>Sign up Here</Text>
           </TouchableOpacity>
@@ -30,7 +31,7 @@ const Login = props => {
 
           <TouchableOpacity
             onPress={() => {
-              console.log('Add Navigation for home screen here');
+              navigation.navigate('Home');
             }}>
             <Text style={styles.redFont}>Continue as a Guest</Text>
           </TouchableOpacity>
@@ -40,4 +41,4 @@ const Login = props => {
   );
 };
 
-export default Login;
+export default withNavigation(Login);

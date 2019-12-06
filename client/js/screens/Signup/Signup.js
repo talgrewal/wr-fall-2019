@@ -7,7 +7,7 @@ import styles from './styles';
 import {SafeAreaView} from 'react-navigation';
 import {withNavigation} from 'react-navigation';
 
-const Signup = props => {
+const Signup = ({navigation}) => {
   return (
     <View height="40%" style={styles.pageContainer}>
       <Image style={styles.signinHeroImage} source={LogoImage} />
@@ -20,7 +20,7 @@ const Signup = props => {
 
           <TouchableOpacity
             onPress={() => {
-              console.log('Add Navigation for login screen here');
+              navigation.navigate('Login');
             }}>
             <Text style={styles.redFont}>Sign in Here</Text>
           </TouchableOpacity>
@@ -31,7 +31,7 @@ const Signup = props => {
 
           <TouchableOpacity
             onPress={() => {
-              console.log('Add Navigation for home screen here');
+              navigation.navigate('Home');
             }}>
             <Text style={styles.redFont}>Continue as a Guest</Text>
           </TouchableOpacity>
@@ -41,4 +41,4 @@ const Signup = props => {
   );
 };
 
-export default Signup;
+export default withNavigation(Signup);

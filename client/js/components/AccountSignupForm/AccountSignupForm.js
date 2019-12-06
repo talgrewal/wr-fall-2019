@@ -16,6 +16,7 @@ import CheckBox from 'react-native-check-box';
 import {Mutation} from '@apollo/react-components';
 import ApolloClient from 'apollo-boost';
 import gql from 'graphql-tag';
+import {withNavigation} from 'react-navigation';
 
 const SIGNUP_MUTATION = gql`
   mutation signup($email: String!, $password: String!, $name: String!) {
@@ -45,25 +46,24 @@ class AccountSignupForm extends Component {
             uri: 'http://157.245.224.214:8000/',
           })
         }>
-        {(signup, {data, loading, error}) => (
+        {signup => (
           <View style={styles.AccountLoginContainer}>
             <Form
               onSubmit={async values => {
                 try {
                   console.log(values);
-                  await signup({
+                  const data = await signup({
                     variables: {
                       email: values.email,
                       password: values.password,
                       name: values.name,
                     },
 
-                    if(data) {
-                      navigation.navigate('AuthLoadingScreen');
-                    },
-
                     // todo add navigate to home page.
                   });
+                  if (data) {
+                    this.props.navigation.navigate('Home');
+                  }
                 } catch (e) {
                   console.log(e);
                 }
@@ -224,4 +224,4 @@ class AccountSignupForm extends Component {
   }
 }
 
-export default AccountSignupForm;
+export default withNavigation(AccountSignupForm);

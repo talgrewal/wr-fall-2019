@@ -15,6 +15,7 @@ import MainSigninButton from '../MainSignupButton/MainSignupButton';
 import {Mutation} from '@apollo/react-components';
 import ApolloClient from 'apollo-boost';
 import gql from 'graphql-tag';
+import {withNavigation} from 'react-navigation';
 
 const LOGIN_MUTATION = gql`
   mutation login($email: String!, $password: String!) {
@@ -39,22 +40,24 @@ class AccountLoginForm extends Component {
             uri: 'http://157.245.224.214:8000/',
           })
         }>
-        {(login, {data, loading, error}) => (
+        {login => (
           <View style={styles.AccountLoginContainer}>
             <Form
               onSubmit={async values => {
                 try {
                   console.log(values);
-                  await login({
+                  const data = await login({
                     variables: {
                       email: values.email,
                       password: values.password,
                     },
 
-                    if(data) {},
-
                     // todo add navigate to home page.
                   });
+                  console.log(data);
+                  if (data) {
+                    this.props.navigation.navigate('Home');
+                  }
                 } catch (e) {
                   console.log(e);
                   console.log('Didnt work');
@@ -140,4 +143,4 @@ class AccountLoginForm extends Component {
   }
 }
 
-export default AccountLoginForm;
+export default withNavigation(AccountLoginForm);
