@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {withNavigation} from 'react-navigation';
 import {SafeAreaView, View, Text, TouchableOpacity} from 'react-native';
+import styles from './styles';
 
 class DrawerScreen extends Component {
   static navigationOptions = {
@@ -15,45 +16,26 @@ class DrawerScreen extends Component {
 
   render() {
     return (
-      <SafeAreaView
-        style={{
-          backgroundColor: '#242424',
-          height: '100%',
-          width: '100%',
-          marginLeft: 0,
-        }}>
+      <SafeAreaView style={styles.navBackground}>
         <TouchableOpacity
           onPress={() => this.navigateToScreen('About')}
-          style={{marginTop: 80, borderBottomWidth: 1, borderColor: 'white'}}>
-          <Text
-            style={{
-              fontSize: 20,
-              padding: 25,
-              color: 'white',
-            }}>
-            About Us
-          </Text>
+          style={styles.titleContainerOne}>
+          <Text style={styles.title}>About Us</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => this.navigateToScreen('Contact')}
-          style={{borderBottomWidth: 1, borderColor: 'white'}}>
-          <Text style={{fontSize: 20, padding: 25, color: 'white'}}>
-            Contact Us
-          </Text>
+          style={styles.titleContainer}>
+          <Text style={styles.title}>Contact Us</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => this.navigateToScreen('Terms')}
-          style={{borderBottomWidth: 1, borderColor: 'white'}}>
-          <Text style={{fontSize: 20, padding: 25, color: 'white'}}>
-            Terms & Conditions
-          </Text>
+          style={styles.titleContainer}>
+          <Text style={styles.title}>Terms & Conditions</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => this.navigateToScreen('Privacy')}
-          style={{borderBottomWidth: 1, borderColor: 'white'}}>
-          <Text style={{fontSize: 20, padding: 25, color: 'white'}}>
-            Privacy Policy
-          </Text>
+          style={styles.titleContainer}>
+          <Text style={styles.title}>Privacy Policy</Text>
         </TouchableOpacity>
       </SafeAreaView>
     );
