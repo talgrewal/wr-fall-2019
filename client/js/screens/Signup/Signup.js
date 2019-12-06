@@ -1,6 +1,6 @@
 import React from 'react';
 import AccountSignupForm from '../../components/AccountSignupForm';
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image, TouchableOpacity} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import LogoImage from '../../assets/headingelement/worldrevolutionblack.png';
 import styles from './styles';
@@ -16,12 +16,24 @@ const Login = props => {
       <View style={styles.loginInfo}>
         <View style={styles.accountSignup}>
           <Text style={styles.blackFont}>Already have an account?</Text>
-          <Text style={styles.redFont}>Sign in Here</Text>
+
+          <TouchableOpacity
+            onPress={() => {
+              console.log('Add Navigation for login screen here');
+            }}>
+            <Text style={styles.redFont}>Sign in Here</Text>
+          </TouchableOpacity>
         </View>
 
         <View>
           <Text style={styles.blackFont}>Not Ready yet? No Worries</Text>
-          <Text style={styles.redFont}>Continue as a Guest</Text>
+
+          <TouchableOpacity
+            onPress={() => {
+              console.log('Add Navigation for home screen here');
+            }}>
+            <Text style={styles.redFont}>Continue as a Guest</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </View>

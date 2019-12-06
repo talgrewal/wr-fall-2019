@@ -11,7 +11,7 @@ export default class App extends Component {
     return (
       <ApolloProvider client={client}>
         <SafeAreaView height="100%">
-          <Login />
+          <Signup />
         </SafeAreaView>
       </ApolloProvider>
     );
