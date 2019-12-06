@@ -1,85 +1,141 @@
 import React, {Component} from 'react';
 import {Form, Field} from 'react-final-form';
-import {Image, TouchableOpacity, View, Text, TextInput} from 'react-native';
+import {
+  Image,
+  TouchableOpacity,
+  View,
+  Text,
+  TextInput,
+  ImageBackground,
+} from 'react-native';
 import EmailIcon from '../../assets/signinicons/EmailIcon.png';
 import PasswordIcon from '../../assets/signinicons/PasswordIcon.png';
 import styles from './styles';
 import MainSigninButton from '../MainSignupButton/MainSignupButton';
-// import validate from './helpers/validation';
-// import {
-//   LOGIN_MUTATION,
-//   SIGNUP_MUTATION,
-//   VIEWER_QUERY
-// } from "../../config/api";
-// import { graphql, compose } from "react-apollo";
+import {Mutation} from '@apollo/react-components';
+import ApolloClient from 'apollo-boost';
+import gql from 'graphql-tag';
+
+const LOGIN_MUTATION = gql`
+  mutation login($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
+      token
+      user {
+        id
+        name
+        email
+      }
+    }
+  }
+`;
 
 class AccountLoginForm extends Component {
   render() {
     return (
-      <View style={styles.AccountLoginContainer}>
-        <Form
-          onSubmit={values => {
-            console.log(e);
-          }}
-          render={({}) => (
-            <View style={styles.formHolder}>
-              {/* start of email field */}
-              <View style={styles.textField}>
-                <Field
-                  name="email"
-                  style={styles.textField}
-                  render={({input, meta}) => (
-                    <TextInput
-                      style={{fontSize: 16, width: '60%'}}
-                      id="email"
-                      placeholder="User Email"
-                      placeholderTextColor="black"
-                      type="text"
-                      inputProps={{
-                        autoComplete: 'off',
-                        ...input,
-                      }}
-                    />
-                  )}
-                />
-                <Image
-                  style={{width: 20, height: 20, resizeMode: 'contain'}}
-                  source={EmailIcon}
-                />
-              </View>
-              {/* End of email field */}
+      <Mutation
+        mutation={LOGIN_MUTATION}
+        client={
+          new ApolloClient({
+            uri: 'http://157.245.224.214:8000/',
+          })
+        }>
+        {(login, {data, loading, error}) => (
+          <View style={styles.AccountLoginContainer}>
+            <Form
+              onSubmit={async values => {
+                try {
+                  console.log(values);
+                  await login({
+                    variables: {
+                      email: values.email,
+                      password: values.password,
+                    },
 
-              {/* Start of password field */}
-              <View style={styles.textField}>
-                <Field
-                  name="password"
-                  render={({input, meta}) => (
-                    <TextInput
-                      id="password"
-                      style={{fontSize: 16, width: '60%'}}
-                      selectionColor="black"
-                      placeholder="Password"
-                      placeholderTextColor="black"
-                      inputProps={{
-                        autoComplete: 'off',
-                      }}
-                      {...input}
-                      type="password"
-                    />
-                  )}
-                />
-                <Image
-                  style={{width: 20, height: 20, resizeMode: 'contain'}}
-                  source={PasswordIcon}
-                />
-              </View>
-              {/* end of password field */}
+                    if(data) {},
 
-              <MainSigninButton />
-            </View>
-          )}
-        />
-      </View>
+                    // todo add navigate to home page.
+                  });
+                } catch (e) {
+                  console.log(e);
+                  console.log('Didnt work');
+                }
+              }}
+              render={({handleSubmit}) => (
+                <View style={styles.formHolder}>
+                  {/* start of email field */}
+                  <View style={styles.textField}>
+                    <Field
+                      name="email"
+                      style={styles.textField}
+                      render={({input, meta}) => (
+                        <TextInput
+                          style={{fontSize: 16, width: '60%'}}
+                          id="email"
+                          placeholder="User Email"
+                          placeholderTextColor="black"
+                          type="text"
+                          inputProps={{
+                            autoComplete: 'off',
+                          }}
+                          {...input}
+                        />
+                      )}
+                    />
+                    <Image
+                      style={{width: 20, height: 20, resizeMode: 'contain'}}
+                      source={EmailIcon}
+                    />
+                  </View>
+                  {/* End of email field */}
+
+                  {/* Start of password field */}
+                  <View style={styles.textField}>
+                    <Field
+                      name="password"
+                      render={({input, meta}) => (
+                        <TextInput
+                          id="password"
+                          style={{fontSize: 16, width: '60%'}}
+                          selectionColor="black"
+                          placeholder="Password"
+                          secureTextEntry={true}
+                          placeholderTextColor="black"
+                          inputProps={{
+                            autoComplete: 'off',
+                          }}
+                          {...input}
+                          type="password"
+                        />
+                      )}
+                    />
+                    <Image
+                      style={{width: 20, height: 20, resizeMode: 'contain'}}
+                      source={PasswordIcon}
+                    />
+                  </View>
+                  {/* end of password field */}
+
+                  {/* <MainSigninButton /> */}
+
+                  {/* Start of View */}
+                  <View style={styles.buttonHolder}>
+                    <TouchableOpacity
+                      onPress={handleSubmit}
+                      style={styles.button}>
+                      <ImageBackground
+                        source={require('../../assets/buttons/Inactivespacebutton.png')}
+                        style={styles.buttonImage}>
+                        <Text style={styles.text}>Sign in</Text>
+                      </ImageBackground>
+                    </TouchableOpacity>
+                  </View>
+                  {/* Start of View */}
+                </View>
+              )}
+            />
+          </View>
+        )}
+      </Mutation>
     );
   }
 }

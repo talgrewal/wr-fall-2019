@@ -1,23 +1,28 @@
 import React, {Component} from 'react';
 import {Form, Field} from 'react-final-form';
-import {Image, TouchableOpacity, View, Text, TextInput} from 'react-native';
+import {
+  Image,
+  TouchableOpacity,
+  View,
+  Text,
+  TextInput,
+  ImageBackground,
+} from 'react-native';
 import EmailIcon from '../../assets/signinicons/EmailIcon.png';
 import UserIcon from '../../assets/headingelement/loginIcon.png';
 import PasswordIcon from '../../assets/signinicons/PasswordIcon.png';
 import styles from './styles';
 import CheckBox from 'react-native-check-box';
 import {Mutation} from '@apollo/react-components';
-// import {Mutation} from 'react-apollo';
+import ApolloClient from 'apollo-boost';
 import gql from 'graphql-tag';
 
-export const SIGNUP_MUTATION = gql`
+const SIGNUP_MUTATION = gql`
   mutation signup($email: String!, $password: String!, $name: String!) {
     signup(email: $email, password: $password, name: $name) {
       token
       user {
         id
-        name
-        email
       }
     }
   }
@@ -32,23 +37,29 @@ class AccountSignupForm extends Component {
   }
 
   render() {
-    console.log('login ' + LOGIN_MUTATION);
-    console.log('singup ' + SIGNUP_MUTATION);
-
     return (
-      <Mutation mutation={SIGNUP_MUTATION}>
-        {signup => (
+      <Mutation
+        mutation={SIGNUP_MUTATION}
+        client={
+          new ApolloClient({
+            uri: 'http://157.245.224.214:8000/',
+          })
+        }>
+        {(signup, {data, loading, error}) => (
           <View style={styles.AccountLoginContainer}>
             <Form
               onSubmit={async values => {
                 try {
+                  console.log(values);
                   await signup({
                     variables: {
                       email: values.email,
                       password: values.password,
                       name: values.name,
                     },
-                    //how do I call the authy auth!?!?
+
+                    if(data) {},
+
                     // todo add navigate to home page.
                   });
                 } catch (e) {
@@ -71,8 +82,8 @@ class AccountSignupForm extends Component {
                           type="text"
                           inputProps={{
                             autoComplete: 'off',
-                            ...input,
                           }}
+                          {...input}
                         />
                       )}
                     />
@@ -97,8 +108,8 @@ class AccountSignupForm extends Component {
                           type="text"
                           inputProps={{
                             autoComplete: 'off',
-                            ...input,
                           }}
+                          {...input}
                         />
                       )}
                     />
