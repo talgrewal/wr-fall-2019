@@ -1,18 +1,23 @@
 import React from 'react';
-import {StyleSheet, View, TouchableOpacity, Image} from 'react-native';
+import {View, TouchableOpacity, Image} from 'react-native';
 import {Header} from 'react-navigation-stack';
-import {typography} from '../config/styles';
 
 const AppHeader = props => (
   <View
     style={{
       backgroundColor: 'white',
       overflow: 'hidden',
-      height: 150,
       width: '100%',
     }}>
     <Image
-      style={{height: '30%', width: '60%', resizeMode: 'contain'}}
+      style={{
+        position: 'absolute',
+        top: 40,
+        left: 65,
+        height: '40%',
+        width: '70%',
+        resizeMode: 'contain',
+      }}
       source={require('../assets/headingelement/Headerlogo.png')}
     />
     <Header {...props} />
@@ -23,7 +28,7 @@ const MenuButton = ({navigation}) => {
   return (
     <TouchableOpacity onPress={navigation.openDrawer}>
       <Image
-        style={{marginLeft: 25, height: 25, width: 25}}
+        style={{height: 25, width: 35, resizeMode: 'contain', marginLeft: 20}}
         source={require('../assets/headingelement/Burgermenu.png')}
       />
     </TouchableOpacity>
@@ -32,9 +37,9 @@ const MenuButton = ({navigation}) => {
 
 const ProfileButton = ({navigation}) => {
   return (
-    <TouchableOpacity onPress={navigation.openDrawer}>
+    <TouchableOpacity>
       <Image
-        style={{marginRight: 25, height: 25, width: 25}}
+        style={{height: 25, width: 25, resizeMode: 'contain', marginRight: 20}}
         source={require('../assets/headingelement/Signedin.png')}
       />
     </TouchableOpacity>
