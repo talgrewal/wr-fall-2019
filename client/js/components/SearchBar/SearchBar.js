@@ -1,13 +1,9 @@
 import React, {Component} from 'react';
 import {View, Image, TextInput} from 'react-native';
-import SearchIcon from '../../assets/headingelement/MagGlass@.png';
+import SearchIcon from '../../assets/headingelement/MagGlass.png';
 import styles from './styles';
 
 export default class SearchBar extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <View style={styles.searchBarContainer}>

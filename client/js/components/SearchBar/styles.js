@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
   searchBar: {
     backgroundColor: 'rgb(227,227,227)',
     borderRadius: 9,
-    width: 245,
+    width: '65.16%',
     height: 24,
     justifyContent: 'space-between',
   },
