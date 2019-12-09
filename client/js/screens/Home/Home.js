@@ -7,6 +7,7 @@ const Home = props => {
       <Text>Home Screen</Text>
       <TouchableOpacity onPress={console.log('Sign out under construction!')}>
         <Text>Sign out!</Text>
+        <Text>Sign out!</Text>
       </TouchableOpacity>
     </>
   );

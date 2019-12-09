@@ -51,19 +51,18 @@ class AccountSignupForm extends Component {
             <Form
               onSubmit={async values => {
                 try {
-                  console.log(values);
-                  const data = await signup({
-                    variables: {
-                      email: values.email,
-                      password: values.password,
-                      name: values.name,
-                    },
-
-                    // todo add navigate to home page.
-                  });
-                  if (data) {
-                    this.props.navigation.navigate('Home');
-                  }
+                  // console.log(values);
+                  // const data = await signup({
+                  //   variables: {
+                  //     email: values.email,
+                  //     password: values.password,
+                  //     name: values.name,
+                  //   },
+                  //   // todo add navigate to home page.
+                  // });
+                  // if (data) {
+                  //   this.props.navigation.navigate('asdf');
+                  // }
                 } catch (e) {
                   console.log(e);
                 }

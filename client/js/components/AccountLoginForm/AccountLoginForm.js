@@ -16,6 +16,7 @@ import {Mutation} from '@apollo/react-components';
 import ApolloClient from 'apollo-boost';
 import gql from 'graphql-tag';
 import {withNavigation} from 'react-navigation';
+import {createToken} from '../../config/modals';
 
 const LOGIN_MUTATION = gql`
   mutation login($email: String!, $password: String!) {
@@ -31,6 +32,13 @@ const LOGIN_MUTATION = gql`
 `;
 
 class AccountLoginForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null,
+    };
+  }
+
   render() {
     return (
       <Mutation
@@ -45,22 +53,20 @@ class AccountLoginForm extends Component {
             <Form
               onSubmit={async values => {
                 try {
-                  console.log(values);
-                  const data = await login({
+                  console.log('Auth started!');
+                  const newUserToken = await login({
                     variables: {
                       email: values.email,
                       password: values.password,
                     },
-
-                    // todo add navigate to home page.
                   });
-                  console.log(data);
-                  if (data) {
-                    this.props.navigation.navigate('Home');
-                  }
+                  console.log('Need user 1');
+                  await createToken(newUserToken.data.login);
+                  this.props.navigation.navigate('Home');
+                  console.log('Need user' + user);
                 } catch (e) {
                   console.log(e);
-                  console.log('Didnt work');
+                  console.log('Didnt work asdfdsf');
                 }
               }}
               render={({handleSubmit}) => (
@@ -120,7 +126,6 @@ class AccountLoginForm extends Component {
 
                   {/* <MainSigninButton /> */}
 
-                  {/* Start of View */}
                   <View style={styles.buttonHolder}>
                     <TouchableOpacity
                       onPress={handleSubmit}
@@ -132,7 +137,7 @@ class AccountLoginForm extends Component {
                       </ImageBackground>
                     </TouchableOpacity>
                   </View>
-                  {/* Start of View */}
+                  {/* end of main button*/}
                 </View>
               )}
             />
