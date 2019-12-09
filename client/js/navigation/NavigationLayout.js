@@ -10,8 +10,10 @@ import ContactScreen from '../screens/Contact';
 import PrivacyScreen from '../screens/Privacy';
 import TermsScreen from '../screens/Terms';
 import {sharedNavigationOptions} from './config';
-import {typography} from '../config/styles';
+import {THEME} from '../config';
 import {Image} from 'react-native';
+
+const {typography} = THEME;
 
 const HomeStack = createStackNavigator(
   {
@@ -121,7 +123,7 @@ const Tabs = createBottomTabNavigator(
       },
       labelStyle: {
         fontSize: 12,
-        fontFamily: typography.fontMainLight,
+        fontFamily: typography.mainFont,
       },
     },
   },
