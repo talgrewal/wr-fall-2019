@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, Image} from 'react-native';
 import styles from './styles';
-import AboutImage from '../../assets/artwork/adbust.png';
+import AboutImage from '../../assets/artwork/Adbust.png';
 
 export default About = props => {
   return (
