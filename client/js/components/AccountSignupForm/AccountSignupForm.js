@@ -17,6 +17,7 @@ import {Mutation} from '@apollo/react-components';
 import ApolloClient from 'apollo-boost';
 import gql from 'graphql-tag';
 import {withNavigation} from 'react-navigation';
+import {createViewer} from '../../config/modals';
 
 const SIGNUP_MUTATION = gql`
   mutation signup($email: String!, $password: String!, $name: String!) {
@@ -51,18 +52,17 @@ class AccountSignupForm extends Component {
             <Form
               onSubmit={async values => {
                 try {
-                  // console.log(values);
-                  // const data = await signup({
-                  //   variables: {
-                  //     email: values.email,
-                  //     password: values.password,
-                  //     name: values.name,
-                  //   },
-                  //   // todo add navigate to home page.
-                  // });
-                  // if (data) {
-                  //   this.props.navigation.navigate('asdf');
-                  // }
+                  console.log(values);
+                  const newUserToken = await signup({
+                    variables: {
+                      email: values.email,
+                      password: values.password,
+                      name: values.name,
+                    },
+                  });
+                  console.log(newUserToken);
+                  await createViewer(newUserToken.data.signup);
+                  this.props.navigation.navigate('Home');
                 } catch (e) {
                   console.log(e);
                 }

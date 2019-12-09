@@ -4,8 +4,8 @@ export const queryViewer = async () => {
   try {
     const value = await AsyncStorage.getItem('user');
     return JSON.parse(value);
-  } catch (e) {
-    console.log(e);
+  } catch (error) {
+    console.log(error);
     return error;
   }
 };
@@ -17,7 +17,7 @@ export const createViewer = async viewer => {
       JSON.stringify({id: viewer.id, token: viewer.token}),
     );
   } catch (error) {
-    console.log(e);
+    console.log(error);
     return new Error(error);
   }
 };

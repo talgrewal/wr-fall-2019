@@ -16,7 +16,7 @@ import {Mutation} from '@apollo/react-components';
 import ApolloClient from 'apollo-boost';
 import gql from 'graphql-tag';
 import {withNavigation} from 'react-navigation';
-import {createToken} from '../../config/modals';
+import {createViewer} from '../../config/modals';
 
 const LOGIN_MUTATION = gql`
   mutation login($email: String!, $password: String!) {
@@ -61,7 +61,7 @@ class AccountLoginForm extends Component {
                     },
                   });
                   console.log('Need user 1');
-                  await createToken(newUserToken.data.login);
+                  await createViewer(newUserToken.data.login);
                   this.props.navigation.navigate('Home');
                   console.log('Need user' + user);
                 } catch (e) {

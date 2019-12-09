@@ -1,16 +1,22 @@
 import React from 'react';
 import {Text, TouchableOpacity} from 'react-native';
+import {deleteViewer} from '../../config/modals';
+import {withNavigation} from 'react-navigation';
 
-const Home = props => {
+const Home = ({navigation}) => {
   return (
     <>
       <Text>Home Screen</Text>
-      <TouchableOpacity onPress={console.log('Sign out under construction!')}>
-        <Text>Sign out!</Text>
+      <TouchableOpacity
+        onPress={async () => {
+          await deleteViewer();
+          navigation.navigate('Login');
+          console.log('Sign out');
+        }}>
         <Text>Sign out!</Text>
       </TouchableOpacity>
     </>
   );
 };
 
-export default Home;
+export default withNavigation(Home);
