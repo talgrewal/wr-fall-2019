@@ -10,8 +10,14 @@ import ContactScreen from '../screens/Contact';
 import PrivacyScreen from '../screens/Privacy';
 import TermsScreen from '../screens/Terms';
 import {sharedNavigationOptions} from './config';
-import {typography} from '../config/styles';
+import {THEME} from '../config';
 import {Image} from 'react-native';
+
+const {
+  typography,
+  formatting: {icon},
+  colors: {white, black},
+} = THEME;
 
 const HomeStack = createStackNavigator(
   {
@@ -75,36 +81,36 @@ const Tabs = createBottomTabNavigator(
         if (routeName === 'Home') {
           Icon = focused ? (
             <Image
-              style={{width: 30, height: 30, marginTop: 5}}
+              style={styles.icon}
               source={require('../assets/buttonnav/earthlogored.png')}
             />
           ) : (
             <Image
-              style={{width: 30, height: 30, marginTop: 5}}
+              style={styles.icon}
               source={require('../assets/buttonnav/earthlogo.png')}
             />
           );
         } else if (routeName === 'Campaigns') {
           Icon = focused ? (
             <Image
-              style={{width: 30, height: 30, marginTop: 5}}
+              style={styles.icon}
               source={require('../assets/buttonnav/bombred.png')}
             />
           ) : (
             <Image
-              style={{width: 30, height: 30, marginTop: 5}}
+              style={styles.icon}
               source={require('../assets/buttonnav/bomb.png')}
             />
           );
         } else if (routeName === 'Notifications') {
           Icon = focused ? (
             <Image
-              style={{width: 30, height: 30, marginTop: 5}}
+              style={styles.icon}
               source={require('../assets/buttonnav/bellred.png')}
             />
           ) : (
             <Image
-              style={{width: 30, height: 30, marginTop: 5}}
+              style={styles.icon}
               source={require('../assets/buttonnav/BellIcon.png')}
             />
           );
@@ -114,14 +120,14 @@ const Tabs = createBottomTabNavigator(
     }),
 
     tabBarOptions: {
-      activeTintColor: 'black',
-      inactiveTintColor: 'black',
+      activeTintColor: black,
+      inactiveTintColor: black,
       tabStyle: {
-        backgroundColor: 'white',
+        backgroundColor: white,
       },
       labelStyle: {
-        fontSize: 12,
-        fontFamily: typography.fontMainLight,
+        fontSize: typography.smallText,
+        fontFamily: typography.mainFont,
       },
     },
   },
