@@ -10,12 +10,11 @@ import ContactScreen from '../screens/Contact';
 import PrivacyScreen from '../screens/Privacy';
 import TermsScreen from '../screens/Terms';
 import {sharedNavigationOptions} from './config';
-import {THEME} from '../config';
+import {THEME} from './config';
 import {Image} from 'react-native';
 
 const {
   typography,
-  formatting: {icon},
   colors: {white, black},
 } = THEME;
 
