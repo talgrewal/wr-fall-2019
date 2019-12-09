@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+
 const styles = StyleSheet.create({
   navBackground: {
     backgroundColor: '#242424',
@@ -19,6 +20,17 @@ const styles = StyleSheet.create({
     fontSize: 20,
     padding: 25,
     color: 'white',
+  },
+  titleNavigation: {
+    paddingTop: 25,
+  },
+  textNavigation: {
+    color: 'red',
+  },
+  redTitle: {
+    fontSize: 20,
+    padding: 25,
+    color: 'red',
   },
 });
 export default styles;
