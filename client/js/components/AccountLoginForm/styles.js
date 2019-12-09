@@ -9,12 +9,25 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     marginTop: 30,
   },
-  accountLoginContainer: {
+  AccountLoginContainer: {
+    // flex: 1,
     justifyContent: 'space-between',
   },
   formHolder: {
     paddingBottom: 20,
     width: '90%',
+  },
+  termsContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+  checkboxTerms: {
+    alignItems: 'center',
+    paddingTop: 30,
+    justifyContent: 'center',
+    flexDirection: 'row',
+    paddingRight: 30,
   },
   buttonImage: {
     justifyContent: 'center',
