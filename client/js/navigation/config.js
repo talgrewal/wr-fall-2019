@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, View, TouchableOpacity, Image} from 'react-native';
 import {Header} from 'react-navigation-stack';
-import {THEME} from '../config';
+import styles from './styles';
 
 const AppHeader = props => (
   <View style={styles.appHeader}>
