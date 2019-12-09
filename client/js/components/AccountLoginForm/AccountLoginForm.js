@@ -16,6 +16,7 @@ import {Mutation} from '@apollo/react-components';
 import ApolloClient from 'apollo-boost';
 import gql from 'graphql-tag';
 import {withNavigation} from 'react-navigation';
+import InactiveButton from '../../assets/buttons/Inactivespacebutton.png';
 
 const LOGIN_MUTATION = gql`
   mutation login($email: String!, $password: String!) {
@@ -41,11 +42,10 @@ class AccountLoginForm extends Component {
           })
         }>
         {login => (
-          <View style={styles.AccountLoginContainer}>
+          <View style={styles.accountLoginContainer}>
             <Form
               onSubmit={async values => {
                 try {
-                  console.log(values);
                   const data = await login({
                     variables: {
                       email: values.email,
@@ -126,7 +126,7 @@ class AccountLoginForm extends Component {
                       onPress={handleSubmit}
                       style={styles.button}>
                       <ImageBackground
-                        source={require('../../assets/buttons/Inactivespacebutton.png')}
+                        source={InactiveButton}
                         style={styles.buttonImage}>
                         <Text style={styles.text}>Sign in</Text>
                       </ImageBackground>

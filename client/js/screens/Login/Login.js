@@ -3,7 +3,7 @@ import AccountLoginForm from '../../components/AccountLoginForm';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import LogoImage from '../../assets/headingelement/worldrevolutionblack.png';
-import styles from './styles';
+import styles from '../Signup/styles';
 import {SafeAreaView} from 'react-navigation';
 import {withNavigation} from 'react-navigation';
 

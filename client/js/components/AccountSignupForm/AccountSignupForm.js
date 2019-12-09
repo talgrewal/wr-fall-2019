@@ -11,12 +11,13 @@ import {
 import EmailIcon from '../../assets/signinicons/EmailIcon.png';
 import UserIcon from '../../assets/headingelement/loginIcon.png';
 import PasswordIcon from '../../assets/signinicons/PasswordIcon.png';
-import styles from './styles';
+import styles from '../AccountLoginForm/styles';
 import CheckBox from 'react-native-check-box';
 import {Mutation} from '@apollo/react-components';
 import ApolloClient from 'apollo-boost';
 import gql from 'graphql-tag';
 import {withNavigation} from 'react-navigation';
+import InactiveButton from '../../assets/buttons/Inactivespacebutton.png';
 
 const SIGNUP_MUTATION = gql`
   mutation signup($email: String!, $password: String!, $name: String!) {
@@ -47,7 +48,7 @@ class AccountSignupForm extends Component {
           })
         }>
         {signup => (
-          <View style={styles.AccountLoginContainer}>
+          <View style={styles.accountLoginContainer}>
             <Form
               onSubmit={async values => {
                 try {
@@ -207,7 +208,7 @@ class AccountSignupForm extends Component {
                       onPress={handleSubmit}
                       style={styles.button}>
                       <ImageBackground
-                        source={require('../../assets/buttons/Inactivespacebutton.png')}
+                        source={InactiveButton}
                         style={styles.buttonImage}>
                         <Text style={styles.text}>Sign Up</Text>
                       </ImageBackground>

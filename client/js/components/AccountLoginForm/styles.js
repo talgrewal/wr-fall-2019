@@ -9,8 +9,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     marginTop: 30,
   },
-  AccountLoginContainer: {
-    // flex: 1,
+  accountLoginContainer: {
     justifyContent: 'space-between',
   },
   formHolder: {
