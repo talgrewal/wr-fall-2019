@@ -1,7 +1,6 @@
 import React from 'react';
 import {View, Text, Image} from 'react-native';
 import styles from './styles';
-
 import AboutImage from '../../assets/artwork/Adbust.png';
 
 const About = () => {
@@ -28,5 +27,3 @@ const About = () => {
     </View>
   );
 };
-
-export default About;
