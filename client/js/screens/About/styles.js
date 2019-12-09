@@ -1,8 +1,8 @@
 import {StyleSheet} from 'react-native';
-import {THEME} from '../../config';
+import {THEME} from '../../config/';
 const {
   colors: {black, darkGrey},
-  formatting: {baseSpacing, centeredChildren},
+  formatting: {baseSpacing, centeredChildren, containerWidth},
   typography: {headerFont, hugeText, contentText, mainFont, subHeaderText},
 } = THEME;
 
@@ -10,12 +10,12 @@ const styles = StyleSheet.create({
   page: {...centeredChildren},
   container: {
     ...centeredChildren,
-    width: 308,
+    width: containerWidth,
   },
   image: {
     resizeMode: 'contain',
-    height: 131,
-    width: 174.67,
+    height: '22%',
+    width: '60%',
   },
   text: {
     fontFamily: mainFont,

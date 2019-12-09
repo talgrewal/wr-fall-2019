@@ -16,16 +16,13 @@ export default class PrivacyPolicyExpander extends Component {
   render() {
     const {isCollapsed} = this.state;
     const {title, description} = this.props;
+    let icon = isCollapsed ? '-' : '+';
     return (
       <>
         <TouchableOpacity onPress={() => this.onPress()}>
           <View style={styles.expandableButton}>
             <Text style={styles.expandableTitle}>{title}</Text>
-            {!isCollapsed ? (
-              <Text style={styles.expandableTitleIcon}>-</Text>
-            ) : (
-              <Text style={styles.expandableTitleIcon}>+</Text>
-            )}
+            <Text style={styles.expandableTitleIcon}>{icon}</Text>
           </View>
         </TouchableOpacity>
         {!isCollapsed ? (

@@ -15,7 +15,6 @@ export default class SearchBar extends Component {
             render={({input, meta}) => (
               <TextInput
                 style={styles.textInput}
-                id="search"
                 type="text"
                 inputProps={{
                   autoComplete: 'off',

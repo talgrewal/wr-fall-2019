@@ -44,14 +44,6 @@ export default class Onboarding extends Component {
     };
   }
 
-  on_Done_all_slides = () => {
-    this.setState({show_Main_App: true});
-  };
-
-  on_Skip_slides = () => {
-    this.setState({show_Main_App: true});
-  };
-
   _renderItem = ({item, dimensions}) => {
     return (
       <View style={styles.mainContent}>
