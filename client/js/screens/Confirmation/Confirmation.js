@@ -4,9 +4,6 @@ import styles from './styles';
 import checkmark from '../../assets/miscicons/Check.png';
 import {TouchableHighlight} from 'react-native-gesture-handler';
 class Confirmation extends Component {
-  constructor(props) {
-    super(props);
-  }
   state = {
     modalVisible: true,
   };
