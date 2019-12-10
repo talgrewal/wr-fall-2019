@@ -2,6 +2,7 @@ import {StyleSheet} from 'react-native';
 import {THEME} from '../../config';
 const {
   typography: {mainFont, hugeText, contentText},
+
   colors: {darkGrey},
 } = THEME;
 const styles = StyleSheet.create({
