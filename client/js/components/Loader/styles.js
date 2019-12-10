@@ -1,10 +1,16 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
+  loader: {
+    width: 200,
+    height: 200,
+  },
   loaderContainer: {
-    display: 'flex',
     justifyContent: 'center',
-    height: '100%',
+    alignItems: 'center',
+    alignContent: 'center',
+    flexDirection: 'column',
+    marginTop: '55%',
   },
 });
 

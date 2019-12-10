@@ -1,17 +1,44 @@
-import {createAppContainer} from 'react-navigation';
+import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 import DrawerNavigation from './DrawerNavigation';
 import ConfirmationModal from '../screens/Confirmation';
 import {createStackNavigator} from 'react-navigation-stack';
+import LoginScreen from '../screens/Login';
+import SignupScreen from '../screens/Signup';
+import AuthLoadingScreen from '../screens/AuthLoadingScreen';
+
+const AuthStack = createStackNavigator(
+  {
+    Login: {
+      screen: LoginScreen,
+    },
+    Signup: {
+      screen: SignupScreen,
+    },
+  },
+  {
+    headerMode: 'none',
+  },
+);
+
+const AppStack = createStackNavigator(
+  {
+    Layout: DrawerNavigation,
+    Confirmation: ConfirmationModal,
+  },
+  {
+    headerMode: 'none',
+  },
+);
 
 export default createAppContainer(
-  createStackNavigator(
+  createSwitchNavigator(
     {
-      Layout: DrawerNavigation,
-      Confirmation: ConfirmationModal,
+      AuthLoading: AuthLoadingScreen,
+      App: AppStack,
+      Auth: AuthStack,
     },
     {
-      headerMode: 'none',
-      mode: 'modal',
+      initialRouteName: 'AuthLoading',
     },
   ),
 );
