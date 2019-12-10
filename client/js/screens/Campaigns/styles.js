@@ -21,8 +21,24 @@ const styles = StyleSheet.create({
     marginLeft: 20,
   },
   categoryVideo: {
-    height: 100,
+    width: 130,
+    height: 130,
     resizeMode: 'contain',
+    marginLeft: 15,
+  },
+  videoSection: {
+    // justifyContent: 'flex-start',
+    // flexDirection: 'row',
+    // paddingBottom: 15,
+    borderBottomColor: 'black',
+    borderBottomWidth: 1,
+  },
+  campaignsView: {
+    flex: 1,
+    backgroundColor: 'yellow',
+  },
+  campaignSingle: {
+    // flex: 1,
   },
 });
 export default styles;

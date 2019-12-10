@@ -1,7 +1,11 @@
 import React from 'react';
-import {Text, View, Image} from 'react-native';
+import {Text, View, Image, SafeAreaView} from 'react-native';
 import {withNavigation} from 'react-navigation';
-import {TouchableOpacity, ScrollView} from 'react-native-gesture-handler';
+import {
+  TouchableOpacity,
+  ScrollView,
+  FlatList,
+} from 'react-native-gesture-handler';
 import styles from './styles';
 import deadTrees from '../../assets/Imagery/deadtrees.png';
 import icebergMelt from '../../assets/Imagery/icebergmelt.png';
@@ -29,37 +33,50 @@ const Campaigns = ({navigation, campaignData}) => {
   }
 
   return (
-    <ScrollView>
+    <SafeAreaView>
       {/* Campaign Header Start */}
-      <View style={styles.campaignsHeader}>
-        <Image
-          style={styles.categoryImage}
-          source={require('../../assets/category/Charity.png')}
-        />
+      <View style={{flexGrow: 1, justifyContent: 'space-around'}}>
+        <View style={styles.campaignsHeader}>
+          <Image
+            style={styles.categoryImage}
+            source={require('../../assets/category/Charity.png')}
+          />
 
-        <Image
-          style={styles.xxxIcon}
-          source={require('../../assets/artwork/xgroup.png')}
-        />
-      </View>
-      {/* Campaign Header End */}
+          <Image
+            style={styles.xxxIcon}
+            source={require('../../assets/artwork/xgroup.png')}
+          />
+        </View>
+        {/* Campaign Header End */}
 
-      <View>
-        <View>
-          <Image style={styles.categoryVideo} source={deadTrees} />
-        </View>
-        <View>
-          <Image style={styles.categoryVideo} source={icebergMelt} />
-        </View>
-        <View>
+        <ScrollView horizontal={true} style={styles.videoSection}>
           <Image style={styles.categoryVideo} source={iceCream} />
-        </View>
-      </View>
 
-      <View>
-        <View>{campaignItems}</View>
+          <Image style={styles.categoryVideo} source={icebergMelt} />
+
+          <Image style={styles.categoryVideo} source={iceCream} />
+        </ScrollView>
+
+        {/* <View style={styles.campaignsView}> */}
+        <FlatList
+          style={styles.campaignSingle}
+          data={campaignData}
+          numColumns={2}
+          height="100%"
+          renderItem={({item}) => (
+            <TouchableOpacity>
+              <Image
+                style={{width: 150, height: 150}}
+                source={{uri: item.image}}
+              />
+              <Text>{item.title}</Text>
+            </TouchableOpacity>
+          )}
+          keyExtractor={item => item.email}
+        />
+        {/* </View> */}
       </View>
-    </ScrollView>
+    </SafeAreaView>
   );
 };
 
