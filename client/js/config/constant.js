@@ -1,1 +1,1 @@
-export const apolloClientAddress = 'http://157.245.224.214:8000/';
+export const APOLLOCLIENTADDRESS = 'http://157.245.224.214:8000/';

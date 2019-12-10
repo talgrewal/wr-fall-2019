@@ -59,6 +59,19 @@ const styles = StyleSheet.create({
     marginBottom: 40,
     marginTop: 40,
   },
+  checkboxHolder: {
+    borderRadius: 0,
+    padding: 10,
+  },
+  fieldText: {
+    fontSize: 16,
+    width: '60%',
+  },
+  IconImage: {
+    width: 20,
+    height: 20,
+    resizeMode: 'contain',
+  },
 });
 
 export default styles;

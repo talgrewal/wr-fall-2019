@@ -17,7 +17,7 @@ import ApolloClient from 'apollo-boost';
 import gql from 'graphql-tag';
 import {withNavigation} from 'react-navigation';
 import InactiveButton from '../../assets/buttons/Inactivespacebutton.png';
-import {apolloClientAddress} from '../../config/constant';
+import {APOLLOCLIENTADDRESS} from '../../config/constant';
 
 const LOGIN_MUTATION = gql`
   mutation login($email: String!, $password: String!) {
@@ -39,7 +39,7 @@ class AccountLoginForm extends Component {
         mutation={LOGIN_MUTATION}
         client={
           new ApolloClient({
-            uri: apolloClientAddress,
+            uri: APOLLOCLIENTADDRESS,
           })
         }>
         {login => (
@@ -52,16 +52,13 @@ class AccountLoginForm extends Component {
                       email: values.email,
                       password: values.password,
                     },
-
-                    // todo add navigate to home page.
                   });
-                  console.log(data);
+
                   if (data) {
                     this.props.navigation.navigate('Home');
                   }
                 } catch (e) {
                   console.log(e);
-                  console.log('Didnt work');
                 }
               }}
               render={({handleSubmit}) => (
@@ -70,10 +67,9 @@ class AccountLoginForm extends Component {
                   <View style={styles.textField}>
                     <Field
                       name="email"
-                      style={styles.textField}
                       render={({input, meta}) => (
                         <TextInput
-                          style={{fontSize: 16, width: '60%'}}
+                          style={styles.fieldText}
                           id="email"
                           placeholder="User Email"
                           placeholderTextColor="black"
@@ -85,10 +81,7 @@ class AccountLoginForm extends Component {
                         />
                       )}
                     />
-                    <Image
-                      style={{width: 20, height: 20, resizeMode: 'contain'}}
-                      source={EmailIcon}
-                    />
+                    <Image style={styles.IconImage} source={EmailIcon} />
                   </View>
                   {/* End of email field */}
 
@@ -99,7 +92,7 @@ class AccountLoginForm extends Component {
                       render={({input, meta}) => (
                         <TextInput
                           id="password"
-                          style={{fontSize: 16, width: '60%'}}
+                          style={styles.fieldText}
                           selectionColor="black"
                           placeholder="Password"
                           secureTextEntry={true}
@@ -112,10 +105,7 @@ class AccountLoginForm extends Component {
                         />
                       )}
                     />
-                    <Image
-                      style={{width: 20, height: 20, resizeMode: 'contain'}}
-                      source={PasswordIcon}
-                    />
+                    <Image style={styles.IconImage} source={PasswordIcon} />
                   </View>
                   {/* end of password field */}
 
