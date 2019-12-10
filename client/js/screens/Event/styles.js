@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontFamily: headerFont,
-    fontSize: subHeaderText,
+    fontSize: baseSize,
   },
 });
 
