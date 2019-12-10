@@ -5,13 +5,12 @@ const styles = StyleSheet.create({
   pageContainer: {
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'flex-start',
-    // height: '550%',
+    justifyContent: 'center',
+    height: '100%',
   },
   signinHeroImage: {
     resizeMode: 'contain',
     height: 150,
-    marginTop: 50,
     marginBottom: 50,
   },
   loginInfo: {
