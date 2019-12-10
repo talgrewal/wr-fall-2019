@@ -5,7 +5,6 @@ import RootStackNavigator from './navigation/RootStackNavigator';
 import Event from './screens/Event';
 export default class App extends Component {
   render() {
-<<<<<<< Updated upstream
     return (
       <Event
         title="Getting in Touch With Nature"
@@ -16,8 +15,5 @@ export default class App extends Component {
         date="Jan. 5th, 2019"
       />
     );
-=======
-    return <RootStackNavigator />;
->>>>>>> Stashed changes
   }
 }
