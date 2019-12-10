@@ -1,9 +1,11 @@
 import React from 'react';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 import {createStackNavigator} from 'react-navigation-stack';
-
+import EventScreen from '../screens/Event';
 import HomeScreen from '../screens/Home';
+import CampaignScreen from '../screens/Campaign';
 import CampaignsScreen from '../screens/Campaigns';
+import MyCampaignsScreen from '../screens/MyCampaigns';
 import NotificationsScreen from '../screens/Notifications';
 import AboutScreen from '../screens/About';
 import ContactScreen from '../screens/Contact';
@@ -26,6 +28,9 @@ const HomeStack = createStackNavigator(
     Contact: ContactScreen,
     Terms: TermsScreen,
     Privacy: PrivacyScreen,
+    Campaigns: CampaignsScreen,
+    Campaign: CampaignScreen,
+    Event: EventScreen,
   },
   {
     defaultNavigationOptions: ({navigation}) => {
@@ -37,14 +42,14 @@ const HomeStack = createStackNavigator(
   },
 );
 
-const CampaignsStack = createStackNavigator(
+const MyCampaignsStack = createStackNavigator(
   {
-    Campaigns: CampaignsScreen,
+    MyCampaigns: MyCampaignsScreen,
   },
   {
     defaultNavigationOptions: ({navigation}) => ({
       ...sharedNavigationOptions(navigation),
-      initialRouteName: 'Campaigns',
+      initialRouteName: 'MyCampaigns',
     }),
   },
 );
@@ -66,8 +71,8 @@ const Tabs = createBottomTabNavigator(
     Home: {
       screen: HomeStack,
     },
-    Campaigns: {
-      screen: CampaignsStack,
+    'My Campaigns': {
+      screen: MyCampaignsStack,
     },
     Notifications: {
       screen: NotificationsStack,
@@ -90,7 +95,7 @@ const Tabs = createBottomTabNavigator(
               source={require('../assets/buttonnav/earthlogo.png')}
             />
           );
-        } else if (routeName === 'Campaigns') {
+        } else if (routeName === 'My Campaigns') {
           Icon = focused ? (
             <Image
               style={styles.icon}
