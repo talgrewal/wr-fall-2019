@@ -1,82 +1,96 @@
 import React from 'react';
-import {Text, View, Image, TouchableOpacity} from 'react-native';
-import {ScrollView} from 'react-native-gesture-handler';
+import {Text, View, Image, TouchableOpacity, ScrollView} from 'react-native';
 import styles from './styles';
 
 const Home = props => {
   return (
-    <ScrollView style={styles.container}>
-      <Text>Campaign Categories</Text>
-      <View style={styles.headerView}>
-        <TouchableOpacity
-          onPress={() => {
-            console.log('pressed');
-          }}
-          activeOpacity={0.5}
-          style={styles.catLogo}>
-          <Image
-            style={styles.headerImage}
-            source={require('../../assets/category/Politico.png')}
-          />
+    <View style={styles.container}>
+      <Text style={styles.categoryTitle}>Campaign Categories</Text>
+      <ScrollView>
+        <View
+          style={{
+            flex: 1,
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            margin: 20,
+          }}>
+          <TouchableOpacity
+            onPress={() => {
+              console.log('pressed');
+            }}
+            activeOpacity={0.5}
+            style={styles.catLogo}>
+            <Image
+              style={styles.headerImage}
+              source={require('../../assets/category/Politico.png')}
+            />
 
-          <Image
-            style={styles.headerImage}
-            source={require('../../assets/Imagery/Wall-Street.png')}
-          />
-        </TouchableOpacity>
+            <Image
+              style={styles.categoryImage}
+              source={require('../../assets/Imagery/Wall-Street.png')}
+            />
+          </TouchableOpacity>
 
-        <TouchableOpacity
-          onPress={() => {
-            console.log('pressed 1');
-          }}
-          activeOpacity={0.5}
-          style={styles.catLogo}>
-          <Image
-            style={styles.headerImage}
-            source={require('../../assets/category/Enviro.png')}
-          />
+          <TouchableOpacity
+            onPress={() => {
+              console.log('pressed 1');
+            }}
+            activeOpacity={0.5}
+            style={styles.catLogo}>
+            <Image
+              style={styles.headerImage}
+              source={require('../../assets/category/Enviro.png')}
+            />
 
-          <Image
-            style={styles.headerImage}
-            source={require('../../assets/Imagery/Smokestack.png')}
-          />
-        </TouchableOpacity>
+            <Image
+              style={styles.categoryImage}
+              source={require('../../assets/Imagery/Smokestack.png')}
+            />
+          </TouchableOpacity>
+        </View>
+        <View
+          style={{
+            flex: 1,
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            margin: 20,
+          }}>
+          <TouchableOpacity
+            onPress={() => {
+              console.log('pressed 2');
+            }}
+            activeOpacity={0.5}
+            style={styles.catLogo}>
+            <Image
+              style={styles.headerImage}
+              source={require('../../assets/category/Charity.png')}
+            />
 
-        <TouchableOpacity
-          onPress={() => {
-            console.log('pressed 2');
-          }}
-          activeOpacity={0.5}
-          style={styles.catLogo}>
-          <Image
-            style={styles.headerImage}
-            source={require('../../assets/category/Charity.png')}
-          />
+            <Image
+              style={styles.categoryImage}
+              source={require('../../assets/Imagery/charity.png')}
+            />
+          </TouchableOpacity>
 
-          <Image
-            style={styles.headerImage}
-            source={require('../../assets/Imagery/charity.png')}
-          />
-        </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              console.log('pressed 4');
+            }}
+            activeOpacity={0.5}
+            style={styles.catLogo}>
+            <Image
+              style={styles.headerImage}
+              source={require('../../assets/category/Social.png')}
+            />
 
-        <TouchableOpacity
-          onPress={() => {
-            console.log('pressed 4');
-          }}
-          activeOpacity={0.5}
-          style={styles.catLogo}>
-          <Image
-            style={styles.headerImage}
-            source={require('../../assets/category/Social.png')}
-          />
-
-          <Image
-            style={styles.headerImage}
-            source={require('../../assets/Imagery/revolution.png')}
-          />
-        </TouchableOpacity>
-      </View>
-    </ScrollView>
+            <Image
+              style={styles.categoryImage}
+              source={require('../../assets/Imagery/revolution.png')}
+            />
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
+    </View>
   );
 };
 
