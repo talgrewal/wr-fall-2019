@@ -1,9 +1,16 @@
 import React from 'react';
 import {View, Text, Image} from 'react-native';
 import styles from './styles';
+<<<<<<< HEAD
 import AboutImage from '../../assets/artwork/Adbust.png';
 
 export default About = props => {
+=======
+
+import AboutImage from '../../assets/artwork/Adbust.png';
+
+const About = () => {
+>>>>>>> AboutUs page moved to the About page
   return (
     <View style={styles.page}>
       <View style={styles.container}>

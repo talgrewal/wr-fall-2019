@@ -1,8 +1,15 @@
 import {StyleSheet} from 'react-native';
+<<<<<<< HEAD
 import {THEME} from '../../config/';
 const {
   colors: {black, darkGrey},
   formatting: {baseSpacing, centeredChildren, containerWidth},
+=======
+import {THEME} from '../../config';
+const {
+  colors: {black, darkGrey},
+  formatting: {baseSpacing, centeredChildren},
+>>>>>>> AboutUs page moved to the About page
   typography: {headerFont, hugeText, contentText, mainFont, subHeaderText},
 } = THEME;
 
@@ -10,12 +17,21 @@ const styles = StyleSheet.create({
   page: {...centeredChildren},
   container: {
     ...centeredChildren,
+<<<<<<< HEAD
     width: containerWidth,
   },
   image: {
     resizeMode: 'contain',
     height: '22%',
     width: '60%',
+=======
+    width: 308,
+  },
+  image: {
+    resizeMode: 'contain',
+    height: 131,
+    width: 174.67,
+>>>>>>> AboutUs page moved to the About page
   },
   text: {
     fontFamily: mainFont,
