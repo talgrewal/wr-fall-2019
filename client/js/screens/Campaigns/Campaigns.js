@@ -6,7 +6,6 @@ import styles from './styles';
 import deadTrees from '../../assets/Imagery/deadtrees.png';
 import icebergMelt from '../../assets/Imagery/icebergmelt.png';
 import iceCream from '../../assets/Imagery/icecream.png';
-import gql from 'graphql-tag';
 
 const Campaigns = ({navigation}) => {
   return (
