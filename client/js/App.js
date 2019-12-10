@@ -8,7 +8,7 @@ export default class App extends Component {
   render() {
     return (
       <>
-        <Confirmation title="campagin name" />
+        <Confirmation title="Save the Whales" />
         <RootStackNavigator />
       </>
     );
