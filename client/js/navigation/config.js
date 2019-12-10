@@ -1,16 +1,14 @@
 import React from 'react';
 import {StyleSheet, View, TouchableOpacity, Image} from 'react-native';
 import {Header} from 'react-navigation-stack';
+<<<<<<< HEAD
 import {THEME} from '../config';
+=======
+import styles from './styles';
+>>>>>>> Refactored navigation styles
 
 const AppHeader = props => (
-  <View
-    style={{
-      backgroundColor: 'white',
-      overflow: 'hidden',
-      height: 100,
-      width: '100%',
-    }}>
+  <View style={styles.appHeader}>
     <Header {...props} />
   </View>
 );
@@ -19,7 +17,7 @@ const MenuButton = ({navigation}) => {
   return (
     <TouchableOpacity onPress={navigation.openDrawer}>
       <Image
-        style={{marginLeft: 25, height: 25, width: 25}}
+        style={styles.burgerIcon}
         source={require('../assets/headingelement/Burgermenu.png')}
       />
     </TouchableOpacity>
