@@ -9,8 +9,12 @@ export default About = props => {
 
 import AboutImage from '../../assets/artwork/Adbust.png';
 
+<<<<<<< HEAD
 const About = () => {
 >>>>>>> AboutUs page moved to the About page
+=======
+const About = props => {
+>>>>>>> Fixed about merge problems
   return (
     <View style={styles.page}>
       <View style={styles.container}>
@@ -34,3 +38,5 @@ const About = () => {
     </View>
   );
 };
+
+export default About;

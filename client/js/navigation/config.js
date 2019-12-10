@@ -2,10 +2,14 @@ import React from 'react';
 import {StyleSheet, View, TouchableOpacity, Image} from 'react-native';
 import {Header} from 'react-navigation-stack';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import {THEME} from '../config';
 =======
 import styles from './styles';
 >>>>>>> Refactored navigation styles
+=======
+import styles from './styles';
+>>>>>>> Fixed about merge problems
 
 const AppHeader = props => (
   <View style={styles.appHeader}>

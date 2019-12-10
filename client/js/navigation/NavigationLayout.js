@@ -12,6 +12,7 @@ import TermsScreen from '../screens/Terms';
 import {sharedNavigationOptions} from './config';
 import {THEME} from '../config';
 import {Image} from 'react-native';
+import styles from './styles';
 
 const {
   typography,
