@@ -1,6 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
+import {ActivityIndicator, View} from 'react-native';
 import styles from './styles';
-import {View, Image, Text} from 'react-native';
+import {Image, Text} from 'react-native';
 import LoadingAnimation from '../../assets/animations/tenor.gif';
 
 const Loader = () => {
