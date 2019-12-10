@@ -1,13 +1,13 @@
 import {createAppContainer} from 'react-navigation';
 import DrawerNavigation from './DrawerNavigation';
-import Confirmation from '../screens/Confirmation';
+import ConfirmationModal from '../screens/Confirmation';
 import {createStackNavigator} from 'react-navigation-stack';
 
 export default createAppContainer(
   createStackNavigator(
     {
       Layout: DrawerNavigation,
-      Confirmation: Confirmation,
+      Confirmation: ConfirmationModal,
     },
     {
       headerMode: 'none',
