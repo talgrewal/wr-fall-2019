@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
   heading: {
     fontSize: hugeText,
     fontFamily: mainFont,
+
     fontWeight: 'bold',
     paddingBottom: 10,
   },
