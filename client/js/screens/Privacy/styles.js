@@ -7,7 +7,6 @@ const {
 } = THEME;
 
 const styles = StyleSheet.create({
-  page: {...centeredChildren},
   container: {
     ...centeredChildren,
     width: containerWidth,
@@ -16,6 +15,7 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: charcoal,
     justifyContent: 'space-between',
+    borderBottomColor: charcoal,
   },
   text: {
     fontFamily: mainFont,

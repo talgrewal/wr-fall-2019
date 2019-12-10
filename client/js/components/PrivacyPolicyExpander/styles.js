@@ -33,12 +33,16 @@ const styles = StyleSheet.create({
   },
   hiddenDescription: {
     backgroundColor: white,
-    width: '99%',
+    width: '99.2%',
     padding: baseSpacing,
   },
   whiteLine: {
     height: 1,
-    backgroundColor: white,
+    backgroundColor: 'white',
+  },
+  blackLine: {
+    height: 1.5,
+    backgroundColor: 'black',
   },
 });
 

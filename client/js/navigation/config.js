@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, TouchableOpacity, Image} from 'react-native';
+import {View, TouchableOpacity, Image} from 'react-native';
 import {Header} from 'react-navigation-stack';
 import styles from './styles';
 

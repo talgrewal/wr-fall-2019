@@ -1,12 +1,12 @@
 import {StyleSheet} from 'react-native';
 import {THEME} from '../config';
 const {
-  colors: {white, lightGrey},
+  colors: {white, charcoal},
   formatting: {icon},
 } = THEME;
 const styles = StyleSheet.create({
   navBackground: {
-    backgroundColor: lightGrey,
+    backgroundColor: charcoal,
     height: '100%',
     width: '100%',
     marginLeft: 0,

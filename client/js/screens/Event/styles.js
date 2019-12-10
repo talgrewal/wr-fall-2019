@@ -2,7 +2,7 @@ import {StyleSheet} from 'react-native';
 import {THEME} from '../../config';
 const {
   colors: {black, darkGrey},
-  formatting: {baseSpacing, centeredChildren, containerWidth},
+  formatting: {baseSpacing, centeredChildren},
   typography: {headerFont, hugeText, contentText, mainFont, subHeaderText},
 } = THEME;
 
@@ -14,10 +14,10 @@ const styles = StyleSheet.create({
   },
   image: {
     resizeMode: 'contain',
-    height: '27%',
-    width: '65%',
+    height: '22%',
+    width: '45%',
   },
-  text: {
+  description: {
     fontFamily: mainFont,
     fontSize: contentText,
     color: darkGrey,
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.15,
     paddingVertical: baseSpacing,
   },
-  subTitle: {
+  date: {
     fontSize: subHeaderText,
     fontFamily: headerFont,
     textAlign: 'left',
