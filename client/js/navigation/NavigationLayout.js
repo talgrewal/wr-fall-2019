@@ -1,8 +1,9 @@
 import React from 'react';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 import {createStackNavigator} from 'react-navigation-stack';
-
+import EventScreen from '../screens/Event';
 import HomeScreen from '../screens/Home';
+import CampaignScreen from '../screens/Campaign';
 import CampaignsScreen from '../screens/Campaigns';
 import MyCampaignsScreen from '../screens/MyCampaigns';
 import NotificationsScreen from '../screens/Notifications';
@@ -21,6 +22,9 @@ const HomeStack = createStackNavigator(
     Contact: ContactScreen,
     Terms: TermsScreen,
     Privacy: PrivacyScreen,
+    Campaigns: CampaignsScreen,
+    Campaign: CampaignScreen,
+    Event: EventScreen,
   },
   {
     defaultNavigationOptions: ({navigation}) => {
@@ -61,7 +65,7 @@ const Tabs = createBottomTabNavigator(
     Home: {
       screen: HomeStack,
     },
-    Campaigns: {
+    'My Campaigns': {
       screen: MyCampaignsStack,
     },
     Notifications: {
@@ -85,7 +89,7 @@ const Tabs = createBottomTabNavigator(
               source={require('../assets/buttonnav/earthlogo.png')}
             />
           );
-        } else if (routeName === 'Campaigns') {
+        } else if (routeName === 'My Campaigns') {
           Icon = focused ? (
             <Image
               style={{width: 30, height: 30, marginTop: 5}}
