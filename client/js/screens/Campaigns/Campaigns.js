@@ -16,10 +16,10 @@ const Campaigns = ({navigation, campaignData}) => {
   let campaignItems = [];
   for (let i = 0; i < campaignData.length; i++) {
     campaignItems.push(
-      <TouchableOpacity>
+      <TouchableOpacity key={i}>
         <View>
           <Image
-            style={{width: 50, height: 50}}
+            style={{width: 150, height: 150}}
             source={{uri: campaignData[0].image}}
           />
           <Text>{campaignData[i].title}</Text>
@@ -30,29 +30,29 @@ const Campaigns = ({navigation, campaignData}) => {
 
   return (
     <ScrollView>
-      <View>
+      {/* Campaign Header Start */}
+      <View style={styles.campaignsHeader}>
         <Image
           style={styles.categoryImage}
           source={require('../../assets/category/Charity.png')}
         />
-      </View>
 
-      <View>
         <Image
           style={styles.xxxIcon}
           source={require('../../assets/artwork/xgroup.png')}
         />
       </View>
+      {/* Campaign Header End */}
 
       <View>
         <View>
-          <Image style={styles.categoryImage} source={deadTrees} />
+          <Image style={styles.categoryVideo} source={deadTrees} />
         </View>
         <View>
-          <Image style={styles.categoryImage} source={icebergMelt} />
+          <Image style={styles.categoryVideo} source={icebergMelt} />
         </View>
         <View>
-          <Image style={styles.categoryImage} source={iceCream} />
+          <Image style={styles.categoryVideo} source={iceCream} />
         </View>
       </View>
 
