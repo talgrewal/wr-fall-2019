@@ -15,8 +15,8 @@ export default class PrivacyPolicyExpander extends Component {
   }
   render() {
     const {isCollapsed} = this.state;
-    const {title, description} = this.props;
-    let icon = isCollapsed ? '-' : '+';
+    const {title, description, last} = this.props;
+    let icon = isCollapsed ? '+' : '-';
     return (
       <>
         <TouchableOpacity onPress={() => this.onPress()}>
@@ -28,9 +28,12 @@ export default class PrivacyPolicyExpander extends Component {
         {!isCollapsed ? (
           <View style={styles.hiddenDescriptionBackgroundBorder}>
             <Text style={styles.hiddenDescription}>{description}</Text>
+            {last ? <View style={styles.blackLine}></View> : <></>}
           </View>
-        ) : (
+        ) : !last ? (
           <View style={styles.whiteLine}></View>
+        ) : (
+          <View></View>
         )}
       </>
     );

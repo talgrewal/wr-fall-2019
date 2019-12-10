@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View} from 'react-native';
+import {ScrollView, Text, View} from 'react-native';
 import PrivacyPolicyExpander from '../../components/PrivacyPolicyExpander';
 import styles from './styles';
 
@@ -35,11 +35,15 @@ class Privacy extends Component {
         <PrivacyPolicyExpander
           title={expandableMenuContent[i].title}
           description={expandableMenuContent[i].description}
+          last={i === expandableMenuContent.length - 1 ? true : false}
         />,
       );
     }
     return (
-      <View style={styles.page}>
+      <ScrollView
+        contentContainerStyle={{
+          alignItems: 'center',
+        }}>
         <View style={styles.container}>
           <Text style={styles.title}>Privacy Policy</Text>
           <Text style={styles.text}>
@@ -50,7 +54,7 @@ class Privacy extends Component {
           </Text>
           <View style={styles.expandableMenuContainer}>{menuItems}</View>
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }
