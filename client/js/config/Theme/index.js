@@ -16,7 +16,7 @@ const THEME = {
     red: '#CC0000',
     darkGreen: '#231F20',
     grey: '#B1B1B1',
-    lightGrey: '#242424',
+    charcoal: '#242424',
     darkGrey: '#2B2B2B',
   },
   formatting: {
