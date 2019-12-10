@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {View, Text, StatusBar} from 'react-native';
 import Login from './screens/Login';
 import RootStackNavigator from './navigation/RootStackNavigator';
+<<<<<<< HEAD
 import Event from './screens/Event';
 export default class App extends Component {
   render() {
@@ -23,5 +24,16 @@ export default class App extends Component {
 =======
     return <RootStackNavigator />;
 >>>>>>> Stashed changes
+=======
+import Confirmation from './screens/Confirmation';
+
+export default class App extends Component {
+  render() {
+    return (
+      <>
+        <RootStackNavigator />
+      </>
+    );
+>>>>>>> c110d6c2d2c0fad9c2614d7b16eecb5f84f89910
   }
 }

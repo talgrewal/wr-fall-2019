@@ -1,6 +1,6 @@
 const THEME = {
   typography: {
-    mainFont: 'NeueHaasDisplay-XThin',
+    mainFont: 'NeueHaasDisplay-Roman',
     headerFont: 'FiraSans-Bold',
     hugeText: 24,
     largeText: 20,
