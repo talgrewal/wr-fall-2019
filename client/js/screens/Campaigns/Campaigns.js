@@ -15,7 +15,17 @@ const Campaigns = ({navigation, campaignData}) => {
 
   let campaignItems = [];
   for (let i = 0; i < campaignData.length; i++) {
-    campaignItems.push(<Text>{campaignData[i].title}</Text>);
+    campaignItems.push(
+      <TouchableOpacity>
+        <View>
+          <Image
+            style={{width: 50, height: 50}}
+            source={{uri: campaignData[0].image}}
+          />
+          <Text>{campaignData[i].title}</Text>
+        </View>
+      </TouchableOpacity>,
+    );
   }
 
   return (
