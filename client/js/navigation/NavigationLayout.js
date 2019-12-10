@@ -4,6 +4,7 @@ import {createStackNavigator} from 'react-navigation-stack';
 
 import HomeScreen from '../screens/Home';
 import CampaignsScreen from '../screens/Campaigns';
+import MyCampaignsScreen from '../screens/MyCampaigns';
 import NotificationsScreen from '../screens/Notifications';
 import AboutScreen from '../screens/About';
 import ContactScreen from '../screens/Contact';
@@ -31,14 +32,14 @@ const HomeStack = createStackNavigator(
   },
 );
 
-const CampaignsStack = createStackNavigator(
+const MyCampaignsStack = createStackNavigator(
   {
-    Campaigns: CampaignsScreen,
+    MyCampaigns: MyCampaignsScreen,
   },
   {
     defaultNavigationOptions: ({navigation}) => ({
       ...sharedNavigationOptions(navigation),
-      initialRouteName: 'Campaigns',
+      initialRouteName: 'MyCampaigns',
     }),
   },
 );
@@ -61,7 +62,7 @@ const Tabs = createBottomTabNavigator(
       screen: HomeStack,
     },
     Campaigns: {
-      screen: CampaignsStack,
+      screen: MyCampaignsStack,
     },
     Notifications: {
       screen: NotificationsStack,
