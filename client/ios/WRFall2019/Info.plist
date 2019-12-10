@@ -57,6 +57,54 @@
 	<array>
 		<string>FiraSans-Regular.ttf</string>
 		<string>NeueHaasDisplay-XThin.ttf</string>
+		<string>FiraSans-Black.ttf</string>
+		<string>FiraSans-BlackItalic.ttf</string>
+		<string>FiraSans-Bold.ttf</string>
+		<string>FiraSans-BoldItalic.ttf</string>
+		<string>FiraSans-ExtraBold.ttf</string>
+		<string>FiraSans-ExtraBoldItalic.ttf</string>
+		<string>FiraSans-ExtraLight.ttf</string>
+		<string>FiraSans-ExtraLightItalic.ttf</string>
+		<string>FiraSans-Italic.ttf</string>
+		<string>FiraSans-Light.ttf</string>
+		<string>FiraSans-LightItalic.ttf</string>
+		<string>FiraSans-Medium.ttf</string>
+		<string>FiraSans-MediumItalic.ttf</string>
+		<string>FiraSans-SemiBold.ttf</string>
+		<string>FiraSans-SemiBoldItalic.ttf</string>
+		<string>FiraSans-Thin.ttf</string>
+		<string>FiraSans-ThinItalic.ttf</string>
+		<string>NeueHaasDisplay-Black.ttf</string>
+		<string>NeueHaasDisplay-Black.woff</string>
+		<string>NeueHaasDisplay-BlackItalic.ttf</string>
+		<string>NeueHaasDisplay-BlackItalic.woff</string>
+		<string>NeueHaasDisplay-Bold.ttf</string>
+		<string>NeueHaasDisplay-Bold.woff</string>
+		<string>NeueHaasDisplay-BoldItalic.ttf</string>
+		<string>NeueHaasDisplay-BoldItalic.woff</string>
+		<string>NeueHaasDisplay-Light.ttf</string>
+		<string>NeueHaasDisplay-Light.woff</string>
+		<string>NeueHaasDisplay-LightItalic.ttf</string>
+		<string>NeueHaasDisplay-LightItalic.woff</string>
+		<string>NeueHaasDisplay-Mediu.ttf</string>
+		<string>NeueHaasDisplay-Mediu.woff</string>
+		<string>NeueHaasDisplay-MediumItalic.ttf</string>
+		<string>NeueHaasDisplay-MediumItalic.woff</string>
+		<string>NeueHaasDisplay-Roman.ttf</string>
+		<string>NeueHaasDisplay-Roman.woff</string>
+		<string>NeueHaasDisplay-RomanItalic.ttf</string>
+		<string>NeueHaasDisplay-RomanItalic.woff</string>
+		<string>NeueHaasDisplay-Thin.ttf</string>
+		<string>NeueHaasDisplay-Thin.woff</string>
+		<string>NeueHaasDisplay-ThinItalic.ttf</string>
+		<string>NeueHaasDisplay-ThinItalic.woff</string>
+		<string>NeueHaasDisplay-XThin.woff</string>
+		<string>NeueHaasDisplay-XThinItalic.ttf</string>
+		<string>NeueHaasDisplay-XThinItalic.woff</string>
+		<string>NeueHaasDisplay-XXThin.ttf</string>
+		<string>NeueHaasDisplay-XXThin.woff</string>
+		<string>NeueHaasDisplay-XXThinItalic.ttf</string>
+		<string>NeueHaasDisplay-XXThinItalic.woff</string>
 	</array>
 </dict>
 </plist>
