@@ -18,7 +18,6 @@ const styles = StyleSheet.create({
     height: '60%',
     width: '40%',
   },
-
   headerView: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
