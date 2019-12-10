@@ -59,8 +59,6 @@ class AccountSignupForm extends Component {
                       password: values.password,
                       name: values.name,
                     },
-
-                    // todo add navigate to home page.
                   });
                   if (data) {
                     this.props.navigation.navigate('Home');
