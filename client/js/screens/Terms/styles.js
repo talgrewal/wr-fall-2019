@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {THEME} from '../../config/Theme';
+import {THEME} from '../../config';
 const {
   typography: {mainFont, hugeText},
   colors: {darkGrey},

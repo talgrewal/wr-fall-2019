@@ -1,12 +1,15 @@
 import {StyleSheet} from 'react-native';
-import {typography} from '../../config/styles';
+import {THEME} from '../../config';
+const {
+  typography: {mainFont, hugeText},
+} = THEME;
 const styles = StyleSheet.create({
   container: {
     padding: 20,
   },
   heading: {
-    fontSize: 24,
-    fontFamily: typography.fontMainLight,
+    fontSize: hugeText,
+    fontFamily: mainFont,
     fontWeight: 'bold',
     paddingBottom: 10,
   },
@@ -23,11 +26,11 @@ const styles = StyleSheet.create({
   },
   bodyText: {
     paddingVertical: 25,
-    fontFamily: typography.fontMainLight,
+    fontFamily: mainFont,
   },
   bodyTextTwo: {
     paddingVertical: 40,
-    fontFamily: typography.fontMainLight,
+    fontFamily: mainFont,
   },
 });
 export default styles;
