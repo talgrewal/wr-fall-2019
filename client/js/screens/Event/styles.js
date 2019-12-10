@@ -17,18 +17,23 @@ const styles = StyleSheet.create({
     textAlign: 'left',
   },
   text: {
-    padding: baseSpacing / 4,
+    padding: baseSpacing / 2,
+    lineHeight: 18,
+    fontSize: contentText,
   },
   detailsContainer: {
-    width: '82%',
+    width: containerWidth,
+    flexDirection: 'row',
+    padding: baseSpacing,
   },
   button: {
-    width: '82%',
+    width: containerWidth,
     borderColor: black,
     borderWidth: 1,
     borderRadius: baseSpacing * 2,
     padding: baseSpacing,
     ...centeredChildren,
+    padding: baseSpacing,
   },
   buttonText: {
     fontFamily: headerFont,
