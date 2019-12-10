@@ -54,7 +54,6 @@ class AccountSignupForm extends Component {
             <Form
               onSubmit={async values => {
                 try {
-                  console.log(values);
                   const newUserToken = await signup({
                     variables: {
                       email: values.email,
@@ -62,7 +61,6 @@ class AccountSignupForm extends Component {
                       name: values.name,
                     },
                   });
-                  console.log(newUserToken);
                   await createViewer(newUserToken.data.signup);
                   this.props.navigation.navigate('Home');
                 } catch (e) {

@@ -55,17 +55,14 @@ class AccountLoginForm extends Component {
             <Form
               onSubmit={async values => {
                 try {
-                  console.log('Auth started!');
                   const newUserToken = await login({
                     variables: {
                       email: values.email,
                       password: values.password,
                     },
                   });
-                  console.log('Need user 1');
                   await createViewer(newUserToken.data.login);
                   this.props.navigation.navigate('Home');
-                  console.log('Need user' + user);
                 } catch (e) {
                   console.log(e);
                 }
