@@ -10,7 +10,6 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
   AccountLoginContainer: {
-    // flex: 1,
     justifyContent: 'space-between',
   },
   formHolder: {
@@ -44,13 +43,11 @@ const styles = StyleSheet.create({
     borderRadius: 40,
     height: 40,
     width: 260,
-    // backgroundColor: 'red',
   },
   text: {
     fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
-    // paddingTop: 5,
   },
   buttonHolder: {
     flex: 1,
