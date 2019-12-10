@@ -14,9 +14,11 @@ const Event = ({title, address, city, date, time, description}) => {
           <Text style={styles.text}>{date}</Text>
           <Text style={styles.text}>{time}</Text>
         </View>
-        <TouchableOpacity style={styles.button}>
-          <Text>Add to my calendar</Text>
-        </TouchableOpacity>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.buttonText}>Add to my calendar</Text>
+          </TouchableOpacity>
+        </View>
         <View style={styles.detailsContainer}>
           <Image style={styles.image} source={eventImage} />
           <Text style={styles.text}>{description}</Text>

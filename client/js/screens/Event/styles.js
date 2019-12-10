@@ -12,9 +12,13 @@ const styles = StyleSheet.create({
     fontSize: hugeText,
     padding: baseSpacing,
   },
+  container: {
+    ...centeredChildren,
+  },
   infoContainer: {
     padding: baseSpacing,
     textAlign: 'left',
+    width: '100%',
   },
   text: {
     padding: baseSpacing / 2,
@@ -22,18 +26,17 @@ const styles = StyleSheet.create({
     fontSize: contentText,
   },
   detailsContainer: {
-    width: containerWidth,
     flexDirection: 'row',
     padding: baseSpacing,
   },
   button: {
-    width: containerWidth,
     borderColor: black,
     borderWidth: 1,
     borderRadius: baseSpacing * 2,
     padding: baseSpacing,
-    ...centeredChildren,
     padding: baseSpacing,
+    width: 375, //Width 100% does not work
+    ...centeredChildren,
   },
   buttonText: {
     fontFamily: headerFont,
