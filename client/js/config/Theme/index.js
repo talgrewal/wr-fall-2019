@@ -26,6 +26,7 @@ const THEME = {
       justifyContent: 'center',
       alignItems: 'center',
     },
+    containerWidth: '82%',
     icon: {
       height: 30,
       width: 30,
