@@ -3,7 +3,7 @@ import {View, Text, Image} from 'react-native';
 import styles from './styles';
 import AboutImage from '../../assets/artwork/Adbust.png';
 
-export default About = props => {
+const About = props => {
   return (
     <View style={styles.page}>
       <View style={styles.container}>
@@ -27,3 +27,5 @@ export default About = props => {
     </View>
   );
 };
+
+export default About;

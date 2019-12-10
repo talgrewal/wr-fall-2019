@@ -16,6 +16,7 @@ const THEME = {
     red: '#CC0000',
     darkGreen: '#231F20',
     grey: '#B1B1B1',
+    lightGrey: '#242424',
     darkGrey: '#2B2B2B',
   },
   formatting: {
@@ -24,6 +25,12 @@ const THEME = {
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
+    },
+    icon: {
+      height: 30,
+      width: 30,
+      resizeMode: 'contain',
+      marginTop: 5,
     },
     baseSpacing: 16,
   },
