@@ -9,7 +9,8 @@ export default class App extends Component {
       <Event
         title="Getting in Touch With Nature"
         description="We are going to find trees and touch them. This is important to get in touch with and the feeling tree today."
-        location="1490 W Broadway #200, Vancouver, BC V6H 4E8"
+        address="1490 W Broadway #200"
+        city="Vancouver, BC"
         time="9am - 5pm"
         date="Jan. 5th, 2019"
       />

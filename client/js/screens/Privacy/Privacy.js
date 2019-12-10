@@ -33,6 +33,7 @@ class Privacy extends Component {
     for (let i = 0; i < expandableMenuContent.length; i++) {
       menuItems.push(
         <PrivacyPolicyExpander
+          key={i}
           title={expandableMenuContent[i].title}
           description={expandableMenuContent[i].description}
           last={i === expandableMenuContent.length - 1 ? true : false}

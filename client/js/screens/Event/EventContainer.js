@@ -4,14 +4,15 @@ import Event from './Event';
 
 export default class EventContainer extends Component {
   render() {
-    const {title, description, location, time, date} = this.props;
+    const {title, description, address, city, time, date} = this.props;
     return (
       <Event
         title={title}
         description={description}
-        location={location}
+        address={address}
         time={time}
         date={date}
+        city={city}
       />
     );
   }
