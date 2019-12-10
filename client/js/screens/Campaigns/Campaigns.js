@@ -7,7 +7,17 @@ import deadTrees from '../../assets/Imagery/deadtrees.png';
 import icebergMelt from '../../assets/Imagery/icebergmelt.png';
 import iceCream from '../../assets/Imagery/icecream.png';
 
-const Campaigns = ({navigation}) => {
+const Campaigns = ({navigation, campaignData}) => {
+  console.log('Data:' + JSON.stringify(campaignData));
+  console.log(campaignData[0]);
+  console.log(campaignData[0].title);
+  console.log('Testing');
+
+  let campaignItems = [];
+  for (let i = 0; i < campaignData.length; i++) {
+    campaignItems.push(<Text>{campaignData[i].title}</Text>);
+  }
+
   return (
     <ScrollView>
       <View>
@@ -37,11 +47,7 @@ const Campaigns = ({navigation}) => {
       </View>
 
       <View>
-        <View>
-          <Image />
-
-          <Image />
-        </View>
+        <View>{campaignItems}</View>
       </View>
     </ScrollView>
   );

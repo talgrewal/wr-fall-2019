@@ -36,18 +36,17 @@ export const ALL_CAMPAIGNS_QUERY = gql`
 
 export default class CampaignsContainer extends Component {
   render() {
-    console.log(data);
     return (
       <Query query={ALL_CAMPAIGNS_QUERY}>
         {({loading, error, data}) => {
           if (loading) return <Text>Text is loading</Text>;
           if (error) return <Text>{error.message}/</Text>;
           if (data) {
-            const campaignData = data.allCampaigns.filter(campaign =>
-              Campaign.includes(category.id),
+            const campaignData = data.campaigns.filter(
+              campaign => campaign.category === 'Enviro',
             );
-
-            return <Campaigns CampaignName={CampaignName} />;
+            console.log(campaignData);
+            return <Campaigns campaignData={campaignData} />;
           }
         }}
       </Query>
