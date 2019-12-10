@@ -4,6 +4,7 @@ import styles from './styles';
 <<<<<<< HEAD
 import AboutImage from '../../assets/artwork/Adbust.png';
 
+<<<<<<< HEAD
 export default About = props => {
 =======
 
@@ -15,6 +16,9 @@ const About = () => {
 =======
 const About = props => {
 >>>>>>> Fixed about merge problems
+=======
+const About = props => {
+>>>>>>> 3ec216898e5a407cb142c08b11873ecb7e5b4292
   return (
     <View style={styles.page}>
       <View style={styles.container}>

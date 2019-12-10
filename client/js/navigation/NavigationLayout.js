@@ -16,7 +16,6 @@ import styles from './styles';
 
 const {
   typography,
-  formatting: {icon},
   colors: {white, black},
 } = THEME;
 
