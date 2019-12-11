@@ -43,9 +43,10 @@ export default class CampaignsContainer extends Component {
           if (error) return <Text>{error.message}/</Text>;
           if (data) {
             const campaignData = data.campaigns.filter(
-              campaign => campaign.category === 'Enviro',
+              campaign =>
+                campaign.category ===
+                this.props.navigation.state.params.campaignName,
             );
-            console.log(campaignData);
             return <Campaigns campaignData={campaignData} />;
           }
         }}

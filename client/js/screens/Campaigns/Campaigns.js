@@ -105,7 +105,9 @@ const Campaigns = ({navigation, campaignData}) => {
           data={campaignData}
           numColumns={2}
           renderItem={({item}) => (
-            <TouchableOpacity style={styles.touchableContainer}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Campaign', {})}
+              style={styles.touchableContainer}>
               <Image
                 style={styles.campaignSingleMainImage}
                 source={{uri: item.image}}
@@ -121,7 +123,7 @@ const Campaigns = ({navigation, campaignData}) => {
               </View>
             </TouchableOpacity>
           )}
-          keyExtractor={item => item.email}
+          keyExtractor={(item, index) => 'index' + index.toString()}
         />
       </View>
     </SafeAreaView>

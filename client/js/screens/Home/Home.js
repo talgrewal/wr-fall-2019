@@ -7,9 +7,31 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 const Home = ({navigation}) => {
   return (
     <View>
-      <Text>Home Screen</Text>
-      <TouchableOpacity onPress={() => navigation.navigate('Campaigns')}>
-        <Text>Go to the Campaigns Page</Text>
+      <Text>This is the Home Screen</Text>
+      <Text>Click on the links below:</Text>
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate('Campaigns', {campaignName: 'Enviro'})
+        }>
+        <Text>Go to the Enviro Page</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate('Campaigns', {campaignName: 'Social'})
+        }>
+        <Text>Go to the Social Page</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate('Campaigns', {campaignName: 'Politico'})
+        }>
+        <Text>Go to the Politico Page</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate('Campaigns', {campaignName: 'Charity'})
+        }>
+        <Text>Go to the Charity Page</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('Campaign')}>
         <Text>Go to the Campaign Page</Text>
