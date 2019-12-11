@@ -1,9 +1,27 @@
 import React, {Component} from 'react';
-
 import Event from './Event';
 
 export default class EventContainer extends Component {
   render() {
-    return <Event />;
+    const {
+      title,
+      description,
+      address,
+      city,
+      time,
+      date,
+      comments,
+    } = this.props;
+    return (
+      <Event
+        title={title}
+        description={description}
+        address={address}
+        time={time}
+        date={date}
+        city={city}
+        comments={comments}
+      />
+    );
   }
 }

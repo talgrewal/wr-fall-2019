@@ -1,16 +1,15 @@
 import {StyleSheet} from 'react-native';
 import {THEME} from '../../config';
 const {
-  typography: {mainFont, hugeText},
+  typography: {mainFont, hugeFont},
 } = THEME;
 const styles = StyleSheet.create({
   container: {
     padding: 20,
   },
   heading: {
-    fontSize: hugeText,
+    fontSize: hugeFont,
     fontFamily: mainFont,
-
     fontWeight: 'bold',
     paddingBottom: 10,
   },
