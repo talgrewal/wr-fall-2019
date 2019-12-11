@@ -53,17 +53,7 @@ const Campaigns = ({navigation, campaignData}) => {
                     justifyContent: 'flex-end',
                     alignItems: 'flex-start',
                   }}>
-                  <Image
-                    source={playButton}
-                    style={{
-                      width: 40,
-                      height: 40,
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      alignSelf: 'center',
-                      marginBottom: '15%',
-                    }}
-                  />
+                  <Image source={playButton} style={styles.videoPreview} />
                 </View>
               </ImageBackground>
             </TouchableOpacity>
@@ -83,17 +73,7 @@ const Campaigns = ({navigation, campaignData}) => {
                     justifyContent: 'flex-end',
                     alignItems: 'flex-start',
                   }}>
-                  <Image
-                    source={playButton}
-                    style={{
-                      width: 40,
-                      height: 40,
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      alignSelf: 'center',
-                      marginBottom: '15%',
-                    }}
-                  />
+                  <Image source={playButton} style={styles.videoPreview} />
                 </View>
               </ImageBackground>
             </TouchableOpacity>
@@ -111,17 +91,7 @@ const Campaigns = ({navigation, campaignData}) => {
                     justifyContent: 'flex-end',
                     alignItems: 'flex-start',
                   }}>
-                  <Image
-                    source={playButton}
-                    style={{
-                      width: 40,
-                      height: 40,
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      alignSelf: 'center',
-                      marginBottom: '15%',
-                    }}
-                  />
+                  <Image source={playButton} style={styles.videoPreview} />
                 </View>
               </ImageBackground>
             </TouchableOpacity>
@@ -143,16 +113,7 @@ const Campaigns = ({navigation, campaignData}) => {
 
               <View>
                 <Image style={styles.gradient} source={imageGradient} />
-                <View
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                  }}>
+                <View style={styles.imageAbsolute}>
                   <Text numberOfLines={1} style={styles.campaignSingleText}>
                     {item.title}
                   </Text>

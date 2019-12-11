@@ -67,5 +67,22 @@ const styles = StyleSheet.create({
   touchableContainer: {
     margin: 10,
   },
+  imageAbsolute: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  videoPreview: {
+    width: 40,
+    height: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'center',
+    marginBottom: '15%',
+  },
 });
 export default styles;
