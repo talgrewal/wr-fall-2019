@@ -16,13 +16,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingTop: 10,
-    paddingBottom: 10,
+    marginBottom: 10,
     marginRight: 60,
     marginLeft: 20,
   },
   categoryVideo: {
-    width: 130,
-    height: 130,
+    width: 160,
+    height: '100%',
     resizeMode: 'contain',
     marginLeft: 15,
   },
@@ -30,6 +30,13 @@ const styles = StyleSheet.create({
     // justifyContent: 'flex-start',
     // flexDirection: 'row',
     // paddingBottom: 15,
+    flex: 1,
+    flexDirection: 'row',
+    height: 130,
+  },
+
+  border: {
+    marginVertical: 10,
     borderBottomColor: 'black',
     borderBottomWidth: 1,
   },
@@ -38,7 +45,16 @@ const styles = StyleSheet.create({
     backgroundColor: 'yellow',
   },
   campaignSingle: {
-    // flex: 1,
+    alignSelf: 'center',
+  },
+  campaignSingleMainImage: {
+    width: 150,
+    height: 150,
+    margin: 20,
+  },
+  campaignSingleText: {
+    color: 'purple',
+    textAlign: 'center',
   },
 });
 export default styles;

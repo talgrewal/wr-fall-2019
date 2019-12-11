@@ -49,24 +49,26 @@ const Campaigns = ({navigation, campaignData}) => {
         </View>
         {/* Campaign Header End */}
 
-        <ScrollView horizontal={true} style={styles.videoSection}>
-          <Image style={styles.categoryVideo} source={iceCream} />
+        <ScrollView horizontal={true} sc>
+          <View style={styles.videoSection}>
+            <Image style={styles.categoryVideo} source={iceCream} />
 
-          <Image style={styles.categoryVideo} source={icebergMelt} />
+            <Image style={styles.categoryVideo} source={icebergMelt} />
 
-          <Image style={styles.categoryVideo} source={iceCream} />
+            <Image style={styles.categoryVideo} source={iceCream} />
+          </View>
         </ScrollView>
+        <View style={styles.border} />
 
-        {/* <View style={styles.campaignsView}> */}
         <FlatList
           style={styles.campaignSingle}
           data={campaignData}
           numColumns={2}
-          height="100%"
+          // height="100%"
           renderItem={({item}) => (
             <TouchableOpacity>
               <Image
-                style={{width: 150, height: 150}}
+                style={styles.campaignSingleMainImage}
                 source={{uri: item.image}}
               />
               <Text>{item.title}</Text>
@@ -74,7 +76,6 @@ const Campaigns = ({navigation, campaignData}) => {
           )}
           keyExtractor={item => item.email}
         />
-        {/* </View> */}
       </View>
     </SafeAreaView>
   );
