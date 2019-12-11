@@ -1,18 +1,19 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {Text, View, Image, TouchableOpacity, FlatList} from 'react-native';
 import {withNavigation} from 'react-navigation';
-import {TouchableOpacity, FlatList} from 'react-native-gesture-handler';
+
 import styles from './styles';
 import MainSubscribeButton from '../../components/MainSubscribeButton';
+import MrMoneyImage from '../../assets/artwork/mrmoney.png';
 
 const Campaign = ({navigation, campaign}) => {
-  console.log(navigation.getParam('campaign'));
+  // console.log(navigation.state.params);
+  // console.log(navigation.state.params.campaign.events[0].title);
   console.log(navigation.state.params.campaign);
-  console.log(navigation.state.params.campaign.title);
-  console.log(navigation.state.params.campaign.description);
-  console.log(navigation.state.params);
-  console.log(navigation.state);
-  console.log(navigation);
+  // console.log(navigation.state.params.campaign.description);
+  // console.log(navigation.state.params);
+  // console.log(navigation.state);
+  // console.log(navigation);
   return (
     <View>
       {/* Start of Title */}
@@ -52,34 +53,29 @@ const Campaign = ({navigation, campaign}) => {
       <MainSubscribeButton />
 
       {/* Start of flat list */}
-      <FlatList
-        style={styles.campaignSingle}
-        data={campaign}
-        numColumns={1}
-        renderItem={({item}) => (
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate('Event', {
-                campaign: item,
-              })
-            }
-            style={styles.touchableContainer}>
-            <Image
-              style={styles.campaignSingleMainImage}
-              source={{uri: item.image}}
-            />
-            <View>
-              <Image style={styles.gradient} source={imageGradient} />
-              <View style={styles.imageAbsolute}>
-                <Text numberOfLines={1} style={styles.campaignSingleText}>
-                  {item.title}
-                </Text>
+      <View>
+        <Text>Events</Text>
+        {navigation.state.params.campaign.events.length > 0 ? (
+          <FlatList
+            style={styles.campaignSingle}
+            data={navigation.state.params.campaign.events}
+            renderItem={({item}) => (
+              <View>
+                <Text numberOfLines={1}>{item.title}</Text>
               </View>
-            </View>
-          </TouchableOpacity>
+            )}
+            keyExtractor={(item, index) => 'index' + index.toString()}
+          />
+        ) : (
+          <View>
+            <Text>
+              No events at this time. Please subscribe to get notified for
+              future events.
+            </Text>
+            <Image source={MrMoneyImage} />
+          </View>
         )}
-        keyExtractor={(item, index) => 'index' + index.toString()}
-      />
+      </View>
       {/* end of flat list */}
     </View>
   );

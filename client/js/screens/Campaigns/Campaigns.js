@@ -6,13 +6,12 @@ import {
   SafeAreaView,
   ImageBackground,
   Linking,
-} from 'react-native';
-import {withNavigation} from 'react-navigation';
-import {
+  FlatList,
   TouchableOpacity,
   ScrollView,
-  FlatList,
-} from 'react-native-gesture-handler';
+} from 'react-native';
+import {withNavigation} from 'react-navigation';
+
 import styles from './styles';
 import deadTrees from '../../assets/Imagery/deadtrees.png';
 import icebergMelt from '../../assets/Imagery/icebergmelt.png';

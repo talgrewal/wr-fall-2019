@@ -48,10 +48,9 @@ const styles = StyleSheet.create({
   campaignSingleMainImage: {
     width: 150,
     height: 150,
-    // borderRadius: 15,
+
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
-    // margin: 20,
   },
   gradient: {
     height: 40,
