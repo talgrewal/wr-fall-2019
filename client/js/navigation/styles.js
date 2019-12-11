@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+
 import {THEME} from '../config';
 const {
   colors: {white, charcoal},
@@ -34,6 +35,17 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     height: 100,
     width: '100%',
+  },
+  titleNavigation: {
+    paddingTop: 25,
+  },
+  textNavigation: {
+    color: 'red',
+  },
+  redTitle: {
+    fontSize: 20,
+    padding: 25,
+    color: 'red',
   },
 });
 export default styles;

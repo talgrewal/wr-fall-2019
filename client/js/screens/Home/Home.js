@@ -1,8 +1,13 @@
 import React from 'react';
-import {Text} from 'react-native';
+import {Text, TouchableOpacity} from 'react-native';
+import {withNavigation} from 'react-navigation';
 
-const Home = props => {
-  return <Text>Home Screen</Text>;
+const Home = ({navigation}) => {
+  return (
+    <>
+      <Text>Home Screen</Text>
+    </>
+  );
 };
 
-export default Home;
+export default withNavigation(Home);
