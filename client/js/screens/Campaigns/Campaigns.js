@@ -64,14 +64,13 @@ const Campaigns = ({navigation, campaignData}) => {
           style={styles.campaignSingle}
           data={campaignData}
           numColumns={2}
-          // height="100%"
           renderItem={({item}) => (
             <TouchableOpacity>
               <Image
                 style={styles.campaignSingleMainImage}
                 source={{uri: item.image}}
               />
-              <Text>{item.title}</Text>
+              <Text style={styles.campaignSingleText}>{item.title}</Text>
             </TouchableOpacity>
           )}
           keyExtractor={item => item.email}
