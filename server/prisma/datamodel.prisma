@@ -28,6 +28,7 @@ type Campaign {
 
 type Comment{
    id: ID! @id
+   username: String!
     createdAt: DateTime! @createdAt
     comment: String!
 }
