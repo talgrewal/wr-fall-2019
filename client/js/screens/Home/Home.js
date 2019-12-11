@@ -19,7 +19,7 @@ const MOCK_DATA = [
   {
     id: '2',
     title: 'Carousel',
-    image: require('../../assets/Imagery/Smokestack.png'),
+    image: require('../../assets/Imagery/charity.png'),
   },
   {
     id: '3',
