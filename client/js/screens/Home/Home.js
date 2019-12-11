@@ -37,10 +37,9 @@ const Home = props => {
           data={MOCK_DATA}
           renderItem={info => (
             <View>
-              {console.log(info.item.image)}
               <ImageBackground
                 source={info.item.image}
-                style={{width: '100%', height: '100%'}}></ImageBackground>
+                style={styles.imageBackground}></ImageBackground>
             </View>
           )}
           keyExtractor={item => item.id}
@@ -50,17 +49,9 @@ const Home = props => {
       <View style={styles.container}>
         <Text style={styles.categoryTitle}>Campaign Categories</Text>
         <ScrollView>
-          <View
-            style={{
-              flex: 1,
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              margin: 20,
-            }}>
+          <View style={styles.page}>
             <TouchableOpacity
-              onPress={() => {
-                console.log('pressed');
-              }}
+              onPress={() => {}}
               activeOpacity={0.5}
               style={styles.catLogo}>
               <Image
@@ -75,9 +66,7 @@ const Home = props => {
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={() => {
-                console.log('pressed 1');
-              }}
+              onPress={() => {}}
               activeOpacity={0.5}
               style={styles.catLogo}>
               <Image
@@ -91,17 +80,9 @@ const Home = props => {
               />
             </TouchableOpacity>
           </View>
-          <View
-            style={{
-              flex: 1,
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              margin: 20,
-            }}>
+          <View style={styles.page}>
             <TouchableOpacity
-              onPress={() => {
-                console.log('pressed 2');
-              }}
+              onPress={() => {}}
               activeOpacity={0.5}
               style={styles.catLogo}>
               <Image
@@ -116,9 +97,7 @@ const Home = props => {
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={() => {
-                console.log('pressed 4');
-              }}
+              onPress={() => {}}
               activeOpacity={0.5}
               style={styles.catLogo}>
               <Image

@@ -5,6 +5,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'white',
   },
+  page: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    margin: 20,
+  },
   carousel: {
     maxHeight: 250,
     maxWidth: '100%',
@@ -14,6 +20,7 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
   },
+  imageBackground: {width: '100%', height: '100%'},
   container: {
     flex: 1,
   },
