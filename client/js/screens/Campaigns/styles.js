@@ -21,18 +21,16 @@ const styles = StyleSheet.create({
     marginLeft: 20,
   },
   categoryVideo: {
-    width: 160,
-    height: '100%',
+    width: 130,
+    height: 80,
     resizeMode: 'contain',
     marginLeft: 15,
   },
   videoSection: {
-    // justifyContent: 'flex-start',
-    // flexDirection: 'row',
-    // paddingBottom: 15,
     flex: 1,
     flexDirection: 'row',
-    height: 130,
+    height: 100,
+    marginBottom: 0,
   },
 
   border: {
@@ -67,7 +65,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   touchableContainer: {
-    margin: 20,
+    margin: 10,
   },
 });
 export default styles;

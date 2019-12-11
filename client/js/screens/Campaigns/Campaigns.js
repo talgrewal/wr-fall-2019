@@ -1,5 +1,12 @@
 import React from 'react';
-import {Text, View, Image, SafeAreaView, ImageBackground} from 'react-native';
+import {
+  Text,
+  View,
+  Image,
+  SafeAreaView,
+  ImageBackground,
+  Linking,
+} from 'react-native';
 import {withNavigation} from 'react-navigation';
 import {
   TouchableOpacity,
@@ -11,6 +18,7 @@ import deadTrees from '../../assets/Imagery/deadtrees.png';
 import icebergMelt from '../../assets/Imagery/icebergmelt.png';
 import iceCream from '../../assets/Imagery/icecream.png';
 import imageGradient from '../../assets/buttons/buttonbackground.jpg';
+import playButton from '../../assets/buttons/videoplayicon.png';
 
 const Campaigns = ({navigation, campaignData}) => {
   console.log('Data:' + JSON.stringify(campaignData));
@@ -50,13 +58,94 @@ const Campaigns = ({navigation, campaignData}) => {
         </View>
         {/* Campaign Header End */}
 
-        <ScrollView horizontal={true} sc>
+        <ScrollView horizontal={true}>
           <View style={styles.videoSection}>
-            <Image style={styles.categoryVideo} source={iceCream} />
-
-            <Image style={styles.categoryVideo} source={icebergMelt} />
-
-            <Image style={styles.categoryVideo} source={iceCream} />
+            {/* divider */}
+            <TouchableOpacity
+              onPress={() => {
+                Linking.openURL('https://www.youtube.com/watch?v=oxhYaiSnlAo');
+              }}
+              style={styles.touchableContainer}>
+              <ImageBackground source={iceCream} style={styles.categoryVideo}>
+                <View
+                  style={{
+                    flex: 1,
+                    justifyContent: 'flex-end',
+                    alignItems: 'flex-start',
+                  }}>
+                  <Image
+                    source={playButton}
+                    style={{
+                      width: 40,
+                      height: 40,
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      alignSelf: 'center',
+                      marginBottom: '15%',
+                    }}
+                  />
+                </View>
+              </ImageBackground>
+            </TouchableOpacity>
+            {/* End of divider */}
+            {/* divider */}
+            <TouchableOpacity
+              onPress={() => {
+                Linking.openURL('https://www.youtube.com/watch?v=P3GagfbA2vo');
+              }}
+              style={styles.touchableContainer}>
+              <ImageBackground
+                source={icebergMelt}
+                style={styles.categoryVideo}>
+                <View
+                  style={{
+                    flex: 1,
+                    justifyContent: 'flex-end',
+                    alignItems: 'flex-start',
+                  }}>
+                  <Image
+                    source={playButton}
+                    style={{
+                      width: 40,
+                      height: 40,
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      alignSelf: 'center',
+                      marginBottom: '15%',
+                    }}
+                  />
+                </View>
+              </ImageBackground>
+            </TouchableOpacity>
+            {/* End of divider */}
+            {/* divider */}
+            <TouchableOpacity
+              onPress={() => {
+                Linking.openURL('https://www.youtube.com/watch?v=KAJsdgTPJpU');
+              }}
+              style={styles.touchableContainer}>
+              <ImageBackground source={iceCream} style={styles.categoryVideo}>
+                <View
+                  style={{
+                    flex: 1,
+                    justifyContent: 'flex-end',
+                    alignItems: 'flex-start',
+                  }}>
+                  <Image
+                    source={playButton}
+                    style={{
+                      width: 40,
+                      height: 40,
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      alignSelf: 'center',
+                      marginBottom: '15%',
+                    }}
+                  />
+                </View>
+              </ImageBackground>
+            </TouchableOpacity>
+            {/* End of divider */}
           </View>
         </ScrollView>
         <View style={styles.border} />
