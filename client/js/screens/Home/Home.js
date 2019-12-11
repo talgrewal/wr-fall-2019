@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import styles from './styles';
 import Carousel from '@rhysforyou/react-native-carousel';
+import {withNavigation} from 'react-navigation';
 
 const MOCK_DATA = [
   {
