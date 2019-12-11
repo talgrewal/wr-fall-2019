@@ -2,7 +2,7 @@ import {StyleSheet} from 'react-native';
 import {THEME} from '../../config';
 const {
   colors: {black, darkGrey, white},
-
+  formatting: {baseSpacing, centeredChildren, containerWidth},
   typography: {
     headerFont,
     hugeText,
@@ -15,6 +15,7 @@ const {
 } = THEME;
 
 const styles = StyleSheet.create({
+  page: {...centeredChildren},
   container: {
     flex: 1,
     marginTop: 20,
@@ -24,6 +25,7 @@ const styles = StyleSheet.create({
     fontFamily: headerFont,
     margin: 20,
   },
+
   item: {
     backgroundColor: darkGrey,
     padding: 20,
@@ -47,6 +49,17 @@ const styles = StyleSheet.create({
 
     height: '100%',
     width: '100%',
+  },
+  image: {
+    resizeMode: 'contain',
+
+    height: '50%',
+    width: '60%',
+  },
+  noCampaign: {
+    fontSize: contentText,
+    fontFamily: mainFont,
+    margin: 20,
   },
 });
 export default styles;
