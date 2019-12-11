@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {withNavigation} from 'react-navigation';
 import {SafeAreaView, View, Text, TouchableOpacity} from 'react-native';
 import styles from './styles';
+import {deleteViewer} from '../config/modals';
 
 class DrawerScreen extends Component {
   static navigationOptions = {
@@ -36,6 +37,15 @@ class DrawerScreen extends Component {
           onPress={() => this.navigateToScreen('Privacy')}
           style={styles.titleContainer}>
           <Text style={styles.title}>Privacy Policy</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={async () => {
+            await deleteViewer();
+            this.props.navigation.navigate('Login');
+          }}
+          style={styles.titleNavigation}>
+          <Text style={styles.redTitle}>Sign Out</Text>
         </TouchableOpacity>
       </SafeAreaView>
     );

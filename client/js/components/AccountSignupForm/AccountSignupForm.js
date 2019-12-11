@@ -17,6 +17,7 @@ import {Mutation} from '@apollo/react-components';
 import ApolloClient from 'apollo-boost';
 import gql from 'graphql-tag';
 import {withNavigation} from 'react-navigation';
+import {createViewer} from '../../config/modals';
 import InactiveButton from '../../assets/buttons/Inactivespacebutton.png';
 import {APOLLOCLIENTADDRESS} from '../../config/constant';
 
@@ -53,22 +54,32 @@ class AccountSignupForm extends Component {
             <Form
               onSubmit={async values => {
                 try {
-                  const data = await signup({
+                  const newUserToken = await signup({
                     variables: {
                       email: values.email,
                       password: values.password,
                       name: values.name,
                     },
                   });
-                  if (data) {
-                    this.props.navigation.navigate('Home');
-                  }
+                  await createViewer(newUserToken.data.signup);
+                  this.props.navigation.navigate('Home');
                 } catch (e) {
                   console.log(e);
+                  this.setState({error: e});
                 }
               }}
               render={({handleSubmit}) => (
                 <View style={styles.formHolder}>
+                  <Text style={styles.errorText}>
+                    {this.state.error
+                      ? this.state.error.message
+                          .split(': ')[1]
+                          .includes('A unique constraint would be violated')
+                        ? 'Username or email already exists'
+                        : this.state.error.message.split(': ')[1]
+                      : ''}
+                  </Text>
+
                   {/* start of username field */}
                   <View style={styles.textField}>
                     <Field
