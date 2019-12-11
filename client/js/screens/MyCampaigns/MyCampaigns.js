@@ -1,36 +1,8 @@
 import React from 'react';
-import {View, Text, Scro} from 'react-native';
-import {withNavigation} from 'react-navigation';
-import {TouchableOpacity, ScrollView} from 'react-native-gesture-handler';
+import {Text} from 'react-native';
 
-const MyCampaigns = ({navigation}) => {
-  return (
-    <ScrollView>
-      <Text>My Campaign Screen</Text>
-      <Text>My Campaign Screen</Text>
-      <Text>My Campaign Screen</Text>
-      <Text>My Campaign Screen</Text>
-      <Text>My Campaign Screen</Text>
-      <Text>My Campaign Screen</Text>
-      <Text>My Campaign Screen</Text>
-      <Text>My Campaign Screen</Text>
-      <Text>My Campaign Screen</Text>
-      <Text>My Campaign Screen</Text>
-      <Text>My Campaign Screen</Text>
-      <Text>My Campaign Screen</Text>
-      <Text>My Campaign Screen</Text>
-      <Text>My Campaign Screen</Text>
-      <Text>My Campaign Screen</Text>
-      <Text>My Campaign Screen</Text>
-      <Text>My Campaign Screen</Text>
-      <Text>My Campaign Screen</Text>
-      <Text>My Campaign Screen</Text>
-      <Text>My Campaign Screen</Text>
-      <Text>My Campaign Screen</Text>
-      <Text>My Campaign Screen</Text>
-      <Text>My Campaign Screen</Text>
-    </ScrollView>
-  );
+const Campaigns = props => {
+  return <Text>My Campaigns Screen</Text>;
 };
 
-export default withNavigation(MyCampaigns);
+export default Campaigns;

@@ -18,7 +18,7 @@ import ApolloClient from 'apollo-boost';
 import gql from 'graphql-tag';
 import {withNavigation} from 'react-navigation';
 import InactiveButton from '../../assets/buttons/Inactivespacebutton.png';
-import {apolloClientAddress} from '../../config/constant';
+import {APOLLOCLIENTADDRESS} from '../../config/constant';
 
 const SIGNUP_MUTATION = gql`
   mutation signup($email: String!, $password: String!, $name: String!) {
@@ -45,7 +45,7 @@ class AccountSignupForm extends Component {
         mutation={SIGNUP_MUTATION}
         client={
           new ApolloClient({
-            uri: apolloClientAddress,
+            uri: APOLLOCLIENTADDRESS,
           })
         }>
         {signup => (
@@ -53,15 +53,12 @@ class AccountSignupForm extends Component {
             <Form
               onSubmit={async values => {
                 try {
-                  console.log(values);
                   const data = await signup({
                     variables: {
                       email: values.email,
                       password: values.password,
                       name: values.name,
                     },
-
-                    // todo add navigate to home page.
                   });
                   if (data) {
                     this.props.navigation.navigate('Home');
@@ -79,7 +76,7 @@ class AccountSignupForm extends Component {
                       style={styles.textField}
                       render={({input, meta}) => (
                         <TextInput
-                          style={{fontSize: 16, width: '60%'}}
+                          style={styles.fieldText}
                           id="name"
                           placeholder="User Name"
                           placeholderTextColor="black"
@@ -91,10 +88,7 @@ class AccountSignupForm extends Component {
                         />
                       )}
                     />
-                    <Image
-                      style={{width: 20, height: 20, resizeMode: 'contain'}}
-                      source={UserIcon}
-                    />
+                    <Image style={styles.IconImage} source={UserIcon} />
                   </View>
                   {/* End of username field */}
 
@@ -105,7 +99,7 @@ class AccountSignupForm extends Component {
                       style={styles.textField}
                       render={({input, meta}) => (
                         <TextInput
-                          style={{fontSize: 16, width: '60%'}}
+                          style={styles.fieldText}
                           id="email"
                           placeholder="Email"
                           placeholderTextColor="black"
@@ -117,10 +111,7 @@ class AccountSignupForm extends Component {
                         />
                       )}
                     />
-                    <Image
-                      style={{width: 20, height: 20, resizeMode: 'contain'}}
-                      source={EmailIcon}
-                    />
+                    <Image style={styles.IconImage} source={EmailIcon} />
                   </View>
                   {/* End of email field */}
 
@@ -131,7 +122,7 @@ class AccountSignupForm extends Component {
                       render={({input, meta}) => (
                         <TextInput
                           id="password"
-                          style={{fontSize: 16, width: '60%'}}
+                          style={styles.fieldText}
                           selectionColor="black"
                           placeholder="Password"
                           secureTextEntry={true}
@@ -144,10 +135,7 @@ class AccountSignupForm extends Component {
                         />
                       )}
                     />
-                    <Image
-                      style={{width: 20, height: 20, resizeMode: 'contain'}}
-                      source={PasswordIcon}
-                    />
+                    <Image style={styles.IconImage} source={PasswordIcon} />
                   </View>
                   {/* end of password field */}
 
@@ -158,7 +146,7 @@ class AccountSignupForm extends Component {
                       render={({input, meta}) => (
                         <TextInput
                           id="confirmpassword"
-                          style={{fontSize: 16, width: '60%'}}
+                          style={styles.fieldText}
                           selectionColor="black"
                           placeholder="Confirm Password"
                           secureTextEntry={true}
@@ -171,10 +159,7 @@ class AccountSignupForm extends Component {
                         />
                       )}
                     />
-                    <Image
-                      style={{width: 20, height: 20, resizeMode: 'contain'}}
-                      source={PasswordIcon}
-                    />
+                    <Image style={styles.IconImage} source={PasswordIcon} />
                   </View>
                   {/* end of password field */}
 
@@ -185,7 +170,7 @@ class AccountSignupForm extends Component {
                       <View style={styles.checkboxTerms}>
                         <CheckBox
                           id="terms"
-                          style={{borderRadius: 0, padding: 10}}
+                          style={styles.checkboxHolder}
                           onClick={() => {
                             this.setState({
                               isChecked: !this.state.isChecked,

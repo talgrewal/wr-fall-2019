@@ -1,6 +1,7 @@
-import {createStackNavigator} from 'react-navigation-stack';
 import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 import DrawerNavigation from './DrawerNavigation';
+import ConfirmationModal from '../screens/Confirmation';
+import {createStackNavigator} from 'react-navigation-stack';
 import LoginScreen from '../screens/Login';
 import SignupScreen from '../screens/Signup';
 import AuthLoadingScreen from '../screens/AuthLoadingScreen';
@@ -22,6 +23,7 @@ const AuthStack = createStackNavigator(
 const AppStack = createStackNavigator(
   {
     Layout: DrawerNavigation,
+    Confirmation: ConfirmationModal,
   },
   {
     headerMode: 'none',
