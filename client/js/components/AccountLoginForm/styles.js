@@ -69,6 +69,12 @@ const styles = StyleSheet.create({
     height: 20,
     resizeMode: 'contain',
   },
+  errorText: {
+    color: 'red',
+    textAlign: 'center',
+    fontSize: 20,
+    maxWidth: '60%',
+  },
 });
 
 export default styles;
