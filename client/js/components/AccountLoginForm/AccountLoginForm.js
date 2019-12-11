@@ -65,10 +65,17 @@ class AccountLoginForm extends Component {
                   this.props.navigation.navigate('Home');
                 } catch (e) {
                   console.log(e);
+                  this.setState({error: e});
                 }
               }}
               render={({handleSubmit}) => (
                 <View style={styles.formHolder}>
+                  <Text style={styles.errorText}>
+                    {this.state.error
+                      ? this.state.error.message.split(': ')[1]
+                      : ''}
+                  </Text>
+
                   {/* start of email field */}
                   <View style={styles.textField}>
                     <Field
@@ -115,7 +122,7 @@ class AccountLoginForm extends Component {
                   </View>
                   {/* end of password field */}
 
-                  {/* <MainSigninButton /> */}
+                  {/* Start of Main button */}
 
                   <View style={styles.buttonHolder}>
                     <TouchableOpacity

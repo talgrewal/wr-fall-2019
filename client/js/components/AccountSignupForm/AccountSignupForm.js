@@ -65,10 +65,21 @@ class AccountSignupForm extends Component {
                   this.props.navigation.navigate('Home');
                 } catch (e) {
                   console.log(e);
+                  this.setState({error: e});
                 }
               }}
               render={({handleSubmit}) => (
                 <View style={styles.formHolder}>
+                  <Text style={styles.errorText}>
+                    {this.state.error
+                      ? this.state.error.message
+                          .split(': ')[1]
+                          .includes('A unique constraint would be violated')
+                        ? 'Username or email already exists'
+                        : this.state.error.message.split(': ')[1]
+                      : ''}
+                  </Text>
+
                   {/* start of username field */}
                   <View style={styles.textField}>
                     <Field
