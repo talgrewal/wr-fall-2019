@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
   categoryImage: {
     resizeMode: 'contain',
     width: '95%',
-    height: 200,
+    height: 210,
   },
   catLayout: {
     flex: 0.5,
