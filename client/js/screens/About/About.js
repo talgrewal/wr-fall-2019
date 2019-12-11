@@ -1,14 +1,14 @@
 import React from 'react';
 import {View, Text, Image} from 'react-native';
 import styles from './styles';
-// import AboutImage from '../../assets/artwork/adbust';
+import AboutImage from '../../assets/artwork/Adbust.png';
 
 export default About = props => {
   return (
     <View style={styles.page}>
       <View style={styles.container}>
         <Text style={styles.title}>About Us</Text>
-        {/* <Image style={styles.image} source={AboutImage} /> */}
+        <Image style={styles.image} source={AboutImage} />
         <Text style={styles.subTitle}>Our Mission</Text>
         <Text style={styles.text}>
           Catalyze a sudden unexpected moment of truth, a stunning reversal of
