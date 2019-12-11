@@ -21,26 +21,6 @@ import imageGradient from '../../assets/buttons/buttonbackground.jpg';
 import playButton from '../../assets/buttons/videoplayicon.png';
 
 const Campaigns = ({navigation, campaignData}) => {
-  console.log('Data:' + JSON.stringify(campaignData));
-  console.log(campaignData[0]);
-  console.log(campaignData[0].title);
-  console.log('Testing');
-
-  let campaignItems = [];
-  for (let i = 0; i < campaignData.length; i++) {
-    campaignItems.push(
-      <TouchableOpacity key={i}>
-        <View>
-          <Image
-            style={{width: 150, height: 150}}
-            source={{uri: campaignData[0].image}}
-          />
-          <Text>{campaignData[i].title}</Text>
-        </View>
-      </TouchableOpacity>,
-    );
-  }
-
   return (
     <SafeAreaView>
       {/* Campaign Header Start */}
