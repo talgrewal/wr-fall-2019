@@ -1,25 +1,15 @@
 import {StyleSheet} from 'react-native';
 import {THEME} from '../../config';
 const {
-<<<<<<< HEAD
   typography: {mainFont, hugeFont},
-=======
-  typography: {mainFont, hugeText},
->>>>>>> c110d6c2d2c0fad9c2614d7b16eecb5f84f89910
 } = THEME;
 const styles = StyleSheet.create({
   container: {
     padding: 20,
   },
   heading: {
-<<<<<<< HEAD
     fontSize: hugeFont,
     fontFamily: mainFont,
-=======
-    fontSize: hugeText,
-    fontFamily: mainFont,
-
->>>>>>> c110d6c2d2c0fad9c2614d7b16eecb5f84f89910
     fontWeight: 'bold',
     paddingBottom: 10,
   },
