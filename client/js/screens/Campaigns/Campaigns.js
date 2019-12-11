@@ -21,6 +21,7 @@ import imageGradient from '../../assets/buttons/buttonbackground.jpg';
 import playButton from '../../assets/buttons/videoplayicon.png';
 
 const Campaigns = ({navigation, campaignData}) => {
+  console.log(campaignData);
   return (
     <SafeAreaView>
       {/* Campaign Header Start */}
@@ -106,13 +107,16 @@ const Campaigns = ({navigation, campaignData}) => {
           numColumns={2}
           renderItem={({item}) => (
             <TouchableOpacity
-              onPress={() => navigation.navigate('Campaign', {})}
+              onPress={() =>
+                navigation.navigate('Campaign', {
+                  campaign: item,
+                })
+              }
               style={styles.touchableContainer}>
               <Image
                 style={styles.campaignSingleMainImage}
                 source={{uri: item.image}}
               />
-
               <View>
                 <Image style={styles.gradient} source={imageGradient} />
                 <View style={styles.imageAbsolute}>

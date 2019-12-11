@@ -47,6 +47,7 @@ export default class CampaignsContainer extends Component {
                 campaign.category ===
                 this.props.navigation.state.params.campaignName,
             );
+            console.log('HERE', campaignData);
             return <Campaigns campaignData={campaignData} />;
           }
         }}
