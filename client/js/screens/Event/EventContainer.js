@@ -6,20 +6,18 @@ export default class EventContainer extends Component {
     const {
       title,
       description,
-      address,
-      city,
-      time,
-      date,
+      location,
+      startDate,
+      endDate,
       comments,
     } = this.props;
     return (
       <Event
         title={title}
         description={description}
-        address={address}
-        time={time}
-        date={date}
-        city={city}
+        location={location}
+        startDate={startDate}
+        endDate={endDate}
         comments={comments}
       />
     );

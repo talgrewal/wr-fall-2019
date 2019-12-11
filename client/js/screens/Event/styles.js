@@ -31,6 +31,11 @@ const styles = StyleSheet.create({
     padding: baseSpacing / 2,
     lineHeight: 18,
     fontSize: contentText,
+  },
+  halfSpaceText: {
+    padding: baseSpacing / 2,
+    lineHeight: 18,
+    fontSize: contentText,
     width: '50%',
   },
   detailsContainer: {

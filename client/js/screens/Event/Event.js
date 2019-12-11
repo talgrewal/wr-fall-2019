@@ -8,10 +8,36 @@ import Comment from '../../components/Comment';
 import dot from '../../assets/artwork/blackspot.png';
 import * as AddCalendarEvent from 'react-native-add-calendar-event';
 import moment from 'moment';
+import {APOLLOCLIENTADDRESS} from '../../config/constant';
+import {Mutation} from '@apollo/react-components';
+import ApolloClient from 'apollo-boost';
+import gql from 'graphql-tag';
 
-const Event = ({title, address, city, date, time, description, comments}) => {
-  const nowUTC = moment.utc();
+const COMMENT_MUTATION = gql`
+  mutation comment(
+    $username: String!
+    $comment: String!
+    $createdAt: DateTime!
+  ) {
+    comment(username: $username, comment: $comment, createdAt: $createdAt) {
+      comments {
+        id
+        username
+        createdAt
+        comment
+      }
+    }
+  }
+`;
 
+const Event = ({
+  title,
+  location,
+  startDate,
+  endDate,
+  description,
+  comments,
+}) => {
   const [value, onChangeText] = React.useState('');
   let commentItems = [];
   for (let i = 0; i < comments.length; i++) {
@@ -27,38 +53,64 @@ const Event = ({title, address, city, date, time, description, comments}) => {
     );
   }
 
+  //Cleaned up moment formatting calls to keep ternaries readable
+  const startDay = moment(startDate).format('MMM Do, YYYY');
+  const endDay = moment(endDate).format('MMM Do, YYYY');
+  const startTime = moment(startDate).format('h:mma');
+  const endTime = moment(endDate).format('h:mma');
+
   return (
     <ScrollView style={styles.page}>
       <View style={styles.container}>
         <Text style={styles.title}>{title}</Text>
         <View style={styles.infoContainer}>
-          <Text style={styles.text}>{address}</Text>
-          <Text style={styles.text}>{city}</Text>
-          <Text style={styles.text}>{date}</Text>
-          <Text style={styles.text}>{time}</Text>
+          <Text style={styles.text}>{location}</Text>
+          {startDay === endDay ? (
+            <>
+              <Text style={styles.text}>
+                {startTime} to {endTime}
+              </Text>
+              <Text style={styles.text}>{startDay}</Text>
+            </>
+          ) : (
+            <Text style={styles.text}>
+              {startTime}, {startDay} to {endTime} {endDay}
+            </Text>
+          )}
         </View>
+
         <View style={styles.buttonContainer}>
           <TouchableOpacity
             style={styles.button}
             onPress={() => {
-              addToCalendar(title, nowUTC);
+              addToCalendar(title, location, description, startDate, endDate);
             }}>
             <Text style={styles.buttonText}>Add to my calendar</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.detailsContainer}>
           <Image style={styles.image} source={eventImage} />
-          <Text style={styles.text}>{description}</Text>
+          <Text style={styles.halfSpaceText}>{description}</Text>
         </View>
         <View style={styles.inputContainer}>
-          <TextInput
-            multiline
-            placeholder="Comment"
-            placeholderTextColor="black"
-            style={styles.input}
-            onChangeText={text => onChangeText(text)}
-            value={value}
-          />
+          <Mutation
+            mutation={COMMENT_MUTATION}
+            client={
+              new ApolloClient({
+                uri: APOLLOCLIENTADDRESS,
+              })
+            }>
+            {() => (
+              <TextInput
+                multiline
+                placeholder="Comment"
+                placeholderTextColor="black"
+                style={styles.input}
+                onChangeText={text => onChangeText(text)}
+                value={value}
+              />
+            )}
+          </Mutation>
           <Image style={styles.commentIcon} source={commentIcon} />
         </View>
         <View style={styles.comments}>{commentItems}</View>
@@ -66,25 +118,20 @@ const Event = ({title, address, city, date, time, description, comments}) => {
     </ScrollView>
   );
 };
+
 const utcDateToString = momentInUTC => {
   let s = moment.utc(momentInUTC).format('YYYY-MM-DDTHH:mm:ss.SSS[Z]');
-  // console.warn(s);
   return s;
 };
 
-addToCalendar = (title, startDateUTC) => {
+addToCalendar = (title, location, description, startDateUTC, endDateUTC) => {
   const eventConfig = {
     title,
     startDate: utcDateToString(startDateUTC),
-    endDate: utcDateToString(moment.utc(startDateUTC).add(1, 'hours')),
-    notes: 'tasty!',
-    navigationBarIOS: {
-      tintColor: 'orange',
-      backgroundColor: 'green',
-      titleColor: 'blue',
-    },
+    endDate: utcDateToString(endDateUTC),
+    location: location,
+    notes: description,
   };
-  console.log('Before library call');
   AddCalendarEvent.presentEventCreatingDialog(eventConfig)
     .then(eventInfo => {
       console.warn(JSON.stringify(eventInfo));
