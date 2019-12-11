@@ -61,7 +61,14 @@ const Campaign = ({navigation, campaign}) => {
             data={navigation.state.params.campaign.events}
             renderItem={({item}) => (
               <View>
+                <Image
+                  style={{width: 66, height: 58}}
+                  source={{uri: item.image}}
+                />
+
                 <Text numberOfLines={1}>{item.title}</Text>
+                <Text numberOfLines={2}>{item.location}</Text>
+                <Text numberOfLines={2}>{item.createdAt}</Text>
               </View>
             )}
             keyExtractor={(item, index) => 'index' + index.toString()}
