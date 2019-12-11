@@ -50,11 +50,24 @@ const styles = StyleSheet.create({
   campaignSingleMainImage: {
     width: 150,
     height: 150,
-    margin: 20,
+    // borderRadius: 15,
+    borderTopLeftRadius: 15,
+    borderTopRightRadius: 15,
+    // margin: 20,
+  },
+  gradient: {
+    height: 40,
+    width: '100%',
   },
   campaignSingleText: {
-    color: 'purple',
+    color: 'white',
     textAlign: 'center',
+    padding: 5,
+    fontWeight: 'bold',
+    fontSize: 14,
+  },
+  touchableContainer: {
+    margin: 20,
   },
 });
 export default styles;

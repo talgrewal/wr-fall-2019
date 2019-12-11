@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, Image, SafeAreaView} from 'react-native';
+import {Text, View, Image, SafeAreaView, ImageBackground} from 'react-native';
 import {withNavigation} from 'react-navigation';
 import {
   TouchableOpacity,
@@ -10,6 +10,7 @@ import styles from './styles';
 import deadTrees from '../../assets/Imagery/deadtrees.png';
 import icebergMelt from '../../assets/Imagery/icebergmelt.png';
 import iceCream from '../../assets/Imagery/icecream.png';
+import imageGradient from '../../assets/buttons/buttonbackground.jpg';
 
 const Campaigns = ({navigation, campaignData}) => {
   console.log('Data:' + JSON.stringify(campaignData));
@@ -65,12 +66,29 @@ const Campaigns = ({navigation, campaignData}) => {
           data={campaignData}
           numColumns={2}
           renderItem={({item}) => (
-            <TouchableOpacity>
+            <TouchableOpacity style={styles.touchableContainer}>
               <Image
                 style={styles.campaignSingleMainImage}
                 source={{uri: item.image}}
               />
-              <Text style={styles.campaignSingleText}>{item.title}</Text>
+
+              <View>
+                <Image style={styles.gradient} source={imageGradient} />
+                <View
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}>
+                  <Text numberOfLines={1} style={styles.campaignSingleText}>
+                    {item.title}
+                  </Text>
+                </View>
+              </View>
             </TouchableOpacity>
           )}
           keyExtractor={item => item.email}
