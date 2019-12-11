@@ -42,6 +42,7 @@ export default class CampaignsContainer extends Component {
           if (loading) return <Text>Text is loading</Text>;
           if (error) return <Text>{error.message}/</Text>;
           if (data) {
+            console.log(data);
             const campaignData = data.campaigns.filter(
               campaign =>
                 campaign.category ===

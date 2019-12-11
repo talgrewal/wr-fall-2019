@@ -1,11 +1,11 @@
 import React from 'react';
 import {Text, View} from 'react-native';
 import {withNavigation} from 'react-navigation';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import {TouchableOpacity, FlatList} from 'react-native-gesture-handler';
 import styles from './styles';
 import MainSubscribeButton from '../../components/MainSubscribeButton';
 
-const Campaign = ({navigation}) => {
+const Campaign = ({navigation, campaign}) => {
   console.log(navigation.getParam('campaign'));
   console.log(navigation.state.params.campaign);
   console.log(navigation.state.params.campaign.title);
@@ -50,6 +50,37 @@ const Campaign = ({navigation}) => {
       </View>
 
       <MainSubscribeButton />
+
+      {/* Start of flat list */}
+      <FlatList
+        style={styles.campaignSingle}
+        data={campaign}
+        numColumns={1}
+        renderItem={({item}) => (
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate('Event', {
+                campaign: item,
+              })
+            }
+            style={styles.touchableContainer}>
+            <Image
+              style={styles.campaignSingleMainImage}
+              source={{uri: item.image}}
+            />
+            <View>
+              <Image style={styles.gradient} source={imageGradient} />
+              <View style={styles.imageAbsolute}>
+                <Text numberOfLines={1} style={styles.campaignSingleText}>
+                  {item.title}
+                </Text>
+              </View>
+            </View>
+          </TouchableOpacity>
+        )}
+        keyExtractor={(item, index) => 'index' + index.toString()}
+      />
+      {/* end of flat list */}
     </View>
   );
 };
