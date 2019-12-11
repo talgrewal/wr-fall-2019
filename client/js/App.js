@@ -1,10 +1,16 @@
 import React, {Component} from 'react';
-import {View, Text, StatusBar} from 'react-native';
+import {View, Text, SafeAreaView} from 'react-native';
 import Login from './screens/Login';
 import RootStackNavigator from './navigation/RootStackNavigator';
+import {ApolloProvider} from '@apollo/react-common';
+import client from './config/api';
 
 export default class App extends Component {
   render() {
-    return <RootStackNavigator />;
+    return (
+      <ApolloProvider client={client}>
+        <RootStackNavigator />
+      </ApolloProvider>
+    );
   }
 }

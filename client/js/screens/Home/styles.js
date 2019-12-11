@@ -1,5 +1,19 @@
 import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
+  carouselContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'white',
+  },
+  carousel: {
+    maxHeight: 250,
+    maxWidth: '100%',
+  },
+  image: {
+    resizeMode: 'contain',
+    height: '100%',
+    width: '100%',
+  },
   container: {
     flex: 1,
   },
