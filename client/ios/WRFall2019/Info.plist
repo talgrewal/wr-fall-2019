@@ -7,7 +7,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>WRFall2019</string>
 	<key>NSCalendarsUsageDescription</key>
-	<string>NSCalendarsUsageDescription</string>
+	<string>World Revolution App</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
