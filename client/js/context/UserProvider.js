@@ -14,12 +14,17 @@ const USER_QUERY = gql`
 `;
 
 const UserProvider = ({children}) => {
-  console.log('DOING SOMETHING');
   return (
     <Query query={USER_QUERY}>
       {({loading, error, data}) => {
         if (loading) return <Loader />;
-        if (error) return <>{console.log(error)}</>;
+        if (error)
+          return (
+            <>
+              {console.log(error)}
+              {console.log('Error^^^^')}
+            </>
+          );
         const user = data && data.user ? data.user : null;
         return (
           <UserContext.Provider value={{user}}>{children}</UserContext.Provider>
