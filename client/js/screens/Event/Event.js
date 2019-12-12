@@ -12,14 +12,11 @@ import {APOLLOCLIENTADDRESS} from '../../config/constant';
 import {Mutation} from '@apollo/react-components';
 import ApolloClient from 'apollo-boost';
 import gql from 'graphql-tag';
+import Form from 'react-final-form';
 
 const COMMENT_MUTATION = gql`
-  mutation comment(
-    $username: String!
-    $comment: String!
-    $createdAt: DateTime!
-  ) {
-    comment(username: $username, comment: $comment, createdAt: $createdAt) {
+  mutation comment($username: String!, $comment: String!) {
+    comment(username: $username, comment: $comment) {
       comments {
         id
         username
@@ -78,7 +75,6 @@ const Event = ({
             </Text>
           )}
         </View>
-
         <View style={styles.buttonContainer}>
           <TouchableOpacity
             style={styles.button}
@@ -100,18 +96,44 @@ const Event = ({
                 uri: APOLLOCLIENTADDRESS,
               })
             }>
-            {() => (
-              <TextInput
-                multiline
-                placeholder="Comment"
-                placeholderTextColor="black"
-                style={styles.input}
-                onChangeText={text => onChangeText(text)}
-                value={value}
+            {comment => (
+              <Form
+                onSubmit={async values => {
+                  try {
+                    const newComment = await comment({
+                      variables: {
+                        username: 'Ciaran',
+                        comment: values.comment,
+                      },
+                    });
+                    await createViewer(newUserToken.data.signup);
+                    this.props.navigation.navigate('Home');
+                  } catch (e) {
+                    console.log(e);
+                    this.setState({error: e});
+                  }
+                }}
+                render={({handleSubmit}) => (
+                  <>
+                    <TextInput
+                      multiline
+                      placeholder="Comment"
+                      placeholderTextColor="black"
+                      style={styles.input}
+                      onChangeText={text => onChangeText(text)}
+                      value={value}
+                    />
+                    <TouchableOpacity
+                      onPress={() => {
+                        handleSubmit;
+                      }}>
+                      <Image style={styles.commentIcon} source={commentIcon} />
+                    </TouchableOpacity>
+                  </>
+                )}
               />
             )}
           </Mutation>
-          <Image style={styles.commentIcon} source={commentIcon} />
         </View>
         <View style={styles.comments}>{commentItems}</View>
       </View>
