@@ -10,7 +10,7 @@ import client from '../../config/api';
 const CAMPAIGN_SUBSCRIBE = gql`
   mutation updateUser($campaignid: ID!, $userid: ID!) {
     updateUser(
-      data: {campaigns: {connect: {id: $campaignid}}}
+      data: {campaigns: {disconnect: {id: $campaignid}}}
       where: {id: $userid}
     ) {
       id
@@ -51,7 +51,7 @@ const MainSubscribeButton = ({CampaignId}) => {
               <ImageBackground
                 source={InactiveButton}
                 style={styles.buttonImage}>
-                <Text style={styles.text}>Subscribe</Text>
+                <Text style={styles.text}>Unsubscribe</Text>
               </ImageBackground>
             </TouchableOpacity>
           </View>

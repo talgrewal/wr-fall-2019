@@ -4,16 +4,18 @@ import {withNavigation} from 'react-navigation';
 
 import styles from './styles';
 import MainSubscribeButton from '../../components/MainSubscribeButton';
+import MainUnsubscribeButton from '../../components/MainUnsubscribeButton';
 import MrMoneyImage from '../../assets/artwork/mrmoney.png';
 
 const Campaign = ({navigation, campaign}) => {
-  // console.log(navigation.state.params);
-  // console.log(navigation.state.params.campaign.events[0].title);
+  console.log(navigation.state.params);
+  console.log(navigation.state.params.campaign.events[0].title);
   console.log(navigation.state.params.campaign);
-  // console.log(navigation.state.params.campaign.description);
-  // console.log(navigation.state.params);
-  // console.log(navigation.state);
-  // console.log(navigation);
+  console.log(navigation.state.params.campaign.id);
+  console.log(navigation.state.params.campaign.description);
+  console.log(navigation.state.params);
+  console.log(navigation.state);
+  console.log(navigation);
   return (
     <View>
       {/* Start of Title */}
@@ -50,9 +52,8 @@ const Campaign = ({navigation, campaign}) => {
         </TouchableOpacity>
       </View>
 
-      <MainSubscribeButton
-        CampaignId={navigation.state.params.campaign.events.id}
-      />
+      <MainSubscribeButton CampaignId={navigation.state.params.campaign.id} />
+      <MainUnsubscribeButton CampaignId={navigation.state.params.campaign.id} />
 
       {/* Start of flat list */}
       <View>
