@@ -2,12 +2,12 @@ import React, {Component} from 'react';
 import styles from './styles';
 import {TouchableOpacity, Text} from 'react-native';
 
-const SmallSubscribeButton = props => {
+const SmallUnsubscribeButton = props => {
   return (
     <TouchableOpacity style={styles.button}>
-      <Text style={styles.buttonText}>Subscribe</Text>
+      <Text style={styles.buttonText}>Unsubscribe</Text>
     </TouchableOpacity>
   );
 };
 
-export default SmallSubscribeButton;
+export default SmallUnsubscribeButton;
