@@ -36,7 +36,7 @@ const DATA = [
   },
 ];
 
-function Item({title, category}) {
+const Item = ({title, category}) => {
   return (
     <View style={styles.item}>
       <View>
@@ -46,7 +46,7 @@ function Item({title, category}) {
       <SmallUnsubscribeButton />
     </View>
   );
-}
+};
 
 const MyCampaigns = props => {
   return (
