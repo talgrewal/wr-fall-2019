@@ -16,6 +16,7 @@ import {Mutation} from '@apollo/react-components';
 import ApolloClient from 'apollo-boost';
 import gql from 'graphql-tag';
 import {withNavigation} from 'react-navigation';
+import {createViewer} from '../../config/modals';
 import InactiveButton from '../../assets/buttons/Inactivespacebutton.png';
 import {APOLLO_CLIENT_ADDRESS} from '../../config/constant';
 
@@ -33,6 +34,13 @@ const LOGIN_MUTATION = gql`
 `;
 
 class AccountLoginForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null,
+    };
+  }
+
   render() {
     return (
       <Mutation
@@ -47,22 +55,27 @@ class AccountLoginForm extends Component {
             <Form
               onSubmit={async values => {
                 try {
-                  const data = await login({
+                  const newUserToken = await login({
                     variables: {
                       email: values.email,
                       password: values.password,
                     },
                   });
-
-                  if (data) {
-                    this.props.navigation.navigate('Home');
-                  }
+                  await createViewer(newUserToken.data.login);
+                  this.props.navigation.navigate('Home');
                 } catch (e) {
                   console.log(e);
+                  this.setState({error: e});
                 }
               }}
               render={({handleSubmit}) => (
                 <View style={styles.formHolder}>
+                  <Text style={styles.errorText}>
+                    {this.state.error
+                      ? this.state.error.message.split(': ')[1]
+                      : ''}
+                  </Text>
+
                   {/* start of email field */}
                   <View style={styles.textField}>
                     <Field
@@ -109,9 +122,8 @@ class AccountLoginForm extends Component {
                   </View>
                   {/* end of password field */}
 
-                  {/* <MainSigninButton /> */}
+                  {/* Start of Main button */}
 
-                  {/* Start of View */}
                   <View style={styles.buttonHolder}>
                     <TouchableOpacity
                       onPress={handleSubmit}
@@ -123,7 +135,7 @@ class AccountLoginForm extends Component {
                       </ImageBackground>
                     </TouchableOpacity>
                   </View>
-                  {/* Start of View */}
+                  {/* end of main button*/}
                 </View>
               )}
             />
