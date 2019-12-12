@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import Login from './screens/Login';
 import RootStackNavigator from './navigation/RootStackNavigator';
 import Event from './screens/Event';
+import UserProvider from './context/UserProvider';
+import client from './apollo';
+import {ApolloProvider} from 'react-apollo';
 
 const comments = [
   {
@@ -19,14 +22,18 @@ const comments = [
 export default class App extends Component {
   render() {
     return (
-      <Event
-        title="Getting in Touch With Nature"
-        description="We are going to find trees and touch them. This is important to get in touch with and the feeling tree today. Have you ever had the dream where you could if when any of could do anything?"
-        location="1490 W Broadway #200, Vancouver, BC"
-        startDate="2019-12-25T19:25:55.846"
-        endDate="2019-12-25T19:26:55.846"
-        comments={comments}
-      />
+      <ApolloProvider client={client}>
+        <UserProvider>
+          <Event
+            title="Getting in Touch With Nature"
+            description="We are going to find trees and touch them. This is important to get in touch with and the feeling tree today. Have you ever had the dream where you could if when any of could do anything?"
+            location="1490 W Broadway #200, Vancouver, BC"
+            startDate="2019-12-25T19:25:55.846"
+            endDate="2019-12-25T19:26:55.846"
+            comments={comments}
+          />
+        </UserProvider>
+      </ApolloProvider>
     );
   }
 }

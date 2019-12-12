@@ -12,7 +12,7 @@ import {APOLLOCLIENTADDRESS} from '../../config/constant';
 import {Mutation} from '@apollo/react-components';
 import ApolloClient from 'apollo-boost';
 import gql from 'graphql-tag';
-import Form from 'react-final-form';
+import {Form} from 'react-final-form';
 
 const COMMENT_MUTATION = gql`
   mutation comment($username: String!, $comment: String!) {
