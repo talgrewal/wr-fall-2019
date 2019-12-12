@@ -50,7 +50,9 @@ const Campaign = ({navigation, campaign}) => {
         </TouchableOpacity>
       </View>
 
-      <MainSubscribeButton />
+      <MainSubscribeButton
+        CampaignId={navigation.state.params.campaign.events.id}
+      />
 
       {/* Start of flat list */}
       <View>
