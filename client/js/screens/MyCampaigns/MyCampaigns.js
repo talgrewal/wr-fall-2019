@@ -87,7 +87,7 @@ const MyCampaigns = props => {
             miss out to be a part of the movement.
           </Text>
           <View style={styles.buttonHolder}>
-            <TouchableOpacity style={styles.button} onPress={() => {}}>
+            <TouchableOpacity style={styles.button}>
               <ImageBackground source={ActiveButton} style={styles.buttonImage}>
                 <Text style={styles.buttonText}>Browse Campaigns</Text>
               </ImageBackground>
@@ -112,7 +112,7 @@ const MyCampaigns = props => {
             movement!
           </Text>
           <View style={styles.buttonHolder}>
-            <TouchableOpacity style={styles.button} onPress={() => {}}>
+            <TouchableOpacity style={styles.button}>
               <ImageBackground source={ActiveButton} style={styles.buttonImage}>
                 <Text style={styles.buttonText}>Sign In</Text>
               </ImageBackground>
@@ -120,7 +120,7 @@ const MyCampaigns = props => {
           </View>
           <Text style={{textAlign: 'center'}}>Or</Text>
           <View style={styles.buttonHolder}>
-            <TouchableOpacity style={styles.button} onPress={() => {}}>
+            <TouchableOpacity style={styles.button}>
               <ImageBackground source={ActiveButton} style={styles.buttonImage}>
                 <Text style={styles.buttonText}>Sign Up</Text>
               </ImageBackground>

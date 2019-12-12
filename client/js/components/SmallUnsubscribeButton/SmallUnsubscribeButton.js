@@ -4,7 +4,7 @@ import {TouchableOpacity, Text} from 'react-native';
 
 const SmallUnsubscribeButton = props => {
   return (
-    <TouchableOpacity style={styles.button} onPress={() => {}}>
+    <TouchableOpacity style={styles.button}>
       <Text style={styles.buttonText}>Unsubscribe</Text>
     </TouchableOpacity>
   );
