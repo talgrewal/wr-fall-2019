@@ -20,7 +20,6 @@ export const ALL_CAMPAIGNS_QUERY = gql`
       events {
         id
         title
-        createdAt
         location
         image
         description
