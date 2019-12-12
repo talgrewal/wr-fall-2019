@@ -86,7 +86,9 @@ const Home = ({navigation}) => {
         <ScrollView>
           <View style={styles.page}>
             <TouchableOpacity
-              onPress={() => {}}
+              onPress={() =>
+                navigation.navigate('Campaigns', {campaignName: 'Politico'})
+              }
               activeOpacity={0.5}
               style={styles.catLogo}>
               <Image
@@ -101,7 +103,9 @@ const Home = ({navigation}) => {
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={() => {}}
+              onPress={() =>
+                navigation.navigate('Campaigns', {campaignName: 'Enviro'})
+              }
               activeOpacity={0.5}
               style={styles.catLogo}>
               <Image
@@ -117,7 +121,9 @@ const Home = ({navigation}) => {
           </View>
           <View style={styles.page}>
             <TouchableOpacity
-              onPress={() => {}}
+              onPress={() =>
+                navigation.navigate('Campaigns', {campaignName: 'Charity'})
+              }
               activeOpacity={0.5}
               style={styles.catLogo}>
               <Image
@@ -132,7 +138,9 @@ const Home = ({navigation}) => {
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={() => {}}
+              onPress={() =>
+                navigation.navigate('Campaigns', {campaignName: 'Social'})
+              }
               activeOpacity={0.5}
               style={styles.catLogo}>
               <Image
