@@ -15,15 +15,6 @@ import MainUnsubscribeButton from '../../components/MainUnsubscribeButton';
 import MrMoneyImage from '../../assets/artwork/mrmoney.png';
 
 const Campaign = ({navigation, campaign}) => {
-  console.log(navigation.state.params);
-  // console.log(navigation.state.params.campaign.events[0].title);
-  console.log(navigation.state.params.campaign);
-  console.log(navigation.state.params.campaign.id);
-  console.log(navigation.state.params);
-  console.log(navigation.state);
-  console.log(navigation);
-  console.log(navigation.state.params.campaign.description);
-  console.log(navigation.state.params.campaign.description);
   return (
     <ScrollView style={styles.campaignContainer}>
       {/* Start of Title */}
@@ -67,27 +58,35 @@ const Campaign = ({navigation, campaign}) => {
           <Text style={styles.campaignRedText}>More</Text>
         </TouchableOpacity>
       </View>
-
-      <MainSubscribeButton CampaignId={navigation.state.params.campaign.id} />
-      <MainUnsubscribeButton CampaignId={navigation.state.params.campaign.id} />
+      {navigation.state.params.campaign.events.length > 0 ? (
+        <MainSubscribeButton CampaignId={navigation.state.params.campaign.id} />
+      ) : (
+        <MainUnsubscribeButton
+          CampaignId={navigation.state.params.campaign.id}
+        />
+      )}
 
       {/* Start of flat list */}
       <View>
         <Text style={styles.campaignCategoryTitle}>Events</Text>
         {navigation.state.params.campaign.events.length > 0 ? (
           <FlatList
-            style={styles.campaignSingle}
+            style={styles.eventSingle}
             data={navigation.state.params.campaign.events}
             renderItem={({item}) => (
-              <View>
-                <Image
-                  style={{width: 66, height: 58}}
-                  source={{uri: item.image}}
-                />
+              <View style={styles.eventContainer}>
+                <View style={styles.eventImageBox}>
+                  <Image style={styles.eventImage} source={{uri: item.image}} />
+                </View>
 
-                <Text numberOfLines={1}>{item.title}</Text>
-                <Text numberOfLines={2}>{item.location}</Text>
-                <Text numberOfLines={2}>{item.createdAt}</Text>
+                <View style={styles.eventInfoBox}>
+                  <Text style={styles.eventInfoBoxTitle} numberOfLines={1}>
+                    {item.title}
+                  </Text>
+                  <Text style={styles.eventInfoBoxLocation} numberOfLines={2}>
+                    {item.location}
+                  </Text>
+                </View>
               </View>
             )}
             keyExtractor={(item, index) => 'index' + index.toString()}

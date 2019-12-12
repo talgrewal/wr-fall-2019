@@ -20,7 +20,6 @@ import imageGradient from '../../assets/buttons/buttonbackground.jpg';
 import playButton from '../../assets/buttons/videoplayicon.png';
 
 const Campaigns = ({navigation, campaignData}) => {
-  console.log(campaignData);
   return (
     <SafeAreaView>
       {/* Campaign Header Start */}

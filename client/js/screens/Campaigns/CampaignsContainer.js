@@ -23,6 +23,8 @@ export const ALL_CAMPAIGNS_QUERY = gql`
         location
         image
         description
+        startDate
+        endDate
         comments {
           id
           createdAt
@@ -41,13 +43,11 @@ export default class CampaignsContainer extends Component {
           if (loading) return <Text>Text is loading</Text>;
           if (error) return <Text>{error.message}/</Text>;
           if (data) {
-            console.log(data);
             const campaignData = data.campaigns.filter(
               campaign =>
                 campaign.category ===
                 this.props.navigation.state.params.campaignName,
             );
-            console.log('HERE', campaignData);
             return <Campaigns campaignData={campaignData} />;
           }
         }}

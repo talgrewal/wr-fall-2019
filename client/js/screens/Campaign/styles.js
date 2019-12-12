@@ -47,7 +47,6 @@ const styles = StyleSheet.create({
   },
   campaignContainer: {
     flex: 1,
-    // backgroundColor: 'yellow',
     padding: 20,
     flexDirection: 'column',
   },
@@ -55,7 +54,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    // backgroundColor: 'green',
   },
   campaignSubInfo: {
     flexDirection: 'row',
@@ -85,6 +83,10 @@ const styles = StyleSheet.create({
   },
   campaignRedText: {
     color: 'red',
+    borderBottomColor: 'red',
+    borderBottomWidth: 1,
+    textDecorationLine: 'underline',
+    padding: 1,
   },
   campaignDescriptionText: {
     fontWeight: '400',
@@ -100,6 +102,32 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     height: 180,
     marginBottom: 20,
+  },
+  eventImage: {
+    height: '70%',
+
+    resizeMode: 'contain',
+    alignItems: 'center',
+  },
+  eventContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    height: 150,
+    paddingTop: 10,
+  },
+  eventImageBox: {
+    width: '37.5%',
+    justifyContent: 'center',
+  },
+  eventInfoBox: {
+    width: '57.5%',
+    justifyContent: 'space-evenly',
+  },
+  eventInfoBoxTitle: {
+    fontSize: 25,
+  },
+  eventInfoBoxLocation: {
+    fontSize: 14,
   },
 });
 export default styles;
