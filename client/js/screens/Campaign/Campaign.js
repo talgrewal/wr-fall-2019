@@ -1,5 +1,12 @@
 import React from 'react';
-import {Text, View, Image, TouchableOpacity, FlatList} from 'react-native';
+import {
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  FlatList,
+  ScrollView,
+} from 'react-native';
 import {withNavigation} from 'react-navigation';
 
 import styles from './styles';
@@ -18,7 +25,7 @@ const Campaign = ({navigation, campaign}) => {
   console.log(navigation.state.params.campaign.description);
   console.log(navigation.state.params.campaign.description);
   return (
-    <View>
+    <ScrollView style={styles.campaignContainer}>
       {/* Start of Title */}
 
       <Text style={styles.pageTitle}>
@@ -28,28 +35,36 @@ const Campaign = ({navigation, campaign}) => {
       {/* End of Title */}
 
       {/* Start of Campaign Info */}
-      <View>
+      <View style={styles.campaignDetails}>
         <View>
-          <Text>Category</Text>
-          <Text>{navigation.state.params.campaign.category}</Text>
+          <Text style={styles.campaignCategoryTitle}>Category</Text>
+          <Text style={styles.campaignCategoryType}>
+            {navigation.state.params.campaign.category}
+          </Text>
         </View>
-        <View>
-          <Text>{navigation.state.params.campaign.subscribers.length}</Text>
-          <Text>Subscribers</Text>
-        </View>
-        <View>
-          <Text>{navigation.state.params.campaign.events.length}</Text>
-          <Text>Events</Text>
+        <View style={styles.campaignSubInfo}>
+          <View>
+            <Text style={styles.subscriberNumber}>
+              {navigation.state.params.campaign.subscribers.length}
+            </Text>
+            <Text style={styles.subscriberName}>Subscribers</Text>
+          </View>
+          <View>
+            <Text style={styles.subscriberNumber}>
+              {navigation.state.params.campaign.events.length}
+            </Text>
+            <Text style={styles.subscriberName}>Events</Text>
+          </View>
         </View>
       </View>
       {/* Start of Campaign Info */}
 
-      <View>
-        <Text numberOfLines={5}>
+      <View style={styles.campaignDescription}>
+        <Text style={styles.campaignDescriptionText} numberOfLines={5}>
           {navigation.state.params.campaign.description}
         </Text>
         <TouchableOpacity>
-          <Text>More</Text>
+          <Text style={styles.campaignRedText}>More</Text>
         </TouchableOpacity>
       </View>
 
@@ -58,7 +73,7 @@ const Campaign = ({navigation, campaign}) => {
 
       {/* Start of flat list */}
       <View>
-        <Text>Events</Text>
+        <Text style={styles.campaignCategoryTitle}>Events</Text>
         {navigation.state.params.campaign.events.length > 0 ? (
           <FlatList
             style={styles.campaignSingle}
@@ -79,16 +94,16 @@ const Campaign = ({navigation, campaign}) => {
           />
         ) : (
           <View>
-            <Text>
+            <Text style={styles.noEventsDetails}>
               No events at this time. Please subscribe to get notified for
               future events.
             </Text>
-            <Image source={MrMoneyImage} />
+            <Image style={styles.noEventsImage} source={MrMoneyImage} />
           </View>
         )}
       </View>
       {/* end of flat list */}
-    </View>
+    </ScrollView>
   );
 };
 
