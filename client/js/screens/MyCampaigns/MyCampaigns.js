@@ -11,28 +11,29 @@ import {
 import styles from './styles';
 import spaceTexture from '../../assets/Textures/DarkSpace.png';
 import SmallUnsubscribeButton from '../../components/SmallUnsubscribeButton';
+import ActiveButton from '../../assets/buttons/ButtonSPace.png';
 
 const DATA = [
-  {
-    id: '1',
-    title: 'International Rebellion',
-    category: 'Enviornment',
-  },
-  {
-    id: '2',
-    title: 'Peace and Humanity',
-    category: 'Political',
-  },
-  {
-    id: '3',
-    title: 'Unity and Diversity',
-    category: 'Social',
-  },
-  {
-    id: '4',
-    title: 'Power Politics in Todays World',
-    category: 'Social',
-  },
+  // {
+  //   id: '1',
+  //   title: 'International Rebellion',
+  //   category: 'Enviornment',
+  // },
+  // {
+  //   id: '2',
+  //   title: 'Peace and Humanity',
+  //   category: 'Political',
+  // },
+  // {
+  //   id: '3',
+  //   title: 'Unity and Diversity',
+  //   category: 'Social',
+  // },
+  // {
+  //   id: '4',
+  //   title: 'Power Politics in Todays World',
+  //   category: 'Social',
+  // },
 ];
 
 function Item({title, category}) {
@@ -85,6 +86,13 @@ const MyCampaigns = props => {
             adding events to your stuff. Keep your calendar updated and never
             miss out to be a part of the movement.
           </Text>
+          <View style={styles.buttonHolder}>
+            <TouchableOpacity style={styles.button} onPress={() => {}}>
+              <ImageBackground source={ActiveButton} style={styles.buttonImage}>
+                <Text style={styles.buttonText}>Browse Campaigns</Text>
+              </ImageBackground>
+            </TouchableOpacity>
+          </View>
         </View>
       )}
     </>

@@ -11,6 +11,7 @@ const {
     subHeaderText,
     smallText,
     italicFont,
+    baseSize,
   },
 } = THEME;
 
@@ -57,9 +58,38 @@ const styles = StyleSheet.create({
     width: '60%',
   },
   noCampaign: {
-    fontSize: contentText,
+    fontSize: baseSize,
     fontFamily: mainFont,
     margin: 20,
+  },
+
+  buttonText: {
+    fontFamily: headerFont,
+    fontSize: baseSize,
+    color: white,
+  },
+  button: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 25,
+    borderRadius: 40,
+    height: 40,
+    width: 260,
+  },
+  buttonImage: {
+    justifyContent: 'center',
+    resizeMode: 'contain',
+    alignItems: 'center',
+    height: 45,
+    width: 250,
+    borderRadius: 40,
+  },
+  buttonHolder: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 40,
+    marginTop: 20,
   },
 });
 export default styles;
