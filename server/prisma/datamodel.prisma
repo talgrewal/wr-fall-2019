@@ -9,10 +9,11 @@ type User {
 type Event{
    id: ID! @id
    title: String! @unique
-   createdAt: DateTime! @createdAt
    location: String!
    image: String!
    description: String!
+   startDate: DateTime!
+   endDate: DateTime!
    comments: [Comment!]!
 }
 
@@ -28,6 +29,7 @@ type Campaign {
 
 type Comment{
    id: ID! @id
+   username: String!
     createdAt: DateTime! @createdAt
     comment: String!
 }
