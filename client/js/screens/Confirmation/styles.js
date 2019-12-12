@@ -29,5 +29,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontFamily: mainFont,
   },
+  flexContainer: {
+    flexGrow: 1,
+    justifyContent: 'space-around',
+  },
+  flexContainerStart: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'flex-start',
+  },
 });
 export default styles;

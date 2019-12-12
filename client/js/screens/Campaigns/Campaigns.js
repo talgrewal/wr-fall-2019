@@ -23,7 +23,7 @@ const Campaigns = ({navigation, campaignData}) => {
   return (
     <SafeAreaView>
       {/* Campaign Header Start */}
-      <View style={{flexGrow: 1, justifyContent: 'space-around'}}>
+      <View style={styles.flexContainer}>
         <View style={styles.campaignsHeader}>
           <Image
             style={styles.categoryImage}
@@ -46,12 +46,7 @@ const Campaigns = ({navigation, campaignData}) => {
               }}
               style={styles.touchableContainer}>
               <ImageBackground source={iceCream} style={styles.categoryVideo}>
-                <View
-                  style={{
-                    flex: 1,
-                    justifyContent: 'flex-end',
-                    alignItems: 'flex-start',
-                  }}>
+                <View style={styles.flexContainerStart}>
                   <Image source={playButton} style={styles.videoPreview} />
                 </View>
               </ImageBackground>
@@ -66,12 +61,7 @@ const Campaigns = ({navigation, campaignData}) => {
               <ImageBackground
                 source={icebergMelt}
                 style={styles.categoryVideo}>
-                <View
-                  style={{
-                    flex: 1,
-                    justifyContent: 'flex-end',
-                    alignItems: 'flex-start',
-                  }}>
+                <View style={styles.flexContainerStart}>
                   <Image source={playButton} style={styles.videoPreview} />
                 </View>
               </ImageBackground>
@@ -84,12 +74,7 @@ const Campaigns = ({navigation, campaignData}) => {
               }}
               style={styles.touchableContainer}>
               <ImageBackground source={iceCream} style={styles.categoryVideo}>
-                <View
-                  style={{
-                    flex: 1,
-                    justifyContent: 'flex-end',
-                    alignItems: 'flex-start',
-                  }}>
+                <View style={styles.flexContainerStart}>
                   <Image source={playButton} style={styles.videoPreview} />
                 </View>
               </ImageBackground>
