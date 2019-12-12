@@ -1,3 +1,3 @@
-import MainSubscribeButton from './MainSubscribeButton';
+import MainUnsubscribeButton from './MainUnsubscribeButton';
 
-export default MainSubscribeButton;
+export default MainUnsubscribeButton;
