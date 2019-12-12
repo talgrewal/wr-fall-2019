@@ -17,7 +17,7 @@ import ApolloClient from 'apollo-boost';
 import gql from 'graphql-tag';
 import {withNavigation} from 'react-navigation';
 import InactiveButton from '../../assets/buttons/Inactivespacebutton.png';
-import {APOLLOCLIENTADDRESS} from '../../config/constant';
+import {APOLLO_CLIENT_ADDRESS} from '../../config/constant';
 
 const LOGIN_MUTATION = gql`
   mutation login($email: String!, $password: String!) {
@@ -39,7 +39,7 @@ class AccountLoginForm extends Component {
         mutation={LOGIN_MUTATION}
         client={
           new ApolloClient({
-            uri: APOLLOCLIENTADDRESS,
+            uri: APOLLO_CLIENT_ADDRESS,
           })
         }>
         {login => (
