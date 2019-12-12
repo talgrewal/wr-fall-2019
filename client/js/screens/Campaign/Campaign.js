@@ -12,10 +12,11 @@ const Campaign = ({navigation, campaign}) => {
   console.log(navigation.state.params.campaign.events[0].title);
   console.log(navigation.state.params.campaign);
   console.log(navigation.state.params.campaign.id);
-  console.log(navigation.state.params.campaign.description);
   console.log(navigation.state.params);
   console.log(navigation.state);
   console.log(navigation);
+  console.log(navigation.state.params.campaign.description);
+  console.log(navigation.state.params.campaign.description);
   return (
     <View>
       {/* Start of Title */}

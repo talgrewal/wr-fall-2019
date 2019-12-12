@@ -29,6 +29,15 @@ const styles = StyleSheet.create({
     marginBottom: 40,
     marginTop: 40,
   },
+  buttonNoBackground: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 25,
+    borderRadius: 40,
+    borderWidth: 1,
+    height: 50,
+    width: 260,
+  },
 });
 
 export default styles;

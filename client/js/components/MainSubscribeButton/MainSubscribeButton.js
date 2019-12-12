@@ -47,12 +47,8 @@ const MainSubscribeButton = ({CampaignId}) => {
                   console.log('This is the error' + e);
                 }
               }}
-              style={styles.button}>
-              <ImageBackground
-                source={InactiveButton}
-                style={styles.buttonImage}>
-                <Text style={styles.text}>Subscribe</Text>
-              </ImageBackground>
+              style={styles.buttonNoBackground}>
+              <Text style={styles.text}>Subscribe</Text>
             </TouchableOpacity>
           </View>
         );
