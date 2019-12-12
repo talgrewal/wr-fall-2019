@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import styles from '../MainSigninButton/styles';
 import {TouchableOpacity, View, ImageBackground, Text} from 'react-native';
-import InactiveButton from '../../assets/buttons/Inactivespacebutton.png';
+import activeButton from '../../assets/buttons/activespacebutton.png';
 import gql from 'graphql-tag';
 import ApolloClient from 'apollo-boost';
 import {Mutation} from '@apollo/react-components';
@@ -48,10 +48,8 @@ const MainSubscribeButton = ({CampaignId}) => {
                 }
               }}
               style={styles.button}>
-              <ImageBackground
-                source={InactiveButton}
-                style={styles.buttonImage}>
-                <Text style={styles.text}>Unsubscribe</Text>
+              <ImageBackground source={activeButton} style={styles.buttonImage}>
+                <Text style={styles.textWhite}>Unsubscribe</Text>
               </ImageBackground>
             </TouchableOpacity>
           </View>

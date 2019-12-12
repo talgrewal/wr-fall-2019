@@ -22,6 +22,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
+  textWhite: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: 'white',
+  },
   buttonHolder: {
     flex: 1,
     justifyContent: 'center',

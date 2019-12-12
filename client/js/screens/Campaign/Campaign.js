@@ -9,7 +9,7 @@ import MrMoneyImage from '../../assets/artwork/mrmoney.png';
 
 const Campaign = ({navigation, campaign}) => {
   console.log(navigation.state.params);
-  console.log(navigation.state.params.campaign.events[0].title);
+  // console.log(navigation.state.params.campaign.events[0].title);
   console.log(navigation.state.params.campaign);
   console.log(navigation.state.params.campaign.id);
   console.log(navigation.state.params);
