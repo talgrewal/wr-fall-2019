@@ -32,6 +32,7 @@ export default class App extends Component {
             endDate="2019-12-25T19:26:55.846"
             comments={comments}
           />
+          {/* <RootStackNavigator /> */}
         </UserProvider>
       </ApolloProvider>
     );

@@ -34,6 +34,7 @@ const Event = ({
   endDate,
   description,
   comments,
+  user,
 }) => {
   const [value, onChangeText] = React.useState('');
   let commentItems = [];
@@ -55,7 +56,7 @@ const Event = ({
   const endDay = moment(endDate).format('MMM Do, YYYY');
   const startTime = moment(startDate).format('h:mma');
   const endTime = moment(endDate).format('h:mma');
-
+  console.log('EVENT USER: ', user);
   return (
     <ScrollView style={styles.page}>
       <View style={styles.container}>

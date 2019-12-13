@@ -15,18 +15,15 @@ export default class EventContainer extends Component {
     return (
       <UserContext.Consumer>
         {({user}) => {
-          console.log(user);
-          return (
-            <Event
-              title={title}
-              description={description}
-              location={location}
-              startDate={startDate}
-              endDate={endDate}
-              comments={comments}
-              user={user}
-            />
-          );
+          <Event
+            title={title}
+            description={description}
+            location={location}
+            startDate={startDate}
+            endDate={endDate}
+            comments={comments}
+            user={user}
+          />;
         }}
       </UserContext.Consumer>
     );
