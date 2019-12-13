@@ -30,28 +30,30 @@ const Campaigns = ({navigation, campaignData, campaignName}) => {
       <View style={styles.flexContainer}>
         <View style={styles.campaignsHeader}>
           {/* Begin category Image */}
-          <Image
-            style={styles.categoryImage}
-            source={require('../../assets/category/Charity.png')}
-          />
-          {/* <Text>{campaignName}</Text> */}
-          <Image
-            style={styles.categoryImage}
-            source={require('../../assets/category/Enviro.png')}
-          />
 
-          <Image
-            style={styles.categoryImage}
-            source={require('../../assets/category/Politico.png')}
-          />
+          {pageName === 'Politico' ? (
+            <Image
+              style={styles.categoryImage}
+              source={require('../../assets/category/Politico.png')}
+            />
+          ) : pageName === 'Enviro' ? (
+            <Image
+              style={styles.categoryImage}
+              source={require('../../assets/category/Enviro.png')}
+            />
+          ) : pageName === 'Social' ? (
+            <Image
+              style={styles.categoryImage}
+              source={require('../../assets/category/Social.png')}
+            />
+          ) : (
+            <Image
+              style={styles.categoryImage}
+              source={require('../../assets/category/Charity.png')}
+            />
+          )}
 
-          <Image
-            style={styles.categoryImage}
-            source={require('../../assets/category/Social.png')}
-          />
           {/* End of category Image */}
-
-          {/* {  {} ? : } */}
 
           <Image
             style={styles.xGroupIcon}
