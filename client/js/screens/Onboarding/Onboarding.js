@@ -74,13 +74,13 @@ export default class Onboarding extends Component {
         bottomButton={true}
         renderSkipButton={() => {
           return (
-            <Text
+            <TouchableOpacity
               onPress={() => {
                 this.props.navigation.navigate('Login');
               }}
-              style={styles.skip}>
-              Skip
-            </Text>
+              style={styles.button}>
+              <Text style={styles.skip}>Skip</Text>
+            </TouchableOpacity>
           );
         }}
         renderDoneButton={() => {
