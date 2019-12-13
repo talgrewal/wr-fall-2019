@@ -1,4 +1,4 @@
-import React, {createContext} from 'react';
+import React, {Component, createContext} from 'react';
 import Loader from '../components/Loader';
 import gql from 'graphql-tag';
 import {Query} from 'react-apollo';
@@ -15,43 +15,45 @@ const USER_QUERY = gql`
   }
 `;
 
-const getCurrentUser = async () => {
-  try {
-    const currentUser = await queryViewer();
-    console.log('CURRENT USER: ', currentUser);
-    return currentUser;
-  } catch (error) {}
-  console.log(error);
-};
+class UserProvider extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: {},
+    };
+  }
 
-const UserProvider = ({children}) => {
-  return (
-    <Query query={USER_QUERY}>
-      {user => {
-        async ({loading, error, data}) => {
+  getAsyncUser = async () => {
+    try {
+      const asyncUser = await queryViewer().then(asyncUser);
+      console.log('ASYNC USER: ', asyncUser);
+      return asyncUser;
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  getLoggedUser = async () => {
+    console.log(getASyncUser());
+    return (
+      <Query query={USER_QUERY} variables={{userId: getAsyncUser().Id}}>
+        {({loading, error, data}) => {
           if (loading) return <Loader />;
           if (error) return <>{console.log(error)}</>;
-          try {
-            const asyncUser = await getCurrentUser();
-            console.log(asyncUser);
-            const loggedUser = await user({
-              variables: {
-                userId: currentUser.id,
-              },
-            });
-          } catch (e) {
-            console.log(e);
-          }
           return (
-            <UserContext.Provider value={{user: data.user}}>
+            <UserContext.Provider value={{user: data}}>
               {children}
             </UserContext.Provider>
           );
-        };
-      }}
-      }
-    </Query>
-  );
-};
+        }}
+      </Query>
+    );
+  };
+
+  render() {
+    return this.getLoggedUser();
+  }
+}
+
 export {UserContext};
 export default UserProvider;
