@@ -19,16 +19,39 @@ import iceCream from '../../assets/Imagery/icecream.png';
 import imageGradient from '../../assets/buttons/buttonbackground.jpg';
 import playButton from '../../assets/buttons/videoplayicon.png';
 
-const Campaigns = ({navigation, campaignData}) => {
+const Campaigns = ({navigation, campaignData, campaignName}) => {
+  console.log(campaignName.campaignName);
+  const pageName = campaignName.campaignName;
+  console.log(pageName);
+
   return (
     <SafeAreaView>
       {/* Campaign Header Start */}
       <View style={styles.flexContainer}>
         <View style={styles.campaignsHeader}>
+          {/* Begin category Image */}
           <Image
             style={styles.categoryImage}
             source={require('../../assets/category/Charity.png')}
           />
+          {/* <Text>{campaignName}</Text> */}
+          <Image
+            style={styles.categoryImage}
+            source={require('../../assets/category/Enviro.png')}
+          />
+
+          <Image
+            style={styles.categoryImage}
+            source={require('../../assets/category/Politico.png')}
+          />
+
+          <Image
+            style={styles.categoryImage}
+            source={require('../../assets/category/Social.png')}
+          />
+          {/* End of category Image */}
+
+          {/* {  {} ? : } */}
 
           <Image
             style={styles.xGroupIcon}
