@@ -144,7 +144,7 @@ const Event = ({
                 render={({handleSubmit}) => (
                   <>
                     <Field
-                      name="name"
+                      name="comment"
                       render={({input, meta}) => (
                         <TextInput
                           style={styles.fieldText}
