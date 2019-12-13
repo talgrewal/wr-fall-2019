@@ -1,10 +1,18 @@
 import React, {Component} from 'react';
-import {View, Text, Image, Button} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  Button,
+  TouchableOpacity,
+  ImageBackground,
+} from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
-import microphoneImageSource from '../../assets/artwork/MicLightningVCopy@.png';
-import fistImageSource from '../../assets/artwork/RevolutionFistCopy@.png';
-import heartImageSource from '../../assets/artwork/Heartart@.png';
+import microphoneImageSource from '../../assets/artwork/miclightningv.png';
+import fistImageSource from '../../assets/artwork/Revolution.png';
+import heartImageSource from '../../assets/artwork/heartart.png';
 import styles from './styles';
+import activeButton from '../../assets/buttons/activespacebutton.png';
 
 const slides = [
   {
@@ -67,7 +75,13 @@ export default class Onboarding extends Component {
           return <Text style={styles.skip}>Skip</Text>;
         }}
         renderDoneButton={() => {
-          return <Button style={styles.done} title="Join the Revolution" />;
+          return (
+            <TouchableOpacity style={styles.button}>
+              <ImageBackground source={activeButton} style={styles.buttonImage}>
+                <Text style={styles.buttontext}>Join the Revolution</Text>
+              </ImageBackground>
+            </TouchableOpacity>
+          );
         }}
         activeDotStyle={{backgroundColor: '#CC0000'}}
         //use renderDoneButton={()=><Button Component>} when component is done}
