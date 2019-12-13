@@ -19,8 +19,9 @@ const styles = StyleSheet.create({
     borderRadius: baseSpacing * 2,
     padding: baseSpacing,
     padding: baseSpacing,
-    height: 50,
-    width: 104,
+
+    height: '100%',
+    width: '30%',
   },
   buttonText: {
     fontFamily: headerFont,

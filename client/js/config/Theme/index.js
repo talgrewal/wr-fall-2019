@@ -2,6 +2,7 @@ const THEME = {
   typography: {
     mainFont: 'NeueHaasDisplay-Roman',
     headerFont: 'FiraSans-Bold',
+    italicFont: 'FiraSans-Italic',
     hugeText: 24,
     largeText: 20,
     subheaderText: 18,
