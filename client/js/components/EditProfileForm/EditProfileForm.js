@@ -60,8 +60,6 @@ class EditProfileForm extends Component {
   };
 
   render() {
-    // console.log('state', this.state.user && this.state.user.id);
-
     return (
       this.state.user && (
         <Query query={QUERY_USER} variables={{userId: this.state.user.id}}>
@@ -69,8 +67,6 @@ class EditProfileForm extends Component {
             if (loading) return <Loader />;
             if (error) return <Text>{error.message}</Text>;
             if (data) {
-              //   console.log(data);
-
               return (
                 <Mutation mutation={EDITPROFILE_MUTATION} client={client}>
                   {updateUser => (
@@ -82,7 +78,6 @@ class EditProfileForm extends Component {
                             userid: this.state.user.id,
                           };
                           try {
-                            // console.log(newValues);
                             const updateUserDetails = await updateUser({
                               variables: newValues,
                             });
@@ -94,7 +89,6 @@ class EditProfileForm extends Component {
                               token: this.state.user.token,
                             };
 
-                            // console.log(updateValues);
                             await createViewer(updateValues);
 
                             this.props.navigation.navigate('Home');
