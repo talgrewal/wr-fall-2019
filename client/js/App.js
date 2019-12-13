@@ -3,8 +3,8 @@ import Login from './screens/Login';
 import RootStackNavigator from './navigation/RootStackNavigator';
 import Event from './screens/Event';
 import UserProvider from './context/UserProvider';
-import client from './apollo';
 import {ApolloProvider} from 'react-apollo';
+import client from './config/api';
 
 const comments = [
   {
