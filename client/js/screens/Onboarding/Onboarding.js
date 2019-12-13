@@ -15,6 +15,8 @@ import styles from './styles';
 import activeButton from '../../assets/buttons/activespacebutton.png';
 import {withNavigation} from 'react-navigation';
 
+import {onBoardingSet} from '../../config/modals';
+
 const slides = [
   {
     key: '1',
@@ -53,6 +55,10 @@ export default class Onboarding extends Component {
     };
   }
 
+  componentDidMount() {
+    this.onBoardingSet;
+  }
+
   _renderItem = ({item, dimensions}) => {
     return (
       <View style={styles.mainContent}>
@@ -86,8 +92,14 @@ export default class Onboarding extends Component {
         renderDoneButton={() => {
           return (
             <TouchableOpacity
-              onPress={() => {
-                this.props.navigation.navigate('Login');
+              onPress={async () => {
+                try {
+                  await onBoardingSet(true);
+                  this.props.navigation.navigate('Login');
+                } catch (e) {
+                  console.log(e);
+                  this.setState({error: e});
+                }
               }}
               style={styles.button}>
               <ImageBackground source={activeButton} style={styles.buttonImage}>
@@ -97,7 +109,6 @@ export default class Onboarding extends Component {
           );
         }}
         activeDotStyle={{backgroundColor: '#CC0000'}}
-        //use renderDoneButton={()=><Button Component>} when component is done}
       />
     );
   }
