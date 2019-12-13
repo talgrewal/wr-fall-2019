@@ -35,7 +35,7 @@ const MainSubscribeButton = ({CampaignId}) => {
                   const editSubscribe = await updateUser({
                     variables: {
                       campaignid: CampaignId,
-                      userid: 'ck3ugq1s54lj20b00lud52xul',
+                      userid: 'ck3yzox88i13o0b00u0ak6b3h',
                     },
                   });
                 } catch (e) {}
