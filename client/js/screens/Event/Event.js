@@ -15,14 +15,9 @@ import gql from 'graphql-tag';
 import {Form} from 'react-final-form';
 
 const COMMENT_MUTATION = gql`
-  mutation comment($username: String!, $comment: String!) {
-    comment(username: $username, comment: $comment) {
-      comments {
-        id
-        username
-        createdAt
-        comment
-      }
+  mutation createComment($username: String!, $comment: String!) {
+    createComment(data: {username: $username, comment: $comment}) {
+      id
     }
   }
 `;
@@ -37,6 +32,16 @@ const Event = ({
   user,
 }) => {
   const [value, onChangeText] = React.useState('');
+
+  //event object is passed into the addToCalendar so it doesnt need comments or user
+  const event = {
+    title: title,
+    location: location,
+    startDate: startDate,
+    endDate: endDate,
+    description: description,
+  };
+
   let commentItems = [];
   for (let i = 0; i < comments.length; i++) {
     commentItems.push(
@@ -51,12 +56,13 @@ const Event = ({
     );
   }
 
+  let commentId = null;
+
   //Cleaned up moment formatting calls to keep ternaries readable
   const startDay = moment(startDate).format('MMM Do, YYYY');
   const endDay = moment(endDate).format('MMM Do, YYYY');
   const startTime = moment(startDate).format('h:mma');
   const endTime = moment(endDate).format('h:mma');
-  console.log('EVENT USER: ', user);
   return (
     <ScrollView style={styles.page}>
       <View style={styles.container}>
@@ -80,7 +86,7 @@ const Event = ({
           <TouchableOpacity
             style={styles.button}
             onPress={() => {
-              addToCalendar(title, location, description, startDate, endDate);
+              addToCalendar(event);
             }}>
             <Text style={styles.buttonText}>Add to my calendar</Text>
           </TouchableOpacity>
@@ -101,14 +107,12 @@ const Event = ({
               <Form
                 onSubmit={async values => {
                   try {
-                    const newComment = await comment({
+                    const commentId = await comment({
                       variables: {
-                        username: 'Ciaran',
+                        username: user.name,
                         comment: values.comment,
                       },
                     });
-                    await createViewer(newUserToken.data.signup);
-                    this.props.navigation.navigate('Home');
                   } catch (e) {
                     console.log(e);
                     this.setState({error: e});
@@ -147,13 +151,13 @@ const utcDateToString = momentInUTC => {
   return s;
 };
 
-addToCalendar = (title, location, description, startDateUTC, endDateUTC) => {
+addToCalendar = event => {
   const eventConfig = {
-    title,
-    startDate: utcDateToString(startDateUTC),
-    endDate: utcDateToString(endDateUTC),
-    location: location,
-    notes: description,
+    title: event.title,
+    startDate: utcDateToString(event.startDateUTC),
+    endDate: utcDateToString(event.endDateUTC),
+    location: event.location,
+    notes: event.description,
   };
   AddCalendarEvent.presentEventCreatingDialog(eventConfig)
     .then(eventInfo => {
