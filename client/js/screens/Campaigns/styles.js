@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
   },
   categoryVideo: {
     width: 130,
-    height: 80,
+    height: '91%',
     resizeMode: 'contain',
     marginLeft: 15,
   },
@@ -46,9 +46,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   campaignSingleMainImage: {
-    width: 150,
+    width: '100%',
     height: 150,
-
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
   },
@@ -64,6 +63,13 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   touchableContainer: {
+    width: '45%',
+    height: '100%',
+    margin: 10,
+  },
+  touchableContainerSideScroll: {
+    width: '25%',
+    height: '100%',
     margin: 10,
   },
   imageAbsolute: {
@@ -74,10 +80,11 @@ const styles = StyleSheet.create({
     bottom: 0,
     justifyContent: 'center',
     alignItems: 'center',
+    width: '100%',
   },
   videoPreview: {
-    width: 40,
-    height: 40,
+    width: '40%',
+    height: '55%',
     alignItems: 'center',
     justifyContent: 'center',
     alignSelf: 'center',
@@ -92,6 +99,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'flex-start',
+  },
+  gradientHolder: {
+    width: '100%',
   },
 });
 export default styles;

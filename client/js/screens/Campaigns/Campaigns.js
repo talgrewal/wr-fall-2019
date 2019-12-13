@@ -44,7 +44,7 @@ const Campaigns = ({navigation, campaignData}) => {
               onPress={() => {
                 Linking.openURL('https://www.youtube.com/watch?v=oxhYaiSnlAo');
               }}
-              style={styles.touchableContainer}>
+              style={styles.touchableContainerSideScroll}>
               <ImageBackground source={iceCream} style={styles.categoryVideo}>
                 <View style={styles.flexContainerStart}>
                   <Image source={playButton} style={styles.videoPreview} />
@@ -57,7 +57,7 @@ const Campaigns = ({navigation, campaignData}) => {
               onPress={() => {
                 Linking.openURL('https://www.youtube.com/watch?v=P3GagfbA2vo');
               }}
-              style={styles.touchableContainer}>
+              style={styles.touchableContainerSideScroll}>
               <ImageBackground
                 source={icebergMelt}
                 style={styles.categoryVideo}>
@@ -72,7 +72,7 @@ const Campaigns = ({navigation, campaignData}) => {
               onPress={() => {
                 Linking.openURL('https://www.youtube.com/watch?v=KAJsdgTPJpU');
               }}
-              style={styles.touchableContainer}>
+              style={styles.touchableContainerSideScroll}>
               <ImageBackground source={iceCream} style={styles.categoryVideo}>
                 <View style={styles.flexContainerStart}>
                   <Image source={playButton} style={styles.videoPreview} />
@@ -100,7 +100,7 @@ const Campaigns = ({navigation, campaignData}) => {
                 style={styles.campaignSingleMainImage}
                 source={{uri: item.image}}
               />
-              <View>
+              <View style={styles.gradientHolder}>
                 <Image style={styles.gradient} source={imageGradient} />
                 <View style={styles.imageAbsolute}>
                   <Text numberOfLines={1} style={styles.campaignSingleText}>
