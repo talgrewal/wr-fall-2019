@@ -31,7 +31,7 @@ const Campaigns = ({navigation, campaignData}) => {
           />
 
           <Image
-            style={styles.xxxIcon}
+            style={styles.xGroupIcon}
             source={require('../../assets/artwork/xgroup.png')}
           />
         </View>

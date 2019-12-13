@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
-  xxxIcon: {
+  xGroupIcon: {
     resizeMode: 'contain',
     height: 30,
     alignSelf: 'flex-end',
@@ -82,6 +82,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignSelf: 'center',
     marginBottom: '15%',
+  },
+  flexContainer: {
+    flexGrow: 1,
+    justifyContent: 'space-around',
+    alignItems: 'flex-start',
+  },
+  flexContainerStart: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'flex-start',
   },
 });
 export default styles;
