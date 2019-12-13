@@ -22,6 +22,14 @@ const COMMENT_MUTATION = gql`
   }
 `;
 
+const UPDATE_EVENT_MUTATION = `gql
+mutation updateEvent($id: String!) {
+  updateEvent(data: {comments: $id}) {
+    id
+  }
+}
+`;
+
 const Event = ({
   title,
   location,
@@ -107,12 +115,27 @@ const Event = ({
               <Form
                 onSubmit={async values => {
                   try {
+                    console.log(values);
                     const commentId = await comment({
                       variables: {
                         username: user.name,
                         comment: values.comment,
                       },
                     });
+                    console.log('Comment Id: ', commentId);
+
+                    // return (
+                    //   <Mutation
+                    //     mutation={UPDATE_EVENT_MUTATION}
+                    //     client={
+                    //       new ApolloClient({
+                    //         uri: APOLLOCLIENTADDRESS,
+                    //       })
+                    //     }>
+                    //     {updateEvent => <Text>What goes in here?</Text>}
+                    //   </Mutation>
+                    // );
+                    //ADD COMMENT TO EVENT MUTATION
                   } catch (e) {
                     console.log(e);
                     this.setState({error: e});
@@ -128,10 +151,7 @@ const Event = ({
                       onChangeText={text => onChangeText(text)}
                       value={value}
                     />
-                    <TouchableOpacity
-                      onPress={() => {
-                        handleSubmit;
-                      }}>
+                    <TouchableOpacity onPress={handleSubmit}>
                       <Image style={styles.commentIcon} source={commentIcon} />
                     </TouchableOpacity>
                   </>
