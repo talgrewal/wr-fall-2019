@@ -3,7 +3,6 @@ import AsyncStorage from '@react-native-community/async-storage';
 export const queryViewer = async () => {
   try {
     return await AsyncStorage.getItem('user');
-    // return JSON.parse(value);
   } catch (error) {
     console.log(error);
     return error;

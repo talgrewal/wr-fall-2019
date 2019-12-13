@@ -10,17 +10,27 @@ import {
 } from 'react-native';
 import EmailIcon from '../../assets/signinicons/EmailIcon.png';
 import UserIcon from '../../assets/headingelement/loginIcon.png';
-
+import Loader from '../../components/Loader';
 import styles from './styles';
 
-import {Mutation} from '@apollo/react-components';
+import {Mutation, Query} from '@apollo/react-components';
 import ApolloClient from 'apollo-boost';
 import gql from 'graphql-tag';
 import {withNavigation} from 'react-navigation';
-
+import {createViewer} from '../../config/modals';
 import Button from '../../assets/buttons/ButtonSPace.png';
-import {APOLLO_CLIENT} from '../../config/api';
+import client from '../../config/api';
 import {queryViewer} from '../../config/modals';
+
+const QUERY_USER = gql`
+  query getUser($userId: ID!) {
+    user(where: {id: $userId}) {
+      id
+      email
+      name
+    }
+  }
+`;
 
 const EDITPROFILE_MUTATION = gql`
   mutation updateUser($userid: ID!, $name: String!, $email: String!) {
@@ -35,97 +45,142 @@ const EDITPROFILE_MUTATION = gql`
 class EditProfileForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      user: null,
+    };
   }
 
-  render() {
-    const Viewer = async () => {
-      return await queryViewer();
-    };
+  componentDidMount() {
+    this.getUser();
+  }
 
-    console.log(Viewer());
+  getUser = async () => {
+    const user = JSON.parse(await queryViewer());
+    this.setState({user});
+  };
+
+  render() {
+    // console.log('state', this.state.user && this.state.user.id);
 
     return (
-      <Mutation
-        mutation={EDITPROFILE_MUTATION}
-        client={
-          new ApolloClient({
-            uri: APOLLO_CLIENT,
-          })
-        }>
-        {updateUser => (
-          <View style={styles.accountLoginContainer}>
-            <Form
-              onSubmit={values => {
-                this.props.navigation.navigate('Home');
-              }}
-              render={({handleSubmit}) => (
-                <View style={styles.formHolder}>
-                  {/* start of username field */}
-                  <View style={styles.textField}>
-                    <Field
-                      name="name"
-                      style={styles.textField}
-                      render={({input, meta}) => (
-                        <TextInput
-                          style={styles.fieldText}
-                          id="name"
-                          placeholder="User Name"
-                          placeholderTextColor="black"
-                          type="text"
-                          inputProps={{
-                            autoComplete: 'off',
-                          }}
-                          {...input}
-                        />
-                      )}
-                    />
-                    <Image style={styles.IconImage} source={UserIcon} />
-                  </View>
-                  {/* End of username field */}
+      this.state.user && (
+        <Query query={QUERY_USER} variables={{userId: this.state.user.id}}>
+          {({loading, error, data}) => {
+            if (loading) return <Loader />;
+            if (error) return <Text>{error.message}</Text>;
+            if (data) {
+              //   console.log(data);
 
-                  {/* start of email field */}
-                  <View style={styles.textField}>
-                    <Field
-                      name="email"
-                      style={styles.textField}
-                      render={({input, meta}) => (
-                        <TextInput
-                          style={styles.fieldText}
-                          id="email"
-                          placeholder="Email"
-                          placeholderTextColor="black"
-                          type="text"
-                          inputProps={{
-                            autoComplete: 'off',
-                          }}
-                          {...input}
-                        />
-                      )}
-                    />
-                    <Image style={styles.IconImage} source={EmailIcon} />
-                  </View>
-                  {/* End of email field */}
+              return (
+                <Mutation mutation={EDITPROFILE_MUTATION} client={client}>
+                  {updateUser => (
+                    <View style={styles.accountLoginContainer}>
+                      <Form
+                        onSubmit={async values => {
+                          const newValues = {
+                            ...values,
+                            userid: this.state.user.id,
+                          };
+                          try {
+                            // console.log(newValues);
+                            const updateUserDetails = await updateUser({
+                              variables: newValues,
+                            });
 
-                  {/* Start of View */}
-                  <View style={styles.buttonHolder}>
-                    <TouchableOpacity
-                      onPress={handleSubmit}
-                      style={styles.button}>
-                      <ImageBackground
-                        source={Button}
-                        style={styles.buttonImage}>
-                        <Text style={styles.text}>Save</Text>
-                      </ImageBackground>
-                    </TouchableOpacity>
-                  </View>
-                  {/* Start of View */}
-                </View>
-              )}
-            />
-          </View>
-        )}
-      </Mutation>
+                            const updateValues = {
+                              user: {
+                                id: this.state.user.id,
+                              },
+                              token: this.state.user.token,
+                            };
+
+                            // console.log(updateValues);
+                            await createViewer(updateValues);
+
+                            this.props.navigation.navigate('Home');
+                          } catch (e) {
+                            console.log(e);
+                            this.setState({error: e});
+                          }
+                        }}
+                        render={({handleSubmit}) => (
+                          <View style={styles.formHolder}>
+                            {/* start of username field */}
+                            <View style={styles.textField}>
+                              <Field
+                                name="name"
+                                style={styles.textField}
+                                render={({input, meta}) => (
+                                  <TextInput
+                                    style={styles.fieldText}
+                                    id="name"
+                                    placeholder="User Name"
+                                    placeholderTextColor="black"
+                                    type="text"
+                                    inputProps={{
+                                      autoComplete: 'off',
+                                    }}
+                                    {...input}
+                                  />
+                                )}
+                              />
+                              <Image
+                                style={styles.IconImage}
+                                source={UserIcon}
+                              />
+                            </View>
+                            {/* End of username field */}
+
+                            {/* start of email field */}
+                            <View style={styles.textField}>
+                              <Field
+                                name="email"
+                                style={styles.textField}
+                                render={({input, meta}) => (
+                                  <TextInput
+                                    style={styles.fieldText}
+                                    id="email"
+                                    placeholder="Email"
+                                    placeholderTextColor="black"
+                                    type="text"
+                                    inputProps={{
+                                      autoComplete: 'off',
+                                    }}
+                                    {...input}
+                                  />
+                                )}
+                              />
+                              <Image
+                                style={styles.IconImage}
+                                source={EmailIcon}
+                              />
+                            </View>
+                            {/* End of email field */}
+
+                            {/* Start of View */}
+                            <View style={styles.buttonHolder}>
+                              <TouchableOpacity
+                                onPress={handleSubmit}
+                                style={styles.button}>
+                                <ImageBackground
+                                  source={Button}
+                                  style={styles.buttonImage}>
+                                  <Text style={styles.text}>Save</Text>
+                                </ImageBackground>
+                              </TouchableOpacity>
+                            </View>
+                            {/* Start of View */}
+                          </View>
+                        )}
+                      />
+                    </View>
+                  )}
+                </Mutation>
+              );
+            }
+          }}
+        </Query>
+      )
     );
   }
 }
