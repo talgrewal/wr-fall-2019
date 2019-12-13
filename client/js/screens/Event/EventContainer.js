@@ -1,9 +1,31 @@
 import React, {Component} from 'react';
-
 import Event from './Event';
+import {UserContext} from '../../context/UserProvider';
 
 export default class EventContainer extends Component {
   render() {
-    return <Event />;
+    const {
+      title,
+      description,
+      location,
+      startDate,
+      endDate,
+      comments,
+    } = this.props;
+    return (
+      <UserContext.Consumer>
+        {({user}) => (
+          <Event
+            title={title}
+            description={description}
+            location={location}
+            startDate={startDate}
+            endDate={endDate}
+            comments={comments}
+            user={user}
+          />
+        )}
+      </UserContext.Consumer>
+    );
   }
 }

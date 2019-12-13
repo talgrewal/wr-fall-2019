@@ -14,7 +14,7 @@ export const createViewer = async viewer => {
   try {
     return await AsyncStorage.setItem(
       `user`,
-      JSON.stringify({id: viewer.id, token: viewer.token}),
+      JSON.stringify({id: viewer.user.id, token: viewer.token}),
     );
   } catch (error) {
     console.log(error);
