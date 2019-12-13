@@ -36,27 +36,22 @@ const Event = ({
   comments,
   user,
 }) => {
-  const [value, onChangeText] = React.useState('');
-  let commentItems = [];
-  for (let i = 0; i < comments.length; i++) {
-    commentItems.push(
-      <View key={i} style={styles.commentContainer}>
-        <Image style={styles.bullet} source={dot} />
-        <Comment
-          user={comments[i].user}
-          comment={comments[i].comment}
-          date={comments[i].date}
-        />
-      </View>,
-    );
-  }
+  const commentItems = comments.map(comment => (
+    <View style={styles.commentContainer}>
+      <Image style={styles.bullet} source={dot} />
+      <Comment
+        user={comment.user}
+        comment={comment.comment}
+        date={comment.date}
+      />
+    </View>
+  ));
 
   //Cleaned up moment formatting calls to keep ternaries readable
   const startDay = moment(startDate).format('MMM Do, YYYY');
   const endDay = moment(endDate).format('MMM Do, YYYY');
   const startTime = moment(startDate).format('h:mma');
   const endTime = moment(endDate).format('h:mma');
-  console.log('EVENT USER: ', user);
   return (
     <ScrollView style={styles.page}>
       <View style={styles.container}>
@@ -141,7 +136,6 @@ const Event = ({
     </ScrollView>
   );
 };
-
 const utcDateToString = momentInUTC => {
   let s = moment.utc(momentInUTC).format('YYYY-MM-DDTHH:mm:ss.SSS[Z]');
   return s;

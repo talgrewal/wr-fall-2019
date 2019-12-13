@@ -9,8 +9,6 @@ const httpLink = createHttpLink({
   uri:
     process.env.NODE_ENV !== 'production' &&
     'https://us1.prisma.sh/public-flintwanderer-148/server/dev',
-  credentials:
-    process.env.NODE_ENV === 'production' ? 'same-origin' : 'include',
 });
 
 const client = new ApolloClient({
