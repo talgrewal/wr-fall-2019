@@ -30,5 +30,6 @@ type Campaign {
 type Comment{
    id: ID! @id
    username: String!
-   comment: String!
+    createdAt: DateTime! @createdAt
+    comment: String!
 }
