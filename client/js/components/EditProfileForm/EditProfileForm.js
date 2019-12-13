@@ -7,6 +7,7 @@ import {
   Text,
   TextInput,
   ImageBackground,
+  Alert,
 } from 'react-native';
 import EmailIcon from '../../assets/signinicons/EmailIcon.png';
 import UserIcon from '../../assets/headingelement/loginIcon.png';
@@ -73,6 +74,9 @@ class EditProfileForm extends Component {
                     <View style={styles.accountLoginContainer}>
                       <Form
                         onSubmit={async values => {
+                          //   alert(
+                          //     'You have successfully edited the Profile Details',
+                          //   );
                           const newValues = {
                             ...values,
                             userid: this.state.user.id,
@@ -91,7 +95,27 @@ class EditProfileForm extends Component {
 
                             await createViewer(updateValues);
 
-                            this.props.navigation.navigate('Home');
+                            Alert.alert(
+                              'Confirmation',
+                              'You have successfully edited the Profile Details',
+                              [
+                                {
+                                  text: 'Cancel',
+                                  onPress: () =>
+                                    this.props.navigation.navigate(
+                                      'EditProfile',
+                                    ),
+                                  style: 'cancel',
+                                },
+                                {
+                                  text: 'OK',
+                                  onPress: () =>
+                                    this.props.navigation.navigate('Home'),
+                                },
+                              ],
+                              {cancelable: false},
+                            );
+                            // this.props.navigation.navigate('Home');
                           } catch (e) {
                             console.log(e);
                             this.setState({error: e});
