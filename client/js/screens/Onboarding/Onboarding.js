@@ -13,6 +13,7 @@ import fistImageSource from '../../assets/artwork/Revolution.png';
 import heartImageSource from '../../assets/artwork/heartart.png';
 import styles from './styles';
 import activeButton from '../../assets/buttons/activespacebutton.png';
+import {withNavigation} from 'react-navigation';
 
 const slides = [
   {
@@ -62,7 +63,7 @@ export default class Onboarding extends Component {
     );
   };
 
-  render() {
+  render(navigation) {
     return (
       <AppIntroSlider
         slides={slides}
@@ -72,11 +73,23 @@ export default class Onboarding extends Component {
         doneLabel="Join the Revolution"
         bottomButton={true}
         renderSkipButton={() => {
-          return <Text style={styles.skip}>Skip</Text>;
+          return (
+            <Text
+              onPress={() => {
+                this.props.navigation.navigate('Login');
+              }}
+              style={styles.skip}>
+              Skip
+            </Text>
+          );
         }}
         renderDoneButton={() => {
           return (
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity
+              onPress={() => {
+                this.props.navigation.navigate('Login');
+              }}
+              style={styles.button}>
               <ImageBackground source={activeButton} style={styles.buttonImage}>
                 <Text style={styles.buttontext}>Join the Revolution</Text>
               </ImageBackground>

@@ -31,21 +31,21 @@ export const deleteViewer = async () => {
   }
 };
 
-// export const queryOnBoarding = async () => {
-//   try {
-//     await AsyncStorage.getItem('onBoardingComplete');
-//     return JSON.parse(value);
-//   } catch (error) {
-//     console.log(error);
-//     return new error(error);
-//   }
-// };
+export const queryOnBoarding = async () => {
+  try {
+    await AsyncStorage.getItem('onBoardingComplete');
+    return JSON.parse(value);
+  } catch (error) {
+    console.log(error);
+    return new error(error);
+  }
+};
 
-// export const onBoardingSet = async () => {
-//   try {
-//     await AsyncStorage.setItem(onBoardingComplete, JSON.stringify(true));
-//     return true;
-//   } catch (error) {
-//     return new Error(error);
-//   }
-// };
+export const onBoardingSet = async () => {
+  try {
+    await AsyncStorage.setItem(onBoardingComplete, JSON.stringify(true));
+    return true;
+  } catch (error) {
+    return new Error(error);
+  }
+};
