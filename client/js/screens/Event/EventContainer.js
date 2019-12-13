@@ -14,7 +14,7 @@ export default class EventContainer extends Component {
     } = this.props;
     return (
       <UserContext.Consumer>
-        {({value}) => {
+        {({user}) => (
           <Event
             title={title}
             description={description}
@@ -22,9 +22,9 @@ export default class EventContainer extends Component {
             startDate={startDate}
             endDate={endDate}
             comments={comments}
-            user={value}
-          />;
-        }}
+            user={user}
+          />
+        )}
       </UserContext.Consumer>
     );
   }

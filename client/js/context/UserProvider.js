@@ -1,4 +1,5 @@
-import React, {Component, createContext} from 'react';
+import React, {Component} from 'react';
+import {createContext} from 'react';
 import Loader from '../components/Loader';
 import gql from 'graphql-tag';
 import {Query} from 'react-apollo';
@@ -19,39 +20,40 @@ class UserProvider extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: {},
+      user: null,
     };
   }
 
-  getAsyncUser = async () => {
+  componentDidMount() {
+    this.getUser();
+  }
+
+  getUser = async () => {
     try {
-      const asyncUser = await queryViewer().then(asyncUser);
-      console.log('ASYNC USER: ', asyncUser);
-      return asyncUser;
+      const user = await queryViewer();
+      this.setState({user: user});
     } catch (e) {
       console.log(e);
     }
   };
 
-  getLoggedUser = async () => {
-    console.log(getASyncUser());
-    return (
-      <Query query={USER_QUERY} variables={{userId: getAsyncUser().Id}}>
-        {({loading, error, data}) => {
-          if (loading) return <Loader />;
-          if (error) return <>{console.log(error)}</>;
-          return (
-            <UserContext.Provider value={{user: data}}>
-              {children}
-            </UserContext.Provider>
-          );
-        }}
-      </Query>
-    );
-  };
-
   render() {
-    return this.getLoggedUser();
+    return (
+      this.state.user && (
+        <Query query={USER_QUERY} variables={{userId: this.state.user.id}}>
+          {({loading, error, data}) => {
+            if (loading) return <Loader />;
+            if (error) return <>{console.log(error)}</>;
+            const user = data && data.user ? data.user : null;
+            return (
+              <UserContext.Provider value={{user: user}}>
+                {this.props.children}
+              </UserContext.Provider>
+            );
+          }}
+        </Query>
+      )
+    );
   }
 }
 
