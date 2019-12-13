@@ -12,7 +12,7 @@ import {APOLLOCLIENTADDRESS} from '../../config/constant';
 import {Mutation} from '@apollo/react-components';
 import ApolloClient from 'apollo-boost';
 import gql from 'graphql-tag';
-import {Form} from 'react-final-form';
+import {Form, Field} from 'react-final-form';
 
 const COMMENT_MUTATION = gql`
   mutation comment($username: String!, $comment: String!) {
@@ -111,13 +111,22 @@ const Event = ({
                 }}
                 render={({handleSubmit}) => (
                   <>
-                    <TextInput
-                      multiline
-                      placeholder="Comment"
-                      placeholderTextColor="black"
-                      style={styles.input}
-                      onChangeText={text => onChangeText(text)}
-                      value={value}
+                    <Field
+                      name="comment"
+                      style={styles.textField}
+                      render={({input, meta}) => (
+                        <TextInput
+                          style={styles.fieldText}
+                          id="comment"
+                          placeholder="Comment"
+                          placeholderTextColor="black"
+                          type="text"
+                          inputProps={{
+                            autoComplete: 'off',
+                          }}
+                          {...input}
+                        />
+                      )}
                     />
                     <TouchableOpacity
                       onPress={() => {
