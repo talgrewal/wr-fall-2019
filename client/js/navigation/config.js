@@ -38,8 +38,8 @@ const MenuButton = ({navigation}) => {
       <TouchableOpacity onPress={() => navigation.goBack()}>
         <Image
           style={{
-            height: 30,
-            width: 25,
+            height: 20,
+            width: 20,
             resizeMode: 'contain',
             marginLeft: 20,
           }}
