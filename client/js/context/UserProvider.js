@@ -4,6 +4,7 @@ import Loader from '../components/Loader';
 import gql from 'graphql-tag';
 import {Query} from 'react-apollo';
 import {queryViewer} from '../config/modals';
+import {Text, View} from 'react-native';
 const UserContext = createContext();
 
 const USER_QUERY = gql`

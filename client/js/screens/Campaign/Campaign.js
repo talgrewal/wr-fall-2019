@@ -15,6 +15,7 @@ import MainUnsubscribeButton from '../../components/MainUnsubscribeButton';
 import MrMoneyImage from '../../assets/artwork/mrmoney.png';
 
 const Campaign = ({navigation, user}) => {
+  console.log(navigation.state.params);
   return (
     <ScrollView style={styles.campaignContainer}>
       {/* Start of Title */}
@@ -48,13 +49,18 @@ const Campaign = ({navigation, user}) => {
           </View>
         </View>
       </View>
-      {/* Start of Campaign Info */}
+      {/* End of Campaign Info */}
 
       <View style={styles.campaignDescription}>
         <Text style={styles.campaignDescriptionText} numberOfLines={5}>
           {navigation.state.params.campaign.description}
         </Text>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('CampaignModal', {
+              campaignData: navigation.state.params,
+            });
+          }}>
           <Text style={styles.campaignRedText}>More</Text>
         </TouchableOpacity>
       </View>
@@ -78,20 +84,25 @@ const Campaign = ({navigation, user}) => {
             style={styles.eventSingle}
             data={navigation.state.params.campaign.events}
             renderItem={({item}) => (
-              <View style={styles.eventContainer}>
-                <View style={styles.eventImageBox}>
-                  <Image style={styles.eventImage} source={{uri: item.image}} />
-                </View>
+              <TouchableOpacity onPress={() => navigation.navigate('Event')}>
+                <View style={styles.eventContainer}>
+                  <View style={styles.eventImageBox}>
+                    <Image
+                      style={styles.eventImage}
+                      source={{uri: item.image}}
+                    />
+                  </View>
 
-                <View style={styles.eventInfoBox}>
-                  <Text style={styles.eventInfoBoxTitle} numberOfLines={1}>
-                    {item.title}
-                  </Text>
-                  <Text style={styles.eventInfoBoxLocation} numberOfLines={2}>
-                    {item.location}
-                  </Text>
+                  <View style={styles.eventInfoBox}>
+                    <Text style={styles.eventInfoBoxTitle} numberOfLines={1}>
+                      {item.title}
+                    </Text>
+                    <Text style={styles.eventInfoBoxLocation} numberOfLines={2}>
+                      {item.location}
+                    </Text>
+                  </View>
                 </View>
-              </View>
+              </TouchableOpacity>
             )}
             keyExtractor={(item, index) => 'index' + index.toString()}
           />
