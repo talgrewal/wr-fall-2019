@@ -7,6 +7,7 @@ const AppHeader = props => (
     style={{
       backgroundColor: 'white',
       overflow: 'hidden',
+
       width: '100%',
     }}>
     <Image
@@ -26,12 +27,26 @@ const AppHeader = props => (
 
 const MenuButton = ({navigation}) => {
   return (
-    <TouchableOpacity onPress={navigation.openDrawer}>
-      <Image
-        style={{height: 25, width: 35, resizeMode: 'contain', marginLeft: 20}}
-        source={require('../assets/headingelement/Burgermenu.png')}
-      />
-    </TouchableOpacity>
+    <View style={{justifyContent: 'space-between'}}>
+      <TouchableOpacity onPress={navigation.openDrawer}>
+        <Image
+          style={{height: 25, width: 35, resizeMode: 'contain', marginLeft: 20}}
+          source={require('../assets/headingelement/Burgermenu.png')}
+        />
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={() => navigation.goBack()}>
+        <Image
+          style={{
+            height: 30,
+            width: 25,
+            resizeMode: 'contain',
+            marginLeft: 20,
+          }}
+          source={require('../assets/headingelement/backarrow.png')}
+        />
+      </TouchableOpacity>
+    </View>
   );
 };
 
