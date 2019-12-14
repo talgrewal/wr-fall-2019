@@ -7,7 +7,7 @@ import {withNavigation} from 'react-navigation';
 const EditProfile = ({navigation}) => {
   return (
     <>
-      <Text style={styles.title}>Edit Profile</Text>
+      <Text style={styles.title}>Edit Profile </Text>
       <View style={styles.pageContainer}>
         <EditProfileForm />
       </View>

@@ -6,7 +6,7 @@ import LogoImage from '../../assets/headingelement/worldrevolutionblack.png';
 import styles from '../Signup/styles';
 import {SafeAreaView} from 'react-navigation';
 import {withNavigation} from 'react-navigation';
-import {createToken} from '../../config/modals';
+import {createToken} from '../../config/models';
 
 const Login = ({navigation}) => {
   return (

@@ -18,10 +18,10 @@ import {Mutation, Query} from '@apollo/react-components';
 import ApolloClient from 'apollo-boost';
 import gql from 'graphql-tag';
 import {withNavigation} from 'react-navigation';
-import {createViewer} from '../../config/modals';
+import {createViewer} from '../../config/models';
 import Button from '../../assets/buttons/ButtonSPace.png';
 import client from '../../config/api';
-import {queryViewer} from '../../config/modals';
+import {queryViewer} from '../../config/models';
 
 const QUERY_USER = gql`
   query getUser($userId: ID!) {
@@ -56,7 +56,7 @@ class EditProfileForm extends Component {
   }
 
   getUser = async () => {
-    const user = JSON.parse(await queryViewer());
+    const user = await queryViewer();
     this.setState({user});
   };
 

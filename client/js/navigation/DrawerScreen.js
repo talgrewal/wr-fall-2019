@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {withNavigation} from 'react-navigation';
 import {SafeAreaView, View, Text, TouchableOpacity} from 'react-native';
 import styles from './styles';
-import {deleteViewer} from '../config/modals';
+import {deleteViewer} from '../config/models';
 
 class DrawerScreen extends Component {
   static navigationOptions = {
