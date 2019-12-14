@@ -65,6 +65,7 @@ export const sharedNavigationOptions = navigation => ({
   headerBackTitle: null,
   header: props => <AppHeader {...props} />,
   headerLeft: props => <MenuButton {...props} navigation={navigation} />,
+
   headerRight: props => <ProfileButton {...props} navigation={navigation} />,
 
   headerStyle: {
