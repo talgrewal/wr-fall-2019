@@ -74,9 +74,6 @@ class EditProfileForm extends Component {
                     <View style={styles.accountLoginContainer}>
                       <Form
                         onSubmit={async values => {
-                          //   alert(
-                          //     'You have successfully edited the Profile Details',
-                          //   );
                           const newValues = {
                             ...values,
                             userid: this.state.user.id,
@@ -115,7 +112,6 @@ class EditProfileForm extends Component {
                               ],
                               {cancelable: false},
                             );
-                            // this.props.navigation.navigate('Home');
                           } catch (e) {
                             console.log(e);
                             this.setState({error: e});
@@ -132,7 +128,7 @@ class EditProfileForm extends Component {
                                   <TextInput
                                     style={styles.fieldText}
                                     id="name"
-                                    placeholder="User Name"
+                                    placeholder={data.user.name}
                                     placeholderTextColor="black"
                                     type="text"
                                     inputProps={{
@@ -158,7 +154,7 @@ class EditProfileForm extends Component {
                                   <TextInput
                                     style={styles.fieldText}
                                     id="email"
-                                    placeholder="Email"
+                                    placeholder={data.user.email}
                                     placeholderTextColor="black"
                                     type="text"
                                     inputProps={{
