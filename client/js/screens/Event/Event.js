@@ -111,13 +111,22 @@ const Event = ({
                 uri: APOLLOCLIENTADDRESS,
               })
             }>
-            {comment => (
+            {createComment => (
+              <Mutation
+              mutation={UPDATE_EVENT_MUTATION}
+              client={
+                new ApolloClient({
+                  uri: APOLLOCLIENTADDRESS,
+                })
+              }>
+                  {updateEvent => <Text>What goes in here?</Text>}
+                      </Mutation>
               <Form
                 onSubmit={async values => {
                   try {
                     console.log(values);
                     console.log('User: ', user);
-                    const commentId = await comment({
+                    const commentId = await createComment({
                       variables: {
                         username: user.name,
                         comment: values.comment,
@@ -125,18 +134,6 @@ const Event = ({
                     });
                     console.log('Comment Id: ', commentId);
                     console.log('User: ', user);
-
-                    // return (
-                    //   <Mutation
-                    //     mutation={UPDATE_EVENT_MUTATION}
-                    //     client={
-                    //       new ApolloClient({
-                    //         uri: APOLLOCLIENTADDRESS,
-                    //       })
-                    //     }>
-                    //     {updateEvent => <Text>What goes in here?</Text>}
-                    //   </Mutation>
-                    // );
                     //ADD COMMENT TO EVENT MUTATION
                   } catch (e) {
                     console.log(e);
