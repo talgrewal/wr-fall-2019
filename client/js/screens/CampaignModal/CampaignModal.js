@@ -4,7 +4,7 @@ import {withNavigation} from 'react-navigation';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import styles from '../Campaign/styles';
 import {colors} from '../../config/styles';
-import SafeAreaView from 'react-native-safe-area-view';
+// import SafeAreaView from 'react-native-safe-area-view';
 import PropTypes from 'prop-types';
 import BackButton from '../../assets/miscicons/xicon.png';
 import MainSubscribeButton from '../../components/MainSubscribeButton';
@@ -13,20 +13,23 @@ import MainUnsubscribeButton from '../../components/MainUnsubscribeButton';
 const CampaignModal = ({navigation, campaignData, user}) => {
   console.log(user);
   return (
-    <SafeAreaView style={styles.speakerContainer}>
+    <ScrollView
+      style={styles.speakerContainer}
+      contentContainerStyle={styles.contentContainer}>
       <View style={styles.pageContainer}>
         <View style={styles.outsideMain}>
           <View style={styles.titleContainer}>
-            <Text style={styles.pageTitle}>
+            <Text numberOfLines={1} style={styles.pageTitle}>
               {campaignData.campaignData.campaign.title}
             </Text>
-
-            <TouchableOpacity
-              onPress={() => {
-                navigation.goBack();
-              }}>
-              <Image style={styles.backButtonX} source={BackButton} />
-            </TouchableOpacity>
+            <View>
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.goBack();
+                }}>
+                <Image style={styles.backButtonX} source={BackButton} />
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
         {/* Start of Main Subscribe button */}
@@ -45,7 +48,7 @@ const CampaignModal = ({navigation, campaignData, user}) => {
 
         {/* Start of Main Subscribe button */}
         {/* Start of Campaign Info */}
-        <View style={styles.campaignDetails}>
+        <View style={styles.campaignDetailsCampaignModal}>
           <View>
             <Text style={styles.campaignCategoryTitle}>Category</Text>
             <Text style={styles.campaignCategoryType}>
@@ -82,7 +85,7 @@ const CampaignModal = ({navigation, campaignData, user}) => {
         </View>
         {/* Campaign Image end */}
       </View>
-    </SafeAreaView>
+    </ScrollView>
   );
 };
 

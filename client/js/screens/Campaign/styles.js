@@ -20,6 +20,8 @@ const styles = StyleSheet.create({
     fontSize: hugeText,
     fontFamily: headerFont,
     marginBottom: 20,
+    paddingLeft: 10,
+    maxWidth: '80%',
   },
   campaignSingle: {
     alignSelf: 'center',
@@ -146,6 +148,21 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     alignItems: 'center',
     marginTop: 20,
+    marginBottom: 20,
+  },
+  campaignDetailsCampaignModal: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingBottom: 10,
+  },
+  speakerContainer: {
+    flex: 1,
+    paddingTop: 25,
+  },
+  contentContainer: {
+    alignItems: 'center',
+    flexDirection: 'column',
   },
 });
 export default styles;
