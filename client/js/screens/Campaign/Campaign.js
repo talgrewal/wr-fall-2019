@@ -14,7 +14,7 @@ import MainSubscribeButton from '../../components/MainSubscribeButton';
 import MainUnsubscribeButton from '../../components/MainUnsubscribeButton';
 import MrMoneyImage from '../../assets/artwork/mrmoney.png';
 
-const Campaign = ({navigation, campaign}) => {
+const Campaign = ({navigation, user}) => {
   return (
     <ScrollView style={styles.campaignContainer}>
       {/* Start of Title */}
@@ -59,10 +59,14 @@ const Campaign = ({navigation, campaign}) => {
         </TouchableOpacity>
       </View>
       {navigation.state.params.campaign.events.length > 0 ? (
-        <MainSubscribeButton CampaignId={navigation.state.params.campaign.id} />
+        <MainSubscribeButton
+          userId={user.id}
+          CampaignId={navigation.state.params.campaign.id}
+        />
       ) : (
         <MainUnsubscribeButton
           CampaignId={navigation.state.params.campaign.id}
+          userId={user.id}
         />
       )}
 

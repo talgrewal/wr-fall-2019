@@ -23,7 +23,7 @@ const CAMPAIGN_SUBSCRIBE = gql`
   }
 `;
 
-const MainSubscribeButton = ({CampaignId}) => {
+const MainSubscribeButton = ({CampaignId, userId}) => {
   return (
     <Mutation mutation={CAMPAIGN_SUBSCRIBE} client={client}>
       {updateUser => {
@@ -35,7 +35,7 @@ const MainSubscribeButton = ({CampaignId}) => {
                   const editSubscribe = await updateUser({
                     variables: {
                       campaignid: CampaignId,
-                      userid: 'ck3yzox88i13o0b00u0ak6b3h',
+                      userid: userId,
                     },
                   });
                 } catch (e) {}
