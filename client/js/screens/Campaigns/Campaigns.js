@@ -20,9 +20,7 @@ import imageGradient from '../../assets/buttons/buttonbackground.jpg';
 import playButton from '../../assets/buttons/videoplayicon.png';
 
 const Campaigns = ({navigation, campaignData, campaignName}) => {
-  console.log(campaignName.campaignName);
   const pageName = campaignName.campaignName;
-  console.log(pageName);
 
   return (
     <SafeAreaView>
