@@ -39,7 +39,7 @@ const MainSubscribeButton = ({CampaignId, navigation}) => {
                       userid: 'ck3yzox88i13o0b00u0ak6b3h',
                     },
                   });
-                  console.log('hello');
+
                   navigation.navigate('Confirmation');
                 } catch (e) {
                   console.log(e);
