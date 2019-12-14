@@ -15,19 +15,17 @@ import ApolloClient from 'apollo-boost';
 import gql from 'graphql-tag';
 
 const COMMENT_MUTATION = gql`
-  mutation createComment($username: String!, $comment: String!) {
-    createComment(data: {username: $username, comment: $comment}) {
-      id
+  mutation updateEvent($id: ID!, $username: String!, $comment: String!) {
+    updateEvent(
+      where: {id: $id}
+      data: {comments: {create: {username: $username, comment: $comment}}}
+    ) {
+      comments {
+        comment
+        username
+      }
     }
   }
-`;
-
-const UPDATE_EVENT_MUTATION = `gql
-mutation updateEvent($id: String!) {
-  updateEvent(data: {comments: $id}) {
-    id
-  }
-}
 `;
 
 const Event = ({
@@ -39,8 +37,6 @@ const Event = ({
   comments,
   user,
 }) => {
-  const [value, onChangeText] = React.useState('');
-
   //event object is passed into the addToCalendar so it doesnt need comments or user
   const event = {
     title: title,
@@ -112,15 +108,6 @@ const Event = ({
               })
             }>
             {createComment => (
-              <Mutation
-              mutation={UPDATE_EVENT_MUTATION}
-              client={
-                new ApolloClient({
-                  uri: APOLLOCLIENTADDRESS,
-                })
-              }>
-                  {updateEvent => <Text>What goes in here?</Text>}
-                      </Mutation>
               <Form
                 onSubmit={async values => {
                   try {
@@ -130,6 +117,13 @@ const Event = ({
                       variables: {
                         username: user.name,
                         comment: values.comment,
+                      },
+                    });
+                    const updatedEvent = await updateEvent({
+                      variables: {
+                        id: event.id,
+                        comment: comment,
+                        username: username,
                       },
                     });
                     console.log('Comment Id: ', commentId);
