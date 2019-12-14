@@ -2,67 +2,85 @@ import React from 'react';
 import {Text, View, ScrollView, Image, Linking} from 'react-native';
 import {withNavigation} from 'react-navigation';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-import styles from './styles';
+import styles from '../Campaign/styles';
 import {colors} from '../../config/styles';
 import SafeAreaView from 'react-native-safe-area-view';
 import PropTypes from 'prop-types';
 import BackButton from '../../assets/miscicons/xicon.png';
 import MainSubscribeButton from '../../components/MainSubscribeButton';
+import MainUnsubscribeButton from '../../components/MainUnsubscribeButton';
 
-const CampaignModal = ({navigation, campaignData}) => {
-  console.log('hello');
-  console.log(campaignData);
-  console.log(campaignData.campaignData.campaign.category);
-  console.log(campaignData.campaignData.campaign.title);
-  console.log(campaignData.campaignData.campaign.description);
-  console.log(campaignData.campaignData.campaign.image);
-  console.log(campaignData.campaignData.campaign.subscribers);
+const CampaignModal = ({navigation, campaignData, user}) => {
+  console.log(user);
   return (
     <SafeAreaView style={styles.speakerContainer}>
-      <View style={styles.outsideMain}>
-        <View style={styles.titleContainer}>
-          <Text style={styles.staticTitle}>About the Speaker</Text>
+      <View style={styles.pageContainer}>
+        <View style={styles.outsideMain}>
+          <View style={styles.titleContainer}>
+            <Text style={styles.pageTitle}>
+              {campaignData.campaignData.campaign.title}
+            </Text>
+
+            <TouchableOpacity
+              onPress={() => {
+                navigation.goBack();
+              }}>
+              <Image style={styles.backButtonX} source={BackButton} />
+            </TouchableOpacity>
+          </View>
         </View>
+        {/* Start of Main Subscribe button */}
 
-        <TouchableOpacity
-          onPress={() => {
-            navigation.goBack();
-          }}>
-          <Image style={styles.backButtonX} source={BackButton} />
-        </TouchableOpacity>
-      </View>
-      <MainSubscribeButton />
+        {campaignData.campaignData.campaign.events.length > 0 ? (
+          <MainSubscribeButton
+            userId={user.id}
+            CampaignId={campaignData.campaignData.campaign.id}
+          />
+        ) : (
+          <MainUnsubscribeButton
+            CampaignId={campaignData.campaignData.campaign.id}
+            userId={user.id}
+          />
+        )}
 
-      {/* Start of Campaign Info */}
-      <View style={styles.campaignDetails}>
+        {/* Start of Main Subscribe button */}
+        {/* Start of Campaign Info */}
+        <View style={styles.campaignDetails}>
+          <View>
+            <Text style={styles.campaignCategoryTitle}>Category</Text>
+            <Text style={styles.campaignCategoryType}>
+              {campaignData.campaignData.campaign.category}
+            </Text>
+          </View>
+          <View style={styles.campaignSubInfo}>
+            <View>
+              <Text style={styles.subscriberNumber}>
+                {campaignData.campaignData.campaign.subscribers.length}
+              </Text>
+              <Text style={styles.subscriberName}>Subscribers</Text>
+            </View>
+            <View>
+              <Text style={styles.subscriberNumber}>
+                {campaignData.campaignData.campaign.events.length}
+              </Text>
+              <Text style={styles.subscriberName}>Events</Text>
+            </View>
+          </View>
+        </View>
+        {/* End of Campaign Info */}
+
+        {/* Campaign Image Begin */}
         <View>
-          <Text style={styles.campaignCategoryTitle}>Category</Text>
-          <Text style={styles.campaignCategoryType}>
-            {campaignData.campaignData.campaign.category}
+          <Image
+            style={styles.campaignImage}
+            source={{uri: campaignData.campaignData.campaign.image}}
+          />
+
+          <Text style={styles.campaignDescriptionText} numberOfLines={5}>
+            {campaignData.campaignData.campaign.description}
           </Text>
         </View>
-        <View style={styles.campaignSubInfo}>
-          <View>
-            <Text style={styles.subscriberNumber}>
-              {campaignData.campaignData.campaign.subscribers.length}
-            </Text>
-            <Text style={styles.subscriberName}>Subscribers</Text>
-          </View>
-          <View>
-            <Text style={styles.subscriberNumber}>
-              {campaignData.campaignData.campaign.events.length}
-            </Text>
-            <Text style={styles.subscriberName}>Events</Text>
-          </View>
-        </View>
-      </View>
-      {/* End of Campaign Info */}
-
-      <View style={styles.mainContainer}>
-        {/* <Text style={styles.title}>{speaker.state.params[0].name}</Text> */}
-        {/* <Text style={styles.bio}>{speaker.state.params[0].bio}</Text> */}
-
-        <View style={styles.button}></View>
+        {/* Campaign Image end */}
       </View>
     </SafeAreaView>
   );

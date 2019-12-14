@@ -129,5 +129,23 @@ const styles = StyleSheet.create({
   eventInfoBoxLocation: {
     fontSize: 14,
   },
+  titleContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignContent: 'center',
+  },
+  backButtonX: {
+    height: 25,
+    resizeMode: 'contain',
+  },
+  pageContainer: {
+    padding: 20,
+  },
+  campaignImage: {
+    height: '50%',
+    resizeMode: 'contain',
+    alignItems: 'center',
+    marginTop: 20,
+  },
 });
 export default styles;

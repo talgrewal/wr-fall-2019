@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
   buttonNoBackground: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 25,
+    marginTop: 2,
     borderRadius: 40,
     borderWidth: 1,
     height: 45,

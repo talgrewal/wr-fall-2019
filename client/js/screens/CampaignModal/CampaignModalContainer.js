@@ -1,14 +1,19 @@
 import React, {Component} from 'react';
 import CampaignModal from './CampaignModal';
+import {UserContext} from '../../context/UserProvider';
 
 class CampaignModalContainer extends Component {
   render() {
-    // const speaker = this.props.navigation;
-    // console.log(this.props.navigation);
-    // console.log(this.props.navigation.state);
-    // console.log(this.props.navigation.state.params);
-    // console.log('hello');
-    return <CampaignModal campaignData={this.props.navigation.state.params} />;
+    return (
+      <UserContext.Consumer>
+        {({user}) => (
+          <CampaignModal
+            user={user}
+            campaignData={this.props.navigation.state.params}
+          />
+        )}
+      </UserContext.Consumer>
+    );
   }
 }
 
