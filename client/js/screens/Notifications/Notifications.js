@@ -5,7 +5,6 @@ import styles from './styles';
 import spaceTexture from '../../assets/Textures/DarkSpace.png';
 
 const Notifications = ({notifications}) => {
-  console.log(notifications);
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Notifications</Text>

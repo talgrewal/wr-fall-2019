@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import styles from '../MainSigninButton/styles';
 import {TouchableOpacity, View, ImageBackground, Text} from 'react-native';
-import InactiveButton from '../../assets/buttons/Inactivespacebutton.png';
+import activeButton from '../../assets/buttons/activespacebutton.png';
 import gql from 'graphql-tag';
 import ApolloClient from 'apollo-boost';
 import {Mutation} from '@apollo/react-components';
@@ -10,7 +10,7 @@ import client from '../../config/api';
 const CAMPAIGN_SUBSCRIBE = gql`
   mutation updateUser($campaignid: ID!, $userid: ID!) {
     updateUser(
-      data: {campaigns: {connect: {id: $campaignid}}}
+      data: {campaigns: {disconnect: {id: $campaignid}}}
       where: {id: $userid}
     ) {
       id
@@ -23,7 +23,7 @@ const CAMPAIGN_SUBSCRIBE = gql`
   }
 `;
 
-const MainSubscribeButton = ({CampaignId, ViewerId, userId}) => {
+const MainSubscribeButton = ({CampaignId, userId}) => {
   return (
     <Mutation mutation={CAMPAIGN_SUBSCRIBE} client={client}>
       {updateUser => {
@@ -35,16 +35,15 @@ const MainSubscribeButton = ({CampaignId, ViewerId, userId}) => {
                   const editSubscribe = await updateUser({
                     variables: {
                       campaignid: CampaignId,
-
                       userid: userId,
                     },
                   });
-                } catch (e) {
-                  console.log(e);
-                }
+                } catch (e) {}
               }}
-              style={styles.buttonNoBackground}>
-              <Text style={styles.text}>Subscribe</Text>
+              style={styles.button}>
+              <ImageBackground source={activeButton} style={styles.buttonImage}>
+                <Text style={styles.textWhite}>Unsubscribe</Text>
+              </ImageBackground>
             </TouchableOpacity>
           </View>
         );

@@ -1,9 +1,19 @@
 import React, {Component} from 'react';
-
 import Campaign from './Campaign';
+import {queryViewer} from '../../config/modals';
+import gql from 'graphql-tag';
+import {withNavigation} from 'react-navigation';
+import {Mutation, Query} from '@apollo/react-components';
+import {UserContext} from '../../context/UserProvider';
 
-export default class CampaignContainer extends Component {
+class CampaignContainer extends Component {
   render() {
-    return <Campaign />;
+    return (
+      <UserContext.Consumer>
+        {({user}) => <Campaign user={user} />}
+      </UserContext.Consumer>
+    );
   }
 }
+
+export default withNavigation(CampaignContainer);

@@ -1,8 +1,8 @@
 import React from 'react';
 import {Text} from 'react-native';
 
-const EventMore = props => {
+const CampaignModal = props => {
   return <Text>Event More Screen</Text>;
 };
 
-export default EventMore;
+export default CampaignModal;

@@ -67,8 +67,8 @@ const styles = StyleSheet.create({
   IconImage: {
     width: 20,
     height: 20,
-    resizeMode: 'contain',
   },
+
   errorText: {
     color: 'red',
     textAlign: 'center',

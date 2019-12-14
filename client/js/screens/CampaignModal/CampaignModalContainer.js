@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 
 import EventMore from './EventMore';
 
-export default class EventMoreContainer extends Component {
+export default class CampaignModalContainer extends Component {
   render() {
-    return <EventMore />;
+    return <CampaignModal />;
   }
 }

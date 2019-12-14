@@ -1,4 +1,5 @@
 import React from 'react';
+import {withNavigation} from 'react-navigation';
 import {
   Text,
   View,
@@ -9,7 +10,6 @@ import {
 } from 'react-native';
 import styles from './styles';
 import Carousel from '@rhysforyou/react-native-carousel';
-import {withNavigation} from 'react-navigation';
 
 const MOCK_DATA = [
   {
@@ -29,7 +29,7 @@ const MOCK_DATA = [
   },
 ];
 
-const Home = props => {
+const Home = ({navigation}) => {
   return (
     <>
       <View style={styles.carouselContainer}>
@@ -52,7 +52,9 @@ const Home = props => {
         <ScrollView>
           <View style={styles.page}>
             <TouchableOpacity
-              onPress={() => {}}
+              onPress={() =>
+                navigation.navigate('Campaigns', {campaignName: 'Politico'})
+              }
               activeOpacity={0.5}
               style={styles.catLogo}>
               <Image
@@ -67,7 +69,9 @@ const Home = props => {
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={() => {}}
+              onPress={() =>
+                navigation.navigate('Campaigns', {campaignName: 'Enviro'})
+              }
               activeOpacity={0.5}
               style={styles.catLogo}>
               <Image
@@ -83,7 +87,9 @@ const Home = props => {
           </View>
           <View style={styles.page}>
             <TouchableOpacity
-              onPress={() => {}}
+              onPress={() =>
+                navigation.navigate('Campaigns', {campaignName: 'Charity'})
+              }
               activeOpacity={0.5}
               style={styles.catLogo}>
               <Image
@@ -98,7 +104,9 @@ const Home = props => {
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={() => {}}
+              onPress={() =>
+                navigation.navigate('Campaigns', {campaignName: 'Social'})
+              }
               activeOpacity={0.5}
               style={styles.catLogo}>
               <Image
