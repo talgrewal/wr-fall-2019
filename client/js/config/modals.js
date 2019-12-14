@@ -1,13 +1,5 @@
 import AsyncStorage from '@react-native-community/async-storage';
 
-const COMMENT_IN_EVENT_MUTATION = `gql
-mutation createComment($username: String!, $comment: String!) {
-  createComment(data: {username: $username, comment: $comment}) {
-    id
-  }
-}
-`;
-
 export const queryViewer = async () => {
   try {
     const value = await AsyncStorage.getItem('user');

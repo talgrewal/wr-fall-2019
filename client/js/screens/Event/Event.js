@@ -116,6 +116,7 @@ const Event = ({
                 onSubmit={async values => {
                   try {
                     console.log(values);
+                    console.log('User: ', user);
                     const commentId = await comment({
                       variables: {
                         username: user.name,
@@ -123,6 +124,7 @@ const Event = ({
                       },
                     });
                     console.log('Comment Id: ', commentId);
+                    console.log('User: ', user);
 
                     // return (
                     //   <Mutation
