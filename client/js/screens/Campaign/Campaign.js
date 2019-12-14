@@ -15,11 +15,6 @@ import MainUnsubscribeButton from '../../components/MainUnsubscribeButton';
 import MrMoneyImage from '../../assets/artwork/mrmoney.png';
 
 const Campaign = ({navigation, user}) => {
-  console.log('this user');
-  console.log(user ? user.id : '');
-  // console.log(user.user);
-  // const userid = user.user;
-  // console.log(userid);
   return (
     <ScrollView style={styles.campaignContainer}>
       {/* Start of Title */}

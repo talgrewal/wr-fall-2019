@@ -4,35 +4,15 @@ import {queryViewer} from '../../config/modals';
 import gql from 'graphql-tag';
 import {withNavigation} from 'react-navigation';
 import {Mutation, Query} from '@apollo/react-components';
+import {UserContext} from '../../context/UserProvider';
 
-const QUERY_USER = gql`
-  query getUser($userId: ID!) {
-    user(where: {id: $userId}) {
-      id
-      email
-      name
-    }
-  }
-`;
 class CampaignContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      user: null,
-    };
-  }
-
-  componentDidMount() {
-    this.getUser();
-  }
-  getUser = async () => {
-    const user = JSON.parse(await queryViewer());
-    this.setState({user});
-    // console.log(this.state.user);
-  };
-
   render() {
-    return <Campaign user={this.state.user} />;
+    return (
+      <UserContext.Consumer>
+        {({user}) => <Campaign user={user} />}
+      </UserContext.Consumer>
+    );
   }
 }
 
