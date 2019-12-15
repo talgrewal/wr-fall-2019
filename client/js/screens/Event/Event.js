@@ -36,7 +36,7 @@ const Event = ({
   comments,
   user,
 }) => {
-  const commentItems = comments.map(comment => (
+  const commentItems = comments.comments.map(comment => (
     <View style={styles.commentContainer}>
       <Image style={styles.bullet} source={dot} />
       <Comment
