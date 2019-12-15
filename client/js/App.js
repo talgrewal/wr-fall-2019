@@ -3,8 +3,8 @@ import Login from './screens/Login';
 import RootStackNavigator from './navigation/RootStackNavigator';
 import Event from './screens/Event';
 import UserProvider from './context/UserProvider';
-import {ApolloProvider} from 'react-apollo';
 import client from './config/api';
+import {ApolloProvider} from 'react-apollo';
 
 const comments = [
   {
@@ -28,7 +28,7 @@ const event = {
   location: '1490 W Broadway #200, Vancouver, BC',
   startDate: '2019-12-25T19:25:55.846',
   endDate: '2019-12-25T19:26:55.846',
-  comments: {comments},
+  comments: comments,
 };
 
 export default class App extends Component {

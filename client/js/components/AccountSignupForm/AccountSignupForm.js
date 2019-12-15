@@ -19,7 +19,7 @@ import gql from 'graphql-tag';
 import {withNavigation} from 'react-navigation';
 import {createViewer} from '../../config/modals';
 import InactiveButton from '../../assets/buttons/Inactivespacebutton.png';
-import {APOLLOCLIENTADDRESS} from '../../config/constant';
+import {APOLLO_CLIENT_ADDRESS} from '../../config/constant';
 
 const SIGNUP_MUTATION = gql`
   mutation signup($email: String!, $password: String!, $name: String!) {
@@ -46,7 +46,7 @@ class AccountSignupForm extends Component {
         mutation={SIGNUP_MUTATION}
         client={
           new ApolloClient({
-            uri: APOLLOCLIENTADDRESS,
+            uri: APOLLO_CLIENT_ADDRESS,
           })
         }>
         {signup => (

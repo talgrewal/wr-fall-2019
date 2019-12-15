@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {View, Text, Image, Button} from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
-import microphoneImageSource from '../../assets/artwork/MicLightningVCopy@.png';
-import fistImageSource from '../../assets/artwork/RevolutionFistCopy@.png';
-import heartImageSource from '../../assets/artwork/Heartart@.png';
+import microphoneImageSource from '../../assets/artwork/miclightningv.png';
+import fistImageSource from '../../assets/artwork/Revolution.png';
+import heartImageSource from '../../assets/artwork/heartart.png';
 import styles from './styles';
 
 const slides = [

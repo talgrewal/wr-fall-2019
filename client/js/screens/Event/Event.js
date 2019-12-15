@@ -9,24 +9,10 @@ import Comment from '../../components/Comment';
 import dot from '../../assets/artwork/blackspot.png';
 import * as AddCalendarEvent from 'react-native-add-calendar-event';
 import moment from 'moment';
-import {APOLLOCLIENTADDRESS} from '../../config/constant';
+import {APOLLO_SERVER_ADDRESS} from '../../config/constant';
 import {Mutation} from '@apollo/react-components';
 import ApolloClient from 'apollo-boost';
 import gql from 'graphql-tag';
-
-const COMMENT_MUTATION2 = gql`
-  mutation updateEvent {
-    updateEvent(
-      data: {comments: {create: {username: "My name", comment: "Bananas"}}}
-      where: {title: "new title"}
-    ) {
-      comments {
-        comment
-        username
-      }
-    }
-  }
-`;
 
 const COMMENT_MUTATION = gql`
   mutation updateEvent($title: String!, $username: String!, $comment: String!) {
@@ -43,15 +29,7 @@ const COMMENT_MUTATION = gql`
 `;
 
 const Event = ({
-  event: {
-    id,
-    title,
-    location,
-    startDate,
-    endDate,
-    description,
-    comments: {comments},
-  },
+  event: {id, title, location, startDate, endDate, description, comments},
   user,
 }) => {
   //event object is passed into the addToCalendar so it doesnt need comments or user
@@ -74,8 +52,6 @@ const Event = ({
       />
     </View>
   ));
-
-  let commentId = null;
 
   //Cleaned up moment formatting calls to keep ternaries readable
   const startDay = moment(startDate).format('MMM Do, YYYY');
@@ -119,20 +95,14 @@ const Event = ({
             mutation={COMMENT_MUTATION}
             client={
               new ApolloClient({
-                uri:
-                  'https://us1.prisma.sh/public-flintwanderer-148/server/dev',
+                uri: APOLLO_SERVER_ADDRESS,
               })
             }>
-            {(updateEvent, {data}) => {
-              // window.updateEvent = updateEvent;
-              console.log(`data is ${data}`);
+            {updateEvent => {
               return (
                 <Form
                   onSubmit={async values => {
                     try {
-                      console.log('EVENT TITLE', title);
-                      console.log('COMMENT', values.comment);
-                      console.log('USERNAME', user.name);
                       const updatedEvent = await updateEvent({
                         variables: {
                           title: title,
@@ -181,7 +151,6 @@ const Event = ({
     </ScrollView>
   );
 };
-
 const utcDateToString = momentInUTC => {
   let s = moment.utc(momentInUTC).format('YYYY-MM-DDTHH:mm:ss.SSS[Z]');
   return s;
