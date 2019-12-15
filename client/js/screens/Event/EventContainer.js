@@ -4,27 +4,11 @@ import {UserContext} from '../../context/UserProvider';
 
 export default class EventContainer extends Component {
   render() {
-    const {
-      title,
-      description,
-      location,
-      startDate,
-      endDate,
-      comments,
-    } = this.props;
+    const {event} = this.props;
+
     return (
       <UserContext.Consumer>
-        {({user}) => (
-          <Event
-            title={title}
-            description={description}
-            location={location}
-            startDate={startDate}
-            endDate={endDate}
-            comments={comments}
-            user={user}
-          />
-        )}
+        {({user}) => <Event event={event} user={user} />}
       </UserContext.Consumer>
     );
   }

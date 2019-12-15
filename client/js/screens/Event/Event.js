@@ -14,10 +14,24 @@ import {Mutation} from '@apollo/react-components';
 import ApolloClient from 'apollo-boost';
 import gql from 'graphql-tag';
 
-const COMMENT_MUTATION = gql`
-  mutation updateEvent($id: ID!, $username: String!, $comment: String!) {
+const COMMENT_MUTATION2 = gql`
+  mutation updateEvent {
     updateEvent(
-      where: {id: $id}
+      data: {comments: {create: {username: "My name", comment: "Bananas"}}}
+      where: {title: "new title"}
+    ) {
+      comments {
+        comment
+        username
+      }
+    }
+  }
+`;
+
+const COMMENT_MUTATION = gql`
+  mutation updateEvent($title: String!, $username: String!, $comment: String!) {
+    updateEvent(
+      where: {title: $title}
       data: {comments: {create: {username: $username, comment: $comment}}}
     ) {
       comments {
@@ -29,12 +43,15 @@ const COMMENT_MUTATION = gql`
 `;
 
 const Event = ({
-  title,
-  location,
-  startDate,
-  endDate,
-  description,
-  comments,
+  event: {
+    id,
+    title,
+    location,
+    startDate,
+    endDate,
+    description,
+    comments: {comments},
+  },
   user,
 }) => {
   //event object is passed into the addToCalendar so it doesnt need comments or user
@@ -45,20 +62,18 @@ const Event = ({
     endDate: endDate,
     description: description,
   };
-
-  let commentItems = [];
-  for (let i = 0; i < comments.length; i++) {
-    commentItems.push(
-      <View key={i} style={styles.commentContainer}>
-        <Image style={styles.bullet} source={dot} />
-        <Comment
-          user={comments[i].user}
-          comment={comments[i].comment}
-          date={comments[i].date}
-        />
-      </View>,
-    );
-  }
+  console.log(user);
+  console.log(comments);
+  const commentItems = comments.map((comment, index) => (
+    <View key={index} style={styles.commentContainer}>
+      <Image style={styles.bullet} source={dot} />
+      <Comment
+        user={comment.user}
+        comment={comment.comment}
+        date={comment.date}
+      />
+    </View>
+  ));
 
   let commentId = null;
 
@@ -104,61 +119,61 @@ const Event = ({
             mutation={COMMENT_MUTATION}
             client={
               new ApolloClient({
-                uri: APOLLOCLIENTADDRESS,
+                uri:
+                  'https://us1.prisma.sh/public-flintwanderer-148/server/dev',
               })
             }>
-            {createComment => (
-              <Form
-                onSubmit={async values => {
-                  try {
-                    console.log(values);
-                    console.log('User: ', user);
-                    const commentId = await createComment({
-                      variables: {
-                        username: user.name,
-                        comment: values.comment,
-                      },
-                    });
-                    const updatedEvent = await updateEvent({
-                      variables: {
-                        id: event.id,
-                        comment: comment,
-                        username: username,
-                      },
-                    });
-                    console.log('Comment Id: ', commentId);
-                    console.log('User: ', user);
-                    //ADD COMMENT TO EVENT MUTATION
-                  } catch (e) {
-                    console.log(e);
-                    this.setState({error: e});
-                  }
-                }}
-                render={({handleSubmit}) => (
-                  <>
-                    <Field
-                      name="comment"
-                      render={({input, meta}) => (
-                        <TextInput
-                          style={styles.fieldText}
-                          id="comment"
-                          placeholder="Comment"
-                          placeholderTextColor="black"
-                          type="text"
-                          inputProps={{
-                            autoComplete: 'off',
-                          }}
-                          {...input}
+            {(updateEvent, {data}) => {
+              // window.updateEvent = updateEvent;
+              console.log(`data is ${data}`);
+              return (
+                <Form
+                  onSubmit={async values => {
+                    try {
+                      console.log('EVENT TITLE', title);
+                      console.log('COMMENT', values.comment);
+                      console.log('USERNAME', user.name);
+                      const updatedEvent = await updateEvent({
+                        variables: {
+                          title: title,
+                          comment: values.comment,
+                          username: user.name,
+                        },
+                      });
+                    } catch (e) {
+                      console.log(e);
+                      this.setState({error: e});
+                    }
+                  }}
+                  render={({handleSubmit}) => (
+                    <>
+                      <Field
+                        name="comment"
+                        render={({input, meta}) => (
+                          <TextInput
+                            style={styles.fieldText}
+                            id="comment"
+                            placeholder="Comment"
+                            placeholderTextColor="black"
+                            type="text"
+                            inputProps={{
+                              autoComplete: 'off',
+                            }}
+                            {...input}
+                          />
+                        )}
+                      />
+                      <TouchableOpacity onPress={handleSubmit}>
+                        <Image
+                          style={styles.commentIcon}
+                          source={commentIcon}
                         />
-                      )}
-                    />
-                    <TouchableOpacity onPress={handleSubmit}>
-                      <Image style={styles.commentIcon} source={commentIcon} />
-                    </TouchableOpacity>
-                  </>
-                )}
-              />
-            )}
+                      </TouchableOpacity>
+                    </>
+                  )}
+                />
+              );
+            }}
           </Mutation>
         </View>
         <View style={styles.comments}>{commentItems}</View>
@@ -174,7 +189,7 @@ const utcDateToString = momentInUTC => {
 
 addToCalendar = event => {
   const eventConfig = {
-    title: event.title,
+    title: title,
     startDate: utcDateToString(event.startDateUTC),
     endDate: utcDateToString(event.endDateUTC),
     location: event.location,

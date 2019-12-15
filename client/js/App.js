@@ -19,19 +19,24 @@ const comments = [
     date: 'October 26, 2019',
   },
 ];
+
+const event = {
+  id: 'ck3qh3hvfyrdz0b09mwjxxs59',
+  title: 'Meet Up!',
+  description:
+    'We are going to find trees and touch them. This is important to get in touch with and the feeling tree today. Have you ever had the dream where you could if when any of could do anything?',
+  location: '1490 W Broadway #200, Vancouver, BC',
+  startDate: '2019-12-25T19:25:55.846',
+  endDate: '2019-12-25T19:26:55.846',
+  comments: {comments},
+};
+
 export default class App extends Component {
   render() {
     return (
       <ApolloProvider client={client}>
         <UserProvider>
-          <Event
-            title="Getting in Touch With Nature"
-            description="We are going to find trees and touch them. This is important to get in touch with and the feeling tree today. Have you ever had the dream where you could if when any of could do anything?"
-            location="1490 W Broadway #200, Vancouver, BC"
-            startDate="2019-12-25T19:25:55.846"
-            endDate="2019-12-25T19:26:55.846"
-            comments={comments}
-          />
+          <Event event={event} />
           {/* <RootStackNavigator /> */}
         </UserProvider>
       </ApolloProvider>
