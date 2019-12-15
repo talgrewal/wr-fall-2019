@@ -36,8 +36,8 @@ export default class App extends Component {
     return (
       <ApolloProvider client={client}>
         <UserProvider>
-          <Event event={event} />
-          {/* <RootStackNavigator /> */}
+          {/* <Event event={event} /> */}
+          <RootStackNavigator />
         </UserProvider>
       </ApolloProvider>
     );

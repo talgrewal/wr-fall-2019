@@ -1,15 +1,16 @@
 import React, {Component} from 'react';
 import Event from './Event';
 import {UserContext} from '../../context/UserProvider';
+import {withNavigation} from 'react-navigation';
 
-export default class EventContainer extends Component {
+class EventContainer extends Component {
   render() {
-    const {event} = this.props;
-
     return (
       <UserContext.Consumer>
-        {({user}) => <Event event={event} user={user} />}
+        {({user}) => <Event user={user} />}
       </UserContext.Consumer>
     );
   }
 }
+
+export default withNavigation(EventContainer);

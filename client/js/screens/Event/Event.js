@@ -13,6 +13,7 @@ import {APOLLO_SERVER_ADDRESS} from '../../config/constant';
 import {Mutation} from '@apollo/react-components';
 import ApolloClient from 'apollo-boost';
 import gql from 'graphql-tag';
+import {withNavigation} from 'react-navigation';
 
 const COMMENT_MUTATION = gql`
   mutation updateEvent($title: String!, $username: String!, $comment: String!) {
@@ -28,21 +29,13 @@ const COMMENT_MUTATION = gql`
   }
 `;
 
-const Event = ({
-  event: {id, title, location, startDate, endDate, description, comments},
-  user,
-}) => {
+const Event = ({navigation, user}) => {
   //event object is passed into the addToCalendar so it doesnt need comments or user
   const event = {
-    title: title,
-    location: location,
-    startDate: startDate,
-    endDate: endDate,
-    description: description,
+    ...navigation.state.params,
   };
-  console.log(user);
-  console.log(comments);
-  const commentItems = comments.map((comment, index) => (
+  console.log(event);
+  const commentItems = event.comments.map((comment, index) => (
     <View key={index} style={styles.commentContainer}>
       <Image style={styles.bullet} source={dot} />
       <Comment
@@ -173,4 +166,4 @@ addToCalendar = event => {
     });
 };
 
-export default Event;
+export default withNavigation(Event);
