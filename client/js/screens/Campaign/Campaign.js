@@ -15,18 +15,6 @@ import MainUnsubscribeButton from '../../components/MainUnsubscribeButton';
 import MrMoneyImage from '../../assets/artwork/mrmoney.png';
 
 const Campaign = ({navigation, user}) => {
-  // console.log('campaigns');
-  // console.log(navigation.state.params.campaign);
-  // // console.log(navigation.state.params.campaign.events[0]);
-  // console.log(navigation.state.params.campaign.id);
-  console.log(navigation.state.params.campaign.subscribers);
-  console.log(navigation.state.params);
-
-  console.log('user');
-  // console.log(user);
-  console.log(user.id);
-  console.log(user.name);
-
   const isSubscribed = navigation.state.params.campaign.subscribers.find(
     subscriber => subscriber.id === user.id,
   );
