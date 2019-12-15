@@ -20,8 +20,8 @@ const styles = StyleSheet.create({
     padding: baseSpacing,
     padding: baseSpacing,
 
-    height: '100%',
-    width: '30%',
+    height: '75%',
+    width: '100%',
   },
   buttonText: {
     fontFamily: headerFont,
