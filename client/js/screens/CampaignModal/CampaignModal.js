@@ -3,15 +3,12 @@ import {Text, View, ScrollView, Image, Linking} from 'react-native';
 import {withNavigation} from 'react-navigation';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import styles from '../Campaign/styles';
-import {colors} from '../../config/styles';
-// import SafeAreaView from 'react-native-safe-area-view';
 import PropTypes from 'prop-types';
 import BackButton from '../../assets/miscicons/xicon.png';
 import MainSubscribeButton from '../../components/MainSubscribeButton';
 import MainUnsubscribeButton from '../../components/MainUnsubscribeButton';
 
 const CampaignModal = ({navigation, campaignData, user}) => {
-  console.log(user);
   return (
     <ScrollView
       style={styles.speakerContainer}
