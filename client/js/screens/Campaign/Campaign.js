@@ -15,68 +15,49 @@ import MrMoneyImage from '../../assets/artwork/mrmoney.png';
 import ListEvent from '../../components/ListEvent';
 
 const Campaign = ({navigation, user}) => {
+  const campaign = navigation.state.params.campaign;
+  const {id, title, category, subscribers, events, description} = campaign;
   return (
     <ScrollView style={styles.campaignContainer}>
-      {/* Start of Title */}
-
-      <Text style={styles.pageTitle}>
-        {navigation.state.params.campaign.title}
-      </Text>
-
-      {/* End of Title */}
-
+      <Text style={styles.pageTitle}>{title}</Text>
       {/* Start of Campaign Info */}
       <View style={styles.campaignDetails}>
         <View>
           <Text style={styles.campaignCategoryTitle}>Category</Text>
-          <Text style={styles.campaignCategoryType}>
-            {navigation.state.params.campaign.category}
-          </Text>
+          <Text style={styles.campaignCategoryType}>{category}</Text>
         </View>
         <View style={styles.campaignSubInfo}>
           <View>
-            <Text style={styles.subscriberNumber}>
-              {navigation.state.params.campaign.subscribers.length}
-            </Text>
+            <Text style={styles.subscriberNumber}>{subscribers.length}</Text>
             <Text style={styles.subscriberName}>Subscribers</Text>
           </View>
           <View>
-            <Text style={styles.subscriberNumber}>
-              {navigation.state.params.campaign.events.length}
-            </Text>
+            <Text style={styles.subscriberNumber}>{events.length}</Text>
             <Text style={styles.subscriberName}>Events</Text>
           </View>
         </View>
       </View>
-      {/* Start of Campaign Info */}
-
       <View style={styles.campaignDescription}>
         <Text style={styles.campaignDescriptionText} numberOfLines={5}>
-          {navigation.state.params.campaign.description}
+          {description}
         </Text>
         <TouchableOpacity>
           <Text style={styles.campaignRedText}>More</Text>
         </TouchableOpacity>
       </View>
-      {navigation.state.params.campaign.events.length > 0 ? (
-        <MainSubscribeButton
-          userId={user.id}
-          CampaignId={navigation.state.params.campaign.id}
-        />
+      {events.length > 0 ? (
+        <MainSubscribeButton userId={user.id} CampaignId={id} />
       ) : (
-        <MainUnsubscribeButton
-          CampaignId={navigation.state.params.campaign.id}
-          userId={user.id}
-        />
+        <MainUnsubscribeButton CampaignId={id} userId={user.id} />
       )}
 
       {/* Start of flat list */}
       <View>
         <Text style={styles.campaignCategoryTitle}>Events</Text>
-        {navigation.state.params.campaign.events.length > 0 ? (
+        {events.length > 0 ? (
           <FlatList
             style={styles.eventSingle}
-            data={navigation.state.params.campaign.events}
+            data={events}
             renderItem={({item}) => <ListEvent event={item} />}
             keyExtractor={(item, index) => 'index' + index.toString()}
           />
