@@ -77,28 +77,7 @@ const Campaign = ({navigation, user}) => {
           <FlatList
             style={styles.eventSingle}
             data={navigation.state.params.campaign.events}
-            renderItem={({item}) => (
-              <TouchableOpacity
-                onPress={() => navigation.navigate('Event', {event: item})}>
-                <View style={styles.eventContainer}>
-                  <View style={styles.eventImageBox}>
-                    <Image
-                      style={styles.eventImage}
-                      source={{uri: item.image}}
-                    />
-                  </View>
-
-                  <View style={styles.eventInfoBox}>
-                    <Text style={styles.eventInfoBoxTitle} numberOfLines={1}>
-                      {item.title}
-                    </Text>
-                    <Text style={styles.eventInfoBoxLocation} numberOfLines={2}>
-                      {item.location}
-                    </Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
-            )}
+            renderItem={({item}) => <ListEvent event={item} />}
             keyExtractor={(item, index) => 'index' + index.toString()}
           />
         ) : (
