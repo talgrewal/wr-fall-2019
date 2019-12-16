@@ -24,11 +24,7 @@ const CAMPAIGN_SUBSCRIBE = gql`
   }
 `;
 
-<<<<<<< HEAD
-const MainSubscribeButton = ({CampaignId, navigation}) => {
-=======
-const MainSubscribeButton = ({CampaignId, ViewerId, userId}) => {
->>>>>>> develop
+const MainSubscribeButton = ({CampaignId, navigation, ViewerId, userId}) => {
   return (
     <Mutation mutation={CAMPAIGN_SUBSCRIBE} client={client}>
       {updateUser => {
@@ -44,7 +40,7 @@ const MainSubscribeButton = ({CampaignId, ViewerId, userId}) => {
                       userid: userId,
                     },
                   });
-                  console.log('hello');
+
                   navigation.navigate('Confirmation');
                 } catch (e) {
                   console.log(e);
