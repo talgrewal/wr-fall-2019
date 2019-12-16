@@ -102,7 +102,6 @@ const Event = ({navigation, user}) => {
                         },
                       });
                     } catch (e) {
-                      console.log(e);
                       this.setState({error: e});
                     }
                   }}
