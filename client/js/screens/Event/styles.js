@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 import {THEME} from '../../config';
 const {
-  colors: {black, darkGrey},
+  colors: {black},
   formatting: {baseSpacing, centeredChildren, containerWidth},
   typography: {
     baseSize,
@@ -42,19 +42,6 @@ const styles = StyleSheet.create({
     width: '100%',
     flexDirection: 'row',
     padding: baseSpacing,
-  },
-  button: {
-    borderColor: black,
-    borderWidth: 1,
-    borderRadius: baseSpacing * 2,
-    padding: baseSpacing,
-    padding: baseSpacing,
-    width: 375, //Width 100% does not work
-    ...centeredChildren,
-  },
-  buttonText: {
-    fontFamily: headerFont,
-    fontSize: baseSize,
   },
   image: {
     height: '100%',
