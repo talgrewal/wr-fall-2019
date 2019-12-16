@@ -5,7 +5,6 @@ import styles from './styles';
 import moment from 'moment';
 import {withNavigation} from 'react-navigation';
 const ListEvent = ({event, navigation}) => {
-  console.log(event);
   const startDay = moment(event.startDate).format('MMM Do, YYYY');
   const endDay = moment(event.endDate).format('MMM Do, YYYY');
   const startTime = moment(event.startDate).format('h:mma');
