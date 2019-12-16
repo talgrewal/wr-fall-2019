@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 import {THEME} from '../../config';
 const {
-  colors: {black, darkGrey},
+  colors: {black},
   formatting: {baseSpacing, centeredChildren, containerWidth},
   typography: {
     baseSize,

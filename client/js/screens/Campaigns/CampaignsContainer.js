@@ -29,6 +29,7 @@ export const ALL_CAMPAIGNS_QUERY = gql`
           id
           createdAt
           comment
+          username
         }
       }
     }

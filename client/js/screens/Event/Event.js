@@ -32,14 +32,13 @@ const COMMENT_MUTATION = gql`
 const Event = ({navigation, user}) => {
   //event object is passed into the addToCalendar so it doesnt need comments or user
   const event = {
-    ...navigation.state.params,
+    ...navigation.state.params.event,
   };
-  console.log(event);
   const commentItems = event.comments.map((comment, index) => (
     <View key={index} style={styles.commentContainer}>
       <Image style={styles.bullet} source={dot} />
       <Comment
-        user={comment.user}
+        user={comment.username}
         comment={comment.comment}
         date={comment.date}
       />
@@ -47,16 +46,16 @@ const Event = ({navigation, user}) => {
   ));
 
   //Cleaned up moment formatting calls to keep ternaries readable
-  const startDay = moment(startDate).format('MMM Do, YYYY');
-  const endDay = moment(endDate).format('MMM Do, YYYY');
-  const startTime = moment(startDate).format('h:mma');
-  const endTime = moment(endDate).format('h:mma');
+  const startDay = moment(event.startDate).format('MMM Do, YYYY');
+  const endDay = moment(event.endDate).format('MMM Do, YYYY');
+  const startTime = moment(event.startDate).format('h:mma');
+  const endTime = moment(event.endDate).format('h:mma');
   return (
     <ScrollView style={styles.page}>
       <View style={styles.container}>
-        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.title}>{event.title}</Text>
         <View style={styles.infoContainer}>
-          <Text style={styles.text}>{location}</Text>
+          <Text style={styles.text}>{event.location}</Text>
           {startDay === endDay ? (
             <>
               <Text style={styles.text}>
@@ -81,7 +80,7 @@ const Event = ({navigation, user}) => {
         </View>
         <View style={styles.detailsContainer}>
           <Image style={styles.image} source={eventImage} />
-          <Text style={styles.halfSpaceText}>{description}</Text>
+          <Text style={styles.halfSpaceText}>{event.description}</Text>
         </View>
         <View style={styles.inputContainer}>
           <Mutation
@@ -98,7 +97,7 @@ const Event = ({navigation, user}) => {
                     try {
                       const updatedEvent = await updateEvent({
                         variables: {
-                          title: title,
+                          title: event.title,
                           comment: values.comment,
                           username: user.name,
                         },
@@ -114,7 +113,7 @@ const Event = ({navigation, user}) => {
                         name="comment"
                         render={({input, meta}) => (
                           <TextInput
-                            style={styles.fieldText}
+                            style={styles.input}
                             id="comment"
                             placeholder="Comment"
                             placeholderTextColor="black"
@@ -144,16 +143,12 @@ const Event = ({navigation, user}) => {
     </ScrollView>
   );
 };
-const utcDateToString = momentInUTC => {
-  let s = moment.utc(momentInUTC).format('YYYY-MM-DDTHH:mm:ss.SSS[Z]');
-  return s;
-};
 
 addToCalendar = event => {
   const eventConfig = {
-    title: title,
-    startDate: utcDateToString(event.startDateUTC),
-    endDate: utcDateToString(event.endDateUTC),
+    title: event.title,
+    startDate: event.startDate,
+    endDate: event.endDate,
     location: event.location,
     notes: event.description,
   };
