@@ -22,15 +22,6 @@ export const createViewer = async viewer => {
   }
 };
 
-export const addCommentToEvent = async commentId => {
-  try {
-    //return await
-  } catch (error) {
-    console.log(error);
-    return new Error(error);
-  }
-};
-
 export const deleteViewer = async () => {
   try {
     return await AsyncStorage.removeItem(`user`);
