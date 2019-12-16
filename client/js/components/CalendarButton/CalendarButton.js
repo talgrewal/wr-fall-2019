@@ -1,5 +1,7 @@
+import React from 'react';
+import styles from './styles';
 import * as AddCalendarEvent from 'react-native-add-calendar-event';
-import {TouchableOpacity, Text} from 'react-native-gesture-handler';
+import {TouchableOpacity, Text} from 'react-native';
 
 export default CalendarButton = ({event}) => {
   return (
