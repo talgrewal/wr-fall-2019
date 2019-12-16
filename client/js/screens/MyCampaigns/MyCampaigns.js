@@ -69,7 +69,11 @@ const MyCampaigns = ({myCampaigns, user, navigation}) => {
             miss out to be a part of the movement.
           </Text>
           <View style={styles.buttonHolder}>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => {
+                navigation.navigate('Home');
+              }}>
               <ImageBackground source={ActiveButton} style={styles.buttonImage}>
                 <Text style={styles.buttonText}>Browse Campaigns</Text>
               </ImageBackground>
