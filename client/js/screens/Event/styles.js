@@ -36,19 +36,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     padding: baseSpacing,
   },
-  button: {
-    borderColor: black,
-    borderWidth: 1,
-    borderRadius: baseSpacing * 2,
-    padding: baseSpacing,
-    padding: baseSpacing,
-    width: 375, //Width 100% does not work
-    ...centeredChildren,
-  },
-  buttonText: {
-    fontFamily: headerFont,
-    fontSize: baseSize,
-  },
   image: {
     minHeight: 180,
     width: '45%',

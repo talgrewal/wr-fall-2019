@@ -7,13 +7,13 @@ import styles from './styles';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import Comment from '../../components/Comment';
 import dot from '../../assets/artwork/blackspot.png';
-import * as AddCalendarEvent from 'react-native-add-calendar-event';
 import moment from 'moment';
 import {APOLLO_SERVER_ADDRESS} from '../../config/constant';
 import {Mutation} from '@apollo/react-components';
 import ApolloClient from 'apollo-boost';
 import gql from 'graphql-tag';
 import {withNavigation} from 'react-navigation';
+import CalendarButton from '../../components/CalendarButton';
 
 const COMMENT_MUTATION = gql`
   mutation updateEvent($title: String!, $username: String!, $comment: String!) {
@@ -69,16 +69,10 @@ const Event = ({navigation, user}) => {
           )}
         </View>
         <View style={styles.buttonContainer}>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => {
-              addToCalendar(event);
-            }}>
-            <Text style={styles.buttonText}>Add to my calendar</Text>
-          </TouchableOpacity>
+          <CalendarButton event={event} />
         </View>
         <View style={styles.detailsContainer}>
-          <Image style={styles.image} source={{uri: event.image}} />
+          <Image style={styles.image} source={eventImage} />
           <Text style={styles.halfSpaceText}>{event.description}</Text>
         </View>
         <View style={styles.inputContainer}>
@@ -141,23 +135,6 @@ const Event = ({navigation, user}) => {
       </View>
     </ScrollView>
   );
-};
-
-addToCalendar = event => {
-  const eventConfig = {
-    title: event.title,
-    startDate: event.startDate,
-    endDate: event.endDate,
-    location: event.location,
-    notes: event.description,
-  };
-  AddCalendarEvent.presentEventCreatingDialog(eventConfig)
-    .then(eventInfo => {
-      console.warn(JSON.stringify(eventInfo));
-    })
-    .catch(error => {
-      console.warn(error);
-    });
 };
 
 export default withNavigation(Event);
