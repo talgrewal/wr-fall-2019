@@ -28,18 +28,12 @@ const MyCampaigns = ({myCampaigns, user, navigation}) => {
             renderItem={({item}) => (
               <View style={styles.item}>
                 <TouchableOpacity
-                  style={{
-                    flex: 1,
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
-                    height: '100%',
-                  }}
+                  style={styles.itemContainer}
                   onPress={() => {
                     navigation.navigate('Campaign', {
                       campaign: item,
                     });
                   }}>
-                  {/* View for text flexDirection = column (auto)*/}
                   <View>
                     <Text style={styles.title}>{item.title}</Text>
                     <Text style={styles.category}>{item.category}</Text>

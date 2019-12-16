@@ -91,5 +91,11 @@ const styles = StyleSheet.create({
     marginBottom: 40,
     marginTop: 20,
   },
+  itemContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    height: '100%',
+  },
 });
 export default styles;

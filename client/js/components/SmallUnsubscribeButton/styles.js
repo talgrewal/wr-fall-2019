@@ -26,6 +26,10 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: white,
   },
+  container: {
+    height: '70%',
+    width: '24%',
+  },
 });
 
 export default styles;
