@@ -14,7 +14,7 @@ import SmallUnsubscribeButton from '../../components/SmallUnsubscribeButton';
 import ActiveButton from '../../assets/buttons/ButtonSPace.png';
 import {withNavigation} from 'react-navigation';
 
-const MyCampaigns = ({myCampaigns, user}) => {
+const MyCampaigns = ({myCampaigns, user, navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.pageTitle}>My Campaigns </Text>
@@ -33,6 +33,11 @@ const MyCampaigns = ({myCampaigns, user}) => {
                     flexDirection: 'row',
                     justifyContent: 'space-between',
                     height: '100%',
+                  }}
+                  onPress={() => {
+                    navigation.navigate('Campaign', {
+                      campaign: item,
+                    });
                   }}>
                   {/* View for text flexDirection = column (auto)*/}
                   <View>

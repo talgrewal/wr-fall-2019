@@ -16,9 +16,28 @@ const GET_All_MYCAMPAIGNS = gql`
       campaigns {
         id
         title
-        description
         category
+        description
         image
+        subscribers {
+          id
+          name
+          email
+        }
+        events {
+          id
+          title
+          location
+          image
+          description
+          startDate
+          endDate
+          comments {
+            id
+            createdAt
+            comment
+          }
+        }
       }
     }
   }
@@ -42,7 +61,6 @@ export default class MyCampaignsContainer extends Component {
   };
 
   render() {
-    console.log('state', this.state.user && this.state.user.id);
     return (
       this.state.user && (
         <Query
@@ -53,7 +71,6 @@ export default class MyCampaignsContainer extends Component {
             if (loading) return <Loader />;
             if (error) return <Text>{error.message}</Text>;
 
-            console.log(data.user.campaigns);
             return (
               <MyCampaigns
                 myCampaigns={data.user.campaigns}
