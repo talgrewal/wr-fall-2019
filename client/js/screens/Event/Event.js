@@ -30,7 +30,6 @@ const COMMENT_MUTATION = gql`
 `;
 
 const Event = ({navigation, user}) => {
-  //event object is passed into the addToCalendar so it doesnt need comments or user
   const event = {
     ...navigation.state.params.event,
   };
