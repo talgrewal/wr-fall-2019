@@ -22,6 +22,18 @@ export const createViewer = async viewer => {
   }
 };
 
+export const createGuest = async viewer => {
+  try {
+    return await AsyncStorage.setItem(
+      `user`,
+      JSON.stringify({id: viewer.user.id, token: viewer.token}),
+    );
+  } catch (error) {
+    console.log(error);
+    return new Error(error);
+  }
+};
+
 export const deleteViewer = async () => {
   try {
     return await AsyncStorage.removeItem(`user`);

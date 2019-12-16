@@ -44,12 +44,13 @@ class UserProvider extends Component {
           {({loading, error, data}) => {
             if (loading) return <Loader />;
             if (error) return <>{console.log(error)}</>;
-            const user = data && data.user ? data.user : null;
-            return (
-              <UserContext.Provider value={{user: user}}>
-                {this.props.children}
-              </UserContext.Provider>
-            );
+            if (data) {
+              return (
+                <UserContext.Provider value={{user: data.user}}>
+                  {this.props.children}
+                </UserContext.Provider>
+              );
+            }
           }}
         </Query>
       )

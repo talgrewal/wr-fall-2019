@@ -38,7 +38,7 @@ export const ALL_CAMPAIGNS_QUERY = gql`
 export default class CampaignsContainer extends Component {
   render() {
     return (
-      <Query query={ALL_CAMPAIGNS_QUERY}>
+      <Query query={ALL_CAMPAIGNS_QUERY} fetchPolicy="network-only">
         {({loading, error, data}) => {
           if (loading) return <Text>Text is loading</Text>;
           if (error) return <Text>{error.message}/</Text>;
