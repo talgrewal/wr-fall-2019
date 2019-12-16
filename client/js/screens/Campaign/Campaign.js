@@ -15,9 +15,6 @@ import MainUnsubscribeButton from '../../components/MainUnsubscribeButton';
 import MrMoneyImage from '../../assets/artwork/mrmoney.png';
 
 const Campaign = ({navigation, user}) => {
-  console.log('Params:', navigation.state.params);
-  console.log('Params:', navigation.state);
-
   return (
     <ScrollView style={styles.campaignContainer}>
       {/* Start of Title */}
