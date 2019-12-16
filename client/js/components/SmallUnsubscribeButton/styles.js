@@ -17,13 +17,11 @@ const styles = StyleSheet.create({
     borderColor: white,
     borderWidth: 1,
     borderRadius: baseSpacing * 2,
-    padding: baseSpacing,
-    padding: baseSpacing,
-
-    height: '75%',
+    height: '100%',
     width: '100%',
   },
   buttonText: {
+    padding: 10,
     fontFamily: headerFont,
     fontSize: 12,
     color: white,

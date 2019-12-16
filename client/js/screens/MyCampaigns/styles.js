@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
   page: {...centeredChildren},
   container: {
     flex: 1,
-    marginTop: 20,
+    marginTop: '2%',
   },
   pageTitle: {
     fontSize: hugeText,
@@ -28,12 +28,14 @@ const styles = StyleSheet.create({
   },
 
   item: {
+    flex: 1,
     backgroundColor: darkGrey,
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
+    padding: 15,
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginBottom: '5%',
+    marginHorizontal: '1%',
+    marginTop: '2%',
   },
   title: {
     fontSize: contentText,
@@ -45,15 +47,13 @@ const styles = StyleSheet.create({
     color: white,
     fontFamily: italicFont,
   },
-  panel: {
-    borderRadius: 5,
-
+  background: {
+    resizeMode: 'contain',
     height: '100%',
     width: '100%',
   },
   image: {
     resizeMode: 'contain',
-
     height: '50%',
     width: '60%',
   },
