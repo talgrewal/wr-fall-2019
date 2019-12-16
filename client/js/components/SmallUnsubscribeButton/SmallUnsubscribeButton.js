@@ -26,14 +26,18 @@ const SmallUnsubscribeButton = ({CampaignId, userid}) => {
     <Mutation mutation={CAMPAIGN_UNSUBSCRIBE} client={client}>
       {updateUser => {
         return (
-          <View style={styles.buttonHolder}>
+          <View
+            style={{
+              height: '70%',
+              width: '24%',
+            }}>
             <TouchableOpacity
               onPress={async () => {
                 try {
                   const editSubscribe = await updateUser({
                     variables: {
                       campaignid: CampaignId,
-                      userid: userId,
+                      userid: userid,
                     },
                   });
                 } catch (e) {}

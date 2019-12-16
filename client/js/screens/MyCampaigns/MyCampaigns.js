@@ -14,65 +14,37 @@ import SmallUnsubscribeButton from '../../components/SmallUnsubscribeButton';
 import ActiveButton from '../../assets/buttons/ButtonSPace.png';
 import {withNavigation} from 'react-navigation';
 
-// const User = [];
-// const DATA = [
-//   {
-//     id: '1',
-//     title: 'International Rebellion',
-//     category: 'Enviornment',
-//   },
-//   {
-//     id: '2',
-//     title: 'Peace and Humanity',
-//     category: 'Political',
-//   },
-//   {
-//     id: '3',
-//     title: 'Unity and Diversity',
-//     category: 'Social',
-//   },
-//   {
-//     id: '4',
-//     title: 'Power Politics in Todays World',
-//     category: 'Social',
-//   },
-// ];
-
-const Item = ({title, category, myCampaigns, user}) => {
-  return (
-    <View style={styles.item}>
-      <View>
-        <Text style={styles.title}>{title}</Text>
-        <Text style={styles.category}>{category}</Text>
-      </View>
-      <SmallUnsubscribeButton />
-    </View>
-  );
-};
-
 const MyCampaigns = ({myCampaigns, user}) => {
-  console.log(myCampaigns);
-  console.log(myCampaigns[0].id);
   return (
-    <>
+    <SafeAreaView style={styles.container}>
       <Text style={styles.pageTitle}>My Campaigns </Text>
       {myCampaigns && myCampaigns.length > 0 ? (
         <ImageBackground
-          style={styles.panel}
+          style={styles.background}
           imageStyle={styles.panel}
           source={spaceTexture}>
-          <SafeAreaView style={styles.container}>
-            <FlatList
-              data={myCampaigns}
-              renderItem={({item}) => (
-                <TouchableOpacity>
-                  <Item title={item.title} category={item.category} />
-                  <Text>{item.id}</Text>
+          <FlatList
+            data={myCampaigns}
+            renderItem={({item}) => (
+              <View style={styles.item}>
+                <TouchableOpacity
+                  style={{
+                    flex: 1,
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    height: '100%',
+                  }}>
+                  {/* View for text flexDirection = column (auto)*/}
+                  <View>
+                    <Text style={styles.title}>{item.title}</Text>
+                    <Text style={styles.category}>{item.category}</Text>
+                  </View>
+                  <SmallUnsubscribeButton CampaignId={item.id} userid={user} />
                 </TouchableOpacity>
-              )}
-              keyExtractor={item => item.id}
-            />
-          </SafeAreaView>
+              </View>
+            )}
+            keyExtractor={item => item.id}
+          />
         </ImageBackground>
       ) : (
         <View>
@@ -133,7 +105,7 @@ const MyCampaigns = ({myCampaigns, user}) => {
           </View>
         </View>
       ) : null} */}
-    </>
+    </SafeAreaView>
   );
 };
 

@@ -47,7 +47,8 @@ export default class MyCampaignsContainer extends Component {
       this.state.user && (
         <Query
           query={GET_All_MYCAMPAIGNS}
-          variables={{userid: this.state.user.id}}>
+          variables={{userid: this.state.user.id}}
+          fetchPolicy="network-only">
           {({loading, error, data}) => {
             if (loading) return <Loader />;
             if (error) return <Text>{error.message}</Text>;
