@@ -78,7 +78,7 @@ const MyCampaigns = ({myCampaigns, user, navigation}) => {
         </View>
       )}
       {/* Guest Screen */}
-      {/* {User ? (
+      {!user ? (
         <View>
           <View style={styles.page}>
             <Image
@@ -109,7 +109,7 @@ const MyCampaigns = ({myCampaigns, user, navigation}) => {
             </TouchableOpacity>
           </View>
         </View>
-      ) : null} */}
+      ) : null}
     </SafeAreaView>
   );
 };
