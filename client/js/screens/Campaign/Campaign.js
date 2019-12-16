@@ -8,13 +8,11 @@ import {
   ScrollView,
 } from 'react-native';
 import {withNavigation} from 'react-navigation';
-
 import styles from './styles';
 import MainSubscribeButton from '../../components/MainSubscribeButton';
 import MainUnsubscribeButton from '../../components/MainUnsubscribeButton';
 import MrMoneyImage from '../../assets/artwork/mrmoney.png';
 import ListEvent from '../../components/ListEvent';
-import AddToCalendar from '../../components/AddToCalendar';
 
 const Campaign = ({navigation, user}) => {
   return (

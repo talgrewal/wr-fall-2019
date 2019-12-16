@@ -78,7 +78,7 @@ const Event = ({navigation, user}) => {
           </TouchableOpacity>
         </View>
         <View style={styles.detailsContainer}>
-          <Image style={styles.image} source={eventImage} />
+          <Image style={styles.image} source={{uri: event.image}} />
           <Text style={styles.halfSpaceText}>{event.description}</Text>
         </View>
         <View style={styles.inputContainer}>
