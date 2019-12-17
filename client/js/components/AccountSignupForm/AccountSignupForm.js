@@ -17,7 +17,7 @@ import {Mutation} from '@apollo/react-components';
 import ApolloClient from 'apollo-boost';
 import gql from 'graphql-tag';
 import {withNavigation} from 'react-navigation';
-import {createViewer} from '../../config/modals';
+import {createViewer} from '../../config/models';
 import InactiveButton from '../../assets/buttons/Inactivespacebutton.png';
 import {APOLLO_AUTH_ADDRESS} from '../../config/constant';
 
@@ -27,6 +27,8 @@ const SIGNUP_MUTATION = gql`
       token
       user {
         id
+        name
+        email
       }
     }
   }
@@ -54,14 +56,14 @@ class AccountSignupForm extends Component {
             <Form
               onSubmit={async values => {
                 try {
-                  const newUserToken = await signup({
+                  const userToken = await signup({
                     variables: {
                       email: values.email,
                       password: values.password,
                       name: values.name,
                     },
                   });
-                  await createViewer(newUserToken.data.signup);
+                  await createViewer(userToken.data.signup);
                   this.props.navigation.navigate('Home');
                 } catch (e) {
                   console.log(e);
