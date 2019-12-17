@@ -65,8 +65,8 @@ class EditProfileForm extends Component {
       this.state.user && (
         <Query query={QUERY_USER} variables={{userId: this.state.user.id}}>
           {({loading, error, data}) => {
-            if (loading) return <Loader />;
-            if (error) return <Text>{error.message}</Text>;
+            if (loading) {return <Loader />;}
+            if (error) {return <Text>{error.message}</Text>;}
             if (data) {
               return (
                 <Mutation mutation={EDITPROFILE_MUTATION} client={client}>
@@ -113,7 +113,6 @@ class EditProfileForm extends Component {
                               {cancelable: false},
                             );
                           } catch (e) {
-                            console.log(e);
                             this.setState({error: e});
                           }
                         }}

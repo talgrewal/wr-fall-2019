@@ -11,14 +11,13 @@ import {
 import EmailIcon from '../../assets/signinicons/EmailIcon.png';
 import PasswordIcon from '../../assets/signinicons/PasswordIcon.png';
 import styles from './styles';
-import MainSigninButton from '../MainSignupButton/MainSignupButton';
 import {Mutation} from '@apollo/react-components';
 import ApolloClient from 'apollo-boost';
 import gql from 'graphql-tag';
 import {withNavigation} from 'react-navigation';
 import {createViewer} from '../../config/models';
 import InactiveButton from '../../assets/buttons/Inactivespacebutton.png';
-import {APOLLO_CLIENT_ADDRESS} from '../../config/constant';
+import {APOLLO_AUTH_ADDRESS} from '../../config/constant';
 
 const LOGIN_MUTATION = gql`
   mutation login($email: String!, $password: String!) {
@@ -47,7 +46,7 @@ class AccountLoginForm extends Component {
         mutation={LOGIN_MUTATION}
         client={
           new ApolloClient({
-            uri: APOLLO_CLIENT_ADDRESS,
+            uri: APOLLO_AUTH_ADDRESS,
           })
         }>
         {login => (
@@ -55,16 +54,15 @@ class AccountLoginForm extends Component {
             <Form
               onSubmit={async values => {
                 try {
-                  const newUserToken = await login({
+                  const userToken = await login({
                     variables: {
                       email: values.email,
                       password: values.password,
                     },
                   });
-                  await createViewer(newUserToken.data.login);
+                  await createViewer(userToken.data.login);
                   this.props.navigation.navigate('Home');
                 } catch (e) {
-                  console.log(e);
                   this.setState({error: e});
                 }
               }}

@@ -16,6 +16,7 @@ import {sharedNavigationOptions} from './config';
 import {THEME} from '../config';
 import {Image} from 'react-native';
 import styles from './styles';
+import {queryViewer} from '../config/models';
 
 const {
   typography,
@@ -84,7 +85,7 @@ const Tabs = createBottomTabNavigator(
     defaultNavigationOptions: ({navigation}) => ({
       tabBarIcon: ({focused, tintColor}) => {
         const {routeName} = navigation.state;
-
+        let Icon = null;
         if (routeName === 'Home') {
           Icon = focused ? (
             <Image

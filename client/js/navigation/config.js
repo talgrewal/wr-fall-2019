@@ -1,5 +1,11 @@
 import React from 'react';
-import {View, TouchableOpacity, Image} from 'react-native';
+import {
+  View,
+  TouchableOpacity,
+  Image,
+  Text,
+  ImageBackground,
+} from 'react-native';
 import {Header} from 'react-navigation-stack';
 import styles from './styles';
 
@@ -55,10 +61,12 @@ const BackButton = ({navigation}) => (
 const ProfileButton = ({navigation}) => {
   return (
     <TouchableOpacity onPress={() => navigation.navigate('EditProfile')}>
+
       <Image
         style={{height: 30, width: 30, resizeMode: 'contain', marginRight: 20}}
         source={require('../assets/headingelement/Signedin.png')}
       />
+
     </TouchableOpacity>
   );
 };
