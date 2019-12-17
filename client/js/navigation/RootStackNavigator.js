@@ -1,6 +1,7 @@
 import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 import DrawerNavigation from './DrawerNavigation';
 import ConfirmationModal from '../screens/Confirmation';
+import CampaignModal from '../screens/CampaignModal';
 import {createStackNavigator} from 'react-navigation-stack';
 import LoginScreen from '../screens/Login';
 import SignupScreen from '../screens/Signup';
@@ -29,6 +30,7 @@ const AppStack = createStackNavigator(
   {
     Layout: DrawerNavigation,
     Confirmation: ConfirmationModal,
+    CampaignModal: CampaignModal,
   },
   {
     headerMode: 'none',

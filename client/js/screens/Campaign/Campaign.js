@@ -15,8 +15,6 @@ import MrMoneyImage from '../../assets/artwork/mrmoney.png';
 import ListEvent from '../../components/ListEvent';
 
 const Campaign = ({navigation, user}) => {
-  console.log('asdfawf', user);
-
   const isSubscribed = navigation.state.params.campaign.subscribers.find(
     subscriber => subscriber.id === user.id,
   );
@@ -51,12 +49,19 @@ const Campaign = ({navigation, user}) => {
           </View>
         </View>
       </View>
+      {/* End of Campaign Info */}
+
       {/* Start of Campaign Info */}
       <View style={styles.campaignDescription}>
         <Text style={styles.campaignDescriptionText} numberOfLines={5}>
           {navigation.state.params.campaign.description}
         </Text>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('CampaignModal', {
+              campaignData: navigation.state.params,
+            });
+          }}>
           <Text style={styles.campaignRedText}>More</Text>
         </TouchableOpacity>
       </View>
