@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   TouchableOpacity,
@@ -7,6 +7,7 @@ import {
   ImageBackground,
 } from 'react-native';
 import {Header} from 'react-navigation-stack';
+import {queryViewer} from '../config/models';
 
 const AppHeader = props => (
   <View
@@ -42,11 +43,27 @@ const MenuButton = ({navigation}) => {
 };
 
 const ProfileButton = ({navigation}) => {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const getUesr = async () => {
+      const user = await queryViewer();
+      setUser(await user);
+    };
+    getUesr();
+  });
+
   return (
     <TouchableOpacity onPress={() => navigation.navigate('EditProfile')}>
       <ImageBackground
         style={{height: 25, width: 25, resizeMode: 'contain', marginRight: 20}}
-        source={require('../assets/headingelement/Signedin.png')}></ImageBackground>
+        source={require('../assets/headingelement/Signedin.png')}>
+        {user && (
+          <Text style={{color: 'white', textAlign: 'center', padding: 2}}>
+            {user.name.substring(0, 2)}
+          </Text>
+        )}
+      </ImageBackground>
     </TouchableOpacity>
   );
 };
