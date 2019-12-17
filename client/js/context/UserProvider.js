@@ -3,7 +3,7 @@ import {createContext} from 'react';
 import Loader from '../components/Loader';
 import gql from 'graphql-tag';
 import {Query} from 'react-apollo';
-import {queryViewer} from '../config/modals';
+import {queryViewer} from '../config/models';
 const UserContext = createContext();
 
 const USER_QUERY = gql`
