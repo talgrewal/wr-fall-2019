@@ -1,5 +1,11 @@
 import React from 'react';
-import {View, TouchableOpacity, Image} from 'react-native';
+import {
+  View,
+  TouchableOpacity,
+  Image,
+  Text,
+  ImageBackground,
+} from 'react-native';
 import {Header} from 'react-navigation-stack';
 
 const AppHeader = props => (
@@ -37,11 +43,10 @@ const MenuButton = ({navigation}) => {
 
 const ProfileButton = ({navigation}) => {
   return (
-    <TouchableOpacity>
-      <Image
+    <TouchableOpacity onPress={() => navigation.navigate('EditProfile')}>
+      <ImageBackground
         style={{height: 25, width: 25, resizeMode: 'contain', marginRight: 20}}
-        source={require('../assets/headingelement/Signedin.png')}
-      />
+        source={require('../assets/headingelement/Signedin.png')}></ImageBackground>
     </TouchableOpacity>
   );
 };
