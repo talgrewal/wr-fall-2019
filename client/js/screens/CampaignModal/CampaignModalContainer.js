@@ -1,18 +1,32 @@
 import React, {Component} from 'react';
 import CampaignModal from './CampaignModal';
-import {UserContext} from '../../context/UserProvider';
+import {queryViewer} from '../../config/models';
 
 class CampaignModalContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: null,
+    };
+  }
+
+  componentDidMount() {
+    this.getUser();
+  }
+
+  getUser = async () => {
+    const user = await queryViewer();
+    this.setState({user});
+  };
+
   render() {
     return (
-      <UserContext.Consumer>
-        {({user}) => (
-          <CampaignModal
-            user={user}
-            campaignData={this.props.navigation.state.params}
-          />
-        )}
-      </UserContext.Consumer>
+      this.state.user && (
+        <CampaignModal
+          user={this.state.user}
+          campaignData={this.props.navigation.state.params}
+        />
+      )
     );
   }
 }

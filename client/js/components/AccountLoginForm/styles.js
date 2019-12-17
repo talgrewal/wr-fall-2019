@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
+    color: 'white',
   },
   buttonHolder: {
     flex: 1,
@@ -67,6 +68,7 @@ const styles = StyleSheet.create({
   IconImage: {
     width: 20,
     height: 20,
+    resizeMode: 'contain',
   },
 
   errorText: {

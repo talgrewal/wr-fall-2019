@@ -1,10 +1,6 @@
 import React, {Component} from 'react';
 import Campaign from './Campaign';
 import {queryViewer} from '../../config/models';
-import gql from 'graphql-tag';
-import {withNavigation} from 'react-navigation';
-import {UserContext} from '../../context/UserProvider';
-import {queryViewer} from '../../config/models';
 
 class CampaignContainer extends Component {
   constructor(props) {

@@ -24,9 +24,7 @@ const CAMPAIGN_SUBSCRIBE = gql`
   }
 `;
 
-
 const MainSubscribeButton = ({CampaignId, navigation, userId}) => {
-
   return (
     <Mutation mutation={CAMPAIGN_SUBSCRIBE} client={client}>
       {updateUser => {
