@@ -3,9 +3,8 @@ import Text from 'react-native';
 import MyCampaigns from './MyCampaigns';
 import gql from 'graphql-tag';
 import {Query} from '@apollo/react-components';
-import client from '../../config/api';
 import Loader from '../../components/Loader';
-import {queryViewer} from '../../config/modals';
+import {queryViewer} from '../../config/models';
 
 const GET_All_MYCAMPAIGNS = gql`
   query myCampaigns($userid: ID!) {
@@ -68,8 +67,8 @@ export default class MyCampaignsContainer extends Component {
           variables={{userid: this.state.user.id}}
           fetchPolicy="network-only">
           {({loading, error, data}) => {
-            if (loading) return <Loader />;
-            if (error) return <Text>{error.message}</Text>;
+            if (loading) {return <Loader />;}
+            if (error) {return <Text>{error.message}</Text>;}
 
             return (
               <MyCampaigns

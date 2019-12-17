@@ -14,6 +14,7 @@ import ApolloClient from 'apollo-boost';
 import gql from 'graphql-tag';
 import {withNavigation} from 'react-navigation';
 import CalendarButton from '../../components/CalendarButton';
+import {queryViewer} from '../../config/models';
 
 const COMMENT_MUTATION = gql`
   mutation updateEvent($title: String!, $username: String!, $comment: String!) {
@@ -29,14 +30,13 @@ const COMMENT_MUTATION = gql`
   }
 `;
 
-
 const Event = ({navigation, user}) => {
   const event = {
     ...navigation.state.params.event,
   };
+
   const commentItems = event.comments.map((comment, index) => (
     <View key={index} style={styles.commentContainer}>
-
       <Image style={styles.bullet} source={dot} />
       <Comment
         user={comment.username}
@@ -98,7 +98,6 @@ const Event = ({navigation, user}) => {
                         },
                       });
                     } catch (e) {
-                      console.log(e);
                       this.setState({error: e});
                     }
                   }}

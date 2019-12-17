@@ -15,6 +15,8 @@ import MainUnsubscribeButton from '../../components/MainUnsubscribeButton';
 import MrMoneyImage from '../../assets/artwork/mrmoney.png';
 
 const Campaign = ({navigation, user}) => {
+  console.log('asdfawf', user);
+
   const isSubscribed = navigation.state.params.campaign.subscribers.find(
     subscriber => subscriber.id === user.id,
   );
@@ -83,9 +85,7 @@ const Campaign = ({navigation, user}) => {
             data={navigation.state.params.campaign.events}
             renderItem={({item}) => (
               <TouchableOpacity
-
                 onPress={() => navigation.navigate('Event', {event: item})}>
-
                 <View style={styles.eventContainer}>
                   <View style={styles.eventImageBox}>
                     <Image
