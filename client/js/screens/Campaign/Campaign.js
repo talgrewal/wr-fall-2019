@@ -17,7 +17,13 @@ import MrMoneyImage from '../../assets/artwork/mrmoney.png';
 const Campaign = ({navigation, user, campaigns}) => {
   // const isSubscribed = campaigns.find(campaign => campaign.id === userId);
   // console.log(user.id);
-  // console.log(campaigns);
+  console.log(campaigns);
+
+  if (campaigns) {
+    console.log(campaigns.length);
+  } else {
+    console.log('not run yet');
+  }
   // console.log(navigation.state.params.campaign.id);
 
   // if (campaigns) {
@@ -54,18 +60,14 @@ const Campaign = ({navigation, user, campaigns}) => {
         </View>
         <View style={styles.campaignSubInfo}>
           <View>
-            {/* {campaigns ? (
-              <Text style={styles.subscriberNumber}>
-                {navigation.state.params.campaign.id}
-              </Text>
+            {campaigns ? (
+              <Text style={styles.subscriberNumber}>{campaigns.length}</Text>
             ) : (
               <Text style={styles.subscriberNumber}>
+                {navigation.state.params.campaign.subscribers.length}
               </Text>
-            )} */}
+            )}
 
-            <Text style={styles.subscriberNumber}>
-              {navigation.state.params.campaign.subscribers.length}
-            </Text>
             <Text style={styles.subscriberName}>Subscribers</Text>
           </View>
           <View>
@@ -84,7 +86,7 @@ const Campaign = ({navigation, user, campaigns}) => {
           <Text style={styles.campaignRedText}>More</Text>
         </TouchableOpacity>
       </View>
-      {isSubscribed ? (
+      {campaigns ? (
         <MainUnsubscribeButton
           CampaignId={navigation.state.params.campaign.id}
           userId={user.id}

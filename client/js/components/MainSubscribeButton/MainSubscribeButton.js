@@ -38,12 +38,9 @@ const MainSubscribeButton = ({CampaignId, navigation, userId}) => {
                   const editSubscribe = await updateUser({
                     variables: {
                       campaignid: CampaignId,
-
                       userid: userId,
                     },
                   });
-                  console.log(editSubscribe);
-
                   navigation.navigate('Confirmation');
                 } catch (e) {
                   console.log(e);

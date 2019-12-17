@@ -7,6 +7,7 @@ import {withNavigation} from 'react-navigation';
 class Confirmation extends Component {
   state = {
     modalVisible: true,
+    subscribedMessage: true,
   };
 
   hideModal = () => {

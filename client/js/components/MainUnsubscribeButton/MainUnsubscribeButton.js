@@ -6,6 +6,7 @@ import gql from 'graphql-tag';
 import ApolloClient from 'apollo-boost';
 import {Mutation} from '@apollo/react-components';
 import client from '../../config/api';
+import {withNavigation} from 'react-navigation';
 
 const CAMPAIGN_UNSUBSCRIBE = gql`
   mutation updateCampaign($campaignid: ID!, $userid: ID!) {
@@ -24,7 +25,7 @@ const CAMPAIGN_UNSUBSCRIBE = gql`
   }
 `;
 
-const MainSubscribeButton = ({CampaignId, userId}) => {
+const MainUnsubscribeButton = ({CampaignId, navigation, userId}) => {
   return (
     <Mutation mutation={CAMPAIGN_UNSUBSCRIBE} client={client}>
       {updateUser => {
@@ -39,7 +40,10 @@ const MainSubscribeButton = ({CampaignId, userId}) => {
                       userid: userId,
                     },
                   });
-                } catch (e) {}
+                  navigation.navigate('Confirmation');
+                } catch (e) {
+                  console.log(e);
+                }
               }}
               style={styles.button}>
               <ImageBackground source={activeButton} style={styles.buttonImage}>
@@ -53,4 +57,4 @@ const MainSubscribeButton = ({CampaignId, userId}) => {
   );
 };
 
-export default MainSubscribeButton;
+export default withNavigation(MainUnsubscribeButton);

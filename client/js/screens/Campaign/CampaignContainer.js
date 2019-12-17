@@ -85,10 +85,10 @@ class CampaignContainer extends Component {
                 {({loading, error, data}) => {
                   if (error) return <Text>{error.message}</Text>;
                   // if (loading) return <Loader />;
-                  console.log(
-                    'campaigns',
-                    data && data.campaign.node.subscribers,
-                  );
+                  // console.log(
+                  //   'campaigns',
+                  //   data && data.campaign.node.subscribers,
+                  // );
 
                   // console.log(
                   //   'gamma',
