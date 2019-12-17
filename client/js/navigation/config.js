@@ -69,7 +69,8 @@ export const sharedNavigationOptions = navigation => ({
   headerLeft: props =>
     navigation.state.routeName === 'Campaigns' ||
     navigation.state.routeName === 'Campaign' ||
-    navigation.state.routeName === 'Events' ? (
+    navigation.state.routeName === 'Events' ||
+    navigation.state.routeName === 'EditProfile' ? (
       <BackButton {...props} navigation={navigation} />
     ) : (
       <MenuButton {...props} navigation={navigation} />
