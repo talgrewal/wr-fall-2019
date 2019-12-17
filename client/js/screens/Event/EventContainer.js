@@ -9,6 +9,7 @@ class EventContainer extends Component {
       <UserContext.Consumer>
         {({user}) => <Event user={user} />}
       </UserContext.Consumer>
+
     );
   }
 }

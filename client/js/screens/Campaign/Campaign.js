@@ -15,6 +15,8 @@ import MrMoneyImage from '../../assets/artwork/mrmoney.png';
 import ListEvent from '../../components/ListEvent';
 
 const Campaign = ({navigation, user}) => {
+  console.log('asdfawf', user);
+
   const isSubscribed = navigation.state.params.campaign.subscribers.find(
     subscriber => subscriber.id === user.id,
   );
