@@ -45,6 +45,34 @@ const styles = StyleSheet.create({
     paddingTop: baseSpacing,
     paddingBottom: baseSpacing * 4,
   },
+  done: {
+    color: 'blue',
+    alignSelf: 'center',
+    fontSize: 18,
+  },
+  button: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 5,
+    borderRadius: 40,
+    height: 40,
+    width: 260,
+    alignSelf: 'center',
+  },
+  buttonImage: {
+    justifyContent: 'center',
+    resizeMode: 'contain',
+    alignItems: 'center',
+    height: 45,
+    width: 250,
+    borderRadius: 40,
+  },
+  buttontext: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: white,
+  },
 });
 
 export default styles;
