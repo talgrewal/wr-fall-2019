@@ -6,11 +6,8 @@ import gql from 'graphql-tag';
 import ApolloClient from 'apollo-boost';
 import {Mutation} from '@apollo/react-components';
 import client from '../../config/api';
-<<<<<<< HEAD
 import ALL_CAMPAIGNS_QUERY from '../../screens/Campaigns/CampaignsContainer';
-=======
 import {withNavigation} from 'react-navigation';
->>>>>>> develop
 
 const CAMPAIGN_SUBSCRIBE = gql`
   mutation updateUser($campaignid: ID!, $userid: ID!) {
