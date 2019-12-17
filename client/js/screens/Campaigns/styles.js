@@ -9,7 +9,6 @@ const styles = StyleSheet.create({
     height: 60,
     width: 100,
     resizeMode: 'contain',
-    // alignSelf: 'flex-start',
   },
   campaignsHeader: {
     justifyContent: 'space-between',

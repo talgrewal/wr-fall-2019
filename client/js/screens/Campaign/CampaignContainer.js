@@ -1,18 +1,30 @@
 import React, {Component} from 'react';
 import Campaign from './Campaign';
-import {queryViewer} from '../../config/modals';
+import {queryViewer} from '../../config/models';
 import gql from 'graphql-tag';
 import {withNavigation} from 'react-navigation';
 import {UserContext} from '../../context/UserProvider';
+import {queryViewer} from '../../config/models';
 
 class CampaignContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: null,
+    };
+  }
+
+  componentDidMount() {
+    this.getUser();
+  }
+
+  getUser = async () => {
+    const user = await queryViewer();
+    this.setState({user});
+  };
   render() {
-    return (
-      <UserContext.Consumer>
-        {({user}) => <Campaign user={user} />}
-      </UserContext.Consumer>
-    );
+    return this.state.user && <Campaign user={this.state.user} />;
   }
 }
 
-export default withNavigation(CampaignContainer);
+export default CampaignContainer;

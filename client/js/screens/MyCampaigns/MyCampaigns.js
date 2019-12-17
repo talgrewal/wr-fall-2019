@@ -12,62 +12,38 @@ import styles from './styles';
 import spaceTexture from '../../assets/Textures/DarkSpace.png';
 import SmallUnsubscribeButton from '../../components/SmallUnsubscribeButton';
 import ActiveButton from '../../assets/buttons/ButtonSPace.png';
-const User = [];
-const DATA = [
-  {
-    id: '1',
-    title: 'International Rebellion',
-    category: 'Enviornment',
-  },
-  {
-    id: '2',
-    title: 'Peace and Humanity',
-    category: 'Political',
-  },
-  {
-    id: '3',
-    title: 'Unity and Diversity',
-    category: 'Social',
-  },
-  {
-    id: '4',
-    title: 'Power Politics in Todays World',
-    category: 'Social',
-  },
-];
+import {withNavigation} from 'react-navigation';
 
-const Item = ({title, category}) => {
+const MyCampaigns = ({myCampaigns, user, navigation}) => {
   return (
-    <View style={styles.item}>
-      <View>
-        <Text style={styles.title}>{title}</Text>
-        <Text style={styles.category}>{category}</Text>
-      </View>
-      <SmallUnsubscribeButton />
-    </View>
-  );
-};
-
-const MyCampaigns = props => {
-  return (
-    <>
+    <SafeAreaView style={styles.container}>
       <Text style={styles.pageTitle}>My Campaigns </Text>
-      {DATA && DATA.length > 0 ? (
+      {myCampaigns && myCampaigns.length > 0 ? (
         <ImageBackground
-          style={styles.panel}
+          style={styles.background}
           imageStyle={styles.panel}
           source={spaceTexture}>
-          <SafeAreaView style={styles.container}>
-            <FlatList
-              data={DATA}
-              renderItem={({item}) => (
-                <TouchableOpacity>
-                  <Item title={item.title} category={item.category} />
+          <FlatList
+            data={myCampaigns}
+            renderItem={({item}) => (
+              <View style={styles.item}>
+                <TouchableOpacity
+                  style={styles.itemContainer}
+                  onPress={() => {
+                    navigation.navigate('Campaign', {
+                      campaign: item,
+                    });
+                  }}>
+                  <View>
+                    <Text style={styles.title}>{item.title}</Text>
+                    <Text style={styles.category}>{item.category}</Text>
+                  </View>
+                  <SmallUnsubscribeButton CampaignId={item.id} userid={user} />
                 </TouchableOpacity>
-              )}
-              keyExtractor={item => item.id}
-            />
-          </SafeAreaView>
+              </View>
+            )}
+            keyExtractor={item => item.id}
+          />
         </ImageBackground>
       ) : (
         <View>
@@ -87,7 +63,11 @@ const MyCampaigns = props => {
             miss out to be a part of the movement.
           </Text>
           <View style={styles.buttonHolder}>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => {
+                navigation.navigate('Home');
+              }}>
               <ImageBackground source={ActiveButton} style={styles.buttonImage}>
                 <Text style={styles.buttonText}>Browse Campaigns</Text>
               </ImageBackground>
@@ -96,7 +76,7 @@ const MyCampaigns = props => {
         </View>
       )}
       {/* Guest Screen */}
-      {User ? (
+      {!user ? (
         <View>
           <View style={styles.page}>
             <Image
@@ -128,8 +108,8 @@ const MyCampaigns = props => {
           </View>
         </View>
       ) : null}
-    </>
+    </SafeAreaView>
   );
 };
 
-export default MyCampaigns;
+export default withNavigation(MyCampaigns);

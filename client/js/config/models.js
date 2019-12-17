@@ -13,8 +13,13 @@ export const queryViewer = async () => {
 export const createViewer = async viewer => {
   try {
     return await AsyncStorage.setItem(
-      `user`,
-      JSON.stringify({id: viewer.user.id, token: viewer.token}),
+      'user',
+      JSON.stringify({
+        id: viewer.user.id,
+        token: viewer.token,
+        name: viewer.user.name,
+        email: viewer.user.email,
+      }),
     );
   } catch (error) {
     console.log(error);
@@ -24,7 +29,7 @@ export const createViewer = async viewer => {
 
 export const deleteViewer = async () => {
   try {
-    return await AsyncStorage.removeItem(`user`);
+    return await AsyncStorage.removeItem('user');
   } catch (error) {
     console.log(error);
     return new Error(error);

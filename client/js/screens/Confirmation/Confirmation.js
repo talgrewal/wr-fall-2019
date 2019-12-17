@@ -3,6 +3,7 @@ import {Text, View, Image, Modal} from 'react-native';
 import styles from './styles';
 import checkmark from '../../assets/miscicons/Check.png';
 import {TouchableHighlight} from 'react-native-gesture-handler';
+import {withNavigation} from 'react-navigation';
 class Confirmation extends Component {
   state = {
     modalVisible: true,
@@ -18,7 +19,8 @@ class Confirmation extends Component {
         transparent="true"
         visible={this.state.modalVisible}
         animationType="fade">
-        <TouchableHighlight onPress={this.hideModal}>
+        <TouchableHighlight
+          onPress={(this.hideModal, this.props.navigation.goBack())}>
           <View style={styles.page}>
             <View style={styles.container}>
               <Image source={checkmark} />
@@ -34,4 +36,4 @@ class Confirmation extends Component {
   }
 }
 
-export default Confirmation;
+export default withNavigation(Confirmation);
