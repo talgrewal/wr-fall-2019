@@ -1,34 +1,24 @@
 import {StyleSheet} from 'react-native';
 import {THEME} from '../../config';
 const {
-  colors: {black, darkGrey, white},
+  colors: {black},
   formatting: {baseSpacing, centeredChildren, containerWidth},
-  typography: {
-    baseSize,
-    headerFont,
-    hugeText,
-    contentText,
-    mainFont,
-    subHeaderText,
-  },
+  typography: {baseSize, headerFont},
 } = THEME;
+
 const styles = StyleSheet.create({
   button: {
-    borderColor: white,
+    borderColor: black,
     borderWidth: 1,
     borderRadius: baseSpacing * 2,
-    height: '100%',
-    width: '100%',
+    padding: baseSpacing,
+    padding: baseSpacing,
+    width: 375, //Width 100% does not work
+    ...centeredChildren,
   },
   buttonText: {
-    padding: 10,
     fontFamily: headerFont,
-    fontSize: 12,
-    color: white,
-  },
-  container: {
-    height: '70%',
-    width: '24%',
+    fontSize: baseSize,
   },
 });
 

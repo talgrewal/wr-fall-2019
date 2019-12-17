@@ -15,16 +15,17 @@ import MainUnsubscribeButton from '../../components/MainUnsubscribeButton';
 import MrMoneyImage from '../../assets/artwork/mrmoney.png';
 
 const Campaign = ({navigation, user}) => {
+  const isSubscribed = navigation.state.params.campaign.subscribers.find(
+    subscriber => subscriber.id === user.id,
+  );
+
   return (
     <ScrollView style={styles.campaignContainer}>
       {/* Start of Title */}
-
       <Text style={styles.pageTitle}>
         {navigation.state.params.campaign.title}
       </Text>
-
       {/* End of Title */}
-
       {/* Start of Campaign Info */}
       <View style={styles.campaignDetails}>
         <View>
@@ -49,7 +50,6 @@ const Campaign = ({navigation, user}) => {
         </View>
       </View>
       {/* Start of Campaign Info */}
-
       <View style={styles.campaignDescription}>
         <Text style={styles.campaignDescriptionText} numberOfLines={5}>
           {navigation.state.params.campaign.description}
@@ -58,17 +58,21 @@ const Campaign = ({navigation, user}) => {
           <Text style={styles.campaignRedText}>More</Text>
         </TouchableOpacity>
       </View>
-      {navigation.state.params.campaign.events.length > 0 ? (
-        <MainSubscribeButton
-          userId={user.id}
-          CampaignId={navigation.state.params.campaign.id}
-        />
-      ) : (
+
+      {/* Start of Sub button */}
+      {isSubscribed ? (
         <MainUnsubscribeButton
           CampaignId={navigation.state.params.campaign.id}
           userId={user.id}
         />
+      ) : (
+        <MainSubscribeButton
+          userId={user.id}
+          CampaignId={navigation.state.params.campaign.id}
+        />
       )}
+
+      {/* End  of sub button */}
 
       {/* Start of flat list */}
       <View>
@@ -78,20 +82,28 @@ const Campaign = ({navigation, user}) => {
             style={styles.eventSingle}
             data={navigation.state.params.campaign.events}
             renderItem={({item}) => (
-              <View style={styles.eventContainer}>
-                <View style={styles.eventImageBox}>
-                  <Image style={styles.eventImage} source={{uri: item.image}} />
-                </View>
+              <TouchableOpacity
 
-                <View style={styles.eventInfoBox}>
-                  <Text style={styles.eventInfoBoxTitle} numberOfLines={1}>
-                    {item.title}
-                  </Text>
-                  <Text style={styles.eventInfoBoxLocation} numberOfLines={2}>
-                    {item.location}
-                  </Text>
+                onPress={() => navigation.navigate('Event', {event: item})}>
+
+                <View style={styles.eventContainer}>
+                  <View style={styles.eventImageBox}>
+                    <Image
+                      style={styles.eventImage}
+                      source={{uri: item.image}}
+                    />
+                  </View>
+
+                  <View style={styles.eventInfoBox}>
+                    <Text style={styles.eventInfoBoxTitle} numberOfLines={1}>
+                      {item.title}
+                    </Text>
+                    <Text style={styles.eventInfoBoxLocation} numberOfLines={2}>
+                      {item.location}
+                    </Text>
+                  </View>
                 </View>
-              </View>
+              </TouchableOpacity>
             )}
             keyExtractor={(item, index) => 'index' + index.toString()}
           />

@@ -16,7 +16,7 @@ import {Mutation} from '@apollo/react-components';
 import ApolloClient from 'apollo-boost';
 import gql from 'graphql-tag';
 import {withNavigation} from 'react-navigation';
-import {createViewer} from '../../config/modals';
+import {createViewer} from '../../config/models';
 import InactiveButton from '../../assets/buttons/Inactivespacebutton.png';
 import {APOLLO_CLIENT_ADDRESS} from '../../config/constant';
 

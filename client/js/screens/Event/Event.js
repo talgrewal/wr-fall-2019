@@ -1,46 +1,45 @@
 import React from 'react';
 import {Text, View, Image, TextInput, ScrollView} from 'react-native';
+import {Form, Field} from 'react-final-form';
 import eventImage from '../../assets/Imagery/ManAndTree.png';
 import commentIcon from '../../assets/miscicons/question.png';
 import styles from './styles';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import Comment from '../../components/Comment';
 import dot from '../../assets/artwork/blackspot.png';
-import * as AddCalendarEvent from 'react-native-add-calendar-event';
 import moment from 'moment';
-import {APOLLOCLIENTADDRESS} from '../../config/constant';
+import {APOLLO_SERVER_ADDRESS} from '../../config/constant';
 import {Mutation} from '@apollo/react-components';
 import ApolloClient from 'apollo-boost';
 import gql from 'graphql-tag';
-import {Form, Field} from 'react-final-form';
+import {withNavigation} from 'react-navigation';
+import CalendarButton from '../../components/CalendarButton';
 
 const COMMENT_MUTATION = gql`
-  mutation comment($username: String!, $comment: String!) {
-    comment(username: $username, comment: $comment) {
+  mutation updateEvent($title: String!, $username: String!, $comment: String!) {
+    updateEvent(
+      where: {title: $title}
+      data: {comments: {create: {username: $username, comment: $comment}}}
+    ) {
       comments {
-        id
-        username
-        createdAt
         comment
+        username
       }
     }
   }
 `;
 
-const Event = ({
-  title,
-  location,
-  startDate,
-  endDate,
-  description,
-  comments,
-  user,
-}) => {
-  const commentItems = comments.map(comment => (
-    <View style={styles.commentContainer}>
+
+const Event = ({navigation, user}) => {
+  const event = {
+    ...navigation.state.params.event,
+  };
+  const commentItems = event.comments.map((comment, index) => (
+    <View key={index} style={styles.commentContainer}>
+
       <Image style={styles.bullet} source={dot} />
       <Comment
-        user={comment.user}
+        user={comment.username}
         comment={comment.comment}
         date={comment.date}
       />
@@ -48,16 +47,16 @@ const Event = ({
   ));
 
   //Cleaned up moment formatting calls to keep ternaries readable
-  const startDay = moment(startDate).format('MMM Do, YYYY');
-  const endDay = moment(endDate).format('MMM Do, YYYY');
-  const startTime = moment(startDate).format('h:mma');
-  const endTime = moment(endDate).format('h:mma');
+  const startDay = moment(event.startDate).format('MMM Do, YYYY');
+  const endDay = moment(event.endDate).format('MMM Do, YYYY');
+  const startTime = moment(event.startDate).format('h:mma');
+  const endTime = moment(event.endDate).format('h:mma');
   return (
     <ScrollView style={styles.page}>
       <View style={styles.container}>
-        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.title}>{event.title}</Text>
         <View style={styles.infoContainer}>
-          <Text style={styles.text}>{location}</Text>
+          <Text style={styles.text}>{event.location}</Text>
           {startDay === endDay ? (
             <>
               <Text style={styles.text}>
@@ -72,72 +71,66 @@ const Event = ({
           )}
         </View>
         <View style={styles.buttonContainer}>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => {
-              addToCalendar(title, location, description, startDate, endDate);
-            }}>
-            <Text style={styles.buttonText}>Add to my calendar</Text>
-          </TouchableOpacity>
+          <CalendarButton event={event} />
         </View>
         <View style={styles.detailsContainer}>
           <Image style={styles.image} source={eventImage} />
-          <Text style={styles.halfSpaceText}>{description}</Text>
+          <Text style={styles.halfSpaceText}>{event.description}</Text>
         </View>
         <View style={styles.inputContainer}>
           <Mutation
             mutation={COMMENT_MUTATION}
             client={
               new ApolloClient({
-                uri: APOLLOCLIENTADDRESS,
+                uri: APOLLO_SERVER_ADDRESS,
               })
             }>
-            {comment => (
-              <Form
-                onSubmit={async values => {
-                  try {
-                    const newComment = await comment({
-                      variables: {
-                        username: 'Ciaran',
-                        comment: values.comment,
-                      },
-                    });
-                    await createViewer(newUserToken.data.signup);
-                    this.props.navigation.navigate('Home');
-                  } catch (e) {
-                    console.log(e);
-                    this.setState({error: e});
-                  }
-                }}
-                render={({handleSubmit}) => (
-                  <>
-                    <Field
-                      name="comment"
-                      style={styles.textField}
-                      render={({input, meta}) => (
-                        <TextInput
-                          style={styles.fieldText}
-                          id="comment"
-                          placeholder="Comment"
-                          placeholderTextColor="black"
-                          type="text"
-                          inputProps={{
-                            autoComplete: 'off',
-                          }}
-                          {...input}
+            {updateEvent => {
+              return (
+                <Form
+                  onSubmit={async values => {
+                    try {
+                      const updatedEvent = await updateEvent({
+                        variables: {
+                          title: event.title,
+                          comment: values.comment,
+                          username: user.name,
+                        },
+                      });
+                    } catch (e) {
+                      console.log(e);
+                      this.setState({error: e});
+                    }
+                  }}
+                  render={({handleSubmit}) => (
+                    <>
+                      <Field
+                        name="comment"
+                        render={({input, meta}) => (
+                          <TextInput
+                            style={styles.input}
+                            id="comment"
+                            placeholder="Comment"
+                            placeholderTextColor="black"
+                            type="text"
+                            inputProps={{
+                              autoComplete: 'off',
+                            }}
+                            {...input}
+                          />
+                        )}
+                      />
+                      <TouchableOpacity onPress={handleSubmit}>
+                        <Image
+                          style={styles.commentIcon}
+                          source={commentIcon}
                         />
-                      )}
-                    />
-                    <TouchableOpacity
-                      onPress={() => {
-                        handleSubmit;
-                      }}>
-                      <Image style={styles.commentIcon} source={commentIcon} />
-                    </TouchableOpacity>
-                  </>
-                )}
-              />
-            )}
+                      </TouchableOpacity>
+                    </>
+                  )}
+                />
+              );
+            }}
           </Mutation>
         </View>
         <View style={styles.comments}>{commentItems}</View>
@@ -145,26 +138,5 @@ const Event = ({
     </ScrollView>
   );
 };
-const utcDateToString = momentInUTC => {
-  let s = moment.utc(momentInUTC).format('YYYY-MM-DDTHH:mm:ss.SSS[Z]');
-  return s;
-};
 
-addToCalendar = (title, location, description, startDateUTC, endDateUTC) => {
-  const eventConfig = {
-    title,
-    startDate: utcDateToString(startDateUTC),
-    endDate: utcDateToString(endDateUTC),
-    location: location,
-    notes: description,
-  };
-  AddCalendarEvent.presentEventCreatingDialog(eventConfig)
-    .then(eventInfo => {
-      console.warn(JSON.stringify(eventInfo));
-    })
-    .catch(error => {
-      console.warn(error);
-    });
-};
-
-export default Event;
+export default withNavigation(Event);
