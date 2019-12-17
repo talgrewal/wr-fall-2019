@@ -15,16 +15,19 @@ import MainUnsubscribeButton from '../../components/MainUnsubscribeButton';
 import MrMoneyImage from '../../assets/artwork/mrmoney.png';
 
 const Campaign = ({navigation, user}) => {
+  console.log('asdfawf', user);
+
+  const isSubscribed = navigation.state.params.campaign.subscribers.find(
+    subscriber => subscriber.id === user.id,
+  );
+
   return (
     <ScrollView style={styles.campaignContainer}>
       {/* Start of Title */}
-
       <Text style={styles.pageTitle}>
         {navigation.state.params.campaign.title}
       </Text>
-
       {/* End of Title */}
-
       {/* Start of Campaign Info */}
       <View style={styles.campaignDetails}>
         <View>
@@ -49,7 +52,6 @@ const Campaign = ({navigation, user}) => {
         </View>
       </View>
       {/* Start of Campaign Info */}
-
       <View style={styles.campaignDescription}>
         <Text style={styles.campaignDescriptionText} numberOfLines={5}>
           {navigation.state.params.campaign.description}
@@ -58,17 +60,21 @@ const Campaign = ({navigation, user}) => {
           <Text style={styles.campaignRedText}>More</Text>
         </TouchableOpacity>
       </View>
-      {navigation.state.params.campaign.events.length > 0 ? (
-        <MainSubscribeButton
-          userId={user.id}
-          CampaignId={navigation.state.params.campaign.id}
-        />
-      ) : (
+
+      {/* Start of Sub button */}
+      {isSubscribed ? (
         <MainUnsubscribeButton
           CampaignId={navigation.state.params.campaign.id}
           userId={user.id}
         />
+      ) : (
+        <MainSubscribeButton
+          userId={user.id}
+          CampaignId={navigation.state.params.campaign.id}
+        />
       )}
+
+      {/* End  of sub button */}
 
       {/* Start of flat list */}
       <View>
