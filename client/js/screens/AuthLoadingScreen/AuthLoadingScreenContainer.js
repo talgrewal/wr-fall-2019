@@ -9,7 +9,7 @@ import {
 import AsyncStorage from '@react-native-community/async-storage';
 import Loader from '../../components/Loader';
 import Onboarding from '../Onboarding/Onboarding';
-import {queryOnBoarding} from '../../config/modals';
+import {queryOnBoarding} from '../../config/models';
 
 export default class AuthLoadingScreenContainer extends React.Component {
   constructor() {

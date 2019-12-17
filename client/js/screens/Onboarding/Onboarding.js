@@ -15,7 +15,7 @@ import styles from './styles';
 import activeButton from '../../assets/buttons/activespacebutton.png';
 import {withNavigation} from 'react-navigation';
 
-import {onBoardingSet} from '../../config/modals';
+import {onBoardingSet} from '../../config/models';
 
 const slides = [
   {
