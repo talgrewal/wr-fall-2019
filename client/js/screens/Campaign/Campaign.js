@@ -16,9 +16,26 @@ import MrMoneyImage from '../../assets/artwork/mrmoney.png';
 
 const Campaign = ({navigation, user, campaigns}) => {
   // const isSubscribed = campaigns.find(campaign => campaign.id === userId);
-  console.log(user.id);
+  // console.log(user.id);
   console.log(campaigns);
+  // console.log(navigation.state.params.campaign.id);
 
+  // if (campaigns) {
+  //   console.log('alpha', campaigns[0].id);
+  // } else {
+  //   null;
+  // }
+  // if (campaigns) {
+  //   const currentCampaign = campaigns.find(
+  //     selectedCampaign =>
+  //       selectedCampaign.id === navigation.state.params.campaign.id,
+  //   );
+  //   console.log('cur cur', currentCampaign);
+  // } else {
+  //   null;
+  // }
+  // console.log(currentCampaign.id);
+  // console.log(currentCampaign.subscribers.length);
   const isSubscribed = navigation.state.params.campaign.subscribers.find(
     subscriber => subscriber.id === user.id,
   );
@@ -37,6 +54,15 @@ const Campaign = ({navigation, user, campaigns}) => {
         </View>
         <View style={styles.campaignSubInfo}>
           <View>
+            {/* {campaigns ? (
+              <Text style={styles.subscriberNumber}>
+                {navigation.state.params.campaign.id}
+              </Text>
+            ) : (
+              <Text style={styles.subscriberNumber}>
+              </Text>
+            )} */}
+
             <Text style={styles.subscriberNumber}>
               {navigation.state.params.campaign.subscribers.length}
             </Text>

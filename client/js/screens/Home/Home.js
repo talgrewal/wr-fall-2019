@@ -32,7 +32,7 @@ const MOCK_DATA = [
 const Home = ({navigation}) => {
   return (
     <>
-      <View style={styles.carouselContainer}>
+      <View height={'22%'} style={styles.carouselContainer}>
         <Carousel
           style={styles.carousel}
           data={MOCK_DATA}
@@ -46,7 +46,6 @@ const Home = ({navigation}) => {
           keyExtractor={item => item.id}
         />
       </View>
-
       <View style={styles.container}>
         <Text style={styles.categoryTitle}>Campaign Categories</Text>
         <ScrollView>

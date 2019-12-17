@@ -41,6 +41,7 @@ const MainSubscribeButton = ({CampaignId, navigation, userId}) => {
                       userid: userId,
                     },
                   });
+                  console.log(editSubscribe);
 
                   navigation.navigate('Confirmation');
                 } catch (e) {
