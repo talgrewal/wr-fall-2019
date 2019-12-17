@@ -37,7 +37,7 @@ const MenuButton = ({navigation}) => {
 
 const ProfileButton = ({navigation}) => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={() => navigation.navigate('EditProfile')}>
       <Image
         style={{height: 25, width: 25, resizeMode: 'contain', marginRight: 20}}
         source={require('../assets/headingelement/Signedin.png')}
