@@ -7,17 +7,18 @@ import ApolloClient from 'apollo-boost';
 import {Mutation} from '@apollo/react-components';
 import client from '../../config/api';
 
-const CAMPAIGN_SUBSCRIBE = gql`
-  mutation updateUser($campaignid: ID!, $userid: ID!) {
-    updateUser(
-      data: {campaigns: {disconnect: {id: $campaignid}}}
-      where: {id: $userid}
+const CAMPAIGN_UNSUBSCRIBE = gql`
+  mutation updateCampaign($campaignid: ID!, $userid: ID!) {
+    updateCampaign(
+      data: {subscribers: {disconnect: {id: $userid}}}
+      where: {id: $campaignid}
     ) {
       id
-      name
-      campaigns {
+      title
+      subscribers {
         id
-        title
+        email
+        name
       }
     }
   }
@@ -25,7 +26,7 @@ const CAMPAIGN_SUBSCRIBE = gql`
 
 const MainSubscribeButton = ({CampaignId, userId}) => {
   return (
-    <Mutation mutation={CAMPAIGN_SUBSCRIBE} client={client}>
+    <Mutation mutation={CAMPAIGN_UNSUBSCRIBE} client={client}>
       {updateUser => {
         return (
           <View style={styles.buttonHolder}>

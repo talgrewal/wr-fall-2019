@@ -10,16 +10,17 @@ import ALL_CAMPAIGNS_QUERY from '../../screens/Campaigns/CampaignsContainer';
 import {withNavigation} from 'react-navigation';
 
 const CAMPAIGN_SUBSCRIBE = gql`
-  mutation updateUser($campaignid: ID!, $userid: ID!) {
-    updateUser(
-      data: {campaigns: {connect: {id: $campaignid}}}
-      where: {id: $userid}
+  mutation updateCampaign($campaignid: ID!, $userid: ID!) {
+    updateCampaign(
+      data: {subscribers: {connect: {id: $userid}}}
+      where: {id: $campaignid}
     ) {
       id
-      name
-      campaigns {
+      title
+      subscribers {
         id
-        title
+        email
+        name
       }
     }
   }
