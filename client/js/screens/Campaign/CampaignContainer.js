@@ -7,6 +7,7 @@ import {withNavigation} from 'react-navigation';
 import {Mutation, Query, Subscription} from '@apollo/react-components';
 import {UserContext} from '../../context/UserProvider';
 import client from '../../config/api';
+import Loader from '../../components/Loader/';
 
 const CAMPAIGN_SUBSCRIPTION = gql`
   subscription($userId: ID!) {
@@ -36,12 +37,13 @@ class CampaignContainer extends Component {
               variables={{userId: user.id}}>
               {({loading, error, data}) => {
                 if (error) return <Text>{error.message}</Text>;
-
+                // if (loading) return <Loader />;
                 console.log('campaigns', data && data.user.node.campaigns);
+
                 return (
                   <Campaign
                     campaigns={data && data.user.node.campaigns}
-                    userId={user.id}
+                    user={user}
                   />
                 );
               }}

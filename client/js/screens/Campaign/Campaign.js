@@ -14,15 +14,20 @@ import MainSubscribeButton from '../../components/MainSubscribeButton';
 import MainUnsubscribeButton from '../../components/MainUnsubscribeButton';
 import MrMoneyImage from '../../assets/artwork/mrmoney.png';
 
-const Campaign = ({navigation, userId, campaigns}) => {
-  const isSubscribed = campaigns.find(campaign => campaign.id === userId);
+const Campaign = ({navigation, user, campaigns}) => {
+  // const isSubscribed = campaigns.find(campaign => campaign.id === userId);
+  console.log(user.id);
+  console.log(campaigns);
+
+  const isSubscribed = navigation.state.params.campaign.subscribers.find(
+    subscriber => subscriber.id === user.id,
+  );
 
   return (
     <ScrollView style={styles.campaignContainer}>
       <Text style={styles.pageTitle}>
         {navigation.state.params.campaign.title}
       </Text>
-      Start of Campaign Info
       <View style={styles.campaignDetails}>
         <View>
           <Text style={styles.campaignCategoryTitle}>Category</Text>
@@ -56,11 +61,11 @@ const Campaign = ({navigation, userId, campaigns}) => {
       {isSubscribed ? (
         <MainUnsubscribeButton
           CampaignId={navigation.state.params.campaign.id}
-          userId={userId}
+          userId={user.id}
         />
       ) : (
         <MainSubscribeButton
-          userId={userId}
+          userId={user.id}
           CampaignId={navigation.state.params.campaign.id}
         />
       )}
@@ -110,4 +115,4 @@ const Campaign = ({navigation, userId, campaigns}) => {
   );
 };
 
-export default Campaign;
+export default withNavigation(Campaign);
