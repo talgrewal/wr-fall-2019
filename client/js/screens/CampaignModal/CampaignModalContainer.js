@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import EventMore from './EventMore';
+import CampaignModal from './CampaignModal';
 
 export default class CampaignModalContainer extends Component {
   render() {

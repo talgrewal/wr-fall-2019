@@ -17,6 +17,7 @@ import gql from 'graphql-tag';
 import {withNavigation} from 'react-navigation';
 import {createViewer} from '../../config/models';
 import InactiveButton from '../../assets/buttons/Inactivespacebutton.png';
+import activeButton from '../../assets/buttons/activespacebutton.png';
 import {APOLLO_AUTH_ADDRESS} from '../../config/constant';
 
 const LOGIN_MUTATION = gql`
@@ -127,7 +128,7 @@ class AccountLoginForm extends Component {
                       onPress={handleSubmit}
                       style={styles.button}>
                       <ImageBackground
-                        source={InactiveButton}
+                        source={activeButton}
                         style={styles.buttonImage}>
                         <Text style={styles.text}>Sign in</Text>
                       </ImageBackground>

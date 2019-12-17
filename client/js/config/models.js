@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-community/async-storage';
+import Onboarding from '../screens/Onboarding/Onboarding';
 
 export const queryViewer = async () => {
   try {
@@ -32,6 +33,25 @@ export const deleteViewer = async () => {
     return await AsyncStorage.removeItem('user');
   } catch (error) {
     console.log(error);
+    return new Error(error);
+  }
+};
+
+export const queryOnBoarding = async () => {
+  try {
+    let value = await AsyncStorage.getItem('onBoardingComplete');
+    return JSON.parse(value);
+  } catch (error) {
+    console.log(error);
+    return new error(error);
+  }
+};
+
+export const onBoardingSet = async foo => {
+  try {
+    await AsyncStorage.setItem('onBoardingComplete', JSON.stringify(foo));
+    return foo;
+  } catch (error) {
     return new Error(error);
   }
 };

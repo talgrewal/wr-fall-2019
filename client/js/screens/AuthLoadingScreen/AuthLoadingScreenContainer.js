@@ -8,6 +8,8 @@ import {
 } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import Loader from '../../components/Loader';
+import Onboarding from '../Onboarding/Onboarding';
+import {queryOnBoarding} from '../../config/models';
 
 export default class AuthLoadingScreenContainer extends React.Component {
   constructor() {
@@ -17,8 +19,12 @@ export default class AuthLoadingScreenContainer extends React.Component {
 
   _bootstrapAsync = async () => {
     const userToken = await AsyncStorage.getItem('user');
-
-    this.props.navigation.navigate(userToken ? 'App' : 'Auth');
+    let onBoarding = await queryOnBoarding();
+    if (onBoarding === !null) {
+      this.props.navigation.navigate(userToken ? 'App' : 'Login');
+    } else {
+      this.props.navigation.navigate('Onboarding');
+    }
   };
 
   render() {
