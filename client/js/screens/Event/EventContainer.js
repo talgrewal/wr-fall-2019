@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import Event from './Event';
-import {UserContext} from '../../context/UserProvider';
 
 export default class EventContainer extends Component {
   render() {
@@ -13,19 +12,14 @@ export default class EventContainer extends Component {
       comments,
     } = this.props;
     return (
-      <UserContext.Consumer>
-        {({user}) => (
-          <Event
-            title={title}
-            description={description}
-            location={location}
-            startDate={startDate}
-            endDate={endDate}
-            comments={comments}
-            user={user}
-          />
-        )}
-      </UserContext.Consumer>
+      <Event
+        title={title}
+        description={description}
+        location={location}
+        startDate={startDate}
+        endDate={endDate}
+        comments={comments}
+      />
     );
   }
 }
