@@ -5,11 +5,13 @@ import {queryViewer} from '../../config/models';
 class CampaignContainer extends Component {
   constructor(props) {
     super(props);
-    this.setState({user: null});
+    this.state = {
+      user: null,
+    };
   }
 
   componentDidMount() {
-    this.getuser();
+    this.getUser();
   }
 
   getUser = async () => {
@@ -17,7 +19,7 @@ class CampaignContainer extends Component {
     this.setState({user});
   };
   render() {
-    return <Campaign user={this.state.user} />;
+    return this.state.user && <Campaign user={this.state.user} />;
   }
 }
 

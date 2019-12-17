@@ -30,11 +30,10 @@ const COMMENT_MUTATION = gql`
   }
 `;
 
-const Event = ({navigation}) => {
+const Event = ({navigation, user}) => {
   const event = {
     ...navigation.state.params.event,
   };
-  const user = queryViewer();
 
   const commentItems = event.comments.map((comment, index) => (
     <View key={index} style={styles.commentContainer}>

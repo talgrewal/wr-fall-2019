@@ -46,9 +46,7 @@ const ProfileButton = ({navigation}) => {
     <TouchableOpacity onPress={() => navigation.navigate('EditProfile')}>
       <ImageBackground
         style={{height: 25, width: 25, resizeMode: 'contain', marginRight: 20}}
-        source={require('../assets/headingelement/Signedin.png')}>
-        <Text style={{color: 'white'}}>asd</Text>
-      </ImageBackground>
+        source={require('../assets/headingelement/Signedin.png')}></ImageBackground>
     </TouchableOpacity>
   );
 };
