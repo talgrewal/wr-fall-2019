@@ -5,7 +5,7 @@ import gql from 'graphql-tag';
 import {Query} from '@apollo/react-components';
 import client from '../../config/api';
 import Loader from '../../components/Loader';
-import {queryViewer} from '../../config/modals';
+import {queryViewer} from '../../config/models';
 
 const GET_All_MYCAMPAIGNS = gql`
   query myCampaigns($userid: ID!) {
