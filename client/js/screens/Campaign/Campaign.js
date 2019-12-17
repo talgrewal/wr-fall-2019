@@ -77,9 +77,7 @@ const Campaign = ({navigation, user, campaigns}) => {
             data={navigation.state.params.campaign.events}
             renderItem={({item}) => (
               <TouchableOpacity
-                onPress={() =>
-                  navigation.navigate('Event', {campaignName: 'Charity'})
-                }>
+                onPress={() => navigation.navigate('Event', {event: item})}>
                 <View style={styles.eventContainer}>
                   <View style={styles.eventImageBox}>
                     <Image
