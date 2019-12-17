@@ -90,10 +90,10 @@ class CampaignContainer extends Component {
                     data && data.campaign.node.subscribers,
                   );
 
-                  console.log(
-                    'gamma',
-                    this.props.navigation.state.params.campaign.id,
-                  );
+                  // console.log(
+                  //   'gamma',
+                  //   this.props.navigation.state.params.campaign.id,
+                  // );
                   return (
                     <Campaign
                       campaigns={data && data.campaign.node.subscribers}
