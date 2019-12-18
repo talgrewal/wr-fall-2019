@@ -8,7 +8,13 @@ import BackButton from '../../assets/miscicons/XIcon2.png';
 import MainSubscribeButton from '../../components/MainSubscribeButton';
 import MainUnsubscribeButton from '../../components/MainUnsubscribeButton';
 
-const CampaignModal = ({navigation, campaignData, user}) => {
+const CampaignModal = ({
+  navigation,
+  campaignData,
+  user,
+  subscriptionCampaignData,
+}) => {
+  console.log(subscriptionCampaignData);
   return (
     <ScrollView
       style={styles.speakerContainer}
@@ -35,6 +41,8 @@ const CampaignModal = ({navigation, campaignData, user}) => {
           <MainSubscribeButton
             userId={user.id}
             CampaignId={campaignData.campaignData.campaign.id}
+            subscribeMessage={false}
+            parentScreen={'mainCampaign'}
           />
         ) : (
           <MainUnsubscribeButton
@@ -42,6 +50,40 @@ const CampaignModal = ({navigation, campaignData, user}) => {
             userId={user.id}
           />
         )}
+
+        {/* {campaigns ? (
+        campaigns.find(selectedCampaign => selectedCampaign.id === user.id) ? (
+          <MainUnsubscribeButton
+            CampaignId={navigation.state.params.campaign.id}
+            userId={user.id}
+            subscribeMessage={false}
+            parentScreen={'mainCampaign'}
+          />
+        ) : (
+          <MainSubscribeButton
+            userId={user.id}
+            CampaignId={navigation.state.params.campaign.id}
+            subscribeMessage={true}
+            parentScreen={'mainCampaign'}
+          />
+        )
+      ) : navigation.state.params.campaign.subscribers.find(
+          selectedCampaign => selectedCampaign.id === user.id,
+        ) ? (
+        <MainUnsubscribeButton
+          CampaignId={navigation.state.params.campaign.id}
+          userId={user.id}
+          subscribeMessage={false}
+          parentScreen={'mainCampaign'}
+        />
+      ) : (
+        <MainSubscribeButton
+          userId={user.id}
+          CampaignId={navigation.state.params.campaign.id}
+          subscribeMessage={true}
+          parentScreen={'mainCampaign'}
+        />
+      )} */}
 
         {/* Start of Main Subscribe button */}
         {/* Start of Campaign Info */}

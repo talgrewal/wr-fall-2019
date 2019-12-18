@@ -70,12 +70,14 @@ const Campaign = ({navigation, user, campaigns}) => {
             CampaignId={navigation.state.params.campaign.id}
             userId={user.id}
             subscribeMessage={false}
+            parentScreen={'mainCampaign'}
           />
         ) : (
           <MainSubscribeButton
             userId={user.id}
             CampaignId={navigation.state.params.campaign.id}
             subscribeMessage={true}
+            parentScreen={'mainCampaign'}
           />
         )
       ) : navigation.state.params.campaign.subscribers.find(
@@ -85,12 +87,14 @@ const Campaign = ({navigation, user, campaigns}) => {
           CampaignId={navigation.state.params.campaign.id}
           userId={user.id}
           subscribeMessage={false}
+          parentScreen={'mainCampaign'}
         />
       ) : (
         <MainSubscribeButton
           userId={user.id}
           CampaignId={navigation.state.params.campaign.id}
           subscribeMessage={true}
+          parentScreen={'mainCampaign'}
         />
       )}
 

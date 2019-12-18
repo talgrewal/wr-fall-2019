@@ -26,7 +26,7 @@ const CAMPAIGN_UNSUBSCRIBE = gql`
 `;
 
 const MainUnsubscribeButton = ({CampaignId, navigation, userId}) => {
-  const campaignTitle = navigation.state.params.campaign.title;
+  // const campaignTitle = navigation.state.params.campaign.title;
   return (
     <Mutation mutation={CAMPAIGN_UNSUBSCRIBE} client={client}>
       {updateUser => {
@@ -43,7 +43,7 @@ const MainUnsubscribeButton = ({CampaignId, navigation, userId}) => {
                   });
                   navigation.navigate('Confirmation', {
                     subscribeMessage: false,
-                    campaignTitle: campaignTitle,
+                    // campaignTitle: campaignTitle,
                   });
                 } catch (e) {
                   console.log(e);
