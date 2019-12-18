@@ -40,7 +40,9 @@ const MainUnsubscribeButton = ({CampaignId, navigation, userId}) => {
                       userid: userId,
                     },
                   });
-                  navigation.navigate('Confirmation');
+                  navigation.navigate('Confirmation', {
+                    subscribeMessage: false,
+                  });
                 } catch (e) {
                   console.log(e);
                 }

@@ -90,11 +90,13 @@ const Campaign = ({navigation, user, campaigns}) => {
         <MainUnsubscribeButton
           CampaignId={navigation.state.params.campaign.id}
           userId={user.id}
+          subscribeMessage={false}
         />
       ) : (
         <MainSubscribeButton
           userId={user.id}
           CampaignId={navigation.state.params.campaign.id}
+          subscribeMessage={true}
         />
       )}
       <View>
