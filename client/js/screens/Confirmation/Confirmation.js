@@ -22,7 +22,10 @@ class Confirmation extends Component {
         visible={this.state.modalVisible}
         animationType="fade">
         <TouchableHighlight
-          onPress={(this.hideModal, this.props.navigation.goBack())}>
+          onPress={() => {
+            this.props.navigation.goBack();
+          }}>
+          >
           <View style={styles.page}>
             {this.props.navigation.state.params.subscribeMessage === true ? (
               <View style={styles.container}>

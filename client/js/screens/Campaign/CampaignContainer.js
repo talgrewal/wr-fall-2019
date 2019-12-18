@@ -41,6 +41,10 @@ class CampaignContainer extends Component {
     this.setState({user});
   };
   render() {
+    console.log(
+      'camp container',
+      this.props.navigation.state.params.campaign.title,
+    );
     return (
       this.state.user &&
       this.props.navigation.state.params.campaign.id && (
