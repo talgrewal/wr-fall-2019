@@ -4,7 +4,7 @@ import {withNavigation} from 'react-navigation';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import styles from '../Campaign/styles';
 import PropTypes from 'prop-types';
-import BackButton from '../../assets/miscicons/xicon.png';
+import BackButton from '../../assets/miscicons/XIcon2.png';
 import MainSubscribeButton from '../../components/MainSubscribeButton';
 import MainUnsubscribeButton from '../../components/MainUnsubscribeButton';
 
