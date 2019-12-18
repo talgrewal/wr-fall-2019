@@ -1,58 +1,15 @@
 import React, {Component} from 'react';
 import {Text} from 'react-native';
 import Campaign from './Campaign';
-import {queryViewer} from '../../config/modals';
+import {queryViewer} from '../../config/models';
+
 import gql from 'graphql-tag';
 import {withNavigation} from 'react-navigation';
 import {Mutation, Query, Subscription} from '@apollo/react-components';
-import {UserContext} from '../../context/UserProvider';
 import client from '../../config/api';
 import Loader from '../../components/Loader/';
 
-// const CAMPAIGN_SUBSCRIPTION = gql`
-//   subscription {
-//     user(where: {node: {id: $userId}}) {
-//       mutation
-//       node {
-//         campaigns {
-//           id
-//           title
-//           category
-//           description
-//           image
-//           subscribers {
-//             id
-//             name
-//             email
-//           }
-//         }
 
-//       }
-//     }
-//   }
-// `;
-
-// const CAMPAIGN_SUBSCRIPTION = gql`
-//   subscription($userId: ID!) {
-//     user(where: {node: {id: $userId}}) {
-//       mutation
-//       node {
-//         campaigns {
-//           id
-//           title
-//           category
-//           description
-//           image
-//           subscribers {
-//             id
-//             name
-//             email
-//           }
-//         }
-//       }
-//     }
-//   }
-// `;
 
 const CAMPAIGN_SUBSCRIPTION_ALL = gql`
   subscription($campaignId: ID!) {
@@ -70,13 +27,29 @@ const CAMPAIGN_SUBSCRIPTION_ALL = gql`
   }
 `;
 
+
 class CampaignContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: null,
+    };
+  }
+
+  componentDidMount() {
+    this.getUser();
+  }
+
+  getUser = async () => {
+    const user = await queryViewer();
+    this.setState({user});
+  };
   render() {
     return (
-      <UserContext.Consumer>
-        {({user}) => {
-          return (
-            this.props.navigation.state.params.campaign.id && (
+      
+        
+           
+      this.state.user && this.props.navigation.state.params.campaign.id && (
               <Subscription
                 subscription={CAMPAIGN_SUBSCRIPTION_ALL}
                 variables={{
@@ -88,17 +61,18 @@ class CampaignContainer extends Component {
                   return (
                     <Campaign
                       campaigns={data && data.campaign.node.subscribers}
-                      user={user}
+                      user={this.state.user}
                     />
                   );
                 }}
               </Subscription>
             )
-          );
-        }}
-      </UserContext.Consumer>
+          
+       
+    
     );
+    
   }
 }
 
-export default withNavigation(CampaignContainer);
+export default CampaignContainer;

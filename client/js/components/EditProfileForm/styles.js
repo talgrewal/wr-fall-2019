@@ -1,6 +1,22 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
+  textField: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    height: 20,
+    alignSelf: 'flex-start',
+    borderBottomWidth: 1,
+    marginTop: 30,
+  },
+  AccountLoginContainer: {
+    justifyContent: 'space-between',
+  },
+  formHolder: {
+    paddingBottom: 20,
+    width: '90%',
+  },
+
   buttonImage: {
     justifyContent: 'center',
     resizeMode: 'contain',
@@ -21,11 +37,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
-  },
-  textWhite: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    textAlign: 'center',
     color: 'white',
   },
   buttonHolder: {
@@ -35,14 +46,15 @@ const styles = StyleSheet.create({
     marginBottom: 40,
     marginTop: 40,
   },
-  buttonNoBackground: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 2,
-    borderRadius: 40,
-    borderWidth: 1,
-    height: 45,
-    width: 260,
+
+  fieldText: {
+    fontSize: 16,
+    width: '60%',
+  },
+  IconImage: {
+    width: 20,
+    height: 20,
+    resizeMode: 'contain',
   },
 });
 

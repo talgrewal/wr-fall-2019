@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Text, View, Image, Modal} from 'react-native';
 import styles from './styles';
 import checkmark from '../../assets/miscicons/Check.png';
-import XIcon from '../../assets/miscicons/XIcon.png';
+
 import {TouchableHighlight} from 'react-native-gesture-handler';
 import {withNavigation} from 'react-navigation';
 class Confirmation extends Component {

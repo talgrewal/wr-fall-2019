@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   appHeader: {
     backgroundColor: white,
     overflow: 'hidden',
-    height: 100,
+    height: 200,
     width: '100%',
   },
   titleNavigation: {

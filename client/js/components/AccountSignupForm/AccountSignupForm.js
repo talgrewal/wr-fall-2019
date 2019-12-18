@@ -17,9 +17,10 @@ import {Mutation} from '@apollo/react-components';
 import ApolloClient from 'apollo-boost';
 import gql from 'graphql-tag';
 import {withNavigation} from 'react-navigation';
-import {createViewer} from '../../config/modals';
+import {createViewer} from '../../config/models';
 import InactiveButton from '../../assets/buttons/Inactivespacebutton.png';
-import {APOLLO_CLIENT_ADDRESS} from '../../config/constant';
+import activeButton from '../../assets/buttons/activespacebutton.png';
+import {APOLLO_AUTH_ADDRESS} from '../../config/constant';
 
 const SIGNUP_MUTATION = gql`
   mutation signup($email: String!, $password: String!, $name: String!) {
@@ -27,6 +28,8 @@ const SIGNUP_MUTATION = gql`
       token
       user {
         id
+        name
+        email
       }
     }
   }
@@ -46,7 +49,7 @@ class AccountSignupForm extends Component {
         mutation={SIGNUP_MUTATION}
         client={
           new ApolloClient({
-            uri: APOLLO_CLIENT_ADDRESS,
+            uri: APOLLO_AUTH_ADDRESS,
           })
         }>
         {signup => (
@@ -54,14 +57,14 @@ class AccountSignupForm extends Component {
             <Form
               onSubmit={async values => {
                 try {
-                  const newUserToken = await signup({
+                  const userToken = await signup({
                     variables: {
                       email: values.email,
                       password: values.password,
                       name: values.name,
                     },
                   });
-                  await createViewer(newUserToken.data.signup);
+                  await createViewer(userToken.data.signup);
                   this.props.navigation.navigate('Home');
                 } catch (e) {
                   console.log(e);
@@ -205,7 +208,7 @@ class AccountSignupForm extends Component {
                       onPress={handleSubmit}
                       style={styles.button}>
                       <ImageBackground
-                        source={InactiveButton}
+                        source={activeButton}
                         style={styles.buttonImage}>
                         <Text style={styles.text}>Sign Up</Text>
                       </ImageBackground>

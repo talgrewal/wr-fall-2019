@@ -3,14 +3,7 @@ import {THEME} from '../../config';
 const {
   colors: {black},
   formatting: {baseSpacing, centeredChildren, containerWidth},
-  typography: {
-    baseSize,
-    headerFont,
-    hugeText,
-    contentText,
-    mainFont,
-    subHeaderText,
-  },
+  typography: {baseSize, headerFont, hugeText, contentText},
 } = THEME;
 
 const styles = StyleSheet.create({
@@ -44,8 +37,8 @@ const styles = StyleSheet.create({
     padding: baseSpacing,
   },
   image: {
-    height: '100%',
-    width: '50%',
+    minHeight: 180,
+    width: '45%',
     resizeMode: 'cover',
   },
   inputContainer: {
