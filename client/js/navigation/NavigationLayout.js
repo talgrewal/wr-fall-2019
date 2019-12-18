@@ -16,7 +16,6 @@ import {sharedNavigationOptions} from './config';
 import {THEME} from '../config';
 import {Image} from 'react-native';
 import styles from './styles';
-import {queryViewer} from '../config/models';
 
 const {
   typography,
