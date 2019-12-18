@@ -16,6 +16,7 @@ type Event{
    endDate: DateTime!
    comments: [Comment!]!
    campaign: Campaign!
+   createdAt: DateTime! @createdAt
 }
 
 type Campaign {
