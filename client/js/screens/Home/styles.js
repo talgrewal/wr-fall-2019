@@ -4,6 +4,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'white',
+    height: '22%',
   },
   page: {
     flex: 1,
