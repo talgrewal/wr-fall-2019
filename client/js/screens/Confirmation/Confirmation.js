@@ -15,15 +15,6 @@ class Confirmation extends Component {
     this.setState({modalVisible: false});
   };
   render() {
-    console.log(
-      'what happeened?',
-      this.props.navigation.state.params.subscribeMessage,
-    );
-    console.log(
-      'what happeened?',
-      this.props.navigation.state.params.campaignTitle,
-    );
-
     const {title} = this.props;
     return (
       <Modal

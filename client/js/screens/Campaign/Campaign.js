@@ -15,54 +15,6 @@ import MainUnsubscribeButton from '../../components/MainUnsubscribeButton';
 import MrMoneyImage from '../../assets/artwork/mrmoney.png';
 
 const Campaign = ({navigation, user, campaigns}) => {
-  // const isSubscribed = campaigns.find(campaign => campaign.id === userId);
-  console.log(user.id);
-  console.log(user.name);
-  // console.log(campaigns);
-  // console.log(campaigns);
-  console.log('campaign coming here');
-  console.log(navigation.state.params.campaign);
-  console.log(navigation.state.params.campaign.subscribers);
-
-  // if (campaigns) {
-  //   console.log(campaigns.length);
-  // } else {
-  //   console.log('not run yet');
-  // }
-  // console.log(navigation.state.params.campaign.id);
-
-  // campaign ? (isSubscribed) : <console.log('user subscribed')
-
-  // {campaign  ? (
-  //   isSubscribedSubData ? console.log('subscribed') : console.log('not subscribed')
-  // ) : (isSubscribedQueryData ? console.log('subscribed') : console.log('not subscribed') )}
-
-  // if (campaigns) {
-  //   console.log('alpha', campaigns[0].id);
-  // } else {
-  //   null;
-  // }
-
-  // if (!campaigns) {
-  //   const currentSubCampaign = campaigns.find(
-  //     selectedCampaign => selectedCampaign.id === user.id,
-  //   );
-  //   console.log('cur cur', currentSubCampaign);
-  // } else {
-  //   console.log('he');
-  // }
-  // console.log(currentCampaign.id);
-  // console.log(currentCampaign.subscribers.length);
-
-  // if (campaigns) {
-  //   const isSubscribed = campaigns.find(
-  //     subscriber => subscriber.id === user.id,
-  //   );
-  //   console.log('User subed');
-  // } else {
-  //   console.log('User not subed');
-  // }
-
   return (
     <ScrollView style={styles.campaignContainer}>
       <Text style={styles.pageTitle}>
@@ -134,19 +86,6 @@ const Campaign = ({navigation, user, campaigns}) => {
         />
       )}
 
-      {/* {campaigns ? (
-        <MainUnsubscribeButton
-          CampaignId={navigation.state.params.campaign.id}
-          userId={user.id}
-          subscribeMessage={false}
-        />
-      ) : (
-        <MainSubscribeButton
-          userId={user.id}
-          CampaignId={navigation.state.params.campaign.id}
-          subscribeMessage={true}
-        />
-      )} */}
       <View>
         <Text style={styles.campaignCategoryTitle}>Events</Text>
         {navigation.state.params.campaign.events.length > 0 ? (

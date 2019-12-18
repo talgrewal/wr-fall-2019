@@ -27,8 +27,6 @@ const CAMPAIGN_SUBSCRIBE = gql`
 `;
 
 const MainSubscribeButton = ({CampaignId, navigation, userId}) => {
-  console.log(navigation.state.params.campaign.title);
-  console.log('hello');
   const campaignTitle = navigation.state.params.campaign.title;
   return (
     <Mutation mutation={CAMPAIGN_SUBSCRIBE} client={client}>
