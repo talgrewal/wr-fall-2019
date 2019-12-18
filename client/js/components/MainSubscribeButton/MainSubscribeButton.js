@@ -6,25 +6,28 @@ import gql from 'graphql-tag';
 import ApolloClient from 'apollo-boost';
 import {Mutation} from '@apollo/react-components';
 import client from '../../config/api';
+import ALL_CAMPAIGNS_QUERY from '../../screens/Campaigns/CampaignsContainer';
 import {withNavigation} from 'react-navigation';
 
 const CAMPAIGN_SUBSCRIBE = gql`
-  mutation updateUser($campaignid: ID!, $userid: ID!) {
-    updateUser(
-      data: {campaigns: {connect: {id: $campaignid}}}
-      where: {id: $userid}
+  mutation updateCampaign($campaignid: ID!, $userid: ID!) {
+    updateCampaign(
+      data: {subscribers: {connect: {id: $userid}}}
+      where: {id: $campaignid}
     ) {
       id
-      name
-      campaigns {
+      title
+      subscribers {
         id
-        title
+        email
+        name
       }
     }
   }
 `;
 
 const MainSubscribeButton = ({CampaignId, navigation, userId}) => {
+  const campaignTitle = navigation.state.params.campaign.title;
   return (
     <Mutation mutation={CAMPAIGN_SUBSCRIBE} client={client}>
       {updateUser => {
@@ -36,12 +39,13 @@ const MainSubscribeButton = ({CampaignId, navigation, userId}) => {
                   const editSubscribe = await updateUser({
                     variables: {
                       campaignid: CampaignId,
-
                       userid: userId,
                     },
                   });
-
-                  navigation.navigate('Confirmation');
+                  navigation.navigate('Confirmation', {
+                    subscribeMessage: true,
+                    campaignTitle: campaignTitle,
+                  });
                 } catch (e) {
                   console.log(e);
                 }

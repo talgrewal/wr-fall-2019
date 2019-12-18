@@ -46,7 +46,6 @@ const Home = ({navigation}) => {
           keyExtractor={item => item.id}
         />
       </View>
-
       <View style={styles.container}>
         <Text style={styles.categoryTitle}>Campaign Categories</Text>
         <ScrollView>
