@@ -2,14 +2,11 @@ import React, {Component} from 'react';
 import {Text} from 'react-native';
 import Campaign from './Campaign';
 import {queryViewer} from '../../config/models';
-
 import gql from 'graphql-tag';
 import {withNavigation} from 'react-navigation';
 import {Mutation, Query, Subscription} from '@apollo/react-components';
 import client from '../../config/api';
 import Loader from '../../components/Loader/';
-
-
 
 const CAMPAIGN_SUBSCRIPTION_ALL = gql`
   subscription($campaignId: ID!) {
@@ -26,7 +23,6 @@ const CAMPAIGN_SUBSCRIPTION_ALL = gql`
     }
   }
 `;
-
 
 class CampaignContainer extends Component {
   constructor(props) {
@@ -46,32 +42,26 @@ class CampaignContainer extends Component {
   };
   render() {
     return (
-      
-        
-           
-      this.state.user && this.props.navigation.state.params.campaign.id && (
-              <Subscription
-                subscription={CAMPAIGN_SUBSCRIPTION_ALL}
-                variables={{
-                  campaignId: this.props.navigation.state.params.campaign.id,
-                }}>
-                {({loading, error, data}) => {
-                  if (error) return <Text>{error.message}</Text>;
+      this.state.user &&
+      this.props.navigation.state.params.campaign.id && (
+        <Subscription
+          subscription={CAMPAIGN_SUBSCRIPTION_ALL}
+          variables={{
+            campaignId: this.props.navigation.state.params.campaign.id,
+          }}>
+          {({loading, error, data}) => {
+            if (error) return <Text>{error.message}</Text>;
 
-                  return (
-                    <Campaign
-                      campaigns={data && data.campaign.node.subscribers}
-                      user={this.state.user}
-                    />
-                  );
-                }}
-              </Subscription>
-            )
-          
-       
-    
+            return (
+              <Campaign
+                campaigns={data && data.campaign.node.subscribers}
+                user={this.state.user}
+              />
+            );
+          }}
+        </Subscription>
+      )
     );
-    
   }
 }
 
