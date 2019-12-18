@@ -8,10 +8,7 @@ import {
 } from 'react-native';
 import {Header} from 'react-navigation-stack';
 
-import styles from './styles';
-
 import {queryViewer} from '../config/models';
-
 
 const AppHeader = props => (
   <View
@@ -75,9 +72,6 @@ const ProfileButton = ({navigation}) => {
 
   return (
     <TouchableOpacity onPress={() => navigation.navigate('EditProfile')}>
-
-
-
       <ImageBackground
         style={{height: 25, width: 25, resizeMode: 'contain', marginRight: 20}}
         source={require('../assets/headingelement/Signedin.png')}>
@@ -87,7 +81,6 @@ const ProfileButton = ({navigation}) => {
           </Text>
         )}
       </ImageBackground>
-
     </TouchableOpacity>
   );
 };
