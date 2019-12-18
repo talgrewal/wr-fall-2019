@@ -26,14 +26,9 @@ const CAMPAIGN_SUBSCRIBE = gql`
   }
 `;
 
-const MainSubscribeButton = ({
-  CampaignId,
-  navigation,
-  userId,
-  parentScreen,
-}) => {
-  // const campaignTitle = navigation.state.params.campaign.title;
-  console.log('sub button', navigation.state.params);
+const MainSubscribeButton = ({CampaignId, navigation, userId}) => {
+  const campaignTitle = navigation.state.params.campaign.title;
+
   return (
     <Mutation mutation={CAMPAIGN_SUBSCRIBE} client={client}>
       {updateUser => {
@@ -50,7 +45,7 @@ const MainSubscribeButton = ({
                   });
                   navigation.navigate('Confirmation', {
                     subscribeMessage: true,
-                    // campaignTitle: campaignTitle,
+                    campaignTitle: campaignTitle,
                   });
                 } catch (e) {
                   console.log(e);

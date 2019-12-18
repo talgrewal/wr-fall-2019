@@ -81,8 +81,14 @@ export default class Onboarding extends Component {
         renderSkipButton={() => {
           return (
             <TouchableOpacity
-              onPress={() => {
-                this.props.navigation.navigate('Login');
+              onPress={async () => {
+                try {
+                  await onBoardingSet(true);
+                  this.props.navigation.navigate('Login');
+                } catch (e) {
+                  console.log(e);
+                  this.setState({error: e});
+                }
               }}
               style={styles.button}>
               <Text style={styles.skip}>Skip</Text>

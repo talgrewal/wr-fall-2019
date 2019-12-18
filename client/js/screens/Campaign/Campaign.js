@@ -54,14 +54,6 @@ const Campaign = ({navigation, user, campaigns}) => {
         <Text style={styles.campaignDescriptionText} numberOfLines={5}>
           {navigation.state.params.campaign.description}
         </Text>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate('CampaignModal', {
-              campaignData: navigation.state.params,
-            });
-          }}>
-          <Text style={styles.campaignRedText}>More</Text>
-        </TouchableOpacity>
       </View>
 
       {campaigns ? (

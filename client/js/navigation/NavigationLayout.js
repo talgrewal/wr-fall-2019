@@ -13,7 +13,7 @@ import PrivacyScreen from '../screens/Privacy';
 import TermsScreen from '../screens/Terms';
 import ConfirmationScreen from '../screens/Confirmation';
 import EditProfileScreen from '../screens/EditProfile';
-import CampaignModalScreen from '../screens/CampaignModal';
+
 import {sharedNavigationOptions} from './config';
 import {THEME} from '../config';
 import {Image} from 'react-native';
@@ -36,7 +36,6 @@ const HomeStack = createStackNavigator(
     Event: EventScreen,
     Confirmation: ConfirmationScreen,
     EditProfile: EditProfileScreen,
-    CampaignModal: CampaignModalScreen,
   },
   {
     defaultNavigationOptions: ({navigation}) => {
