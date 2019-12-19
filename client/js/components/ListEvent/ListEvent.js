@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, TouchableOpacity, Image, Text} from 'react-native';
-//import AddToCalendar from '../CalendarButton';
+import AddToCalendar from '../CalendarButton';
 import styles from './styles';
 import moment from 'moment';
 import {withNavigation} from 'react-navigation';
@@ -31,7 +31,7 @@ const ListEvent = ({event, navigation}) => {
             {startTime}, {startDay} to {endTime} {endDay}
           </Text>
         )}
-        {/* <AddToCalendar event={event} /> */}
+        <AddToCalendar event={event} />
       </View>
     </TouchableOpacity>
   );
