@@ -28,21 +28,16 @@ const COMMENT_MUTATION = gql`
   }
 `;
 class Event extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      comment: '',
-    };
-  }
   render() {
+    this.props.refetch();
+
     const {navigation, user, comments} = this.props;
 
     const event = {
       ...navigation.state.params.event,
-      comments: comments,
     };
 
-    const commentItems = event.comments.map((comment, index) => (
+    const commentItems = comments.map((comment, index) => (
       <View key={index} style={styles.commentContainer}>
         <Image style={styles.bullet} source={dot} />
         <Comment
@@ -92,8 +87,9 @@ class Event extends Component {
                   uri: APOLLO_SERVER_ADDRESS,
                 })
               }>
-              {(updateEvent, {data, error}) => {
+              {(updateEvent, {data, loading, error}) => {
                 if (error) return <Text>{error}</Text>;
+                if (loading) return <></>; //Resets text field
                 if (data) {
                   this.props.refetch();
                 }
@@ -108,9 +104,8 @@ class Event extends Component {
                             username: user.name,
                           },
                         });
-                        this.setState({comment: ''});
                       } catch (e) {
-                        this.setState({error: e});
+                        throw e;
                       }
                     }}
                     render={({handleSubmit}) => (
@@ -127,10 +122,6 @@ class Event extends Component {
                               inputProps={{
                                 autoComplete: 'off',
                               }}
-                              onChangeText={comment => {
-                                this.setState({comment});
-                              }}
-                              value={this.state.comment}
                               {...input}
                             />
                           )}

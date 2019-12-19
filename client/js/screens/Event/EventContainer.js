@@ -46,6 +46,7 @@ export default class EventContainer extends Component {
           {({loading, error, data, refetch}) => {
             if (error) return <Text>error</Text>;
             if (loading) return <Loader />;
+            this.props.navigation.state.params.event.comments = this.props.navigation.state.params.event.comments.reverse();
             return (
               <Event
                 comments={data.event.comments.reverse()}
