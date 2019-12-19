@@ -80,13 +80,7 @@ class Event extends Component {
             <Text style={styles.halfSpaceText}>{event.description}</Text>
           </View>
           <View style={styles.inputContainer}>
-            <Mutation
-              mutation={COMMENT_MUTATION}
-              client={
-                new ApolloClient({
-                  uri: APOLLO_SERVER_ADDRESS,
-                })
-              }>
+            <Mutation mutation={COMMENT_MUTATION}>
               {(updateEvent, {data, loading, error}) => {
                 if (error) return <Text>{error}</Text>;
                 if (loading) return <></>; //Resets text field
