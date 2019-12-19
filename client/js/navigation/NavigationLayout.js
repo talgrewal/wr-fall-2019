@@ -13,6 +13,7 @@ import PrivacyScreen from '../screens/Privacy';
 import TermsScreen from '../screens/Terms';
 import ConfirmationScreen from '../screens/Confirmation';
 import EditProfileScreen from '../screens/EditProfile';
+
 import {sharedNavigationOptions} from './config';
 import {THEME} from '../config';
 import {Image} from 'react-native';

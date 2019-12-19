@@ -67,14 +67,24 @@ export default class MyCampaignsContainer extends Component {
           variables={{userid: this.state.user.id}}
           fetchPolicy="network-only">
           {({loading, error, data}) => {
-            if (loading) {return <Loader />;}
-            if (error) {return <Text>{error.message}</Text>;}
+            if (loading) {
+              return <Loader />;
+            }
+            if (error) {
+              return <Text>{error.message}</Text>;
+            }
 
             return (
-              <MyCampaigns
-                myCampaigns={data.user.campaigns}
-                user={this.state.user.id}
-              />
+              <>
+                {this.state.user.id !== 'ck4asqwfyexf30b00ffbkv3d4' ? (
+                  <MyCampaigns
+                    myCampaigns={data.user.campaigns}
+                    user={this.state.user.id}
+                  />
+                ) : (
+                  <Text>Please log or signup to see your campaigns.</Text>
+                )}
+              </>
             );
           }}
         </Query>
