@@ -9,8 +9,15 @@ import {
 import Notification from '../../components/Notification';
 import styles from './styles';
 import spaceTexture from '../../assets/Textures/DarkSpace.png';
+import moment, {now} from 'moment';
 
-const Notifications = ({notifications, user, navigation}) => {
+const Notifications = ({
+  notifications,
+  user,
+  navigation,
+  campaign,
+  modifiedEvents,
+}) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Notifications</Text>
@@ -19,26 +26,16 @@ const Notifications = ({notifications, user, navigation}) => {
         imageStyle={styles.panel}
         source={spaceTexture}>
         <FlatList
-          data={notifications}
-          renderItem={({item}) => (
+          data={modifiedEvents}
+          renderItem={({item, index}) => (
             <View>
-              <TouchableOpacity
-                style={styles.itemContainer}
-                onPress={() => {
-                  navigation.navigate('Campaign', {
-                    campaign: item,
-                  });
-                }}>
-                {item.events.map((notification, index) => {
-                  return (
-                    <View key={index} style={styles.item}>
-                      <Text style={styles.notificationDot}>{'\u2022'}</Text>
-                      <Text style={styles.text}>
-                        {notification.title} was added to {item.title}
-                      </Text>
-                    </View>
-                  );
-                })}
+              <TouchableOpacity style={styles.itemContainer}>
+                <View key={index} style={styles.item}>
+                  <Text style={styles.notificationDot}>{'\u2022'}</Text>
+                  <Text style={styles.text}>
+                    {item.title} was added to {item.campaignTitle}
+                  </Text>
+                </View>
               </TouchableOpacity>
             </View>
           )}

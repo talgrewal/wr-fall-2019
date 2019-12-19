@@ -4,6 +4,9 @@ import gql from 'graphql-tag';
 import {Query} from '@apollo/react-components';
 import Loader from '../../components/Loader';
 import {queryViewer} from '../../config/models';
+import moment, {now} from 'moment';
+
+let notificationListItem = [];
 
 const GET_All_MYCAMPAIGNS = gql`
   query notifications($userid: ID!) {
@@ -30,6 +33,7 @@ const GET_All_MYCAMPAIGNS = gql`
           description
           startDate
           endDate
+          createdAt
         }
       }
     }
@@ -59,7 +63,7 @@ export default class NotificationsContainer extends Component {
           query={GET_All_MYCAMPAIGNS}
           variables={{userid: this.state.user.id}}
           fetchPolicy="network-only">
-          {({loading, error, data}) => {
+          {({loading, error, data, refetch}) => {
             if (loading) {
               return <Loader />;
             }
@@ -67,10 +71,38 @@ export default class NotificationsContainer extends Component {
               return <Text>{error.message}</Text>;
             }
             if (data) {
+              const campaigns = data.user.campaigns;
+              const eventsData = campaigns.map(campaign => campaign.events);
+
+              const events = campaigns.map(campaign => {
+                return campaign.events.map(event => {
+                  event.campaignTitle = campaign.title;
+
+                  return event;
+                });
+              });
+              console.log('newCampaigns', events.flat());
+
+              const sortedArray = events
+                .flat()
+                .sort((a, b) => moment(b.createdAt).diff(moment(a.createdAt)));
+              const timeNow = moment();
+              const modifiedEvents = sortedArray.filter(event => {
+                let eventCreatedAt = moment(event.createdAt);
+                const diff = timeNow.diff(eventCreatedAt, 'minutes');
+                if (diff <= 60) {
+                  return true;
+                } else {
+                  return false;
+                }
+              });
+
               return (
                 <Notifications
-                  notifications={data.user.campaigns}
                   user={this.state.user.id}
+                  refetch={refetch}
+                  campaign={campaigns}
+                  modifiedEvents={modifiedEvents}
                 />
               );
             }
