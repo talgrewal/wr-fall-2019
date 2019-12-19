@@ -15,9 +15,6 @@ import MrMoneyImage from '../../assets/artwork/mrmoney.png';
 import ListEvent from '../../components/ListEvent';
 
 const Campaign = ({navigation, user, campaigns}) => {
-  const events = navigation.state.params.campaign.events.map((event, index) => (
-    <ListEvent key={index} event={event} navigation={navigation} />
-  ));
   return (
     <ScrollView style={styles.campaignContainer}>
       <Text style={styles.pageTitle}>
@@ -100,7 +97,12 @@ const Campaign = ({navigation, user, campaigns}) => {
       <View>
         <Text style={styles.campaignCategoryTitle}>Events</Text>
         {navigation.state.params.campaign.events.length > 0 ? (
-          <>{events}</>
+          <FlatList
+            data={navigation.state.params.campaign.events}
+            renderItem={
+              <ListEvent key={index} event={item} navigation={navigation} />
+            }
+          />
         ) : (
           <View>
             <Text style={styles.noEventsDetails}>

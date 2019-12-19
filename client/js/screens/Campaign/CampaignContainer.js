@@ -47,9 +47,8 @@ class CampaignContainer extends Component {
           variables={{
             campaignId: this.props.navigation.state.params.campaign.id,
           }}>
-          {({loading, error, data}) => {
+          {({error, data}) => {
             if (error) return <Text>{error.message}</Text>;
-            if (loading) return <Loader />;
             return (
               <Campaign
                 campaigns={data && data.campaign.node.subscribers}
