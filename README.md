@@ -20,14 +20,14 @@ Users are able to subscribe to campaigns they care about and then get updates wh
 
 ## Install Instructions for Mac User
 
-##Install packages:
-- cd server
-- yarn
-- cd client
-- yarn
-- cd ios/
-- pod install
-
-## Run Simulator
+## Install packages:
+```
 cd client
-react-native run-ios
+yarn
+cd ios/
+pod install
+cd ..
+```
+
+## Run Simulator 
+`react-native run-ios` (from client dir)
