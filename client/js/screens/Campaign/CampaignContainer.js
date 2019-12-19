@@ -3,9 +3,7 @@ import {Text} from 'react-native';
 import Campaign from './Campaign';
 import {queryViewer} from '../../config/models';
 import gql from 'graphql-tag';
-import {withNavigation} from 'react-navigation';
-import {Mutation, Query, Subscription} from '@apollo/react-components';
-import client from '../../config/api';
+import {Subscription} from '@apollo/react-components';
 import Loader from '../../components/Loader/';
 
 const CAMPAIGN_SUBSCRIPTION_ALL = gql`
@@ -51,7 +49,7 @@ class CampaignContainer extends Component {
           }}>
           {({loading, error, data}) => {
             if (error) return <Text>{error.message}</Text>;
-
+            if (loading) return <Loader />;
             return (
               <Campaign
                 campaigns={data && data.campaign.node.subscribers}

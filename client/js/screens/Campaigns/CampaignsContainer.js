@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import {Text, View} from 'react-native';
+import {Text} from 'react-native';
 import Campaigns from './Campaigns';
 import gql from 'graphql-tag';
 import {Query} from 'react-apollo';
+import Loader from '../../components/Loader';
 
 export const ALL_CAMPAIGNS_QUERY = gql`
   {
@@ -41,8 +42,8 @@ export default class CampaignsContainer extends Component {
     return (
       <Query query={ALL_CAMPAIGNS_QUERY} fetchPolicy="network-only">
         {({loading, error, data}) => {
-          if (loading) return <Text>Text is loading</Text>;
           if (error) return <Text>{error.message}/</Text>;
+          if (loading) return <Loader />;
           if (data) {
             const campaignData = data.campaigns.filter(
               campaign =>
