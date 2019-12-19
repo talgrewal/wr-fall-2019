@@ -60,8 +60,6 @@ export default class MyCampaignsContainer extends Component {
   };
 
   render() {
-    console.log(this.state.user);
-
     return (
       this.state.user && (
         <Query
