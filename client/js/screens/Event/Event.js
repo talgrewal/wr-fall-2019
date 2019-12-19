@@ -28,6 +28,12 @@ const COMMENT_MUTATION = gql`
   }
 `;
 class Event extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      comment: '',
+    };
+  }
   render() {
     const {navigation, user, comments} = this.props;
 
@@ -102,6 +108,7 @@ class Event extends Component {
                             username: user.name,
                           },
                         });
+                        this.setState({comment: ''});
                       } catch (e) {
                         this.setState({error: e});
                       }
@@ -120,6 +127,10 @@ class Event extends Component {
                               inputProps={{
                                 autoComplete: 'off',
                               }}
+                              onChangeText={comment => {
+                                this.setState({comment});
+                              }}
+                              value={this.state.comment}
                               {...input}
                             />
                           )}
