@@ -54,14 +54,6 @@ const Campaign = ({navigation, user, campaigns}) => {
         <Text style={styles.campaignDescriptionText} numberOfLines={5}>
           {navigation.state.params.campaign.description}
         </Text>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate('CampaignModal', {
-              campaignData: navigation.state.params,
-            });
-          }}>
-          <Text style={styles.campaignRedText}>More</Text>
-        </TouchableOpacity>
       </View>
 
       {campaigns ? (
@@ -70,12 +62,14 @@ const Campaign = ({navigation, user, campaigns}) => {
             CampaignId={navigation.state.params.campaign.id}
             userId={user.id}
             subscribeMessage={false}
+            parentScreen={'mainCampaign'}
           />
         ) : (
           <MainSubscribeButton
             userId={user.id}
             CampaignId={navigation.state.params.campaign.id}
             subscribeMessage={true}
+            parentScreen={'mainCampaign'}
           />
         )
       ) : navigation.state.params.campaign.subscribers.find(
@@ -85,12 +79,14 @@ const Campaign = ({navigation, user, campaigns}) => {
           CampaignId={navigation.state.params.campaign.id}
           userId={user.id}
           subscribeMessage={false}
+          parentScreen={'mainCampaign'}
         />
       ) : (
         <MainSubscribeButton
           userId={user.id}
           CampaignId={navigation.state.params.campaign.id}
           subscribeMessage={true}
+          parentScreen={'mainCampaign'}
         />
       )}
 
