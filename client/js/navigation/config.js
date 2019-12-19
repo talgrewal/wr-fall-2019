@@ -63,12 +63,15 @@ const ProfileButton = ({navigation}) => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const getUesr = async () => {
+    const getUser = async () => {
       const user = await queryViewer();
       setUser(await user);
     };
-    getUesr();
-  });
+    // getUser();
+    // return () => {
+    //   setUser(null);
+    // };
+  }, [user]);
 
   return (
     <TouchableOpacity onPress={() => navigation.navigate('EditProfile')}>
@@ -76,9 +79,10 @@ const ProfileButton = ({navigation}) => {
         style={{height: 25, width: 25, resizeMode: 'contain', marginRight: 20}}
         source={require('../assets/headingelement/Signedin.png')}>
         {user && (
-          <Text style={{color: 'white', textAlign: 'center', padding: 2}}>
-            {user.name.substring(0, 2)}
-          </Text>
+          // <Text style={{color: 'white', textAlign: 'center', padding: 2}}>
+          //   {user.name.substring(0, 2)}
+          // </Text>
+          <Text>.</Text>
         )}
       </ImageBackground>
     </TouchableOpacity>
