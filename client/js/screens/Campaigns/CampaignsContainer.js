@@ -42,8 +42,8 @@ export default class CampaignsContainer extends Component {
     return (
       <Query query={ALL_CAMPAIGNS_QUERY} fetchPolicy="network-only">
         {({loading, error, data}) => {
-          if (loading) return <Loader />;
           if (error) return <Text>{error.message}/</Text>;
+          if (loading) return <Loader />;
           if (data) {
             const campaignData = data.campaigns.filter(
               campaign =>

@@ -94,10 +94,10 @@ const Campaign = ({navigation, user, campaigns}) => {
         <Text style={styles.campaignCategoryTitle}>Events</Text>
         {navigation.state.params.campaign.events.length > 0 ? (
           <FlatList
-            style={styles.eventSingle}
             data={navigation.state.params.campaign.events}
-            renderItem={({item}) => <ListEvent event={item} />}
-            keyExtractor={(item, index) => 'index' + index.toString()}
+            renderItem={
+              <ListEvent key={index} event={item} navigation={navigation} />
+            }
           />
         ) : (
           <View>

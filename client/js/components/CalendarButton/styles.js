@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     borderRadius: baseSpacing * 2,
     padding: baseSpacing,
     padding: baseSpacing,
-    width: 375, //Width 100% does not work
+    width: '100%',
     ...centeredChildren,
   },
   buttonText: {
