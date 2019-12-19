@@ -28,13 +28,6 @@ const Signup = ({navigation}) => {
 
         <View>
           <Text style={styles.blackFont}>Not Ready yet? No Worries</Text>
-
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('Home');
-            }}>
-            <Text style={styles.redFont}>Continue as a Guest</Text>
-          </TouchableOpacity>
         </View>
       </View>
     </View>
