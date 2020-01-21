@@ -1,6 +1,6 @@
 # World Revolution APP
-World Revoultion APP was designed to give thought consciousness indivduals a platform on how to get infornation on events happening near them.
-Users are able to subscribe to campaigns they care about and then get updates when new events are added. They also recieve information on how many other users are subscribed to the same camaign and are able to chat with users attending the same event through the app.
+World Revolution APP was designed to give thought conscious indivduals a platform on how to get information on events happening near them.
+Users are able to subscribe to campaigns they care about and then get updates when new events are added. They also receive information on how many other users are subscribed to the same campaigns and are able to chat with users attending the same event through the app.
 
 
 ## Technologies Used
@@ -14,9 +14,9 @@ Users are able to subscribe to campaigns they care about and then get updates wh
 
 
 ## Team
-- Tal has a background in Marketing with over 6 years of experiance in technologies such as Salesforce and wordpress.
+- Tal has a background in Marketing with over 6 years of experience in technologies such as Salesforce and wordpress.
 - Kanika completed her masters in computer science in 2016 and has worked as a IT instructor for over 2 years.
-- Ciaran is a seasoned dev with over 8 years of gaming development experiance.
+- Ciaran is a seasoned dev with over 8 years of gaming development experience.
 
 ## Install Instructions for Mac User
 
