@@ -1,5 +1,5 @@
 # World Revolution APP
-World Revolution APP was designed to give thought conscious indivduals a platform on how to get information on events happening near them.
+World Revolution is a React Native App designed to give thought conscious indivduals a platform on how to get information on events happening near them.
 Users are able to subscribe to campaigns they care about and then get updates when new events are added. They also receive information on how many other users are subscribed to the same campaigns and are able to chat with users attending the same event through the app.
 
 
